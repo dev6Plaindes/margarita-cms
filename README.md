@@ -1,4 +1,4 @@
-# cms_margarita
+# Margarita CMS
 
 | PHP Version | Servicio       | Puerto |
 |------------|-------------------|--------|
