@@ -1,0 +1,82 @@
+<section class="padding-top-55">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="title">Proyectos</h2>
+
+                <div class="customNavigation">
+                    <a class="btn prev-project"><i class="fa fa-angle-left"></i></a>
+                    <a class="btn next-project"><i class="fa fa-angle-right"></i></a>
+                </div><!-- End owl button -->
+
+                <div id="owl-project" class="owl-carousel owl-theme  owl-project clearfix">
+                    {% for proyecto in products %}
+                    <div class="item">
+                        <a href="/proyecto/{{proyecto.slug}}">
+                            <img src="{{proyecto.image}}"
+                                class="img-responsive" alt="Image">
+                            <h5 class="title-project">{{proyecto.name|raw }}</h5>
+                        </a>
+                    </div>
+                    {% endfor %}
+                    {#<div class="item">
+                        <a href="projectsDetail.html">
+                            <img src="/assets/template/empresarial/original/images/Project/1.jpg"
+                                class="img-responsive" alt="Image">
+                            <h5 class="title-project">Enterprise Loan</h5>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="projectsDetail.html">
+                            <img src="/assets/template/empresarial/original/images/Project/2.jpg"
+                                class="img-responsive" alt="Image">
+                            <h5 class="title-project">Money Market</h5>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="projectsDetail.html">
+                            <img src="/assets/template/empresarial/original/images/Project/3.jpg"
+                                class="img-responsive" alt="Image">
+                            <h5 class="title-project">MO Insurance </h5>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="projectsDetail.html">
+                            <img src="/assets/template/empresarial/original/images/Project/5.jpg"
+                                class="img-responsive" alt="Image">
+                            <h5 class="title-project">Business Loan</h5>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="projectsDetail.html">
+                            <img src="/assets/template/empresarial/original/images/Project/6.jpg"
+                                class="img-responsive" alt="Image">
+                            <h5 class="title-project">Financial Report</h5>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="projectsDetail.html">
+                            <img src="/assets/template/empresarial/original/images/Project/7.jpg"
+                                class="img-responsive" alt="Image">
+                            <h5 class="title-project">2016 Retirement Plan</h5>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="projectsDetail.html">
+                            <img src="/assets/template/empresarial/original/images/Project/8.jpg"
+                                class="img-responsive" alt="Image">
+                            <h5 class="title-project">Business Growth Solutions</h5>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="projectsDetail.html">
+                            <img src="/assets/template/empresarial/original/images/Project/9.jpg"
+                                class="img-responsive" alt="Image">
+                            <h5 class="title-project">Insurance Life</h5>
+                        </a>
+                    </div>#}
+                </div> <!--End Owl  -->
+            </div><!-- End Col -->
+        </div><!-- End Row -->
+    </div> <!-- End Container -->
+</section><!-- End Section -->

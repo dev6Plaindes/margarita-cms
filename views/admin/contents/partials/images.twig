@@ -1,0 +1,19 @@
+<div data-repeater-item="" class="col-xl-4 col-md-4 col-sm-6 float-left form-group text-center">
+    <input type="hidden" name="id" value="{{ item.id }}">
+    <div class="image-input image-input-outline" id="kt_images">
+        <div class="image-input-wrapper" style="background-image: url('{{ item.image ? item.image : notfound }}')"></div>
+        <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow btn-change-image" data-action="change" data-toggle="tooltip" title="" data-original-title="Cambiar logo">
+            <i class="fa fa-pen icon-sm text-muted"></i>
+            <input class="file" type="file" name="image" accept=".png, .jpg, .jpeg" />
+            <input type="hidden" name="image_remove" />
+        </label>
+        <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+            <i class="ki ki-bold-close icon-xs text-muted"></i>
+        </span>
+    </div>
+    <div class="d-block">
+        <a href="javascript:;" data-repeater-delete="" class="btn btn-sm font-weight-bolder btn-light-danger mt-5 mb-2">
+            <i class="la la-trash-o"></i>Eliminar
+        </a>
+    </div>
+</div>

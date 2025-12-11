@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-lg-12 title-line-left">
+        <h2><span>Blog</span></h2>
+    </div>
+    <div class="col-lg-12 system-card-blogs">
+        <img src="{{ blog.image }}" class="card-image">
+        <div class="card-body">
+            <p class="card-caption">
+                {{ blog.date }}. Escrito por {{ blog.teacher.name }} {{ blog.teacher.lastname }}
+            </p>
+            <p class="card-title">
+                {{ blog.name }}
+            </p>
+            <div class="card-line"></div>
+            <button class="btn btn-light mb-3" style="background-color:var(--main-resaltar);color: #fff;">{{ blog.category.name }}</button>
+            <p class="card-description">
+                {{ blog.overview|raw }}
+            </p>
+        </div>
+        <div class="card-footer">
+            <div class="card-leer">
+                <a href="{{ blog.url }}" target="_blank" title="{{ blog.title }}">
+                    <div class="trapecio">
+                        <span>Leer más</span> {#<i class="fa fa-arrow-right" aria-hidden="true"></i>#}
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

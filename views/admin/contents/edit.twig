@@ -1,0 +1,83 @@
+{% extends 'admin/layouts/main.twig' %}
+
+{% block aside %}
+	{% include 'admin/layouts/partials/aside.twig' with { 'aside': 'landing.contents' } %}
+{% endblock %}
+
+{% block breadcrumb %}
+    {% include 'admin/layouts/partials/breadcrumb.twig' with { 'breadcrumb': 'landing.contents' } %}
+{% endblock %}
+
+{% block css %}
+	<style>
+	    .minicolors-swatch{
+			top: 8px !important;
+			left: 5px !important;
+		}
+		.image-input-wrapper{
+        	background-repeat: no-repeat !important; 
+        	background-size: 100% 100% !important;
+    	}
+	</style>
+{% endblock %}
+
+{% block content %}
+{% set data = rsp.data %}
+{% set notfound = '/assets/image/notfound.png' %}
+<div class="container" id="AppContentAdmin">
+	<div class="card card-custom">
+   		<div class="card-header card-header-tabs-line nav-tabs-line-3x">
+            <div class="card-toolbar">
+                <ul class="nav nav-tabs nav-bold nav-tabs-line nav-tabs-line-3x">
+                    <li class="nav-item mr-3">
+                        <a class="nav-link active"  data-toggle="tab" href="#kt_tab_general">
+                            <span class="nav-text font-size-lg">General</span>
+                        </a>
+                    </li>
+					{% for item in data.groups %}
+					<li class="nav-item mr-3">
+						<a class="nav-link"  data-toggle="tab" href="#kt_tab_{{ item.name }}">
+							<span class="nav-text font-size-lg">{{ item.name }}</span>
+						</a>
+					</li>
+					{% endfor %}
+                </ul>
+            </div>
+        </div>
+		<div class="card-body">
+            <div class="tab-content">
+                <div class="tab-pane show active" id="kt_tab_general" role="tabpanel">
+					<div class="row justify-content-center py-8 px-8 py-lg-10 px-lg-10">
+						<div class="col-xl-12 col-xxl-10">
+							{% include 'admin/contents/partials/form.twig' with { 'content': data.content, 'settings': data.content.type.settings } %}
+						</div>
+					</div>
+				</div>
+				{% for item in data.groups %}
+				<div class="tab-pane show" id="kt_tab_{{ item.name }}" role="tabpanel">
+					<div class="row justify-content-center py-8 px-8 py-lg-10 px-lg-10">
+						<div class="col-xl-12 col-xxl-10">
+							<div class="row justify-content-center">
+								<div class="col-xl-12">
+									{% for index2, item2 in item.data %}
+										<div class="mb-10">
+										{% include 'admin/contents/partials/form.twig' with { 'content': item2, 'settings': item.settings } %}
+										</div>
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+	window.addEventListener('load', window.AppContentAdmin.edit(JSON.parse("{{ rsp.data|json_encode|e('js') }}")));
+</script>
+{% endblock %}

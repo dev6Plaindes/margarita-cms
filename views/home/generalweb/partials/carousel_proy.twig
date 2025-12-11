@@ -1,0 +1,74 @@
+<div class="col-lg-12 title-line-center">
+    <h2><span>Nuestros Proyectos{{ section.title }}</span></h2>
+</div>
+<div class="col-lg-12 content-proy">
+    <div id="{{ section.uniqid }}" class="owl-carousel owl-theme">
+        {% for p, proy in proyectos %}
+        <div class="item">
+            <div class="content-header">
+                <h3>{{ proy.categoria }}</h3>
+            </div>
+            <div class="content-texto">
+                <div class="content-img">
+                    <img class="" src="{{ proy.image }}" alt="">
+                </div>
+                <div class="content-title">
+                    {{ proy.title }}
+                </div>
+                <p>{{ proy.description|raw }}</p>
+            </div>
+        </div>
+        {% endfor %}
+        {#<div class="item">
+            <div class="content-header">
+                <h3>Permiso de Viaje</h3>
+            </div>
+            <div class="content-texto">
+                <div class="content-img">
+                    <img class="" src="/assets/template/generalweb/images/banner.jpg" alt="">
+                </div>
+                <div class="content-title">
+                    Migraciones de sistemas
+                </div>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate eius illum accusantium tempore et
+                    porro ad
+                    libero autem ipsam explicabo nesciunt, iusto accusamus modi iste repellendus rerum totam, officia
+                    molestiae.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="content-header">
+                <h3>Permiso de Viaje</h3>
+            </div>
+            <div class="content-texto">
+                <div class="content-img">
+                    <img class="" src="/assets/template/generalweb/images/banner.jpg" alt="">
+                </div>
+                <div class="content-title">
+                    Migraciones de sistemas
+                </div>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate eius illum accusantium tempore et
+                    porro ad
+                    libero autem ipsam explicabo nesciunt, iusto accusamus modi iste repellendus rerum totam, officia
+                    molestiae.</p>
+            </div>
+        </div>
+        <div class="item">
+            <div class="content-header">
+                <h3>Permiso de Viaje</h3>
+            </div>
+            <div class="content-texto">
+                <div class="content-img">
+                    <img class="" src="/assets/template/generalweb/images/banner.jpg" alt="">
+                </div>
+                <div class="content-title">
+                    Migraciones de sistemas
+                </div>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate eius illum accusantium tempore et
+                    porro ad
+                    libero autem ipsam explicabo nesciunt, iusto accusamus modi iste repellendus rerum totam, officia
+                    molestiae.</p>
+            </div>
+        </div>#}
+    </div>
+</div>

@@ -1,0 +1,52 @@
+{% extends "home/legal/main.twig" %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+
+<!--EQUIPO-->
+<section class="container">
+    <div class="title-with row text-left">
+        <h3 class="col-12">Programa una consulta</h3>
+    </div>
+    <div class="separator d-flex justify-content-left">
+        <div class=""></div>
+        <div class=""></div>
+    </div>   
+</section>
+<section class="container">
+    <form id="frmMessage2" class="mt-5 mb-5 text-center">
+        <div class="form-group">
+           <input id="name" type="text" name="name" size="40" class="form-control" aria-required="true" aria-invalid="false" placeholder="Nombre*" required>
+        </div>
+        <div class="form-group">
+           <input id="telephone" type="number" name="telephone" size="40" class="form-control" aria-required="true" aria-invalid="false" placeholder="Teléfono*" required>
+        </div>
+        <div class="form-group">
+            <input id="email" type="email" name="email" size="40" class="form-control" aria-required="true" aria-invalid="false" placeholder="Correo electrónico*" required>
+        </div>
+        <div class="form-group" style="text-align: left;">
+          <label>Asunto</label>
+          <select class="form-control" id="asunto" name="asunto" >
+            <option value="Penal">Penal</option>
+            <option value="Laboral">Laboral</option>
+            <option value="Asesoria General">Asesoría General</option>
+            <option value="Proyectos">Proyectos</option>
+          </select>
+        </div>
+        <div class="form-group">
+            <textarea  id="message" name="description" cols="40" rows="10" class="form-control" aria-invalid="false" placeholder="Mensaje*" required></textarea>
+        </div>
+
+        <button type="submit" class="submit-button" > Contáctenos </button>
+
+    </form>
+</section>
+{% endblock %}
+{% block js %}    
+  <script src="/assets/utilitarian/js/sweetalert2.js"></script>
+      <!-- template scripts -->    
+  <script src="/assets/template/legal/js/main.min.js"></script>
+{% endblock %}

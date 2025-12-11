@@ -1,0 +1,246 @@
+@font-face {
+  font-family: "Lato Regular";
+  src: url("/assets/font/Lato-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Lato Bold";
+  src: url("/assets/font/Lato-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Lato Black";
+  src: url("/assets/font/Lato-Black.ttf");
+}
+
+/* line 16, public/assets-gulp/scss/admin/style.scss */
+html {
+  font-size: 13px;
+}
+
+/* line 20, public/assets-gulp/scss/admin/style.scss */
+body {
+  font-size: 1rem !important;
+  --color-one: white;
+  --color-two: #02abde;
+  --color-three: #02abde;
+  --color-for: #2d205f;
+  --color-five: #2d205f;
+  --color-five-out: #f4f6f9;
+  --color-six: #f7f7f7;
+  --color-seven: #4d4d53;
+  --color-eigth: #c5b46d;
+  --color-nine: #4caf50;
+  --color-nine-out: #e8f5e9;
+  font-family: 'Lato Regular', sans-serif !important;
+  font-weight: 400;
+  height: 75vh;
+}
+
+/* line 38, public/assets-gulp/scss/admin/style.scss */
+header {
+  background: white;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  font-family: 'Lato Regular', sans-serif !important;
+  border-bottom: 0.5rem solid var(--color-for);
+}
+
+/* line 47, public/assets-gulp/scss/admin/style.scss */
+footer {
+  background: var(--color-for);
+  color: white;
+  padding: 1rem;
+}
+
+/* line 53, public/assets-gulp/scss/admin/style.scss */
+footer a {
+  text-decoration: none;
+  color: white;
+}
+
+/* line 58, public/assets-gulp/scss/admin/style.scss */
+header nav img {
+  max-height: 3rem;
+}
+
+/* line 62, public/assets-gulp/scss/admin/style.scss */
+.active-head a {
+  color: var(--color-three) !important;
+  font-weight: 600;
+}
+
+/* line 67, public/assets-gulp/scss/admin/style.scss */
+.m-width {
+  max-width: 1500px;
+}
+
+/* line 71, public/assets-gulp/scss/admin/style.scss */
+.btn-one {
+  background: var(--color-two);
+  border-radius: 20px;
+  color: white !important;
+  font-family: 'Lato Regular', sans-serif !important;
+}
+
+/* line 78, public/assets-gulp/scss/admin/style.scss */
+.btn-one a {
+  color: white !important;
+  font-family: 'Lato Regular', sans-serif !important;
+}
+
+/* line 83, public/assets-gulp/scss/admin/style.scss */
+.btn-one:hover {
+  background: white;
+  border: 1px solid var(--color-two);
+  color: var(--color-two) !important;
+}
+
+/* line 89, public/assets-gulp/scss/admin/style.scss */
+.btn-one:hover a {
+  color: var(--color-two) !important;
+}
+
+/* line 93, public/assets-gulp/scss/admin/style.scss */
+.btn-one-border {
+  border: 1px solid var(--color-two);
+  color: var(--color-two) !important;
+  border-radius: 20px;
+}
+
+/* line 99, public/assets-gulp/scss/admin/style.scss */
+.btn-one-border a {
+  color: var(--color-two) !important;
+}
+
+/* line 103, public/assets-gulp/scss/admin/style.scss */
+.btn-one-border:hover {
+  background: var(--color-two);
+  color: white;
+}
+
+/* line 108, public/assets-gulp/scss/admin/style.scss */
+.btn-one-border:hover a {
+  color: white !important;
+}
+
+/* line 114, public/assets-gulp/scss/admin/style.scss */
+.btn-two {
+  background: var(--color-three);
+  border-radius: 20px;
+  color: white !important;
+  font-family: 'Lato Regular', sans-serif !important;
+  border: 1px solid var(--color-three);
+}
+
+/* line 122, public/assets-gulp/scss/admin/style.scss */
+.btn-two a {
+  color: white !important;
+  font-family: 'Lato Regular', sans-serif !important;
+}
+
+/* line 127, public/assets-gulp/scss/admin/style.scss */
+.btn-two:hover {
+  background: white;
+  border: 1px solid var(--color-three);
+  color: var(--color-three) !important;
+}
+
+/* line 133, public/assets-gulp/scss/admin/style.scss */
+.btn-two:hover a {
+  color: var(--color-three) !important;
+}
+
+/* line 139, public/assets-gulp/scss/admin/style.scss */
+.btn-for {
+  background: var(--color-eigth);
+  border-radius: 20px;
+  color: var(--color-for) !important;
+  font-family: 'Lato Regular', sans-serif !important;
+}
+
+/* line 146, public/assets-gulp/scss/admin/style.scss */
+.btn-for a {
+  color: white !important;
+  font-family: 'Lato Regular', sans-serif !important;
+}
+
+/* line 151, public/assets-gulp/scss/admin/style.scss */
+.btn-for:hover {
+  background: white;
+  border: 1px solid var(--color-eigth);
+}
+
+/* line 157, public/assets-gulp/scss/admin/style.scss */
+.btn-for:hover a {
+  color: var(--color-eigth) !important;
+}
+
+/* line 164, public/assets-gulp/scss/admin/style.scss */
+.btn-five {
+  background: var(--color-for);
+  border-radius: 20px;
+  color: white !important;
+  font-family: 'Lato Regular', sans-serif !important;
+}
+
+/* line 171, public/assets-gulp/scss/admin/style.scss */
+.btn-five a {
+  color: var(--color-for) !important;
+  font-family: 'Lato Regular', sans-serif !important;
+}
+
+/* line 176, public/assets-gulp/scss/admin/style.scss */
+.btn-five:hover {
+  background: white;
+  border: 1px solid var(--color-for);
+  color: var(--color-for) !important;
+}
+
+/* line 182, public/assets-gulp/scss/admin/style.scss */
+.btn-five:hover a {
+  color: var(--color-for) !important;
+}
+
+/* line 190, public/assets-gulp/scss/admin/style.scss */
+.linea-prima p {
+  font-family: "Lato Black" !important;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+/* line 196, public/assets-gulp/scss/admin/style.scss */
+.item-float {
+  background: var(--color-five);
+  position: fixed;
+  left: 0;
+  width: 3rem;
+  border-radius: 0px 15px 15px 0px;
+  top: 20rem;
+  z-index: 2;
+}
+
+/* line 206, public/assets-gulp/scss/admin/style.scss */
+.item-float a {
+  text-decoration: none;
+  color: white;
+  display: block;
+  margin: 8px 0px;
+}
+
+/* line 213, public/assets-gulp/scss/admin/style.scss */
+.linea {
+  border-bottom: 1px solid var(--color-for);
+  height: 1rem;
+}
+
+/* line 218, public/assets-gulp/scss/admin/style.scss */
+.bg-white {
+  padding-top: 8rem;
+}
+
+/* line 222, public/assets-gulp/scss/admin/style.scss */
+.w-100 {
+  width: 100% !important;
+}

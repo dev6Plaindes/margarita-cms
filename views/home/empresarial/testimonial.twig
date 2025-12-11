@@ -1,0 +1,164 @@
+{% extends "home/empresarial/layouts/main.twig" %}
+
+{% block css %}{% endblock %}
+
+{% block content %}
+{% include 'home/empresarial/elements/page_info.twig' with { 'titulo': testimonio[0].section_name } %}
+<!-- Demo Testimonials 2 Columns -->
+<section >
+    <div class="container">
+      <div class="row">
+        <div class="testimonial-3-colum-demo">
+          {% for test in testimonio %}
+          <div class="col-sm-6 ">
+            <div class="item item-testimonials-3-columns text-left">
+                <p class="quote-icon">“</p>
+                <p><i>{{ test.content_description|raw }}</i></p>
+                <div class="avatar-testimonials-3-columns">
+                  <img src="{{ test.imagens[0].patch }}" class="img-responsive" alt="Image">
+                </div>
+                <h4 class="name-testimonials-3-columns">{{ test.content_name|raw }}</h4>
+                <span class="job-testimonials-3-columns">{{ test.content_caption|raw }}</span>
+            </div><!-- end item -->
+          </div>
+          {% endfor %}
+          {#<div class="col-sm-6 ">
+            <div class="item item-testimonials-3-columns text-left">
+                <p class="quote-icon">“</p>
+                <p><i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis, faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i></p>
+                <div class="avatar-testimonials-3-columns">
+                  <img src="/assets/template/empresarial/original/images/Testimonials/1.jpg" class="img-responsive" alt="Image">
+                </div>
+                <h4 class="name-testimonials-3-columns">Linda Campbell</h4>
+                <span class="job-testimonials-3-columns">CEO Finanace Theme Group</span>
+            </div><!-- end item -->
+          </div>
+          <div class="col-sm-6 ">
+            <div class="item item-testimonials-3-columns text-left">
+                <p class="quote-icon">“</p>
+                <p><i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis, faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i></p>
+                <div class="avatar-testimonials-3-columns">
+                  <img src="/assets/template/empresarial/original/images/Testimonials/12.jpg" class="img-responsive" alt="Image">
+                </div>
+                <h4 class="name-testimonials-3-columns">John Walker</h4>
+                <span class="job-testimonials-3-columns">Photographer</span>
+            </div><!-- end item -->
+          </div>
+          <div class="col-sm-6 ">
+            <div class="item item-testimonials-3-columns text-left">
+                <p class="quote-icon">“</p>
+                <p><i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis, faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i></p>
+                <div class="avatar-testimonials-3-columns">
+                  <img src="/assets/template/empresarial/original/images/Testimonials/2.jpg" class="img-responsive" alt="Image">
+                </div>
+                <h4 class="name-testimonials-3-columns">Cheryl Cruz</h4>
+                <span class="job-testimonials-3-columns">Marketing Manager</span>
+            </div><!-- end item -->
+          </div>
+          <div class="col-sm-6 ">
+            <div class="item item-testimonials-3-columns text-left">
+                <p class="quote-icon">“</p>
+                <p><i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis, faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i></p>
+                <div class="avatar-testimonials-3-columns">
+                  <img src="/assets/template/empresarial/original/images/Testimonials/3.jpg" class="img-responsive" alt="Image">
+                </div>
+                <h4 class="name-testimonials-3-columns">James Smith</h4>
+                <span class="job-testimonials-3-columns">Senior Finance Manager</span>
+            </div><!-- end item -->
+          </div>
+          <div class="col-sm-6 ">
+            <div class="item item-testimonials-3-columns text-left">
+                <p class="quote-icon">“</p>
+                <p><i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis, faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i></p>
+                <div class="avatar-testimonials-3-columns">
+                  <img src="/assets/template/empresarial/original/images/Testimonials/4.jpg" class="img-responsive" alt="Image">
+                </div>
+                <h4 class="name-testimonials-3-columns">Maria Garcia</h4>
+                <span class="job-testimonials-3-columns">Finance Director Theme Group</span>
+            </div><!-- end item -->
+          </div>
+          <div class="col-sm-6 ">
+            <div class="item item-testimonials-3-columns text-left">
+                <p class="quote-icon">“</p>
+                <p><i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis, faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i></p>
+                <div class="avatar-testimonials-3-columns">
+                  <img src="/assets/template/empresarial/original/images/Testimonials/5.jpg" class="img-responsive" alt="Image">
+                </div>
+                <h4 class="name-testimonials-3-columns">Kieron George</h4>
+                <span class="job-testimonials-3-columns">Finance Assistant - PR Agency</span>
+            </div><!-- end item -->
+          </div>
+          <div class="col-sm-6 ">
+            <div class="item item-testimonials-3-columns text-left">
+                <p class="quote-icon">“</p>
+                <p><i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis, faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i></p>
+                <div class="avatar-testimonials-3-columns">
+                  <img src="/assets/template/empresarial/original/images/Testimonials/6.jpg" class="img-responsive" alt="Image">
+                </div>
+                <h4 class="name-testimonials-3-columns">David Caune</h4>
+                <span class="job-testimonials-3-columns">Marketing Manager</span>
+            </div><!-- end item -->
+          </div>
+          <div class="col-sm-6 ">
+            <div class="item item-testimonials-3-columns text-left">
+                <p class="quote-icon">“</p>
+                <p><i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis, faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i></p>
+                <div class="avatar-testimonials-3-columns">
+                  <img src="/assets/template/empresarial/original/images/Testimonials/7.jpg" class="img-responsive" alt="Image">
+                </div>
+                <h4 class="name-testimonials-3-columns">Robert Johnson</h4>
+                <span class="job-testimonials-3-columns">Photographer</span>
+            </div><!-- end item -->
+          </div>
+          <div class="col-sm-6 ">
+            <div class="item item-testimonials-3-columns text-left">
+                <p class="quote-icon">“</p>
+                <p><i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis, faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i></p>
+                <div class="avatar-testimonials-3-columns">
+                  <img src="/assets/template/empresarial/original/images/Testimonials/8.jpg" class="img-responsive" alt="Image">
+                </div>
+                <h4 class="name-testimonials-3-columns">Zhang Wei </h4>
+                <span class="job-testimonials-3-columns">Finance Assistant</span>
+            </div><!-- end item -->
+          </div>
+          <div class="col-sm-6 ">
+            <div class="item item-testimonials-3-columns text-left">
+                <p class="quote-icon">“</p>
+                <p><i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis, faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i></p>
+                <div class="avatar-testimonials-3-columns">
+                  <img src="/assets/template/empresarial/original/images/Testimonials/9.jpg" class="img-responsive" alt="Image">
+                </div>
+                <h4 class="name-testimonials-3-columns">Jolyn Athens</h4>
+                <span class="job-testimonials-3-columns">CEO Finanace Theme Group</span>
+            </div><!-- end item -->
+          </div>
+          <div class="col-sm-6 ">
+            <div class="item item-testimonials-3-columns text-left">
+                <p class="quote-icon">“</p>
+                <p><i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis, faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i></p>
+                <div class="avatar-testimonials-3-columns">
+                  <img src="/assets/template/empresarial/original/images/Testimonials/10.jpg" class="img-responsive" alt="Image">
+                </div>
+                <h4 class="name-testimonials-3-columns">Ebony Mccurry</h4>
+                <span class="job-testimonials-3-columns">Finance Assistant</span>
+            </div><!-- end item -->
+          </div>
+          <div class="col-sm-6 ">
+            <div class="item item-testimonials-3-columns text-left">
+                <p class="quote-icon">“</p>
+                <p><i>Morbi auctor vel mauris facilisis lacinia. Aenean suscipit lorem leo, et hendrerit odio fermentum et. Donec ac dolor eros. Mauris arcu nunc, iaculis sit amet lacus iaculis, faucibus faucibus nunc. Vestibulum sit amet lacinia massa</i></p>
+                <div class="avatar-testimonials-3-columns">
+                  <img src="/assets/template/empresarial/original/images/Testimonials/11.jpg" class="img-responsive" alt="Image">
+                </div>
+                <h4 class="name-testimonials-3-columns">Sofia Canning</h4>
+                <span class="job-testimonials-3-columns">Senior Finance Manager</span>
+            </div><!-- end item -->
+          </div>#}
+        </div>
+      </div>
+    </div>
+  </section>
+  {% include 'home/empresarial/elements/frase_dos.twig' %}
+{% endblock %}
+
+{% block js %}{% endblock %}

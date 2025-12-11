@@ -1,0 +1,81 @@
+{% extends 'admin/layouts/main.twig' %}
+
+{% block aside %}
+	{% include 'admin/layouts/partials/aside.twig' with { 'aside': 'system' } %}
+{% endblock %}
+
+{% block breadcrumb %}
+    {% include 'admin/layouts/partials/breadcrumb.twig' with { 'breadcrumb': 'system' } %}
+{% endblock %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container" id="AppSystemAdmin">
+	<div class="card card-custom">
+		<div class="card-header">
+			<div class="card-title">
+				<h3 class="card-label">Menú Lateral
+				<small>Administración</small></h3>
+			</div>
+		</div>
+		<div class="card-body p-0">
+			<div class="row justify-content-center py-8 px-8 py-lg-10 px-lg-10">
+				<div class="col-xl-12 col-xxl-10">
+					<form class="form" id="form_data_aside" @submit="onFormSave">
+						<div class="row justify-content-center">
+							<div class="col-xl-9">
+								<div class="my-5 step">
+									<table class="table table-bordered">
+										<thead>
+											<tr>
+												<th>Ménu</th>
+												<th class="text-center">Ocultar</th>
+											</tr>
+										</thead>
+										<tbody>
+											{% for key, item in settings.aside %}
+											<tr>
+												<td>{{ key }}</td>
+												<td class="text-center">
+													<input type="hidden" value="0" name="{{ key }}">
+													<input type="checkbox" name="{{ key }}" id="" value="1" {{ item.hide == 1 ? 'checked' : '' }}>
+												</td>
+											</tr>
+											{% endfor %}
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="card-footer">
+			<div class="row justify-content-center">
+				<div class="col-xl-12 col-xxl-10">
+					<div class="row justify-content-center">
+						<div class="col-lg-9">
+							<div class="row">
+								<div class="col-lg-12 text-right">
+									<button type="submit" form="form_data_aside" class="btn btn-primary mr-2">Guardar</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+	window.addEventListener('load', window.AppSystemAdmin.settings());
+</script>
+{% endblock %}

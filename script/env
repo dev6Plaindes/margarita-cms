@@ -1,0 +1,18 @@
+DB_HOST=localhost
+DB_NAME=db_margarita
+DB_USER=root
+DB_PASS=
+
+
+SECRET_KEY_DATA = 3wEZriS+BDw7nV2fb+XSKTuqtJaZSmi9ymFfLUOZDTM=
+
+
+TOKEN_KEY = 'y1O7S1qy8FbG6Rjxyk'
+
+MAILER_HOST = 'smtp.gmail.com'
+MAILER_USERNAME = 'ses.proeducative@gmail.com'
+MAILER_PASSWORD = 'soft052021'
+MAILER_NAME = 'ML STETIC'
+
+MASTER_PROFILE = 1
+ADMIN_PROFILE = 2

@@ -1,0 +1,52 @@
+{% if contents %}
+     {% for content in contents %}
+
+        {% if content.alias == 'vista_clientes' %}
+
+            <section class="container">
+                <div class="title-with row">
+
+
+                    {% for k, c_content in content.contents %}
+
+                        {% if c_content.content_alias == 'general' %}
+
+                            <p class="col-12">{{ c_content.content_caption }}</p>
+
+                        {% endif %}   
+                    
+                    {% endfor %}
+
+                </div>
+                 <div class="separator d-flex justify-content-center">
+                    <div class=""></div>
+                    <div class=""></div>
+                    <div class=""></div>
+                </div>    
+            </section>
+         
+            <section class="container pl-5 pr-5 mt-5">
+                 <div class="row justify-content-md-center">
+                    {% for k, c_content in content.contents %}
+
+                       {% if c_content.content_alias == 'clientes' %}
+                            {% if k > 0 %}  
+
+                            <div class="col-sm-4 mb-5">
+                                <div class="col-12 text-center cliente-img m-0 p-0">
+                                    <img src="{{ c_content.imagens[0].patch }}" alt="">
+                                </div>
+                            </div>   
+
+                            {% endif %} 
+                        {% endif %} 
+                    {% endfor %}
+                
+                </div>
+            </section>
+
+         {% endif %}                          
+
+     {% endfor %}
+ {% endif %}
+

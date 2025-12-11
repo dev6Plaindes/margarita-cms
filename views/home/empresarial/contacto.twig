@@ -1,0 +1,360 @@
+{% extends "home/empresarial/layouts/main.twig" %}
+
+{% block css %}{% endblock %}
+
+{% block content %}
+{% include 'home/empresarial/elements/page_info.twig' with { 'titulo' : 'Contáctanos'} %}
+<!--List Blog -->
+<div class="no-padding">
+    <div class="container">
+        <div class="row row-eq-height">
+            <div id="primary" class="content-area col-md-9 no-padding-right">
+                <main id="main" class="site-main padding-top-50">
+                    <h3>Datos de contacto</h3>
+                    <p>
+                        {{ _company.description|raw }}
+                    </p>
+                    <ul class="address-3">
+                        <li>
+                            <p><strong>Dirección:</strong> {{ _company.address|raw }}</p>
+                        </li>
+                        <li>
+                            <p><strong>Teléfono:</strong> {{ _company.phone_contact|raw }}</p>
+                        </li>
+                        <li>
+                            <p><strong>E-mail:</strong> {{ _company.email_contact|raw }}</p>
+                        </li>
+                    </ul>
+                    <h3 class="clearfix"> Envíanos un mensaje</h3>
+
+                    <div class="tab-finance clearfix">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a class="bg-contact" data-toggle="tab" href="#Brainstorming">{{contactanos[1].content_name|raw }}</a></li>
+                            {#<li><a class="bg-contact" data-toggle="tab" href="#Planification">{{contactanos[1].content_caption|raw }}</a></li>#}
+                        </ul>
+
+                        <div class="tab-content">
+                            <div id="Brainstorming" class="tab-pane fade in active">
+                                <form id="frmSubscription" class="form-contact-finance form-contact-3" name="contact">
+                                    <div class="row">
+                                        <div class="form-group col-sm-12">
+                                            <input type="text" class="form-control" name="name" id="name"
+                                                placeholder="Su nombre" required>
+                                        </div>
+                                        <div class="form-group col-sm-12 ">
+                                            <input type="email" class="form-control" name="email" id="email"
+                                                placeholder="Su correo" required>
+                                        </div>
+                                        <div class="form-group col-sm-12">
+                                            <input type="text" class="form-control" name="phone" id="phone"
+                                                placeholder="Número de teléfono" required>
+                                        </div>
+                                    </div>
+                                    <div class="input-content">
+                                        <div class="form-group form-textarea">
+                                            <textarea id="message" class="form-control" name="message" rows="6"
+                                                placeholder="Su mensaje" required></textarea>
+                                        </div>
+                                    </div>
+                                    <button class="ot-btn large-btn btn-rounded  btn-main-color btn-submit">Enviar</button>
+                                </form> <!-- End Form -->
+                            </div>
+                            {#<div id="Planification" class="tab-pane fade">
+                                <form id="frmMessage" class="form-contact-finance form-contact-3">
+                                    <div class="row">
+                                        <div class="form-group col-sm-12">
+                                            <input type="text" class="form-control" name="name" id="name"
+                                                placeholder="Su nombre" required>
+                                        </div>
+                                        <div class="form-group col-sm-12 ">
+                                            <input type="email" class="form-control" name="email" id="email"
+                                                placeholder="Su correo" required>
+                                        </div>
+                                        <div class="form-group col-sm-12">
+                                            <input type="text" class="form-control" name="phone" id="phone"
+                                                placeholder="Número de teléfono" required>
+                                        </div>
+                                    </div>
+                                    <div class="input-content">
+                                        <div class="form-group form-textarea">
+                                            <textarea id="message" class="form-control" name="message" rows="6"
+                                                placeholder="Su mensaje" required></textarea>
+                                        </div>
+                                    </div>
+                                    <button class="ot-btn large-btn btn-rounded  btn-main-color btn-submit">Enviar</button>
+                                </form> <!-- End Form -->
+                            </div>#}
+                        </div>
+                    </div><!-- End tab -->
+
+
+
+                    <!-- Section Google Map -->
+                    <div class="padding-bottom-45">
+                        <div id="map-canvas" class="margin-top-15 "></div>
+                    </div>
+                    <!-- End Section -->
+
+
+
+
+                </main> <!-- End Main -->
+            </div>
+
+
+            <div id="secondary" class="widget-area  col-md-3 padding-top-50" role="complementary">
+                <aside class="widget widget_text">
+                    <h3 class="widget-title">{{contactanos[0].content_name|raw }}</h3>
+                    <div class="textwidget">
+                        <p>{{ contactanos[0].content_description|raw }}</p>
+                    </div>
+                </aside>
+
+                {% if products %}
+                <aside id="categories-2" class="widget widget_categories">
+                    <h3 class="widget-title">Proyectos</h3>
+
+                    <ul>
+                        {% for proyecto in products %}
+                        <li><a href="/proyecto/{{proyecto.slug}}">{{proyecto.name}}</a></li>
+                        {% endfor %}
+                        {#<li><a href="#">Business Market</a></li>
+                        <li><a href="#">Socials Network</a></li>
+                        <li><a href="#">Team Work</a></li>
+                        <li><a href="#">Rebuild Services</a></li>
+                        <li><a href="#">Electrical System</a></li>#}
+                    </ul> <!-- End Ul -->
+                </aside>
+                {% endif %}
+                
+                {% if frase %}
+                <aside class="promotion clearboth">
+                    <img src="{{frase2[0].imagens[0].patch}}" class="img-responsive"
+                        alt="Image">
+                    <div class="promotionText">
+                        <p>{{frase2[0].content_name|raw }}</p>
+                        <a href="{{frase2[0].content_url}}" class="btn btn-buy-now"> Ver ahora</a>
+                    </div>
+                </aside><!-- End promotion -->
+                {% endif %}
+
+                {% if servicios %}
+                <aside class="widget widget_Archive">
+                    <h3 class="widget-title">Servicios</h3>
+                    <ul>
+                        {% for servicio in servicios %}
+                        <li><a href="{{ servicio.content_url }}" target="_blank">{{ servicio.content_name|raw  }}</a></li>
+                        {% endfor %}
+                        {#<li><a href="#">March 2016</a>
+                        </li>
+                        <li><a href="#">Febuary 2016</a>
+
+                        </li>
+                        <li><a href="#">January 2016</a>
+
+                        </li>
+                        <li><a href="#">December 2015</a>
+
+                        </li>
+                        <li><a href="#">November 2015</a>
+
+                        </li>
+                        <li><a href="#">Octorber 2015</a>
+
+                        </li>
+                        <li><a href="#">September 2015</a>
+
+                        </li>
+                        <li><a href="#">August</a>
+
+                        </li>#}
+                    </ul> <!-- End Ul -->
+                </aside>
+                {% endif %}
+            </div>
+        </div><!-- End Row -->
+
+    </div><!-- End container -->
+</div><!--  End Section -->
+
+{% if frase %}
+{% include 'home/empresarial/elements/frase.twig' %}
+{% endif %}
+{% endblock %}
+
+{% block js %}
+<!-- Initializing Google Maps -->
+<script src='https://maps.googleapis.com/maps/api/js?key=&sensor=false&extension=.js'></script>
+<script src="/assets/utilitarian/js/sweetalert2.js"></script>
+<script src="/assets/utilitarian/js/swal2.js"></script>
+<script src="/assets/utilitarian/js/events.js"></script>
+<script>
+    (function($) { "use strict";
+    
+    //set your google maps parameters
+
+    $(document).ready(function(){
+        var latitude = {{google_ubi[0].content_name}},
+            longitude = {{google_ubi[0].content_caption}},
+            map_zoom = 14;
+
+        var locations = [
+            ['<div class="infobox"><span>WE ARE FINANCE<span></br><span>Email: contact@finance.com</span></div>'
+
+            , latitude, longitude, 2]
+        ];
+    
+        var map = new google.maps.Map(document.getElementById('map-canvas'), {
+            zoom: map_zoom,
+            scrollwheel: false,
+            navigationControl: true,
+            mapTypeControl: false,
+            scaleControl: false,
+            draggable: true,
+            styles: [
+    {
+        "featureType": "landscape",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "lightness": 65
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "lightness": 51
+            },
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "lightness": 30
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "lightness": 40
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.province",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "lightness": -25
+            },
+            {
+                "saturation": -100
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "hue": "#ffff00"
+            },
+            {
+                "lightness": -25
+            },
+            {
+                "saturation": -97
+            }
+        ]
+    }
+],
+            center: new google.maps.LatLng(latitude, longitude),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+    
+        var infowindow = new google.maps.InfoWindow();
+    
+        var marker, i;
+    
+        for (i = 0; i < locations.length; i++) {  
+      
+            marker = new google.maps.Marker({ 
+                position: new google.maps.LatLng(locations[i][1], locations[i][2]), 
+                map: map,
+                icon: 'images/Contact/cd-icon-location.png'
+            });
+        
+          google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+              infowindow.setContent(locations[i][0]);
+              infowindow.open(map, marker);
+            }
+          })(marker, i));
+        }
+        
+    });
+
+})(jQuery); 
+</script>
+{% endblock %}

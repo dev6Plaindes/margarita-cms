@@ -1,0 +1,59 @@
+{% extends 'admin/layouts/main.twig' %}
+
+{% block aside %}
+	{% include 'admin/layouts/partials/aside.twig' with { 'aside': 'ecommerce.products' } %}
+{% endblock %}
+
+{% block breadcrumb %}
+    {% include 'admin/layouts/partials/breadcrumb.twig' with { 'breadcrumb': 'ecommerce.products' } %}
+{% endblock %}
+
+{% block css %}
+	<style>
+	    .minicolors-swatch{
+			top: 8px !important;
+			left: 5px !important;
+		}
+		.image-input-wrapper{
+        	background-repeat: no-repeat !important; 
+        	background-size: 100% 100% !important;
+    	}
+		.item-color {
+			background-color: transparent;
+			height: 20px;
+			width: 20px;
+			border: 1px solid #EBEDF3;
+		}
+		.btn.btn-secondary.dropdown-toggle:after {
+			margin-top:7px;
+		}
+	</style>
+{% endblock %}
+
+{% block content %}
+{% set data = rsp.data %}
+{% set notfound = '/assets/image/notfound.png' %}
+<div class="container" id="AppProductAdmin">
+	<div class="card card-custom">
+		<div class="card-header">
+			<div class="card-title">
+				<h3 class="card-label"><span v-text="panel.title"></span>
+				<small>Gestionar</small></h3>
+			</div>
+		</div>
+		<div class="card-body p-0">
+			<div class="row justify-content-center py-8 px-8 py-lg-10 px-lg-10">
+				<div class="col-xl-12 col-xxl-10">
+					{% include 'admin/products/partials/form.twig' %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+	window.addEventListener('load', window.AppProductAdmin.form(JSON.parse("{{ rsp.data|json_encode|e('js') }}")));
+</script>
+{% endblock %}

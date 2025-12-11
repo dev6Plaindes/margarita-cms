@@ -1,0 +1,53 @@
+/* line 1, public/assets-gulp/scss/admin/componentes/_admin.scss */
+.nav-main {
+  min-height: 100vh;
+}
+
+/* line 5, public/assets-gulp/scss/admin/componentes/_admin.scss */
+.nav-main ul li a {
+  color: white;
+}
+
+/* line 7, public/assets-gulp/scss/admin/componentes/_admin.scss */
+.nav-main ul li a i {
+  width: 3.5rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+/* line 13, public/assets-gulp/scss/admin/componentes/_admin.scss */
+.nav-main ul li:hover {
+  background-color: #f8f9fa;
+}
+
+/* line 15, public/assets-gulp/scss/admin/componentes/_admin.scss */
+.nav-main ul li:hover a {
+  color: #343a40;
+}
+
+/* line 23, public/assets-gulp/scss/admin/componentes/_admin.scss */
+.active {
+  background-color: #f8f9fa;
+}
+
+/* line 25, public/assets-gulp/scss/admin/componentes/_admin.scss */
+.active a {
+  color: #343a40 !important;
+}
+
+/* line 31, public/assets-gulp/scss/admin/componentes/_admin.scss */
+.previewImg img {
+  width: 100%;
+}
+
+/* line 34, public/assets-gulp/scss/admin/componentes/_admin.scss */
+.previewImg video {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  /* line 40, public/assets-gulp/scss/admin/componentes/_admin.scss */
+  .nav-main {
+    display: none;
+  }
+}

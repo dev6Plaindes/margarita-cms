@@ -1,0 +1,20 @@
+{% if contents %}
+     {% for content in contents %}
+
+        {% if content.alias == 'banner_personal_nosotros' %}  
+  
+            <div class="apzo-page-title-wrap  apzo-style-custom apzo-center-align" style="background-image: url({{ content.contents[0].imagens[0].patch }});">
+                <div class="apzo-header-transparent-substitute"></div>
+                <div class="apzo-page-title-overlay"></div>
+                <div class="apzo-page-title-container apzo-container">
+                    <div class="apzo-page-title-content apzo-item-pdlr">
+                        <h1 class="apzo-page-title" style="color:#fff;"> {{ content.contents[0].content_name }} </h1>
+                        <div class="apzo-page-caption"> {{ content.contents[0].content_caption }} </div>
+                    </div>
+                </div>
+            </div>
+            
+        {% endif %}                          
+
+     {% endfor %}
+ {% endif %}

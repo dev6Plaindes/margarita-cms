@@ -1,0 +1,55 @@
+<section class="padding-top-70 padding-bottom-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="video-intro-container">
+                    <div class="background-video">
+                        <img src="{{ nosotros[0].imagens[0].patch }}"
+                            class="images-responsive" alt="Image">
+                            {% if nosotros[0].content_url %}
+                            <button data-href="{{ nosotros[0].content_url }}" id="btn-event"
+                            class="btn btn-play"></button>
+                            {% endif %}
+                    </div>
+
+
+                    <div id="video-container"
+                        class="embed-responsive embed-responsive-16by9 iframe-video-container">
+                        <iframe id="video" class="embed-responsive-item"
+                            src="{{ nosotros[0].content_url }}" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h2 class="margin-bottom-25 margin-top-3">{{ nosotros[0].content_name|raw }}</h2>
+                <div class="clearfix"></div>
+                <p>{{ nosotros[0].content_description|raw }}</p>
+                <div class="counter-up counter-up-style-3">
+                    <ul>
+                        {% for i, somos in nosotros %}
+                        {% if somos.content_alias == 'indicadores' %}
+                        <li>
+                            <p><span class="couterup" id="yoe_{{i}}"></span></p>
+                            <span class="label-counter">{{ somos.content_name|raw }}</span>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                        {#<li>
+                            <p><span class="couterup" id="yoe"></span></p>
+                            <span class="label-counter">Years of experience</span>
+                        </li>
+                        <li>
+                            <p><span class="couterup" id="hc"></span><span class="unit">K</span></p>
+                            <span class="label-counter">Happy Customers</span>
+                        </li>
+                        <li>
+                            <p><span class="couterup" id="satis"></span><span class="unit">%</span></p>
+                            <span class="label-counter">Satisfaction</span>
+                        </li>#}
+                    </ul>
+                </div><!-- End counter up -->
+            </div><!-- End col -->
+            
+        </div><!-- End row -->
+    </div><!-- End container-->
+</section><!-- End section-->

@@ -1,0 +1,43 @@
+.nav-main {
+    // position: fixed;
+    min-height: 100vh;
+    ul li{
+        a{
+            color: white;
+            i{
+                width: 3.5rem;
+                font-size: 1.5rem;
+                text-align: center;
+            }
+        }
+        &:hover {
+            background-color: #f8f9fa;
+            a{
+                color: #343a40;
+            }
+        }
+        //border-right: 5px solid #343a40;
+    }
+}
+
+.active {
+    background-color: #f8f9fa;
+    a{
+        color: #343a40 !important;
+    }
+}
+
+.previewImg{ 
+    img {
+        width: 100%;
+    }
+    video {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-main {
+        display: none;
+    }
+}

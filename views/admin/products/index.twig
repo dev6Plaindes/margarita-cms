@@ -1,0 +1,90 @@
+{% extends "admin/layouts/main.twig" %}
+
+{% block aside %}
+	{% include 'admin/layouts/partials/aside.twig' with { 'aside': 'ecommerce.products' } %}
+{% endblock %}
+
+{% block breadcrumb %}
+    {% include 'admin/layouts/partials/breadcrumb.twig' with { 'breadcrumb': 'ecommerce.products' } %}
+{% endblock %}
+
+{% block css %}
+<style>
+    .bootstrap-select > .dropdown-toggle.btn-light, .bootstrap-select > .dropdown-toggle.btn-secondary {
+        background: #F3F6F9 !important;  
+        border-color: #F3F6F9 !important;
+        color: #3F4254 !important;      
+    }
+    .bootstrap-select.show > .dropdown-toggle.btn-light, .bootstrap-select.show > .dropdown-toggle.btn-secondary{
+        border-color: #F3F6F9 !important;
+    }
+    .minicolors-swatch{
+        top: 5px !important;
+        left: 5px !important;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container" id="AppProductAdmin">
+    <div class="card card-custom">
+        <div class="card-header flex-wrap border-0 pt-6 pb-0">
+            <div class="card-title">
+                <h3 class="card-label">Listado de productos
+                <span class="text-muted pt-2 font-size-sm d-block">Gestionar</span></h3>
+            </div>
+            <div class="card-toolbar">
+                <a href="/admin/ecommerce/productos/crear" type="button" class="btn btn-light-primary">
+                    <i class="la la-plus"></i> Nuevo
+                </a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover table-checkable" id="kt_datatable" style="margin-top: 13px !important">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Producto</th>
+                            <th>PRECIO</th>
+                            <th>ESTADO</th>
+                            <th>FECHA</th>
+                            <th>ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item, index in products">
+                            <td v-html="item.id"></td>
+                            <td v-html="item.name"></td>
+                            <td v-html="item.price"></td>
+                            <td>
+                                <template v-if="item.status == 1">
+                                    <span class="label label-lg font-weight-bold label-light-success label-inline">Activado</span>
+                                </template>
+                                <template v-else>
+                                    <span class="label label-lg font-weight-bold label-light-danger label-inline">Desactivado</span>
+                                </template>
+                            </td>
+                            <td v-html="item.updated_at"></td>
+                            <td>
+                                <a :href="'/admin/ecommerce/productos/editar/'+item.id"class="btn btn-sm btn-clean btn-icon" title="Editar">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" @click="onDelete(index)" title="Eliminar">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </td>
+                        </tr>                    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        window.addEventListener('load', window.AppProductAdmin.index(JSON.parse("{{ rsp.data|json_encode|e('js') }}")));
+    </script>
+{% endblock %}

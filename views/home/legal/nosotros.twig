@@ -1,0 +1,20 @@
+{% extends "home/legal/main.twig" %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+
+{% include 'home/legal/elements_nosotros/banner-light.twig'%}
+{% include 'home/legal/elements_nosotros/section_mision.twig' %}
+{% include 'home/legal/elements_nosotros/section_filosofia.twig' %}
+{% include 'home/legal/elements_nosotros/section_compromiso.twig' %}
+
+{% endblock %}
+{% block js %}
+<script>
+    $(".menu-item-1 a").eq(0).addClass("active");
+</script>
+
+{% endblock %}

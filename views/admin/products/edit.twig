@@ -1,0 +1,95 @@
+{% extends 'admin/layouts/main.twig' %}
+
+{% block aside %}
+	{% include 'admin/layouts/partials/aside.twig' with { 'aside': 'ecommerce.products' } %}
+{% endblock %}
+
+{% block breadcrumb %}
+    {% include 'admin/layouts/partials/breadcrumb.twig' with { 'breadcrumb': 'ecommerce.products' } %}
+{% endblock %}
+
+{% block css %}
+	<style>
+	    .minicolors-swatch{
+			top: 8px !important;
+			left: 5px !important;
+		}
+		.image-input-wrapper{
+        	background-repeat: no-repeat !important; 
+        	background-size: 100% 100% !important;
+    	}
+		.fonticon{
+			height:30px; width:30px; display:inline-flex; margin-right:5px; border-radius:50%; color:#fff;
+		}
+		.fonticon i{
+			color:#fff; margin:auto;
+		}
+		.item-color {
+			background-color: transparent;
+			height: 20px;
+			width: 20px;
+			border: 1px solid #EBEDF3;
+		}
+		.btn.btn-secondary.dropdown-toggle:after {
+			margin-top:7px;
+		}
+
+	</style>
+{% endblock %}
+
+{% block content %}
+{% set data = rsp.data %}
+{% set notfound = '/assets/image/notfound.png' %}
+<div class="container" id="AppProductAdmin">
+	<div class="card card-custom">
+        <div class="card-header card-header-tabs-line nav-tabs-line-3x">
+            <div class="card-toolbar">
+                <ul class="nav nav-tabs nav-bold nav-tabs-line nav-tabs-line-3x">
+                    <li class="nav-item mr-3">
+                        <a class="nav-link {{ APP.GET['tab'] is not defined or APP.GET['tab'] is null  or APP.GET['tab'] == 'general' ? 'active' : '' }}" href="/admin/ecommerce/productos/editar/{{ rsp.data.product.id }}?tab=general">
+							<span class="nav-text font-size-lg">General</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link {{ APP.GET['tab'] == 'caracteristicas' ? 'active' : '' }}" href="/admin/ecommerce/productos/editar/{{ rsp.data.product.id }}?tab=caracteristicas">
+                            <span class="nav-text font-size-lg">Características</span>
+                        </a>
+                    </li>
+					<li class="nav-item mr-3">
+                        <a class="nav-link {{ APP.GET['tab'] == 'syllabus' ? 'active' : '' }}" href="/admin/ecommerce/productos/editar/{{ rsp.data.product.id }}?tab=syllabus">
+                            <span class="nav-text font-size-lg">Plan de estudios</span>
+                        </a>
+                    </li>
+					<li class="nav-item mr-3">
+                        <a class="nav-link {{ APP.GET['tab'] == 'imagenes' ? 'active' : '' }}" href="/admin/ecommerce/productos/editar/{{ rsp.data.product.id }}?tab=imagenes">
+                            <span class="nav-text font-size-lg">Galería</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+		<div class="card-body">
+            <div class="tab-content">
+                <div class="tab-pane {{ APP.GET['tab'] is not defined or APP.GET['tab'] is null  or APP.GET['tab'] == 'general' ? 'show active' : '' }} px-7" id="kt_tab_general" role="tabpanel">
+					{% include 'admin/products/partials/form.twig' %}
+				</div>
+				<div class="tab-pane {{ APP.GET['tab'] == 'caracteristicas' ? 'show active' : '' }} px-7" id="kt_tab_caracteristicas" role="tabpanel">
+					{% include 'admin/products/partials/characteristic.twig' %}
+				</div>
+				<div class="tab-pane {{ APP.GET['tab'] == 'syllabus' ? 'show active' : '' }} px-7" id="kt_tab_syllabus" role="tabpanel">
+					{% include 'admin/products/partials/syllabus.twig' %}
+				</div>
+				<div class="tab-pane {{ APP.GET['tab'] == 'imagenes' ? 'show active' : '' }} px-7" id="kt_tab_imagenes" role="tabpanel">
+					{% include 'admin/products/partials/images.twig' %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+	window.addEventListener('load', window.AppProductAdmin.edit(JSON.parse("{{ rsp.data|json_encode|e('js') }}")));
+</script>
+{% endblock %}

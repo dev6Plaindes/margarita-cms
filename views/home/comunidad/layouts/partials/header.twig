@@ -1,0 +1,117 @@
+<nav class="row navbar navbar-expand-xl fixed-top navbar-system bg-system-primary">
+  <div class="system-container">
+    <a class="navbar-brand d-mobile" href="/">
+      {% if _company.logos|length %}
+        <img src="{{ _company.logos[0].patch }}">
+      {% endif %}
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa fa-bars" aria-hidden="true" style="color:#fff;"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <a class="navbar-brand d-desktop" href="/">
+      {% if _company.logos|length %}
+        <img src="{{ _company.logos[0].patch }}">
+      {% endif %}      
+      </a>
+      <ul class="navbar-nav mr-auto">
+        {% for item in _menu %}
+          {% if item.children|length %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              {{ item.name }}
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              {% for item2 in item.children %}
+                {% if item.url %}
+                  <a class="nav-link" href="{{ item2.url }}" target="_blank">{{ item2.name }}</a>
+                {% else %}
+                  <a class="nav-link" href="{{ item2.slug }}">{{ item2.name }}</a>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            {% if item.url %}
+              <a class="nav-link" href="{{ item.url }}" target="_blank">{{ item.name }}</a>
+            {% else %}
+              <a class="nav-link" href="{{ item.slug }}">{{ item.name }}</a>
+            {% endif %}
+          </li>
+          {% endif %}
+        {% endfor %}
+        {# <li class="nav-item">
+          <a class="nav-link" href="#">Capacitaciones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Publicaciones</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Eventos</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Noticias</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/podcast">Podcast</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contáctanos</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+          </div>
+        </li> #}
+      </ul>
+      <div class="system-card-4 d-desktop">
+        <div class="btn-group dropleft">
+            <a href="#" class="btn btn-apps rounded dropdown-toggle shadow" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+              <i class="fa fa-th fa-text-secondary fa-lg"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg" style="width: 500px;">
+              <div class="row panel-entities">
+                <div class="col-lg-6">
+                  <a href="https://fri.com.pe/noticias/#/" target="_blank">
+                    <img src="/assets/template/comunidad/images/Imagen-entity-1.png" height="70">
+                  </a>
+                </div>
+                <div class="col-lg-6">
+                  <a href="https://kapitals.org" target="_blank">
+                    <img src="/assets/template/comunidad/images/Imagen-entity-2.png" height="70">
+                  </a>
+                </div>
+                <div class="col-lg-6">
+                  <a href="https://pro-finance.platinumarket.com.pe/" target="_blank">
+                    <img src="/assets/template/comunidad/images/Imagen-entity-3.png" height="70">
+                  </a>
+                </div>
+                <div class="col-lg-6">
+                  <a href="https://cfa.simbox.edu.pe/" target="_blank">
+                    <img src="/assets/template/comunidad/images/Imagen-entity-4.png" height="70">
+                  </a>
+                </div>
+                <div class="col-lg-6">
+                  <a href="https://proeducative.com/" target="_blank">
+                    <img src="/assets/template/comunidad/images/Imagen-entity-5.png" height="70">
+                  </a>
+                </div>
+                <div class="col-lg-6">
+                  <a href="https://electure.platinumarket.com.pe/categoria/libros" target="_blank">
+                    <img src="/assets/template/comunidad/images/Imagen-entity-6.png" height="70">
+                  </a>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+      <a href="" class="btn btn-system-primary ml-2 a-scroll" data-scroll="#registrate">Registrate</a>     
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,40 @@
+.logo{
+    img {
+        height: 2.8rem;
+    }
+}
+
+.navbar-nav .nav-link{
+    color: var(--main-principal) !important;
+    font-size: 1.2rem;
+    &:hover{
+        color: var(--main-resaltar) !important;
+        .icon-resalt{
+            border: 1px solid var(--main-resaltar);
+        }
+    }
+}
+
+.navbar-nav .active{
+    color: var(--main-resaltar) !important;
+    border-radius: 10px;
+    border: 1px solid;
+    padding: 10px !important;
+}
+
+.border-custom {
+    height: 5px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    
+    .border-color-aux_uno{
+        background-color: var(--main-aux_uno);
+    }
+    .border-color-resaltar{
+        background-color: var(--main-resaltar);
+    }
+    .border-color-secundario{
+        background-color: var(--main-secundario);
+    }
+}

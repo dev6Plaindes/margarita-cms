@@ -1,0 +1,4 @@
+ALTER TABLE companies ADD COLUMN `secret_key` VARCHAR(250) NULL DEFAULT NULL AFTER `address`;
+ALTER TABLE companies ADD COLUMN `access_key` VARCHAR(250) NULL DEFAULT NULL AFTER `address`;
+
+ALTER TABLE companies ADD COLUMN `admin` INT(1) NULL DEFAULT '0' AFTER `address`;

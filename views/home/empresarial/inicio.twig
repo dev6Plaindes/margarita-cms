@@ -1,0 +1,89 @@
+{% extends "home/empresarial/layouts/main.twig" %}
+
+{% block css %}{% endblock %}
+
+{% block content %}
+
+    {% if banners %}
+        {% include 'home/empresarial/elements/slide.twig' %}
+    {% endif %}
+    
+
+    <!-- Component Media Left Icon Our Services-->
+    {% if servicios %}
+    {% include 'home/empresarial/elements/servicios.twig' %}
+    {% endif %}
+
+    <!-- Line -->
+    <div class="container">
+        <div class="line col-md-12"></div>
+    </div> <!-- End line -->
+
+    <!-- Component Counter Up-->
+    {% if nosotros %}
+    {% include 'home/empresarial/elements/somos.twig' %}
+    {% endif %}
+
+    <!-- Line -->
+    <div class="container">
+        <div class="line col-md-12"></div>
+    </div> <!-- End line -->
+
+    <!-- Component owl Project -->
+    {% if products %}
+    {% include 'home/empresarial/elements/projects.twig' %}
+    {% endif %}
+    <!-- Component Overlay Prallax -->
+    {% if frase %}
+    {% include 'home/empresarial/elements/frase.twig' %}
+    {% endif %}
+    <!-- Component Lastest News -->
+    {% if noticias %}
+    {% include 'home/empresarial/elements/noticias.twig' %}
+    {% endif %}
+
+    <!-- Line -->
+    <div class="container">
+        <div class="line col-md-12"></div>
+    </div> <!-- End line -->
+
+
+    <!-- Component Our Partners Owl -->
+    {% if clientes %}
+    {% include 'home/empresarial/elements/clientes.twig' %}
+    {% endif %}
+    
+
+{% endblock %}
+
+{% block js %}
+
+<script>
+     $(document).ready(function(){
+  var executed = false;
+     $('.counter-up').waypoint(function() {
+      if (!executed) {
+        executed = true;
+        {% for i, somos in nosotros %}
+            {% if somos.content_alias == 'indicadores' %}
+           $('#yoe_{{i}}').animateNumber
+           (
+              {
+               number: {{ somos.content_description }},
+               easing: 'ease', 
+              },
+              2000
+           );
+           
+           {% endif %}
+        {% endfor %}
+        }
+        
+
+    },{offset: 'bottom-in-view' })
+
+// =====================================================
+ });
+</script>
+
+{% endblock %}

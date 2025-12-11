@@ -1,0 +1,30 @@
+{% extends "home/comunidad/layouts/main.twig" %}
+
+{% block css %}{% endblock %}
+
+{% block content %}
+<div class="system-container">
+	{% for key, section in contents %}
+		{% if section.alias == 'podcast' %}
+			{% include "home/comunidad/partials/podcast.twig" with {'section': section} %}
+		{% elseif section.alias == 'episodios' %}
+			{% include "home/comunidad/partials/episodio.twig" with {'section': section} %}
+		{% endif %}
+	{% endfor %}
+</div>
+
+{% endblock %}
+
+{% block js %}
+		<script>
+		$(document).ready(function(){
+			{% for section in contents %}
+				{% if section.alias == 'episodios' %}
+				 {% for key, content in section.contents %} 
+					playercard('{{ content.uniqid }}');
+				 {% endfor %}
+				{% endif %}
+			{% endfor %}
+		});
+	</script>
+{% endblock %}

@@ -1,0 +1,129 @@
+<div class="slider slider-home-4">
+    <div class="tp-banner-container-box">
+        <div class="tp-banner-box">
+            <ul> <!-- SLIDE  -->
+                {% for banner in banners%}
+                <li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
+                    <!-- MAIN IMAGE -->
+                    <img src="{{ banner.imagens[0].patch}}" alt="slidebg1"
+                        data-bgfit="cover" data-bgposition="center" data-bgrepeat="no-repeat">
+
+                    <!-- LAYER NR. 1 -->
+                    <div class="tp-caption sft h1-text " data-x="65" data-y="160" data-speed="800"
+                        data-start="500" data-easing="easeInOutCubic">{{ banner.content_name|raw }}
+                    </div>
+
+
+
+
+                    <!-- LAYER NR. 3 -->
+                    <div class="tp-caption sft h3-text grey-2 text-light" data-x="65" data-y="220"
+                        data-speed="800" data-start="800" data-easing="easeInOutCubic"
+                        style="max-width: 565px;text-align: left;">
+                        {{ banner.content_description|raw }}
+                    </div>
+
+
+
+                    <!-- LAYER NR. 4 -->
+                    <div class="tp-caption sft single-btn-slider" data-x="65" data-y="323" data-speed="700"
+                        data-start="1100" data-easing="easeInOutCubic"> <a target="_blank" href="{{ banner.content_url }}"
+                            class="ot-btn large-btn btn-rounded btn-main-color">Nuestro servicio</a>
+                    </div>
+                </li>
+                {% endfor %}
+                
+                {#<li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
+                    <!-- MAIN IMAGE -->
+                    <img src="/assets/template/empresarial/original/images/Slider/8.jpg" alt="slidebg1"
+                        data-bgfit="cover" data-bgposition="center" data-bgrepeat="no-repeat">
+
+                    <!-- LAYER NR. 1 -->
+                    <div class="tp-caption sft h1-text " data-x="65" data-y="160" data-speed="800"
+                        data-start="500" data-easing="easeInOutCubic">Investment outlook
+                    </div>
+
+
+
+
+                    <!-- LAYER NR. 3 -->
+                    <div class="tp-caption sft h3-text grey-2 text-light" data-x="65" data-y="220"
+                        data-speed="800" data-start="800" data-easing="easeInOutCubic"
+                        style="max-width: 565px;text-align: left;">
+                        Comprehensive financial advice and financial services that are tailored to meet your
+                        individual needs.
+                    </div>
+
+
+
+                    <!-- LAYER NR. 4 -->
+                    <div class="tp-caption sft single-btn-slider" data-x="65" data-y="323" data-speed="700"
+                        data-start="1100" data-easing="easeInOutCubic"> <a href="servicesList2.html"
+                            class="ot-btn large-btn btn-rounded btn-main-color">Our Services</a>
+                    </div>
+                </li>
+                <!-- SLIDE  -->
+                <li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
+                    <!-- MAIN IMAGE -->
+                    <img src="/assets/template/empresarial/original/images/Slider/6.jpg" alt="slidebg1"
+                        data-bgfit="cover" data-bgposition="center" data-bgrepeat="no-repeat">
+
+                    <!-- LAYER NR. 1 -->
+                    <div class="tp-caption sft h1-text " data-x="65" data-y="160" data-speed="800"
+                        data-start="500" data-easing="easeInOutCubic">Finance Consulting
+                    </div>
+
+
+
+
+                    <!-- LAYER NR. 3 -->
+                    <div class="tp-caption sft h3-text grey-2 text-light" data-x="65" data-y="220"
+                        data-speed="800" data-start="800" data-easing="easeInOutCubic"
+                        style="max-width: 565px;text-align: left;">
+                        Comprehensive financial advice and financial services that are tailored to meet your
+                        individual needs.
+                    </div>
+
+
+
+                    <!-- LAYER NR. 4 -->
+                    <div class="tp-caption sft single-btn-slider" data-x="65" data-y="323" data-speed="700"
+                        data-start="1100" data-easing="easeInOutCubic"> <a href="servicesList2.html"
+                            class="ot-btn large-btn btn-rounded btn-main-color">Our Services</a>
+                    </div>
+                </li>
+                <!-- SLIDE  -->
+                <li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
+                    <!-- MAIN IMAGE -->
+                    <img src="/assets/template/empresarial/original/images/Slider/9.jpg" alt="slidebg1"
+                        data-bgfit="cover" data-bgposition="center" data-bgrepeat="no-repeat">
+
+                    <!-- LAYER NR. 1 -->
+                    <div class="tp-caption sft h1-text " data-x="65" data-y="160" data-speed="800"
+                        data-start="500" data-easing="easeInOutCubic">Finance Focus
+                    </div>
+
+
+
+
+                    <!-- LAYER NR. 3 -->
+                    <div class="tp-caption sft h3-text grey-2 text-light" data-x="65" data-y="220"
+                        data-speed="800" data-start="800" data-easing="easeInOutCubic"
+                        style="max-width: 565px;text-align: left;">
+                        Comprehensive financial advice and financial services that are tailored to meet your
+                        individual needs.
+                    </div>
+
+
+
+                    <!-- LAYER NR. 4 -->
+                    <div class="tp-caption sft single-btn-slider" data-x="65" data-y="323" data-speed="700"
+                        data-start="1100" data-easing="easeInOutCubic"> <a href="servicesList2.html"
+                            class="ot-btn large-btn btn-rounded btn-main-color">Our Services</a>
+                    </div>
+                </li>#}
+            </ul>
+
+        </div>
+    </div>
+</div><!-- RevoSlider End -->

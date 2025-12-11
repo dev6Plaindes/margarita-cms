@@ -1,0 +1,140 @@
+{% extends 'admin/layouts/main.twig' %}
+
+{% block aside %}
+	{% include 'admin/layouts/partials/aside.twig' with { 'aside': 'landing.scheme' } %}
+{% endblock %}
+
+{% block breadcrumb %}
+    {% include 'admin/layouts/partials/breadcrumb.twig' with { 'breadcrumb': 'landing.scheme' } %}
+{% endblock %}
+
+{% block css %}
+<style>
+    .item-content {
+        background-repeat: no-repeat; 
+        background-size: 100% 100%;
+        background-image: url('/assets/image/notfound.png');
+        height:100px;
+        width: 100px;
+    }
+    .lbg-gray{
+        background-color: #f4f6f9;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+{% set data = rsp.data %}
+{% set notfound = '/assets/image/notfound.png' %}
+<div class="container" id="AppLandingAdmin">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card card-custom">
+                <div class="card-header card-header-tabs-line">
+                    <div class="card-title">
+                        <h3 class="card-label">Página</h3><small>Menú</small>
+                    </div>
+                    <div class="card-toolbar">
+                        <ul class="nav nav-tabs nav-bold nav-tabs-line">
+                            <li class="nav-item" v-for="(item, index) in menus" :key="item.id">
+                                <a class="nav-link" @click="onScheme(index)" v-text="item.name"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="tab-pane">
+                        <div class="row">
+                            <div class="col-lg-12" v-for="(item2, index2) in menu.sections" :key="item2.id">
+                                <div class="option mb-4">
+                                    <div class="option-label">
+                                        <div class="option-head">
+                                            <div class="option-title" v-html="item2.name">
+                                            </div>
+                                            <div class="option-focus">
+                                                <div class="label label-rounded label-light-primary mr-2">
+                                                    <div class="dropdown dropdown-inline" data-placement="left">
+                                                        <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" v-text="index2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                        </a>
+                                                        <div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right">
+                                                            <ul class="navi navi-hover">
+                                                                <li class="navi-item">
+                                                                    <a href="javascript:;" class="navi-link" @click="onMovedSection()">
+                                                                        Cambiar posición
+                                                                    </a>
+                                                                </li>
+                                                                <li class="navi-item">
+                                                                    <a href="javascript:;" class="navi-link" @click="onLiberateSection(item2, menu)">
+                                                                        Liberar
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="option-body">
+                                            <div class="form-group" v-html="item2.description"></div>
+                                            <div class="row">
+                                                <div class="col-lg-6 mb-4" v-for="(item3, index3) in item2.contents" :key="item3.id">
+                                                    <div class="option d-block">
+                                                        <div class="option-label">
+                                                            <div class="option-head">
+                                                                <div class="option-title" v-html="item3.name">
+                                                                </div>
+                                                                <div class="option-focus">
+                                                                    <div class="label label-rounded label-secondary mr-2">
+                                                                        <div class="label label-rounded label-light-secondary mr-2">
+                                                                            <div class="dropdown dropdown-inline" data-placement="left">
+                                                                                <a href="#" class="btn btn-hover-light-primary btn-sm btn-icon" v-text="index3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                </a>
+                                                                                <div class="dropdown-menu p-0 m-0 dropdown-menu-md dropdown-menu-right">
+                                                                                    <ul class="navi navi-hover">
+                                                                                        <li class="navi-item">
+                                                                                            <a href="#" class="navi-link">
+                                                                                                Cambiar posición
+                                                                                            </a>
+                                                                                        </li>
+                                                                                        <li class="navi-item">
+                                                                                            <a href="#" class="navi-link">
+                                                                                                Liberar
+                                                                                            </a>
+                                                                                        </li>
+                                                                                        <li class="navi-item">
+                                                                                            <a :href="'/admin/landing/contenidos/editar/'+item3.id" class="navi-link">
+                                                                                                Editar
+                                                                                            </a>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="option-body">
+                                                            <img :src="item3.image ? item3.image : '/assets/image/notfound.png'" height="80px" with="100%">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+	window.addEventListener('load', window.AppLandingAdmin.index(JSON.parse("{{ rsp.data|json_encode|e('js') }}")));
+</script>
+{% endblock %}

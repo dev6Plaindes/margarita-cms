@@ -1,0 +1,35 @@
+{% if contents %}
+   {% for content in contents %}
+        {% if content.alias == 'vista_nosotros' %}
+            <!--HISTORIA-->
+                <section class="exp-top container">
+                    <div class="block-one row justify-content-md-center">
+                        {% for k, c_content in content.contents %}
+
+                            {% if c_content.content_alias == 'historia' %}
+                                                            
+                                <div class="col-sm-8">
+                                    <h5> {{ c_content.content_name }} </h5>
+                                    <p> {{  c_content.content_description|raw }} </p>
+                                </div>
+                                                        
+                                                    
+                            {% endif %}  
+                        {% endfor %}   
+                        
+                        {% for k, c_content in content.contents %}
+
+                             {% if c_content.content_alias == 'mision' %}
+                                <div class="col-sm-3 block-bg">
+                                    <h5> {{ c_content.content_name }} </h5>
+                                    <p> {{  c_content.content_description|raw }} </p>
+                                </div>
+                            {% endif %} 
+
+                        {% endfor %}   
+                    </div>
+                </section>
+                <!--END HISTORIA-->
+        {% endif %}  
+    {% endfor %}             
+ {% endif %}

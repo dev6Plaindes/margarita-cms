@@ -1,0 +1,56 @@
+/** Structure **/
+
+{
+    column [name, caption, description, colors, images] 
+    {
+        label: label,
+        type: [input, textarea, array],
+        plugin: [summernote, colors, images],
+    }
+}
+
+/** Examples **/
+
+{ 
+    "name": {
+        "label": "Título", 
+        "type": "input"
+    }, 
+    "caption": {
+        "label": "Subtítulo", 
+        "type": "input"
+    }, 
+    "description": {
+        "label": "Descripción", 
+        "type": "textarea",
+        "plugin": "summernote"
+    },
+    "url": {
+        "label": "Enlace", 
+        "type": "input"
+    },
+    "colors": {
+        "label": "Colección de colores", 
+        "type": "array",
+        "plugin": "colors"
+    }, 
+    "images": {
+        "label": "Colección de imágenes", 
+        "type": "array",
+        "plugin": "images"
+    },
+    "files": {
+        "label": "Colección de archivos", 
+        "type": "array",
+        "accept": "*"
+    }
+}
+
+
+/** MORE **/
+
+{"name":{"label":"Título","type":"input"},"description": {"label": "Descripción","type": "textarea","plugin": "summernote"},"colors": {"label": "Colección de colores","type": "array","plugin": "colors"},"images":{"label": "Colección de imágenes","type": "array","plugin": "images"}}
+
+{"caption":{"label":"Subtítulo","type": "input"},"description": {"label": "Descripción","type": "textarea","plugin": "summernote"},"colors": {"label": "Colección de colores","type": "input","plugin": "colors"},"images":{"label": "Colección de imágenes","type": "input","plugin": "images"}}
+
+{"name":{"label":"Título","type":"input"},"caption":{"label":"Subtítulo","type": "input"}}

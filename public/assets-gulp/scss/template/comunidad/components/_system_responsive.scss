@@ -1,0 +1,39 @@
+
+@media (max-width: 1200px){
+    .navbar-collapse{
+        text-align: center;
+    }
+    .d-mobile{
+        display: block;
+    }
+    .d-desktop{
+        display: none;
+    }
+}
+
+
+
+
+
+@media (min-width: 576px) {
+    .system-container {
+        max-width: 540px;
+    }
+}
+@media (min-width: 768px) {
+    .system-container {
+        max-width: 720px;
+    }
+}
+@media (min-width: 992px) {
+    .system-container {
+        max-width: 960px;
+    }
+}
+@media (min-width: 1200px) {
+    .system-container {
+        /*max-width: 1140px;*/
+        max-width: 1500px;
+        flex-wrap: nowrap;
+    }
+}

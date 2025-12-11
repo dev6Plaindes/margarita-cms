@@ -1,0 +1,51 @@
+<section class="row mb-5">
+    <div class="col-lg-12 mb-3  system-card-7">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            <h4 class="font-weight-bold">{{ section.name }}<h4>
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for key, content in section.contents %}
+                    <tr id="{{ content.uniqid }}">
+                        <td class="text-center">
+                            <div class="player">
+                                <div class="playarea">
+                                    <div class="play"></div>
+                                    <div class="pause"></div>
+                                </div>
+                            </div>
+                            {% if content.files|length %}
+                            <audio controls id="audio-{{ content.uniqid }}" style="display:none;">
+                                <source src="{{ content.files[0].url }}" type="audio/{{ content.files[0].format }}">
+                                Your browser does not support the audio tag.
+                            </audio>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <h5 class="font-weight-bold">{{ content.content_name }}</h5>
+                            <p>{{ content.content_caption }} 
+                            <a href="https://fri.com.pe/" target="_blank"><img src="/assets/template/comunidad/images/friesan.png" class="ml-2" height="25px"></a>
+                            <a href="{{ content.content_url }}" target="_blank"><img src="/assets/template/comunidad/images/spotify.png" class="ml-2" height="25px"></p></a>
+                        </td>
+                    </tr>
+                    {# <tr>
+                        <td class="text-center">
+                            <img src="/assets/template/comunidad/images/play.png" height="50px">
+                        </td>
+                        <td>
+                            <h5 class="font-weight-bold">¿Cuál es la diferencia entre ahorro e inversión?</h5>
+                            <p>Escúchalo ahora en: <img src="/assets/template/comunidad/images/friesan.png" class="ml-2" height="25px"><img src="/assets/template/comunidad/images/spotify.png" class="ml-2" height="25px"></p>
+                        </td>
+                    </tr> #}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

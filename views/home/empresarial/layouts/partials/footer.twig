@@ -1,0 +1,66 @@
+<!-- Footer -->
+<footer class=" bg-dark footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-row">
+
+                <div class="footer-col-1">
+                    <a href="/"><img
+                            src="{{ _company.logos[1].patch }}"
+                            class="img-responsive" alt="Image"></a>
+                    
+                    {% if servicios %}
+                    <ul class="clearfix">
+                        {% for servicio in servicios %}
+                        <li><a href="{{ servicio.content_url }}" target="_blank">{{ servicio.content_name|raw }}</a></li>
+                        {% endfor %}
+                        {#<li><a href="services-detail.html">Finacial Planning</a></li>
+                        <li><a href="services-detail.html">Insurance Consulting</a></li>
+                        <li><a href="services-detail.html">Investments Management</a></li>
+                        <li><a href="services-detail.html">Retirement Strategies</a></li>
+                        <li><a href="services-detail.html">Taxes Planning</a></li>
+                        <li><a href="services-detail.html">Business Loan</a></li>#}
+                    </ul>
+                    {% endif %}
+                </div>
+
+
+                <div class="footer-col-2">
+                    <h3 class="text-white">{{contactanos[1].content_description|raw}}</h3>
+                    <div class="border-2-side">
+                        <p>Dirección: {{ _company.address|raw }}</p>
+                        <p><span>Teléfono: {{ _company.phone_contact|raw }}</span></p>
+                        <p><span>{{ _company.email_contact}}</span></p>
+                    </div>
+                </div>
+
+
+                <div class="footer-col-3">
+                    <h3 class="text-white">Síguenos</h3>
+                    <ul class="social social-footer">
+                        {% if _company.facebook_link %}<li class="facebook"><a href="{{_company.facebook_link}}" target="_blank"><i class="fa fa-facebook"></i></a></li>{% endif %}
+                        {% if _company.twitter_link %}<li class="twitter"><a href="{{_company.twitter_link}}" target="_blank"><i class="fa fa-twitter"></i></a></li>{% endif %}
+                        {% if _company.linkedin_link %}<li class="linkedin"><a href="{{_company.linkedin_link}}" target="_blank"><i class="fa fa-linkedin"></i></a></li>{% endif %}
+                        {% if _company.instagram_link %}<li class="instagram"><a href="{{_company.instagram_link}}" target="_blank"><i class="fa fa-instagram"></i></a></li>{% endif %}
+                        {#<li class="facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li class="youtube"><a href="#"><i class="fa fa-youtube-play"></i></a></li>
+                        <li class="linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>#}
+                    </ul>
+                </div>
+
+            </div> <!-- End footer row -->
+            <div class="col-md-12 footer-link">
+                <p>Copyright © 2016 Designed by AuThemes.</p>
+                <ul>
+                    <li><a href="/nosotros">Nosotros </a></li>
+                    <li><a href="contactanos">Contáctanos </a></li>
+                    <li><a href="/terminos-y-condiciones">Terminos y condiciones</a></li>
+                    <li><a href="/politicas-de-privacidad">Políticas de privacidad</a></li>
+                </ul>
+            </div>
+        </div><!-- End Row -->
+
+    </div><!-- End container -->
+</footer><!-- End  -->

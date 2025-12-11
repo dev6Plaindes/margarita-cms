@@ -1,0 +1,43 @@
+{% extends "home/stetic/main.twig" %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+
+<section class="inner-banner" style="background-image: url('{{ menu.image|raw }}');background-repeat: no-repeat;
+background-size: cover;">
+    <div class="container">
+        <ul class="list-unstyled thm-breadcrumb">
+            <li><a href="#">Inicio</a></li>
+            <li class="active"><a href="#">Cursos</a></li>
+        </ul><!-- /.list-unstyled -->
+        <h2 class="inner-banner__title">{{ menu.name }}</h2><!-- /.inner-banner__title -->
+    </div><!-- /.container -->
+    <p class="sub-tittle-ml">Especializate con nosotros</p>
+</section><!-- /.inner-banner -->
+<section class="course-one course-page">
+    {% for item in menu_products%}
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="become-teacher__title">{{ item.name }}</h2>
+            </div>
+            <div class="col-12">
+                <div class="row">
+                {% for product in item.products %}
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                    {% include 'home/stetic/product/item.twig' %}
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+    {% endfor %}
+</section><!-- /.course-one course-page -->
+
+{% endblock %}
+
+{% block js %}{% endblock %}

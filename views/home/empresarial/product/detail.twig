@@ -1,0 +1,50 @@
+{% extends "home/empresarial/layouts/main.twig" %}
+
+{% block css %}{% endblock %}
+
+{% block content %}
+{% include 'home/empresarial/elements/page_info.twig' with {'titulo': 'Proyecto: ' ~ product.name }%}
+ <!-- List services section -->
+ <section class="padding-top-50 padding-bottom-20">
+    <div class="container">
+      <div class="row">
+            <div class="projectDetail">
+                <div class="col-md-6">
+                    {{ product.overview|raw }}  
+                    {#<h5>Project Details</h5>
+                    <p>Client: Au Company</p>
+                    <p>Location: Central Street, San Francisco</p>
+                    <p>Year Completed: 2016</p>
+                    <p>Value: $350,000</p>
+                    <p>Adviser: Sean Rogers & Rachel Peters</p>
+                    <br>
+                    <h5>Project Details</h5>
+                    <p>Curabitur dictum viverra urna. Nam ullamcorper egestas lacinia. Fusce fermentum velit non velit malesuada, vel aliquam leo viverra. Etiam id justo mattis, bibendum eros non, finibus diam. Suspendisse suscipit, arcu ac rutrum pellentesque, nunc sapien molestie nisi, id pellentesque odio diam quis justo. Proin rutrum convallis mauris. Morbi vulputate bibendum velit id tincidunt. Fusce auctor aliquam nunc in tristique. Nulla luctus dictum enim ut pulvinar.</p>
+                    <br>
+                    <p>
+                      Sed id fermentum lectus, vel sollicitudin ipsum. Nulla porttitor, dolor ut sagittis lacinia, nulla mauris elementum leo, at viverra massa sapien id diam. Phasellus et ornare sem. Integer dictum imperdiet luctus. Sed luctus vel nisl eu convallis. Integer gravida enim velit, ultricies sodales erat imperdiet ac.
+                    </p>#}
+                </div> <!-- End col -->
+                <div class="col-md-6">
+                  <div class="zoom-gallery">
+                    <a class="img-gallery-contain" target="_blank" href="{{ product.image }}" data-source="Au Company" title="Au Company"><img src="{{ product.image }}" class="img-responsive" alt="Image"></a>
+                    {% for imagen in product.images %}
+                    <a class="img-gallery-contain" target="_blank" href="{{ imagen.image }}" data-source="Au Company" title="Au Company"><img src="{{ imagen.image }}" class="img-responsive" alt="Image"></a>
+                    {% endfor %}
+                    {#<a class="img-gallery-contain" target="_blank" href="/assets/template/empresarial/original/images/Project/zoom2.jpg" data-source="Au Company" title="Au Company"><img src="/assets/template/empresarial/original/images/Project/11.jpg" class="img-responsive" alt="Image"></a>
+                    <a class="img-gallery-contain" target="_blank" href="/assets/template/empresarial/original/images/Project/zoom3.jpg" data-source="Au Company" title="Au Company"><img src="/assets/template/empresarial/original/images/Project/12.jpg" class="img-responsive" alt="Image"></a>#}
+                  </div>
+                </div> 
+            </div><!-- End project detail -->
+        </div><!-- End Row -->
+    </div><!-- End container -->
+  </section><!--  End Section -->
+  
+    <!-- Component owl Project -->
+    {% if products %}
+    {% include 'home/empresarial/elements/projects.twig' %}
+    {% endif %}
+  {% include 'home/empresarial/elements/frase_dos.twig' %}
+{% endblock %}
+
+{% block js %}{% endblock %}

@@ -1,0 +1,155 @@
+{% extends 'admin/layouts/main.twig' %}
+
+{% block aside %}
+	{% include 'admin/layouts/partials/aside.twig' with { 'aside': 'ecommerce.products' } %}
+{% endblock %}
+
+{% block breadcrumb %}
+    {% include 'admin/layouts/partials/breadcrumb.twig' with { 'breadcrumb': 'ecommerce.products' } %}
+{% endblock %}
+
+{% block css %}
+	<style>
+	    .minicolors-swatch{
+			top: 8px !important;
+			left: 5px !important;
+		}
+		.image-input-wrapper{
+        	background-repeat: no-repeat !important; 
+        	background-size: 100% 100% !important;
+    	}
+	</style>
+{% endblock %}
+
+{% block content %}
+{% set data = rsp.data %}
+{% set notfound = '/assets/image/notfound.png' %}
+<div class="container" id="AppProductAdmin">
+	<div class="card card-custom">
+		<div class="card-header">
+			<div class="card-title">
+				<h3 class="card-label"><span v-text="panel.title"></span>
+				<small>Gestionar</small></h3>
+			</div>
+		</div>
+		<div class="card-body p-0">
+			<div class="row justify-content-center py-8 px-8 py-lg-10 px-lg-10">
+				<div class="col-xl-12 col-xxl-10">
+					<form class="form" id="form_data_section" @submit="onFormData">
+						<input type="hidden" name="id" :value="product.id"/>
+						<div class="row justify-content-center">
+							<div class="col-xl-9">
+								<div class="my-5 step">
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Acciones</label>
+										<div class="col-lg-9 col-xl-9">
+    										<div class="checkbox-inline mt-3">
+												<label class="checkbox">
+													<input type="checkbox" name="status" value="1" :checked="product.status == 1 ? true : (product.status == 0 ? false : true)"/>
+													<span></span>
+													Activar
+												</label>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-9 col-xl-9 offset-xl-3">
+											<h3 class="font-size-h6 mb-5">Datos Generales :</h3>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Nombre</label>
+										<div class="col-lg-9 col-xl-9">
+											<input class="form-control form-control-lg form-control-solid" type="text" name="name" :value="product.name" required/>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Subtitulo</label>
+										<div class="col-lg-9 col-xl-9">
+											<input class="form-control form-control-lg form-control-solid" type="text" name="caption" :value="product.caption" />
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Precio</label>
+										<div class="col-lg-9 col-xl-9">
+											<input class="form-control form-control-lg form-control-solid" type="text" name="price" :value="product.price" />
+										</div>
+									</div>
+									 <div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Categoría</label>
+										<div class="col-lg-9 col-xl-9">
+											<select class="form-control form-control-solid" name="category_id" :value="product.category_id">
+												<option value="0" hidden selected>Seleccione</option>
+												<option v-for="item in categories" :key="item.id" v-text="item.name" :value="item.id"></option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Menu</label>
+										<div class="col-lg-9 col-xl-9">
+											<select class="form-control selectpicker mb-5" title="Seleccionar" name="menus[]" multiple="multiple" required>
+												<option v-for="(item, index) in menus"  :key="item.id" :value="item.id" v-text="item.name"></option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Url de presentación</label>
+										<div class="col-lg-9 col-xl-9">
+											<input class="form-control form-control-lg form-control-solid" type="text" name="url" :value="product.url" />
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Descripción</label>
+										<div class="col-lg-9 col-xl-9">
+											<div class="input-group input-group-lg input-group-solid">
+												<textarea class="form-group-solid summernote" name="description" v-html="product.description"></textarea>
+											</div>
+										</div>
+									</div>
+			         				<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Imagen</label>
+										<div class="col-lg-9 col-xl-9">
+											<div class="image-input image-input-outline" id="kt_image_1">
+												<div class="image-input-wrapper" style="background-image: url('{{ data.product.image ? data.product.image : notfound }}'); background-repeat: no-repeat; background-size: 100% 100%;"></div>
+												<label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Cambiar image">
+													<i class="fa fa-pen icon-sm text-muted"></i>
+													<input type="file" name="image" accept=".png, .jpg, .jpeg" />
+													<input type="hidden" name="image_remove" />
+												</label>
+												<span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+													<i class="ki ki-bold-close icon-xs text-muted"></i>
+												</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="card-footer">
+			<div class="row justify-content-center">
+				<div class="col-xl-12 col-xxl-10">
+					<div class="row justify-content-center">
+						<div class="col-lg-9">
+							<div class="row">
+								<div class="col-lg-12 text-right">
+									<button type="submit" form="form_data_section" class="btn btn-primary mr-2">Guardar</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+	window.addEventListener('load', window.AppProductAdmin.form(JSON.parse("{{ rsp.data|json_encode|e('js') }}")));
+</script>
+{% endblock %}

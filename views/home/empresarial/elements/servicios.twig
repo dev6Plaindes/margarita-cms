@@ -1,0 +1,109 @@
+<div class="padding-bottom-55 padding-top-60">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row clearfix">
+                    {% for servicio in servicios %}
+                    <article class=" col-sm-6 col-md-4 media-style media-left-icon-item">
+                        <div class="media">
+                            <div class="media-left">
+                                <i class="{{ servicio.content_caption }}"></i>
+                            </div>
+                            <div class="media-body">
+                                <h4>{{ servicio.content_name|raw }}</h4>
+                                <p>
+                                    {{ servicio.content_description|raw }}
+                                </p>
+                            </div>
+                        </div>
+                    </article><!-- End article -->
+                    {% endfor %}
+                    {#<article class=" col-sm-6 col-md-4 media-style media-left-icon-item">
+                        <div class="media">
+                            <div class="media-left">
+                                <i class="fa fa-bar-chart"></i>
+                            </div>
+                            <div class="media-body">
+                                <h4>Financial Planning</h4>
+                                <p>
+                                    Donec lacinia mi rutrum sagittis consequat. Donec sagittis, tellus sodales
+                                    sollicitudin commodo, risus urna interdum massa
+                                </p>
+                            </div>
+                        </div>
+                    </article><!-- End article -->
+                    <article class=" col-sm-6 col-md-4 media-style media-left-icon-item">
+                        <div class="media">
+                            <div class="media-left">
+                                <i class="fa fa-money"></i>
+                            </div>
+                            <div class="media-body">
+                                <h4>Investments Management</h4>
+                                <p>
+                                    Quisque mollis metus magna, ut accumsan elit hendrerit ac. Lorem ipsum dolor
+                                    sit amet, consectetur adipiscing elit.
+                                </p>
+                            </div>
+                        </div>
+                    </article><!-- End article -->
+                    <article class=" col-sm-6 col-md-4 media-style media-left-icon-item">
+                        <div class="media">
+                            <div class="media-left">
+                                <i class="fa fa-calculator"></i>
+                            </div>
+                            <div class="media-body">
+                                <h4>Taxes Planning</h4>
+                                <p>
+                                    Donec lacinia mi rutrum sagittis consequat. Donec sagittis, tellus sodales
+                                    sollicitudin commodo, risus urna interdum massa
+                                </p>
+                            </div>
+                        </div>
+                    </article><!-- End article -->
+                    <article class=" col-sm-6 col-md-4 media-style media-left-icon-item no-margin">
+                        <div class="media">
+                            <div class="media-left">
+                                <i class="fa fa-university"></i>
+                            </div>
+                            <div class="media-body">
+                                <h4>Business Loan</h4>
+                                <p>
+                                    Donec lacinia mi rutrum sagittis consequat. Donec sagittis, tellus sodales
+                                    sollicitudin commodo, risus urna interdum massa
+                                </p>
+                            </div>
+                        </div>
+                    </article><!-- End article -->
+                    <article class=" col-sm-6 col-md-4 media-style media-left-icon-item no-margin">
+                        <div class="media">
+                            <div class="media-left">
+                                <i class="fa fa-shield"></i>
+                            </div>
+                            <div class="media-body">
+                                <h4>Insurance Consulting</h4>
+                                <p>
+                                    Donec lacinia mi rutrum sagittis consequat. Donec sagittis, tellus sodales
+                                    sollicitudin commodo, risus urna interdum massa
+                                </p>
+                            </div>
+                        </div>
+                    </article><!-- End article -->
+                    <article class=" col-sm-6 col-md-4 media-style media-left-icon-item no-margin">
+                        <div class="media">
+                            <div class="media-left">
+                                <i class="fa fa-home"></i>
+                            </div>
+                            <div class="media-body">
+                                <h4>Retirement Planning </h4>
+                                <p>
+                                    Donec lacinia mi rutrum sagittis consequat. Donec sagittis, tellus sodales
+                                    sollicitudin commodo, risus urna interdum massa
+                                </p>
+                            </div>
+                        </div>
+                    </article>#}<!-- End article -->
+                </div>
+            </div><!-- End Row -->
+        </div> <!-- End Row -->
+    </div><!-- End container -->
+</div><!-- End section-->

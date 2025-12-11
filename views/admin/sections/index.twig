@@ -1,0 +1,590 @@
+{% extends "admin/layouts/main.twig" %} {% block aside %} {% include
+'admin/layouts/partials/aside.twig' with { 'aside': 'landing.sections' } %} {%
+endblock %} {% block breadcrumb %} {% include
+'admin/layouts/partials/breadcrumb.twig' with { 'breadcrumb': 'landing.sections'
+} %} {% endblock %} {% block css %}
+<style>
+  .bootstrap-select > .dropdown-toggle.btn-light,
+  .bootstrap-select > .dropdown-toggle.btn-secondary {
+    background: #f3f6f9 !important;
+    border-color: #f3f6f9 !important;
+    color: #3f4254 !important;
+  }
+  .bootstrap-select.show > .dropdown-toggle.btn-light,
+  .bootstrap-select.show > .dropdown-toggle.btn-secondary {
+    border-color: #f3f6f9 !important;
+  }
+  .minicolors-swatch {
+    top: 7px !important;
+    left: 7px !important;
+  }
+  .table td {
+    vertical-align: middle;
+  }
+  .isselected {
+    color: #3699ff;
+    border-left: 6px solid #3699ff;
+    font-weight: 500;
+  }
+</style>
+{% endblock %} {% block content %}
+<div class="container" id="AppSectionAdmin">
+  <div class="row">
+    <div class="col-lg-12 form-group">
+      <div class="card card-custom">
+        <div class="card-header flex-wrap border-0 pt-6 pb-0">
+          <div class="card-title">
+            <h3 class="card-label">
+              Listado de secciones
+              <span class="text-muted pt-2 font-size-sm d-block"
+                >Gestionar</span
+              >
+            </h3>
+          </div>
+          {% if APP.SESSION.USER.profile_id == APP.PROFILE.MASTER %}
+          <div class="card-toolbar">
+            <button
+              type="button"
+              class="btn btn-sm btn-light-primary"
+              @click="onFormModalSection(-1)"
+            >
+              <i class="la la-plus"></i> Crear Sección
+            </button>
+          </div>
+          {% endif %}
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table
+              class="table table-hover"
+              style="margin-top: 13px !important"
+              width="100%"
+            >
+              <thead>
+                <tr>
+                  <th>SECCIÓN</th>
+                  <th>SUBTITULO</th>
+                  <th>ESTADO</th>
+                  <th>FECHA</th>
+                  <th style="min-width: 120px" class="text-center">ACCIONES</th>
+                </tr>
+              </thead>
+              <tbody>
+                <template v-if="sections.length > 0">
+                  <tr
+                    v-for="item, index in sections"
+                    :class="[ item.id == selected.section ? 'isselected' : '' ]"
+                  >
+                    <td v-html="item.name"></td>
+                    <td v-html="item.caption"></td>
+                    <td>
+                      <template v-if="item.status == 1">
+                        <span
+                          class="label label-lg font-weight-bold label-light-success label-inline"
+                          >Activado</span
+                        >
+                      </template>
+                      <template v-else>
+                        <span
+                          class="label label-lg font-weight-bold label-light-danger label-inline"
+                          >Desactivado</span
+                        >
+                      </template>
+                    </td>
+                    <td v-html="item.updated_at"></td>
+                    <td class="text-center">
+                      <button
+                        class="btn btn-sm btn-clean btn-icon"
+                        @click="onListContent(index)"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title="Contenidos"
+                      >
+                        <i class="la la-list"></i>
+                      </button>
+                      {% if APP.SESSION.USER.profile_id == APP.PROFILE.MASTER %}
+                      <button
+                        class="btn btn-sm btn-clean btn-icon"
+                        @click="onFormModalSection(index)"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title="Editar Sección"
+                      >
+                        <i class="la la-edit"></i>
+                      </button>
+                      <button
+                        class="btn btn-sm btn-clean btn-icon"
+                        @click="onDeleteSection(index)"
+                        data-toggle="tooltip"
+                        data-placement="top"
+                        title="Eliminar Sección"
+                      >
+                        <i class="la la-trash"></i>
+                      </button>
+                      {% endif %}
+                    </td>
+                  </tr>
+                </template>
+                <template v-else>
+                  <tr>
+                    <td colspan="6" class="text-center">No hay registros</td>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-12" v-if="section && content_type_id > 0">
+      <div class="card card-custom">
+        <div class="card-header card-header-tabs-line nav-tabs-line-3x">
+          <div class="card-toolbar">
+            <ul class="nav nav-tabs nav-bold nav-tabs-line nav-tabs-line-3x">
+              <li v-for="(item, index) in contents_types" class="nav-item mr-3">
+                <a
+                  class="nav-link"
+                  data-toggle="tab"
+                  href="javascript:;"
+                  @click="onContentType(item.id)"
+                  :class="[item.id == content_type_id ? 'active' : '']"
+                >
+                  <span class="nav-text font-size-lg" v-text="item.name"></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card-title float-left mb-2">
+                <h4 class="card-label">
+                  Listado de contenidos
+                  <span class="text-muted pt-2 font-size-sm d-block"
+                    >Gestionar</span
+                  >
+                </h4>
+              </div>
+              {% if APP.SESSION.USER.profile_id == APP.PROFILE.MASTER %}
+              <div
+                v-if="content_type.create == 1"
+                class="card-toolbar float-right mb-2"
+              >
+                <button
+                  type="button"
+                  class="btn btn-sm btn-light-primary"
+                  @click="onFormContent(-1)"
+                >
+                  <i class="la la-plus"></i> Crear Contenido
+                </button>
+              </div>
+              {% endif %}
+            </div>
+            <div class="col-lg-12">
+              <div class="table-responsive">
+                <table class="table table-hover" width="100%">
+                  <thead>
+                    <tr>
+                      <th>CONTENIDO</th>
+                      <th>ESTADO</th>
+                      <th>FECHA</th>
+                      <th style="min-width: 100px" class="text-center">
+                        ACCIONES
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <template v-if="contents && contents.length > 0">
+                      <tr
+                        v-for="item, index in contents"
+                        :class="[ item.id == selected.content ? 'isselected' : '' ]"
+                      >
+                        <td
+                          v-html="item.name && item.name.length ? item.name : item.caption"
+                        ></td>
+                        <td>
+                          <template v-if="item.status == 1">
+                            <span
+                              class="label label-lg font-weight-bold label-light-success label-inline"
+                              >Activado</span
+                            >
+                          </template>
+                          <template v-else>
+                            <span
+                              class="label label-lg font-weight-bold label-light-danger label-inline"
+                              >Desactivado</span
+                            >
+                          </template>
+                        </td>
+                        <td v-html="item.updated_at"></td>
+                        <td class="text-center">
+                          <button
+                            class="btn btn-sm btn-clean btn-icon"
+                            @click="onFormContent(index)"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Editar"
+                          >
+                            <i class="la la-edit"></i>
+                          </button>
+                          {% if APP.SESSION.USER.profile_id ==
+                          APP.PROFILE.MASTER %}
+                          <button
+                            class="btn btn-sm btn-clean btn-icon"
+                            @click="onDeleteContent(index)"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Eliminar"
+                          >
+                            <i class="la la-trash"></i>
+                          </button>
+                          {% endif %}
+                        </td>
+                      </tr>
+                    </template>
+                    <template v-else>
+                      <tr>
+                        <td colspan="4" class="text-center">
+                          No hay registros
+                        </td>
+                      </tr>
+                    </template>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="modal fade"
+    id="modalFormSection"
+    data-backdrop="static"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="staticBackdrop"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5
+            class="modal-title"
+            id="exampleModalLabel"
+            v-text="modal.section.title"
+          >
+            GESTIONAR SECCIÓN
+          </h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <i aria-hidden="true" class="ki ki-close"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="form" id="form_section" @submit="onFormSave">
+            <div class="col-lg-12">
+              <input type="hidden" :value="section.id" name="id" />
+              <div class="form-group">
+                <label>Título</label>
+                <textarea
+                  class="form-control form-control-solid"
+                  :value="section.name"
+                  rows="4"
+                  name="name"
+                ></textarea>
+              </div>
+              <div class="form-group">
+                <label>Subtitulo</label>
+                <input
+                  type="text"
+                  class="form-control form-control-solid"
+                  :value="section.caption"
+                  name="caption"
+                  placeholder=""
+                />
+              </div>
+              <div class="form-group">
+                <label class="col-form-label">Menú</label>
+                <select
+                  class="form-control selectpicker selectpicker-menus"
+                  title="Seleccionar"
+                  name="menus[]"
+                  multiple="multiple"
+                >
+                  <option
+                    v-for="(item, index) in menus"
+                    :key="item.id"
+                    :value="item.id"
+                    v-text="item.name"
+                  ></option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="col-form-label">Tipos de Contenidos</label>
+                <select
+                  class="form-control selectpicker selectpicker-types"
+                  title="Seleccionar"
+                  name="types[]"
+                  multiple="multiple"
+                >
+                  <option
+                    v-for="(item, index) in contents_types_all"
+                    :key="item.id"
+                    :value="item.id"
+                    v-text="item.name"
+                  ></option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="exampleTextarea">Descripción</label>
+                <textarea
+                  class="form-control form-control-solid"
+                  :value="section.description"
+                  rows="4"
+                  name="description"
+                ></textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer d-block">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="checkbox-inline float-left">
+                <label class="checkbox">
+                  <input
+                    type="checkbox"
+                    name="status"
+                    value="1"
+                    form="form_section"
+                    :checked="section.status == 1 ? true : (section.status == 0 ? false : true)"
+                  />
+                  <span></span>
+                  Activar
+                </label>
+              </div>
+              <div class="float-right">
+                <button
+                  type="button"
+                  class="btn btn-secondary font-weight-bold"
+                  data-dismiss="modal"
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-primary font-weight-bold"
+                  form="form_section"
+                >
+                  Guardar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="modal fade"
+    id="modalFormContent"
+    data-backdrop="static"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="staticBackdrop"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+            <span v-text="modal.content.title"></span>
+            <span
+              class="text-muted font-size-sm d-block"
+              v-text="modal.content.caption"
+              >Gestionar</span
+            >
+          </h5>
+          <button
+            type="button"
+            class="close"
+            aria-label="Close"
+            @click="onDestroyClearForm()"
+          >
+            <i aria-hidden="true" class="ki ki-close"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="form" id="form_content" @submit="onFormDataContent">
+            <input type="hidden" name="id" :value="content.id" />
+            <div class="row justify-content-center">
+              <div class="col-xl-11">
+                <div class="step" id="form_body_content">
+                  <template v-if="formContent">
+                    <template v-if="settings && settings.name">
+                      <component-input
+                        :content="content"
+                        :settings="settings.name"
+                        :name="'name'"
+                        :value="content.name"
+                        :label="settings.name.label ? settings.name.label : 'Título'"
+                      ></component-input>
+                    </template>
+                    <template v-if="settings && settings.caption">
+                      <component-input
+                        :content="content"
+                        :settings="settings.caption"
+                        :name="'caption'"
+                        :value="content.caption"
+                        :label="settings.caption.label ? settings.caption.label : 'Caption'"
+                      ></component-input>
+                    </template>
+                    <template v-if="settings && settings.url">
+                      <component-input
+                        :content="content"
+                        :settings="settings.url"
+                        :name="'url'"
+                        :value="content.url"
+                        :label="settings.url.label ? settings.url.label : 'Url'"
+                      ></component-input>
+                    </template>
+                    <template v-if="settings && settings.description">
+                      <component-input
+                        :content="content"
+                        :settings="settings.description"
+                        :name="'description'"
+                        :value="content.description"
+                        :label="settings.description.label ? settings.description.label : 'Título'"
+                      ></component-input>
+                    </template>
+                    <template v-if="settings && settings.price">
+                      <component-input
+                        :content="content"
+                        :settings="settings.price"
+                        :name="'price'"
+                        :value="content.price"
+                        :label="settings.price.label ? settings.price.label : 'Precio'"
+                      ></component-input>
+                    </template>
+                    <template v-if="settings && settings.boolean">
+                      <component-input
+                        :content="content"
+                        :settings="settings.boolean"
+                        :name="'boolean'"
+                        :value="content.boolean"
+                        :label="settings.boolean.label ? settings.boolean.label : 'Estado'"
+                      ></component-input>
+                    </template>
+                    <template v-if="settings && settings.type_name">
+                      <component-input
+                        :content="content"
+                        :settings="settings.type_name"
+                        :name="'type_name'"
+                        :value="content.type_name"
+                        :label="settings.type_name.label ? settings.type_name.label : 'Tipo'"
+                      ></component-input>
+                    </template>
+                    <div class="form-group row">
+                      <label class="col-xl-3 col-lg-3 col-form-label"
+                        >Orden</label
+                      >
+                      <div class="col-lg-9 col-xl-9">
+                        <input
+                          class="form-control form-control-lg form-control-solid"
+                          type="number"
+                          name="order"
+                          :value="content.order"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <template v-if="settings && settings.colors">
+                      <component-input
+                        :content="content"
+                        :settings="settings.colors"
+                        :name="''"
+                        :value="''"
+                        :label="settings.colors.label ? settings.colors.label : 'Colección de colores'"
+                      ></component-input>
+                    </template>
+                    <template v-if="settings && settings.images">
+                      <component-input
+                        :content="content"
+                        :settings="settings.images"
+                        :name="''"
+                        :value="''"
+                        :label="settings.images.label ? settings.images.label : 'Colección de imágenes'"
+                      ></component-input>
+                    </template>
+                    <template v-if="settings && settings.files">
+                      <component-input
+                        :content="content"
+                        :settings="settings.files"
+                        :name="'files[]'"
+                        :value="''"
+                        :label="settings.files.label ? settings.files.label : 'Colección de archivos'"
+                      ></component-input>
+                    </template>
+                  </template>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer d-block">
+          <div class="row justify-content-center">
+            <div class="col-xl-11 p-0">
+              <div class="checkbox-inline mt-3 float-left">
+                <label class="checkbox">
+                  <input
+                    type="checkbox"
+                    name="status"
+                    value="1"
+                    form="form_content"
+                    :checked="content.status == 1 ? true : (content.status == 0 ? false : true)"
+                  />
+                  <span></span>
+                  Activar
+                </label>
+              </div>
+              <div class="float-right">
+                <button
+                  type="button"
+                  class="btn btn-secondary font-weight-bold"
+                  @click="onDestroyClearForm()"
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-primary font-weight-bold"
+                  form="form_content"
+                >
+                  Guardar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% include 'admin/sections/components/input.twig' %} {% endblock %} {% block js
+%}
+<script>
+  window.addEventListener(
+    "load",
+    window.AppSectionAdmin.index(
+      JSON.parse("{{ rsp.data|json_encode|e('js') }}")
+    )
+  );
+</script>
+{% endblock %}

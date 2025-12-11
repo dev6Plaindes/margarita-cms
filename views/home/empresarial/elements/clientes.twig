@@ -1,0 +1,85 @@
+<section class="padding-top-65">
+    <div class="container">
+        <div class="row">
+            <div class=" col-sm-12 col-md-12 col-lg-12">
+                <h2 class="title">{{ clientes[0].section_name|raw }}</h2>
+                <div class="customNavigation">
+                    <a class="btn prev-partners"><i class="fa fa-angle-left"></i></a>
+                    <a class="btn next-partners"><i class="fa fa-angle-right"></i></a>
+                </div><!-- End owl button -->
+
+                <div id="owl-partners" class="owl-carousel owl-theme owl-partners clearfix">
+                    {% for cliente in clientes %}
+                    <div class="item">
+                        <a href="{{cliente.content_url}}">
+                            <img src="{{ cliente.imagens[0].patch}}"
+                                class="img-responsive" alt="Image">
+                        </a>
+                    </div>
+                    {% endfor %}
+                    {#<div class="item">
+                        <a href="#">
+                            <img src="/assets/template/empresarial/original/images/Partner/1.jpg"
+                                class="img-responsive" alt="Image">
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="#">
+                            <img src="/assets/template/empresarial/original/images/Partner/2.jpg"
+                                class="img-responsive" alt="Image">
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="#">
+                            <img src="/assets/template/empresarial/original/images/Partner/3.jpg"
+                                class="img-responsive" alt="Image">
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="#">
+                            <img src="/assets/template/empresarial/original/images/Partner/4.jpg"
+                                class="img-responsive" alt="Image">
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="#">
+                            <img src="/assets/template/empresarial/original/images/Partner/5.jpg"
+                                class="img-responsive" alt="Image">
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="#">
+                            <img src="/assets/template/empresarial/original/images/Partner/1.jpg"
+                                class="img-responsive" alt="Image">
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="#">
+                            <img src="/assets/template/empresarial/original/images/Partner/2.jpg"
+                                class="img-responsive" alt="Image">
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="#">
+                            <img src="/assets/template/empresarial/original/images/Partner/3.jpg"
+                                class="img-responsive" alt="Image">
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="#">
+                            <img src="/assets/template/empresarial/original/images/Partner/4.jpg"
+                                class="img-responsive" alt="Image">
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="#">
+                            <img src="/assets/template/empresarial/original/images/Partner/5.jpg"
+                                class="img-responsive" alt="Image">
+                        </a>
+                    </div>#}
+                </div>
+
+            </div><!-- End row partners -->
+        </div><!-- End Row -->
+    </div>
+</section><!-- End section -->

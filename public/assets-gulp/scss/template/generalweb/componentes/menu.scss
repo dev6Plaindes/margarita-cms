@@ -1,0 +1,25 @@
+.logo{
+    img {
+        height: 2.8rem;
+    }
+}
+header {
+    background-color: white;
+}
+.navbar-nav .nav-link{
+    color: var(--main-principal) !important;
+    font-size: 1.2rem;
+    &:hover{
+        color: var(--main-resaltar) !important;
+        .icon-resalt{
+            border: 1px solid var(--main-resaltar);
+        }
+    }
+}
+
+.navbar-nav .active{
+    color: var(--main-resaltar) !important;
+    border-radius: 10px;
+    border: 1px solid;
+    padding: 10px !important;
+}

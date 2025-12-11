@@ -1,0 +1,91 @@
+{% if contents %}
+     {% for content in contents %}
+
+        {% if content.alias == 'vista_clientes' %}
+
+            <section class="container mb-5">
+                <div class="title-with row">
+
+                        {% set index = 0 %}
+
+                            {% for k, c_content in content.contents %}
+    
+                                {% if c_content.content_alias == 'testimonios' %}
+                           
+                                    {% if index == 0 %}
+                                        
+                                        <h3 class="col-12">{{ c_content.content_name }}</h3>
+
+                                    {% endif %}
+
+                                    {% set index = index + 1  %}
+
+                                {% endif %} 
+                            {% endfor %}
+
+                </div>
+                 <div class="separator-md d-flex justify-content-center">
+                    <div class=""></div>
+                    <div class=""></div>
+                    <div class=""></div>
+                </div>    
+            </section>
+                <section class="container-fluid p-0 banner-medium text-center">
+                    <div class="item">
+                        <div class="img-banner">
+
+                            {% set index = 0 %}
+
+                            {% for k, c_content in content.contents %}
+    
+                                {% if c_content.content_alias == 'testimonios' %}
+                           
+                                    {% if index == 0 %}
+                                        
+                                         <img src="{{ c_content.imagens[0].patch }}" alt="The Last of us">
+
+                                    {% endif %}
+
+                                    {% set index = index + 1  %}
+
+                                {% endif %} 
+                            {% endfor %}
+                            
+                        </div>
+                        <div class="banner-elements p-0 slider-carrusel">
+                            <div id="owl-carrusel" class="owl-carousel owl-theme">
+                                    
+                                    {% set index2 = 0 %}
+                                    {% for k, c_content in content.contents %}
+
+                                        {% if c_content.content_alias == 'testimonios' %}
+                                            {% if index2 > 0 %}  
+
+                                                <div class="item d-flex align-items-center flex-column pt-5">
+                                                    {#<img src="{{ c_content.imagens[0].patch }}" alt="The Last of us">
+                                                    <div class="line-w"></div>#}
+                                                    <!--img src="/assets/template/legal/images/user1.jpg" alt="The Last of us"-->
+                                                    <div class="slider-elements">
+                                                        <h5> {{ c_content.content_caption}} </h5>
+                                                        {{ c_content.content_description|raw }}
+                                                        <h4 class="text-sub2">{{ c_content.content_name }}</h4>
+                                                    </div>
+                                                </div>
+                                                                
+                                            {% endif %}
+                                               {% set index2 = index2 + 1  %}
+                                        {% endif %} 
+                                    {% endfor %}
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                </div>
+            </section>
+
+         {% endif %}                          
+
+     {% endfor %}
+ {% endif %}

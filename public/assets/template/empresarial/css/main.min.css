@@ -1,0 +1,15 @@
+.active .bg-contact {
+  background-color: var(--color-template-one) !important;
+  color: white !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .slider .h1-text {
+    line-height: 25px !important;
+    top: 20px !important;
+  }
+}
+.active .bg-contact {
+  background-color: var(--color-template-one) !important;
+  color: white !important;
+}

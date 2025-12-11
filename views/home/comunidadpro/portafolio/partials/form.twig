@@ -1,0 +1,67 @@
+<div class="form-group">
+    <div class="modal-content contact-one py-0">
+        <form id="formPaymentUser" class="p-5">
+            <div class="row low-gutters">
+                <div class="col-lg-12">
+                    <input type="text" name="name" placeholder="Su nombre" value="{{ inscription.name }}" {{ inscription.id ? 'readonly' : 'required' }}>
+                </div><!-- /.col-lg-6 -->
+                <div class="col-lg-12">
+                    <input type="text" placeholder="Correo electrónico" name="email" value="{{ inscription.email }}" {{ inscription.id ? 'readonly' : 'required' }}>
+                </div><!-- /.col-lg-6 -->
+                <div class="col-lg-12">
+                    <input type="text" placeholder="Teléfono/Whatsapp" name="phone" value="{{ inscription.phone }}" {{ inscription.id ? 'readonly' : 'required' }}>
+                </div><!-- /.col-lg-6 -->
+                {% if inscription.id %}
+                <div class="col-lg-12 form-group">
+                    {% if inscription.level == 1 %}
+                        <input type="text" placeholder="Hablanos de ti" value="Profecional en estética" readonly>
+                    {% elseif inscription.level == 2 %}
+                        <input type="text" placeholder="Hablanos de ti" value="Estudiante en estética" readonly>
+                    {% elseif inscription.level == 3 %}
+                        <input type="text" placeholder="Hablanos de ti" value="Experiencia laboral en estética" readonly>
+                    {% endif %}
+                </div>
+                {% else %}
+                <div class="col-lg-12 pb-4 pt-2">
+                    <h5>Hablanos de ti.</h5>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="level" id="tipo_estudiante1"
+                            value="1" checked>
+                        <label class="form-check-label" for="tipo_estudiante1">
+                            Profecional en estética
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="level" id="tipo_estudiante2"
+                            value="2">
+                        <label class="form-check-label" for="tipo_estudiante2">
+                            Estudiante en estética
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="level" id="tipo_estudiante3"
+                            value="3">
+                        <label class="form-check-label" for="tipo_estudiante3">
+                            Experiencia laboral en estética
+                        </label>
+                    </div>
+                </div><!-- /.col-lg-6 -->
+                {% endif %}
+                <div class="col-lg-12 mb-4">
+                    <div class="custom-file">
+                        <input type="file" name="file" class="custom-file-input" id="customFileLang" lang="es" required>
+                        <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                    </div>
+                </div><!-- /.col-lg-6 -->
+                <div class="col-lg-12 pb-4">
+                    <textarea class="form-control" name="comment" rows="2" style="height: auto;" placeholder="Escribe su comentario"></textarea>
+                </div><!-- /.col-lg-6 -->
+                <div class="col-lg-12">
+                    <div class="text-center">
+                        <button type="submit" class="thm-btn" style="background-color: var(--main-two);">Enviar</button>
+                    </div><!-- /.text-center -->
+                </div><!-- /.col-lg-12 -->
+            </div><!-- /.row -->
+        </form><!-- /.contact-one__form -->
+    </div>
+</div>

@@ -1,0 +1,39 @@
+{% if APP.SESSION.login16.user is not defined %}
+<section class="row mb-3 section" data-scrolled="#registrate" id="registrate">
+    <div class="col-lg-12">
+        <div class="card system-card-5">
+            <div class="card-body p-0">
+                <form id="frmMessage">
+                    <div class="cont-content">
+                        <div class="row">
+                            <div class="col-lg-12 mb-3">
+                                <h4>¡Sé parte de la comunidad!</h4>
+                                <div class="line"></div>
+                            </div>
+                            <div class="col-lg-12 mb-4">
+                                <input type="email" class="form-control" name="email" placeholder="Correo electrónico" required>
+                            </div>
+                            <div class="col-lg-12 mb-2 d-flex">
+                                <div class="form-check mx-auto">
+                                    <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                                    <label class="form-check-label" for="exampleCheck1"><span>Acepto los <a href="#" data-bs-toggle="modal" data-bs-target="#modal_terms_and_conditions">términos y condiciones</a></span></label>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-light btn-sys-two px-4">REGÍSTRATE GRATIS</button>                 
+                    </div> 
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal_terms_and_conditions" tabindex="-1" aria-labelledby="modal_terms_and_conditions_label" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-body p-5">
+                    {{ _company.terms_and_conditions|raw }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}

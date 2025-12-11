@@ -1,0 +1,216 @@
+{% extends "admin/layouts/main.twig" %}
+
+{% block aside %}
+	{% include 'admin/layouts/partials/aside.twig' with { 'aside': 'dashboard' } %}
+{% endblock %}
+
+{% block breadcrumb %}
+    {% include 'admin/layouts/partials/breadcrumb.twig' with { 'breadcrumb': 'dashboard'  } %}
+{% endblock %}
+
+{% block css %}
+    <!--begin::Page Vendors Styles(used by this page)-->
+    <link href="//www.amcharts.com/lib/3/plugins/export/export.css" rel="stylesheet" type="text/css" />
+    <!--end::Page Vendors Styles-->
+    <style>
+        .panel-recent{
+            max-height: 450px;
+            overflow: auto;
+            word-break: break-all;
+        }
+        .panel-recent::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+            background-color: #F5F5F5;
+        }
+        .panel-recent::-webkit-scrollbar{
+            width: 6px;
+            background-color: #F5F5F5;
+        }
+        .panel-recent::-webkit-scrollbar-thumb{
+            background-color: #B5B5C3;
+        }
+        #table-inscriptions_filter{
+            display: none;
+        }
+        .font-weight-500{
+            font-weight: 500;
+        }
+    </style>
+{% endblock %}
+
+
+{% block content %}
+<div class="container" id="AppDashboardAdmin">
+    <div class="row">
+        <div class="col-lg-8 col-xxl-8">
+            <div class="card card-custom gutter-b">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h3 class="card-label">Inscripciones Registrados</h3>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="kt_amcharts" style="height: 450px;"></div>
+                </div>
+            </div>
+        </div>
+	    <div class="col-lg-4 col-xxl-4">
+            <div class="card card-custom card-stretch gutter-b">
+                <div class="card-header align-items-center border-0 mt-4">
+                    <h3 class="card-title align-items-start flex-column">
+                        <span class="font-weight-bolder text-dark">Actividades Recientes</span>
+                        <span class="text-muted mt-3 font-weight-bold font-size-sm">Clientes</span>
+                    </h3>
+                </div>
+                <div class="card-body pt-3 pb-3 panel-recent">
+                    <div class="timeline timeline-6 mt-3">
+                        <div class="timeline-item align-items-start" v-for="(item, index) in recents">
+                            <div class="timeline-label font-weight-bolder text-dark-75 font-size-lg">
+                                <span v-text="item.time"></span><br><small v-text="item.date"></small>
+                            </div>
+                            <div class="timeline-badge">
+                                <template v-if="item.status == 'pagado'">
+                                    <i class="fa fa-genderless text-success icon-xl" title="Pagado"></i>
+                                </template>
+                                <template v-else-if="item.status == 'rechazado'">
+                                    <i class="fa fa-genderless text-danger icon-xl" title="Rechazado"></i>
+                                </template>
+                                <template v-else-if="item.status == 'enviado'">
+                                    <i class="fa fa-genderless text-primary icon-xl" title="Enviado"></i>
+                                </template>
+                                <template v-else-if="item.status == 'pendiente'">
+                                    <i class="fa fa-genderless text-warning icon-xl" title="Pendiente"></i>
+                                </template>
+                            </div>
+                            <div class="timeline-content text-dark-75 pl-3 font-size-lg">
+                                <span class="font-weight-500" v-text="item.email"></span><br>
+                                <a href="javascript:;" class="text-primary" v-text="'PEN ' + item.product.price"></a>.<br>
+                                <span class="text-dark-50 font-size-sm" v-text="item.product.name"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-xxl-12">
+            <div class="card card-custom gutter-b">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h3 class="card-label">Gestión de Inscripciones</h3>
+                    </div>
+                    <div class="card-toolbar">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-lg-9 form-group">
+                            <input type="text" class="form-control" id="search" placeholder="Buscar">
+                        </div>
+                        <div class="col-lg-3 form-group">
+                            <select class="form-control" id="status">
+                                <option selected value="">Todos</option>
+                                <option value="Pagado">Pagado</option>
+                                <option value="Enviado">Enviado</option>
+                                <option value="Rechazado">Rechazado</option>
+                                <option value="Pendiente">Pendiente</option>
+                            </select>
+                        </div>
+                    </div>
+                    <table class="table table-hover" id="table-inscriptions">
+                        <thead>
+                            <tr>
+                                <th>Correo</th>
+                                <th>Usuario</th>
+                                <th>Teléfono</th>
+                                <th>Curso</th>
+                                <th>Precio</th>
+                                <th>Estado</th>
+                                <th style="max-width:150px;">Comentario</th>
+                                <th class="text-center">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(item, index) in inscriptions">
+                                <td v-html="item.email"></td>
+                                <td v-html="item.name"></td>
+                                <td v-html="item.phone"></td>
+                                <td v-html="item.product.name"></td>
+                                <td v-html="'PEN ' + item.price"></td>
+                                <td>
+                                    <template v-if="item.status == 'pagado'">
+                                        <span class="label label-lg font-weight-bold label-light-success label-inline">Pagado</span>
+                                    </template>
+                                    <template v-else-if="item.status == 'rechazado'">
+                                        <span class="label label-lg font-weight-bold label-light-danger label-inline">Rechazado</span>
+                                    </template>
+                                    <template v-else-if="item.status == 'enviado'">
+                                        <span class="label label-lg font-weight-bold label-light-primary label-inline">Enviado</span>
+                                    </template>
+                                    <template v-else-if="item.status == 'pendiente'">
+                                        <span class="label label-lg font-weight-bold label-light-warning label-inline">Pendiente</span>
+                                    </template>
+                                </td>
+                                <td style="max-width:150px;" v-html="item.comment"></td>
+                                <td class="text-center">
+                                    <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" data-toggle="modal" @click="onModal(index)">
+                                        <i class="fas fa-cog"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal-->
+    <div class="modal fade" id="modal-manage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Gestionar Transacción</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formInscription" @submit="onFormInscription">
+                        <div class="form-group">
+                            <label>Estado</label>
+                            <select class="form-control" name="status">
+                                    <option value="pagado">Pagado</option>
+                                    <option value="rechazado">Rechazado</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Comentario</label>
+                            <textarea class="form-control" name="comment" rows="4"></textarea>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="send" value="1" checked> Enviar correo
+                            </label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light-primary font-weight-bold" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary font-weight-bold" form="formInscription">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+    <script src="//www.amcharts.com/lib/3/amcharts.js"></script>
+    <script src="//www.amcharts.com/lib/3/serial.js"></script>
+    <script src="//www.amcharts.com/lib/3/radar.js"></script>
+    <script src="//www.amcharts.com/lib/3/pie.js"></script>
+    <script src="//www.amcharts.com/lib/3/plugins/tools/polarScatter/polarScatter.min.js"></script>
+    <script src="//www.amcharts.com/lib/3/plugins/animate/animate.min.js"></script>
+    <script src="//www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+    <script src="//www.amcharts.com/lib/3/themes/light.js"></script>
+    <script>window.addEventListener('load', window.AppDashboardAdmin.index(JSON.parse("{{ rsp.data|json_encode|e('js') }}")));</script>
+{% endblock %}

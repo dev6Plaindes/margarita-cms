@@ -1,0 +1,138 @@
+{#<div class="topbar-one">
+    <div class="container">
+        <div class="topbar-one__left">
+            <a href="#">needhelp@kipso.com</a>
+            <a href="#">444 888 0000</a>
+        </div><!-- /.topbar-one__left -->
+        <div class="topbar-one__right">
+            <a href="#">Login</a>
+            <a href="#">Register</a>
+        </div><!-- /.topbar-one__right -->
+    </div><!-- /.container -->
+</div><!-- /.topbar-one -->#}
+<header class="site-header site-header__header-one">
+    <nav class="navbar navbar-expand-lg navbar-light header-navigation stricky">
+        <div class="container clearfix">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="logo-box clearfix">
+
+                <a class="navbar-brand" href="/">
+                    <img src="{{ _company.logos[0].patch }}" class="main-logo" width="190" alt="Awesome Image" />
+                </a>
+           
+                {#<a class="navbar-brand" href="/">
+                    <img src="/assets/template/stetic/images/logo.png" class="main-logo" width="190" alt="Awesome Image" />
+                </a>#}
+                <div class="header__social">
+                    {% if _company.facebook_link %}<a href="{{ _company.facebook_link }}" target="_blank"><i class="fab fa-facebook-square"></i></a>{% endif %}
+                    {% if _company.twitter_link %}<a href="{{ _company.twitter_link }}" target="_blank"><i class="fab fa-twitter"></i></a>{% endif %}
+                    {% if _company.linkedin_link %}<a href="{{ _company.linkedin_link }}" target="_blank"><i class="fab fa-linkedin"></i></a>{% endif %}
+                    {% if _company.instagram_link %}<a href="{{ _company.instagram_link }}" target="_blank"><i class="fab fa-instagram"></i></a>{% endif %}
+                
+                </div><!-- /.header__social -->
+                <button class="menu-toggler" data-target=".main-navigation">
+                    <span class="kipso-icon-menu"></span>
+                </button>
+            </div><!-- /.logo-box -->
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="main-navigation">
+                <ul class=" navigation-box">
+                    {% for menu_item in _menu %}
+                    {% if menu_item.template_view.index == 2 or menu_item.template_view.index == 4 %}
+                    <li class="current">
+                        {% if menu_item.children[0] %}
+                        <a style="cursor: pointer;">{{ menu_item.name }}</a>
+                        {% else %}
+                        <a href="/{{ menu_item.slug }}">{{ menu_item.name }}</a>
+                        {% endif %}
+                        
+                        {% if menu_item.children %}
+                        <ul class="sub-menu">
+                            {% for sub_menu_item in menu_item.children %}
+                            <li><a href="/{{ sub_menu_item.slug }}">{{ sub_menu_item.name }}</a>
+                                {% if sub_menu_item.children %}
+                                <ul class="sub-menu">
+                                    {% for sub2_menu_item in sub_menu_item.children %}
+                                    <li><a href="/{{ sub2_menu_item.slug }}">{{ sub2_menu_item.name }}</a></li>
+                                    {% endfor %}
+                                </ul><!-- /.sub-menu -->
+                                {% endif %}
+                            </li>
+                            {% endfor %}
+                            {% if menu_item.children[1] %}
+                            <li class="current">
+                                <a href="/{{ menu_item.slug }}">Ver todos</a>
+                            </li>
+                            {% endif %}
+                        </ul><!-- /.sub-menu -->
+                        {% endif %}
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                    {#<li class="current">
+                        <a href="./">Nosotros</a>
+                    </li>
+                    <li class="current">
+                        <a href="/cursos">Especialidades</a>
+                    </li>
+                    <li class="current">
+                        <a href="/cursos">Cursos</a>
+                    </li>
+                    <li class="current">
+                        <a href="/cursos">Complementarios</a>
+                    </li>
+                    <li class="current">
+                        <a href="/cursos">Diplomados</a>
+                    </li>
+                    <li class="current">
+                        <a href="/cursos">Talleres libres</a>
+                    </li>
+                    <li class="current">
+                        <a href="/contacto">Contáctanos</a>
+                    </li>#}
+                    {#<li>
+                        <a href="/cursos">Cursos</a>
+                        <ul class="sub-menu">
+                            <li><a href="/cursos">Especialidades</a></li>
+                            <li><a href="/cursos">Complementarios</a></li>
+                        </ul><!-- /.sub-menu -->
+                    </li>
+                    <li class="current">
+                        <a href="/galeria">Galería</a>
+                    </li>
+                    <li class="current">
+                        <a href="/contacto">Contacto</a>
+                    </li>#}
+                </ul>
+            </div><!-- /.navbar-collapse -->
+            {% if _company.whatsapp_link %}
+            <div class="right-side-box">
+                <a class="mailchimp-one__icon__header" href="{{ _company.whatsapp_link }}" target="_blank" style="">
+                    <i class="fab fa-whatsapp"></i>
+                    <!-- /.kipso-icon-magnifying-glass --></a>
+            </div><!-- /.right-side-box -->
+            {% endif %}
+            {#
+            <div class="right-side-box">
+                <a class="header__search-btn search-popup__toggler" href="#"><i
+                        class="kipso-icon-magnifying-glass"></i>
+                    <!-- /.kipso-icon-magnifying-glass --></a>
+            </div><!-- /.right-side-box -->
+            #}
+        </div>
+        <!-- /.container -->
+    </nav>
+    <div class="site-header__decor">
+        <div class="site-header__decor-row">
+            <div class="site-header__decor-single">
+                <div class="site-header__decor-inner-1"></div><!-- /.site-header__decor-inner -->
+            </div><!-- /.site-header__decor-single -->
+            <div class="site-header__decor-single">
+                <div class="site-header__decor-inner-2"></div><!-- /.site-header__decor-inner -->
+            </div><!-- /.site-header__decor-single -->
+            <div class="site-header__decor-single">
+                <div class="site-header__decor-inner-3"></div><!-- /.site-header__decor-inner -->
+            </div><!-- /.site-header__decor-single -->
+        </div><!-- /.site-header__decor-row -->
+    </div><!-- /.site-header__decor -->
+</header><!-- /.site-header -->

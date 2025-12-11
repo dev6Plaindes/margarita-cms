@@ -1,0 +1,24 @@
+{% if products|length > 0 %}
+<div class="course-details__list">
+    <h2 class="course-details__list-title">Nuevos cursos</h2><!-- /.course-details__list-title -->
+    {% for product in products %}
+    <div class="course-details__list-item">
+        <div class="course-details__list-img">
+            <img src="{{ product.image ? product.image : '/assets/template/stetic/images/lc-1-1.jpg' }}" alt="{{ product.category.name }}" style="height:67px;">
+        </div><!-- /.course-details__list-img -->
+        <div class="course-details__list-content">
+            <a class="course-details__list-author" href="#">por <span>{{ product.teacher.name ? product.teacher.name ~ ' ' ~  product.teacher.lastname : 'definir docente'}}</span></a>
+            <h3><a href="/producto/{{ product.slug }}">{{ product.name }}</a></h3>
+            <div class="course-details__list-stars">
+                <i class="fas fa-star"></i><!-- /.fas fa-star -->
+                <i class="fas fa-star"></i><!-- /.fas fa-star -->
+                <i class="fas fa-star"></i><!-- /.fas fa-star -->
+                <i class="fas fa-star"></i><!-- /.fas fa-star -->
+                <i class="fas fa-star"></i><!-- /.fas fa-star -->
+                <span>4.8</span>
+            </div><!-- /.course-details__list-stars -->
+        </div><!-- /.course-details__list-content -->
+    </div><!-- /.course-details__list-item -->
+    {% endfor %}
+</div><!-- /.course-details__list -->
+{% endif %}

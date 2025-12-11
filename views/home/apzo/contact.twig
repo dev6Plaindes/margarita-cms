@@ -1,0 +1,42 @@
+{% extends "home/apzo/layouts/main.twig" %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block headerMobile %}
+    {% include 'home/apzo/layouts/partials/header.mobile.twig' %}
+{% endblock %}
+
+{% block header %}
+    {% include 'home/apzo/layouts/partials/header.twig' with { active: 'contact' } %}
+{% endblock %}
+
+{% block content %}
+            <div class="apzo-page-wrapper" id="apzo-page-wrapper">
+                <div class="gdlr-core-page-builder-body">
+                    <div class="gdlr-core-pbf-wrapper  gdlr-core-hide-in-tablet-mobile" style="padding: 170px 0px 40px 0px;">
+                        <div class="gdlr-core-pbf-background-wrap"></div>
+                        <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
+                            <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container"></div>
+                        </div>
+                    </div>
+
+                      {% include 'home/apzo/partials_contact/slider.one.twig' %} 
+                      {% include 'home/apzo/partials_contact/datos_contacto.twig' %}                    
+                  
+                        {% include 'home/apzo/partials_contact/form_contacto.twig' %} 
+
+                     {% include 'home/apzo/partials_contact/maps_contacto.twig' %} 
+                     {% include 'home/apzo/partials_contact/redes_sociales.twig' %} 
+                    
+                </div>
+            </div>
+
+{% endblock %}
+
+{% block js %}
+<script src="/assets/utilitarian/js/sweetalert2.js"></script>
+    <!-- template scripts -->    
+<script src="/assets/template/apzo/js/main.min.js"></script>
+{% endblock %}

@@ -1,0 +1,64 @@
+<div class="col-lg-12 mb-5">    
+    <div id="carrusel_cero" class="carousel carousel-dark slide carrusel-d" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            {% for index, section in pro360 %} 
+                    {% if index == 0 %}
+                    <button type="button" data-bs-target="#carrusel_cero" data-bs-slide-to="{{ index }}" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    {% else %}
+                    <button type="button" data-bs-target="#carrusel_cero" data-bs-slide-to="{{ index }}" aria-label="Slide 2"></button>
+                    {% endif%}  
+            {% endfor %}
+        </div>
+        <div class="carousel-inner carrusel-uno">            
+            {% for index, section in pro360 %}
+            <div class="carousel-item {{ index == 0 ? 'active' }}" data-bs-interval="10000">
+                <div class="px-3">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <h2>{{ section.title|raw }}</h2>
+                            <p>{{ section.description }}</p>
+                        </div>
+                        <div class="col-lg-8">
+                            <img style="width: 100%; max-height: 15rem;" src="{{ section.banner.patch }}" alt="">
+                        </div>
+                              
+                
+                        
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {#{% for index, section in sections %}
+                {% if section.alias == 'accordion' %}
+                    {% for index_content, item_content in section.contents %}
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <img style="height: 20rem;" src="{{ item_content.file }}" class="d-block" alt="...">
+                    </div>
+                    {% endfor %}
+                {% endif %}              
+            {% endfor %}#}
+        </div>
+    </div>
+
+    {% for index_content, item_content in plataformas %}
+    <div id="carousel-{{ item_content.uniqid }}" class="carousel carousel-dark slide carrusel-d d-none" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+        {% for index_b, banner_b in item_content.banners %}  
+          {% if index_b == 0 %}
+          <button type="button" data-bs-target="#carousel-{{ item_content.uniqid }}" data-bs-slide-to="{{ index_b }}" class="active" aria-current="true" aria-label="Slide 1"></button>
+          {% else %}
+          <button type="button" data-bs-target="#carousel-{{ item_content.uniqid }}" data-bs-slide-to="{{ index_b }}" aria-label="Slide 2"></button>
+          {% endif%}  
+        {% endfor %}
+        </div>
+        <div class="carousel-inner carrusel-uno">
+          {% for index_i, banner_c in item_content.banners %}  
+          <div class="carousel-item {{ index_i == 0 ? 'active' }}">
+            <img src="{{ banner_c.patch }}" class="d-block w-100" alt="...">
+          </div>
+          {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+
+</div>

@@ -1,0 +1,125 @@
+{% extends "home/stetic/main.twig" %}
+
+{% block css %}
+    <style>
+        .custom-file-label:after { content: 'Buscar'; }
+        .custom-file-input:focus ~ .custom-file-label { box-shadow: none; }
+        .custom-file-input { height: 15px !important; }
+        .form-control { box-shadow: none !important; background-color: #f1f1f1 !important; }
+    </style>
+{% endblock %}
+
+{% block content %}
+<section class="course-details py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="course-details__content">
+                    <p class="course-details__author">
+                        <img src="{{ product.teacher.image ? product.teacher.image : '/assets/template/stetic/images/team-1-1.jpg'}}" alt="{{ product.teacher.name }}">
+                        Por <a href="#">{{ product.teacher.name ? product.teacher.name ~ ' ' ~  product.teacher.lastname : 'definir docente'}}</a>
+                    </p><!-- /.course-details__author -->
+                    <div class="course-details__top">
+                        <div class="course-details__top-left">
+                            <h2 class="course-details__title">{{ product.name }}</h2>
+                            <!-- /.course-details__title -->
+                            {# <div class="course-one__stars">
+                                <span class="course-one__stars-wrap">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </span><!-- /.course-one__stars-wrap -->
+                                <span class="course-one__count">4.8</span><!-- /.course-one__count -->
+                                <span class="course-one__stars-count">250</span><!-- /.course-one__stars-count -->
+                            </div><!-- /.course-one__stars --> #}
+                        </div>
+                        <div class="course-details__top-right">
+                            <a href="#" class="course-one__category" style="background-color:{{ product.category.color }}">{{ product.category.name }}</a><!-- /.course-one__category -->
+                        </div><!-- /.course-details__top-right -->
+                    </div>
+                </div><!-- /.course-details__content -->
+                {% if inscription.id %}
+                    {% if inscription.status == 'enviado' %}
+                        <div class="form-group">
+                            <ul class="list-group">
+                                <li class="list-group-item p-4">
+                                    <h5 class="m-0"><i class="fa fa-exclamation-triangle mr-2 text-warning" aria-hidden="true"></i> El pago está en proceso de revisión.</h5>
+                                </li>
+                            </ul>
+                        </div>
+                    {% elseif inscription.status == 'pagado' %}
+                        <div class="form-group">
+                            <ul class="list-group">
+                                <li class="list-group-item p-4">
+                                    <h5 class="m-0"><i class="fa fa-check-circle mr-2 text-success" aria-hidden="true"></i> El pago se proceso con éxito.</h5>
+                                </li>
+                            </ul>
+                        </div>
+                    {% elseif inscription.status == 'rechazado' %}
+                        <div class="form-group">
+                            <ul class="list-group">
+                                <li class="list-group-item p-4">
+                                    <h5 class="m-0"><i class="fa fa-times-circle mr-2 text-danger" aria-hidden="true"></i> El pago fue rechazado.</h5>
+                                </li>
+                            </ul>
+                        </div>
+                    {% elseif inscription.status == 'pendiente' %}
+                        {% include 'home/stetic/product/partials/form.twig' %}
+                    {% endif %}
+                {% else %}
+                    {% include 'home/stetic/product/partials/form.twig' %}
+                {% endif %}
+            </div><!-- /.col-lg-8 -->
+            <div class="col-lg-4">
+                <div class="course-details__price form-group">
+                    <p class="course-details__price-text">Precio del curso </p><!-- /.course-details__price-text -->
+                    <p class="course-details__price-amount"> PEN {{ product.price }}</p><!-- /.course-details__price-amount -->
+                </div><!-- /.course-details__price -->
+                {# <br>
+                <div class="form-group">
+                    <h5>Medios de Pagos</h5>
+                </div> #}
+                <div class="form-group">
+                    <ul class="list-group">
+                        {% for item in mobiles %}
+                        <li class="list-group-item p-4">
+                            <div class="float-left mb-2">
+                                <h6>{{ item.account }}</h6>
+                                <h6><b>{{ item.number }}</b></h6>
+                            </div>
+                            <div class="float-right">
+                            {% if item.image %}
+                                <img src="{{ item.image }}" height="50px" style="max-width:100px;">
+                            {% endif %}                        
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="form-group">
+                    <ul class="list-group">
+                        {% for item in banks %}
+                        <li class="list-group-item p-4">
+                            <div class="float-left mb-2">
+                                <h6>{{ item.account }}</h6>
+                                <h6>Número: <b>{{ item.number }}</b></h6>
+                                <h6>CCI: <b>{{ item.cci }}</b></h6>
+                            </div>
+                            <div class="float-right">
+                            {% if item.image %}
+                                <img src="{{ item.image }}" height="50px" style="max-width:100px;">
+                            {% endif %}                        
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section><!-- /.course-details -->
+{% endblock %}
+
+{% block js %}{% endblock %}

@@ -1,0 +1,7 @@
+@import "components/contacto";
+@media only screen and (max-width: 768px) {
+    .slider .h1-text{
+        line-height: 25px !important;
+        top: 20px !important;
+    }
+}

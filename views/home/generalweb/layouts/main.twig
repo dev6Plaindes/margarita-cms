@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en-US" class="no-js">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{_company.meta_title}}</title>
+
+    <link rel='shortcut icon' href='{{_company.favicon}}' />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            {% for color_item in _company.colors %}
+            --main-{{ color_item.alias }}: {{ color_item.color }};
+            {% endfor %}
+        }
+
+        .swal2-confirm{
+          background-color: var(--main-resaltar) !important};
+        }
+    </style>
+
+    <link rel="stylesheet" href="/assets/template/generalweb/css/main.min.css">
+    {% block css %} {% endblock %}
+    {% set servicios = [] %}
+    {% set pro360 = [] %}
+    {% set promotores = [] %}
+    {% set aliados = [] %}
+    {% set apis = [] %}
+    {% set proyectos = [] %}
+    {% set nosotros = [] %}
+    {% set equipo = [] %}
+    {% set contactanos = [] %}
+    {% set trabaja = [] %}
+    
+    
+    {% for item in contents %}
+        {% if item.alias == 'servicios' %}
+          {% for key in item.contents %}
+            {% set servicios = servicios|merge([
+              {
+                'id': key.id,
+                'alias': key.content_alias,
+                'uniqid': key.uniqid,
+                'title': key.content_name,
+                'url': key.content_url,
+                'description': key.content_description, 
+                'image': key.files[0].url,
+                'banners': key.imagens
+              }]) %}
+          {% endfor %}
+        {% endif %}
+        {% if item.alias == 'pro360' %}
+          {% for key in item.contents %}
+            {% set pro360 = pro360|merge([
+              {
+                'id': key.id,
+                'alias': key.content_alias,
+                'uniqid': key.uniqid,
+                'title': key.content_name,
+                'description': key.content_description,
+                'banner': key.imagens[0]
+              }]) %}
+          {% endfor %}
+        {% endif %}
+        {% if item.alias == 'promotores' %}
+          {% for key in item.contents %}
+            {% set promotores = promotores|merge([
+              {
+                'id': key.id,
+                'alias': key.content_alias,
+                'uniqid': key.uniqid,
+                'title': key.content_name,
+                'banner': key.imagens[0]
+              }]) %}
+          {% endfor %}
+        {% endif %}
+        {% if item.alias == 'aliados' %}
+          {% for key in item.contents %}
+            {% set aliados = aliados|merge([
+              {
+                'id': key.id,
+                'uniqid': key.uniqid,
+                'title': key.content_name,
+                'image': key.imagens[0].patch,
+                'url': key.content_url
+              }]) %}
+          {% endfor %}
+        {% endif %}
+        {% if item.alias == 'apis' %}
+          {% for key in item.contents %}
+            {% set apis = apis|merge([
+              {
+                'id': key.id,
+                'uniqid': key.uniqid,
+                'title': key.content_name,
+                'url_api': key.content_url
+              }]) %}
+          {% endfor %}
+        {% endif %}
+        {% if item.alias == 'proyectos' %}
+          {% for key in item.contents %}
+            {% set proyectos = proyectos|merge([
+              {
+                'id': key.id,
+                'uniqid': key.uniqid,
+                'categoria': key.content_name,
+                'description': key.content_description,
+                'title': key.content_caption,
+                'url_api': key.content_url,
+                'image': key.imagens[0].patch
+              }]) %}
+          {% endfor %}
+        {% endif %}
+        {% if item.alias == 'nosotros' %}
+          {% for key in item.contents %}
+            {% set nosotros = nosotros|merge([
+              {
+                'id': key.id,
+                'uniqid': key.uniqid,
+                'title': key.content_name,
+                'subtitle': key.content_caption,
+                'description': key.content_description,
+                'images': key.imagens
+              }]) %}
+          {% endfor %}
+        {% endif %}
+        {% if item.alias == 'equipo' %}
+          {% for key in item.contents %}
+            {% set equipo = equipo|merge([
+              {
+                'id': key.id,
+                'uniqid': key.uniqid,
+                'title': key.content_name,
+                'subtitle': key.content_caption,
+                'description': key.content_description,
+                'image': key.imagens[0].patch
+              }]) %}
+          {% endfor %}
+        {% endif %}
+        {% if item.alias == 'contactanos' %}
+          {% for key in item.contents %}
+            {% set contactanos = contactanos|merge([
+              {
+                'id': key.id,
+                'uniqid': key.uniqid,
+                'title': key.content_name,
+                'subtitle': key.content_caption,
+                'description': key.content_description,
+                'image': key.imagens[0].patch
+              }]) %}
+          {% endfor %}
+        {% endif %}
+        {% if item.alias == 'trabaja' %}
+          {% for key in item.contents %}
+            {% set trabaja = trabaja|merge([
+              {
+                'id': key.id,
+                'uniqid': key.uniqid,
+                'title': key.content_name,
+                'subtitle': key.content_caption,
+                'description': key.content_description,
+                'image': key.imagens[0].patch
+              }]) %}
+          {% endfor %}
+        {% endif %}
+    {% endfor %}
+    
+    {% set sections = [
+        {
+          'alias': 'information',
+          'contents': pro360
+        },
+        {
+          'alias': 'accordion',
+          'contents': servicios
+        },
+        {
+          'alias': 'products',
+          'contents': apis
+        },
+        {
+          'alias': 'aliados',
+          'contents': aliados,
+          'title': 'Nuestros Aliados',
+          'uniqid': 'generalweb01'
+        }
+      ]
+    %}
+</head>
+
+<body translate="no">
+    <header>
+    {% include 'home/generalweb/layouts/partials/header.twig' with { active: 'home' } %}
+    </header>
+    <main role="main" class="pt-1">
+        {% block content %} {% endblock %}
+    </main>
+    {#<footer class="py-5">
+        {% include 'home/generalweb/layouts/partials/footer.twig'%}
+    </footer>#}
+    {% include "home/generalweb/partials/popup.twig" %}
+    {% include "home/plugins.twig" with { whatsapp : true}  %}
+
+    <script src="/assets/utilitarian/js/sweetalert2.js"></script>
+
+    <script src="\assets\template\generalweb\js\bundle-main.min.js"></script>
+    <script src="\assets\template\generalweb\js\library-main.min.js"></script>
+    <script src="\assets\template\generalweb\js\main.min.js"></script>
+    {% block js %} {% endblock %}
+</body>
+</html>

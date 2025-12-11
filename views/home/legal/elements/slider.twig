@@ -1,0 +1,39 @@
+
+
+{% if contents %}
+     {% for content in contents %}
+
+        {% if content.alias == 'banner_inicio' %}
+
+        
+            <section class="container-fluid p-0 slider-height">
+                <div id="owl-demo" class="owl-carousel owl-theme">
+                    <!--div class="item d-flex justify-content-center">
+                        <img src="{{content.contents[0].imagens[0].patch}}" alt="The Last of us">
+                        <div class="slider-elements">
+                            {{content.contents[0].content_description|raw}}
+                            <a href="#">Conócenos</a>
+                        </div>
+                    </div-->
+
+                       {% for k, c_content in content.contents %}
+                       
+                            <div class="item d-flex justify-content-center">
+                                    
+                                <img src="{{ c_content.imagens[0].patch }}" alt="The Last of us">
+
+                                <div class="slider-elements">
+                                    <p>{{ c_content.content_description|raw }}</p>
+                                </div>
+                                
+                            </div>
+
+                        {% endfor %}
+
+                </div>
+            </section>
+
+        {% endif %}                          
+
+     {% endfor %}
+ {% endif %}

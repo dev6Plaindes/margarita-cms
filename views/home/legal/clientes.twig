@@ -1,0 +1,18 @@
+{% extends "home/legal/main.twig" %}
+
+{% block css %}
+<link rel="stylesheet" href="/assets/template/legal/css/slider.css">
+{% endblock %}
+
+{% block content %}
+{% include 'home/legal/elements_clientes/banner-light.twig' %}
+{% include 'home/legal/elements_clientes/cards_clientes.twig' %}
+{% include 'home/legal/elements_clientes/cards_testimonios.twig' %}
+
+{% endblock %}
+{% block js %}
+<script>
+    $(".menu-item-3 a").eq(0).addClass("active");
+</script>
+<script src="/assets/template/legal/js/slider.js"></script>
+{% endblock %}

@@ -1,0 +1,106 @@
+<footer class="site-footer">
+    <div class="site-footer__upper">
+        <div class="container">
+            <div class="row">
+                {#<div class="col-xl-3 col-lg-6 col-sm-12">
+                    <div class="footer-widget footer-widget__contact">
+                        <h2 class="footer-widget__title">Cursos</h2><!-- /.footer-widget__title -->
+                        <ul class="list-unstyled footer-widget__course-list">
+                            <li>
+                                <h2><a href="/curso/item">Introduction Web Design</a></h2>
+                                <p>Mike Hardson</p>
+                            </li>
+                            <li>
+                                <h2><a href="/curso/item"> Learning MBA Management </a></h2>
+                                <p>Jessica Brown</p>
+                            </li>
+                        </ul><!-- /.footer-widget__course-list -->
+                    </div><!-- /.footer-widget -->
+                </div><!-- /.col-lg-3 -->#}
+                <div class="col-xl-4 col-lg-4 col-sm-12">
+                    <div class="footer-widget footer-widget__link">
+                        <h2 class="footer-widget__title">Explorar</h2><!-- /.footer-widget__title -->
+                        <div class="footer-widget__link-wrap">
+                            <ul class="list-unstyled footer-widget__link-list">
+                            {% for k, menu_item in _menu %}
+                                {% if k < 4%}
+                                <li>
+                                    <a href="./{{ menu_item.slug }}">{{ menu_item.name }}</a>
+                                </li>
+                                {% endif %}
+                            {% endfor %}
+                                {#<li><a href="#">About</a></li>
+                                <li><a href="#">Overview</a></li>
+                                <li><a href="#">Teachers</a></li>
+                                <li><a href="#">Join Us</a></li>
+                                <li><a href="#">Our News</a></li>#}
+                            </ul><!-- /.footer-widget__link-list -->
+                            <ul class="list-unstyled footer-widget__link-list">
+                            {% for k, menu_item in _menu %}
+                                {% if k >= 5%}
+                                <li>
+                                    <a href="./{{ menu_item.slug }}">{{ menu_item.name }}</a>
+                                </li>
+                                {% endif %}
+                            {% endfor %}
+                                {#<li><a href="#">Help </a></li>
+                                <li><a href="#">Contact</a></li>
+                                <li><a href="#">Register Now</a></li>#}
+                            </ul><!-- /.footer-widget__link-list -->
+                        </div><!-- /.footer-widget__link-wrap -->
+                    </div><!-- /.footer-widget -->
+                </div><!-- /.col-lg-3 -->
+                <div class="col-xl-3 col-lg-6 col-sm-12">
+                    <div class="footer-widget footer-widget__gallery">
+                        <h2 class="footer-widget__title">Gallery</h2><!-- /.footer-widget__title -->
+                        <ul class="list-unstyled footer-widget__gallery-list">
+                            {% for k, galery_item in _galery.data %}
+                            {% if k < 6 %}
+                            <li><a href="/{{ _galery.slug|raw }}"><img src="{{ galery_item.image|raw }}" alt=""></a></li>
+                            {% endif %}
+                            {% endfor %}
+                            {#<li><a href="/galeria"><img src="/assets/template/stetic/images/estudiante-7.jpg" alt=""></a></li>
+                            <li><a href="/galeria"><img src="/assets/template/stetic/images/estudiante-2.jpg" alt=""></a></li>
+                            <li><a href="/galeria"><img src="/assets/template/stetic/images/estudiante-3.jpg" alt=""></a></li>
+                            <li><a href="/galeria"><img src="/assets/template/stetic/images/estudiante-4.jpg" alt=""></a></li>
+                            <li><a href="/galeria"><img src="/assets/template/stetic/images/estudiante-5.jpg" alt=""></a></li>
+                            <li><a href="/galeria"><img src="/assets/template/stetic/images/estudiante-6.jpg" alt=""></a></li>#}
+                        </ul><!-- /.footer-widget__gallery -->
+                    </div><!-- /.footer-widget -->
+                </div><!-- /.col-lg-3 -->
+                <div class="col-xl-3 col-lg-6 col-sm-12">
+                    <div class="footer-widget footer-widget__about">
+                        <h2 class="footer-widget__title">Nosotros</h2><!-- /.footer-widget__title -->
+                        <p class="footer-widget__text">{{ _company.description }}</p><!-- /.footer-widget__text -->
+                        <div class="footer-widget__btn-block">
+                            {% for menu_item in _menu %}
+                            {% if menu_item.template_view.index == 4 %}
+                            <a href="/{{ menu_item.slug }}" class="thm-btn">Contacto</a><!-- /.thm-btn -->
+                            {% endif %}
+                            {% endfor %}
+                            <a href="/#productos" class="thm-btn">Comprar</a><!-- /.thm-btn -->
+                        </div><!-- /.footer-widget__btn-block -->
+                    </div><!-- /.footer-widget -->
+                </div><!-- /.col-lg-3 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </div><!-- /.site-footer__upper -->
+    <div class="site-footer__bottom">
+        <div class="container">
+            <p class="site-footer__copy">&copy; Copyright 2021 by <a href="#">maindeveloper.com</a></p>
+            <p class="site-footer__copy">
+                <a href="/terminos-y-condiciones" target="_blank">Terminos y condiciones</a> <span class="ml-2">y</span>
+                <a href="/politicas-de-privacidad" target="_blank">políticas de privacidad</a>
+            </p>
+            <div class="site-footer__social">
+                <a href="#" data-target="html" class="scroll-to-target site-footer__scroll-top"><i
+                        class="kipso-icon-top-arrow"></i></a>
+                {% if _company.facebook_link %}<a href="{{ _company.facebook_link }}" target="_blank"><i class="fab fa-facebook-square"></i></a>{% endif %}
+                {% if _company.twitter_link %}<a href="{{ _company.twitter_link }}" target="_blank"><i class="fab fa-twitter"></i></a>{% endif %}
+                {% if _company.linkedin_link %}<a href="{{ _company.linkedin_link }}" target="_blank"><i class="fab fa-linkedin"></i></a>{% endif %}
+                {% if _company.instagram_link %}<a href="{{ _company.instagram_link }}" target="_blank"><i class="fab fa-instagram"></i></a>{% endif %}
+            </div><!-- /.site-footer__social -->
+            <!-- /.site-footer__copy -->
+        </div><!-- /.container -->
+    </div><!-- /.site-footer__bottom -->
+</footer><!-- /.site-footer -->

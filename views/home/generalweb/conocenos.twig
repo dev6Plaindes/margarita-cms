@@ -1,0 +1,87 @@
+{% extends "home/generalweb/layouts/main.twig" %}
+
+{% block css %}{% endblock %}
+
+
+
+{% block content %}
+<div class="container-fluid my-2 py-2" style="min-height: 44vh; background-color: white;">
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6">
+        <div class="header-nos bl-color-resaltar px-4" style="margin-left: -15px;">
+            <h3>{{ nosotros[0].title }}</h3>
+            <h1>{{ nosotros[0].subtitle }}</h1>
+        </div>
+        <div class="text-nos p-4">
+            <p>{{ nosotros[0].description }}</p>
+        </div>
+
+    </div>
+    <div class="col-lg-6">
+      <div class="row">
+        {% include "home/generalweb/partials/carousel-nos.twig" %}
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% if equipo %}
+
+  <div class="container py-5">
+    <div class="row">
+      {% include "home/generalweb/partials/equipo.twig" %}
+    </div>
+  </div>
+
+{% endif%}
+
+{% if proyectos %}
+<div class="container-fluid" style="background-color: #f7f7f7;">
+  <div class="container py-2">
+    <div class="row">
+      {% include "home/generalweb/partials/carousel_proy.twig" %}
+    </div>
+  </div>
+</div>
+{% endif%}
+
+{% endblock %}
+
+{% block js %}
+<script>
+  $(document).ready(function () {
+    {% for index, section in sections %}
+    {% if section.alias == 'products' %}
+    {% for index_content, item_content in section.contents %}
+    {% if item_content.url_api %}
+    carouselthree('{{item_content.uniqid}}', '{{ item_content.url_api }}');
+    {% endif %}
+    {% endfor %}
+    {% elseif section.alias == 'accordion' %}
+    buttomCollapse();
+    myAccordionClick();
+    {% endif %}
+    {% endfor %}
+  });
+</script>
+
+<script>
+  $('.owl-carousel').owlCarousel({
+    loop: true,
+    margin: 10,
+    nav: true,
+    responsive: {
+      0: {
+        items: 1
+      },
+      600: {
+        items: 3
+      },
+      1000: {
+        items: 4
+      }
+    }
+  })
+</script>
+{% endblock %}

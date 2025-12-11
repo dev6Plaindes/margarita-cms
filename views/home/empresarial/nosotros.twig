@@ -1,0 +1,202 @@
+{% extends "home/empresarial/layouts/main.twig" %}
+
+{% block css %}{% endblock %}
+
+{% block content %}
+{% include 'home/empresarial/elements/page_info.twig' with { 'titulo': nosotros[0].section_name } %}
+  <!-- Component Counter Up-->
+  <section>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <div class="video-intro-container">
+                    <div class="background-video">
+                        <img src="{{ nosotros[0].imagens[0].patch }}" class="images-responsive" alt="Image">
+                        {% if nosotros[0].content_url %}
+                        <button data-href="{{ nosotros[0].content_url }}" id="btn-event"
+                        class="btn btn-play"></button>
+                        {% endif %}
+                    </div>
+
+
+                    <div id="video-container" class="embed-responsive embed-responsive-16by9 iframe-video-container">
+                        <iframe id="video" class="embed-responsive-item" src="{{ nosotros[0].content_url }}" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
+                <h2 class="margin-bottom-25 margin-top-3">{{ nosotros[0].content_name|raw }}</h2>
+                <div class="clearfix"></div>
+                <p>{{ nosotros[0].content_description|raw }}</p>
+              <div class="counter-up counter-up-style-1 counter-up-style-3">
+                    <ul>
+                        {% for i, somos in nosotros %}
+                        {% if somos.content_alias == 'indicadores' %}
+                        <li>
+                            <p><span class="couterup" id="yoe_{{i}}"></span></p>
+                            <span class="label-counter">{{ somos.content_name|raw }}</span>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                        {#<li>
+                        <p><span class="couterup" id="yoe"></span></p>
+                        <span class="label-counter">Years of experience</span>
+                      </li>
+                      <li>
+                        <p><span class="couterup" id="hc"></span><span class="unit">K</span></p>
+                        <span class="label-counter">Happy Customers</span>
+                      </li>
+                      <li>
+                        <p><span class="couterup" id="satis"></span><span class="unit">%</span></p>
+                        <span class="label-counter">Satisfaction</span>
+                      </li>#}
+                    </ul>
+              </div><!-- End counter up -->
+          </div><!-- End col -->
+        </div><!-- End row -->
+    </div><!-- End container-->
+</section><!-- End section-->
+<section>
+    <!-- Section Accordion -->
+    <div class="container">
+        <div class="row projectDetail">
+            <div class="col-xs-12 col-md-6">
+                <div class="zoom-gallery">
+                    {% for i, somos in nosotros %}
+                        {% if somos.content_alias == 'galeria' %}
+                        <a class="img-gallery-contain" target="_blank" href="{{ somos.imagens[0].patch }}" data-source="Au Company" title="Au Company"><img src="{{ somos.imagens[0].patch }}" class="img-responsive" alt="Image"></a>
+                        {% endif %}
+                    {% endfor %}
+                    {#<a class="img-gallery-contain" target="_blank" href="/assets/template/empresarial/original/images/Project/zoom2.jpg" data-source="Au Company" title="Au Company"><img src="/assets/template/empresarial/original/images/Project/zoom2.jpg" class="img-responsive" alt="Image"></a>
+                    <a class="img-gallery-contain" target="_blank" href="/assets/template/empresarial/original/images/Project/zoom2.jpg" data-source="Au Company" title="Au Company"><img src="/assets/template/empresarial/original/images/Project/11.jpg" class="img-responsive" alt="Image"></a>
+                    <a class="img-gallery-contain" target="_blank" href="/assets/template/empresarial/original/images/Project/zoom3.jpg" data-source="Au Company" title="Au Company"><img src="/assets/template/empresarial/original/images/Project/12.jpg" class="img-responsive" alt="Image"></a>#}
+                  </div>
+            </div>
+            <div class="col-xs-12 col-md-6">
+            <div class="accordion-style-light no-round">
+                <div class="accordion-warp">
+                    <h2 class="title">Misión, Visión y Valores</h2>
+                    <div class="clearfix"></div>
+                    
+                    <div class="panel-group" id="accordion2">
+                        {% set aux = 0 %}
+                        {% for i, org in nosotros %}
+                            {% if org.content_alias == 'organizacion' %}
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#accordion{{aux}}" href="#collapseOne{{aux}}">{{ org.content_name|raw }}</a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne{{aux}}" class="panel-collapse collapse in">
+                                    <div class="panel-body">
+                                    <div class="accordion-content">
+                                        <p>{{ org.content_description|raw }}</p>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% set aux = aux + 1 %}
+                            {% endif %}
+                        {% endfor %}
+                        {#<div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion2" href="#collapseOne2">01. Define Objectives</a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne2" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                <div class="accordion-content">
+                                    <p>Fusce ornare mi vel risus porttitor dignissim. Nunc eget risus at ipsum blandit ornare vel sed velit. Proin gravida arcu nisl, a dignissim mauris placerat id. Vivamus interdum urna at sapien varius elementum. Suspendisse ut mi felis et interdum libero lacinia vel. Aenean elementum odio ut lorem cursus, eu auctor magna pellentesque.  </p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo2" class="collapsed">02. Develop a Plan</a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo2" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="accordion-content">
+                                    <p>Fusce ornare mi vel risus porttitor dignissim. Nunc eget risus at ipsum blandit ornare vel sed velit. Proin gravida arcu nisl, a dignissim mauris placerat id. Vivamus interdum urna at sapien varius elementum. Suspendisse ut mi felis et interdum libero lacinia vel. Aenean elementum odio ut lorem cursus, eu auctor magna pellentesque.  </p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion2" href="#collapseThree2" class="collapsed">03. Implementation</a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree2" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="accordion-content">
+                                    <p>Fusce ornare mi vel risus porttitor dignissim. Nunc eget risus at ipsum blandit ornare vel sed velit. Proin gravida arcu nisl, a dignissim mauris placerat id. Vivamus interdum urna at sapien varius elementum. Suspendisse ut mi felis et interdum libero lacinia vel. Aenean elementum odio ut lorem cursus, eu auctor magna pellentesque.  </p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion2" href="#collapseFour2" class="collapsed">04. Monitor Results</a>
+                                </h4>
+                            </div>
+                            <div id="collapseFour2" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="accordion-content">
+                                    <p>Fusce ornare mi vel risus porttitor dignissim. Nunc eget risus at ipsum blandit ornare vel sed velit. Proin gravida arcu nisl, a dignissim mauris placerat id. Vivamus interdum urna at sapien varius elementum. Suspendisse ut mi felis et interdum libero lacinia vel. Aenean elementum odio ut lorem cursus, eu auctor magna pellentesque.  </p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>#}
+                    </div> <!-- End panel group -->
+                </div>
+            </div>
+            </div> <!-- End Col -->
+        </div>
+    </div>
+
+</section>
+<div class="container">
+    <div class="line"></div>
+  </div>
+  {% if frase %}
+    {% include 'home/empresarial/elements/frase.twig' %}
+    {% endif %}
+{% endblock %}
+
+{% block js %}
+<script>
+    $(document).ready(function(){
+ var executed = false;
+    $('.counter-up').waypoint(function() {
+     if (!executed) {
+       executed = true;
+       {% for i, somos in nosotros %}
+           {% if somos.content_alias == 'indicadores' %}
+          $('#yoe_{{i}}').animateNumber
+          (
+             {
+              number: {{ somos.content_description }},
+              easing: 'ease', 
+             },
+             2000
+          );
+          
+          {% endif %}
+       {% endfor %}
+       }
+       
+
+   },{offset: 'bottom-in-view' })
+
+// =====================================================
+});
+</script>
+{% endblock %}

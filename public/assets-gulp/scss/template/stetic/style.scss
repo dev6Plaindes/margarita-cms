@@ -1,0 +1,179 @@
+/***************************************************************************************************************
+||||||||||||||||||||||||||||            MASTER STYLESHEET FOR KIPSO         ||||||||||||||||||||||||||||||||||||
+****************************************************************************************************************
+||||||||||||||||||||||||||||              TABLE OF CONTENT                  ||||||||||||||||||||||||||||||||||||
+****************************************************************************************************************
+****************************************************************************************************************
+* 1. common styles
+* 2. header styles
+* 3. slider styles
+* 4. contact styles
+* 5. gallery styles
+* 6. faq styles
+* 7. cta styles
+* 8. team styles
+* 9. pricing styles
+* 10. become-teacher styles
+* 11. course styles
+* 12. inner-banner styles
+* 13. footer styles
+* 14. blog styles
+* 15. search-popup styles
+* 16. sidebar styles
+* 17. about styles
+* 18. video styles
+* 19. brand styles
+* 20. testimonials styles
+* 21. meeting styles
+* 22. countdown styles
+* 23. mailchimp styles
+****************************************************************************************************************
+||||||||||||||||||||||||||||            End TABLE OF CONTENT                ||||||||||||||||||||||||||||||||||||
+****************************************************************************************************************/
+
+html{
+    font-size: 16px
+}
+// helper file
+
+@import 'elements/helper';
+
+/*
+* 1. common styles
+*/
+
+@import 'elements/common';
+
+/*
+* 2. header styles
+*/
+
+@import 'elements/header';
+
+/*
+* 3. slider styles
+*/
+
+@import 'elements/slider';
+
+/*
+* 4. contact styles
+*/
+
+@import 'elements/contact';
+
+/*
+* 5. gallery styles
+*/
+
+@import 'elements/gallery';
+
+/*
+* 6. faq styles
+*/
+
+@import 'elements/faq';
+
+/*
+* 7. cta styles
+*/
+
+@import 'elements/cta';
+
+/*
+* 8. team styles
+*/
+
+@import 'elements/team';
+
+/*
+* 9. pricing styles
+*/
+
+@import 'elements/pricing';
+
+/*
+* 10. become-teacher styles
+*/
+
+@import 'elements/become-teacher';
+
+/*
+* 11. course styles
+*/
+
+@import 'elements/course';
+
+/*
+* 12. inner-banner styles
+*/
+
+@import 'elements/inner-banner';
+
+/*
+* 13. footer styles
+*/
+
+@import 'elements/footer';
+
+/*
+* 14. blog styles
+*/
+
+@import 'elements/blog';
+
+/*
+* 15. search-popup styles
+*/
+
+@import 'elements/search-popup';
+
+/*
+* 16. sidebar styles
+*/
+
+@import 'elements/sidebar';
+
+/*
+* 17. about styles
+*/
+
+@import 'elements/about';
+
+/*
+* 18. video styles
+*/
+
+@import 'elements/video';
+
+/*
+* 19. brand styles
+*/
+
+@import 'elements/brand';
+
+/*
+* 20. testimonials styles
+*/
+
+@import 'elements/testimonials';
+
+/*
+* 21. meeting styles
+*/
+
+@import 'elements/meeting';
+
+/*
+* 22. countdown styles
+*/
+
+@import 'elements/countdown';
+
+/*
+* 23. mailchimp styles
+*/
+
+@import 'elements/mailchimp';
+
+@import 'elements/mlstetic';

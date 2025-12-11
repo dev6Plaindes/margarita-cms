@@ -1,0 +1,42 @@
+<section class="row mb-3 section" data-scrolled="#registrate" id="registrate">
+    <div class="col-lg-12 system-title-1">
+            <div class="col">
+                <h4>{{ section.name }}</h4>
+                <div class="line"></div>
+            </div>
+        </div>
+    <div class="col-lg-12">
+        <div class="card system-card-5">
+            <div class="card-body">
+                <form id="{{ section.uniqid }}">
+                    <div class="cont-content">
+                        <div class="row">
+                        {% for content in section.contents %}
+                            <div class="form-group col-12 float-left">
+                                <input type="email" class="form-control" name="email" placeholder="{{ content.content_name }}" required>
+                            </div>
+                        {% endfor %}
+                            <div class="form-check col-md-12 float-left ml-3" >
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
+                                <label class="form-check-label" for="exampleCheck1"><span>Acepto los <a style="color: var(--color-orange) !important" href="#" data-toggle="modal" data-target="#exampleModal">términos y condiciones</a></span></label>
+                            </div>
+                        </div>
+                        <br>
+                        <button type="submit" class="btn  btn-system-primary">REGÍSTRATE GRATIS</button>                 
+                    </div> 
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body p-5">
+                    {{ _company.terms_and_conditions|raw }}
+                </div>
+            </div>
+        </div>
+    </div>	
+</section>
+

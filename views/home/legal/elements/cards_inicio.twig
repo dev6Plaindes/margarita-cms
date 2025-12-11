@@ -1,0 +1,26 @@
+
+   
+{% if contents %}
+     {% for content in contents %}
+
+        {% if content.alias == 'cards_inicio' %}
+
+        <!--EXPERIENCIA-->
+        <section class="exp-top container">
+             <div class="d-flex justify-content-center">
+
+                    {% for k, c_content in content.contents %}
+                         <div class="item">
+                            <img src="{{ c_content.imagens[0].patch }}" alt="">
+                            <h3>{{ c_content.content_name }}</h3>
+                            <p> {{ c_content.content_description|raw }}</p>
+                        </div>
+                    {% endfor %}
+             </div>
+        </section>
+        <!--END EXPERIENCIA-->
+
+        {% endif %}                          
+
+     {% endfor %}
+ {% endif %}

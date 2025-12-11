@@ -1,0 +1,193 @@
+{% extends "admin/layouts/main.twig" %}
+
+{% block aside %}
+	{% include 'admin/layouts/partials/aside.twig' with { 'aside': 'landing.gallery' } %}
+{% endblock %}
+
+{% block breadcrumb %}
+    {% include 'admin/layouts/partials/breadcrumb.twig' with { 'breadcrumb': 'landing.gallery' } %}
+{% endblock %}
+
+{% block css %}
+<style>
+    .bootstrap-select > .dropdown-toggle.btn-light, .bootstrap-select > .dropdown-toggle.btn-secondary {
+        background: #F3F6F9 !important;  
+        border-color: #F3F6F9 !important;
+        color: #3F4254 !important;      
+    }
+    .bootstrap-select.show > .dropdown-toggle.btn-light, .bootstrap-select.show > .dropdown-toggle.btn-secondary{
+        border-color: #F3F6F9 !important;
+    }
+    .minicolors-swatch{
+        top: 5px !important;
+        left: 5px !important;
+    }
+    .card-item {
+        max-height: 300px;
+        overflow: hidden;
+    }
+    .card-item img{
+        height: 200px !important;
+        width: 100% !important;
+    }
+    .card-item .card-header, 
+    .card-item .card-body{
+        padding: 1rem !important;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container" id="AppGalleryAdmin">
+    <div class="card card-custom">
+        <div class="card-header flex-wrap border-0 pt-6 pb-0">
+            <div class="card-title">
+                <h3 class="card-label">Galería
+                <span class="text-muted pt-2 font-size-sm d-block">Gestionar</span></h3>
+            </div>
+            <div class="card-toolbar">
+                <button type="button" class="btn btn-light-primary" @click="onFormModal(-1)">
+                    <i class="la la-plus"></i> Nuevo
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Seleccionadas</h4>
+                </div>
+                <div class="col-md-12">
+                    <template v-if="galleries.length > 0">
+                    <div v-for="item, index in galleries" class="col-lg-3 col-md-4 col-sm-6 form-group float-left">
+                        <div class="card card-custom card-item shadow-sm">
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <a href="javascript:;" class="btn btn-icon btn-circle btn-sm btn-light-primary mr-2" data-card-tool="Número de orden" @click="onFormModalOrder(index)">
+                                        <strong v-text="item.order"></strong>
+                                    </a>
+                                </div>
+                                <div class="card-toolbar">
+                                    <template v-if="item.content_id == 0">
+                                        <a href="javascript:;" class="btn btn-icon btn-circle btn-sm btn-light-danger mr-2" data-card-tool="remove" @click="onDelete(item.id)">
+                                            <i class="fa fa-trash icon-nm"></i>
+                                        </a>
+                                    </template>
+                                    <a href="javascript:;" class="btn btn-icon btn-circle btn-sm btn-light-info" data-card-tool="remove" @click="onRemove(item.id)">
+                                        <i class="ki ki-close icon-nm"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <img :src="item.image">
+                            </div>
+                        </div>
+                    </div>
+                    </template>
+                    <template v-else>
+                        <span class="text-secondary">No hay imágenes que mostrar</span>
+                    </template>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Banco de imágenes</h4>
+                </div>
+                <div class="col-md-12">
+                    <div v-for="item, index in images" class="col-lg-3 col-md-4 col-sm-6 form-group float-left">
+                        <div class="card card-custom card-item shadow-sm">
+                            <div class="card-header">
+                                <div class="card-title">
+                                </div>
+                                <div class="card-toolbar">
+                                    <template v-if="item.content_id == 0">
+                                        <a href="#" class="btn btn-icon btn-circle btn-sm btn-light-danger mr-2" data-card-tool="remove" @click="onDelete(item.id)">
+                                            <i class="fa fa-trash icon-nm"></i>
+                                        </a>
+                                    </template>
+                                    <a href="javascript:;" class="btn btn-icon btn-circle btn-sm btn-light-success mr-1" data-card-tool="reload" @click="onAdd(item.id)">
+                                        <i class="ki ki-plus icon-nm"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <img :src="item.image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalForm" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" v-text="modal.title">GESTIONAR CATEGORÍA</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form" id="form_save" @submit="onFormSave">
+                        {# <div class="col-md-12" id="kt_repeater_image">
+                        </div> #}
+                        <div class="form-group row">
+                            <label class="col-form-label col-lg-3">Sube multiple imágenes</label>
+                            <div class="col-lg-9">
+                                <div class="dropzone dropzone-default dropzone-primary" id="kt_dropzone_2">
+                                    <div class="dropzone-msg dz-message needsclick">
+                                        <h3 class="dropzone-msg-title">Suelta los archivos aquí o haz clic para subir.</h3>
+                                        <span class="dropzone-msg-desc">Sube hasta 10 archivos</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    {# <form class="form" id="form_save" @submit="onFormSave">
+                        <div class="col-md-12" id="kt_repeater_image">
+                        </div>
+                    </form> #}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary font-weight-bold" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary font-weight-bold" form="form_save">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalFormOrder" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">ORDEN DE LA IMAGEN</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form" id="form_save_order" @submit="onFormSaveOrder">
+                        <input type="hidden" name="id" :value="gallery.id">
+                        <div class="form-group">
+                            <label>Seleccione el número de orden</label>
+                            <select class="form-control" name="order" :value="gallery.order">
+                                <option v-for="(item, index) in galleries" v-text="index + 1"></option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary font-weight-bold" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary font-weight-bold" form="form_save_order">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        window.addEventListener('load', window.AppGalleryAdmin.index(JSON.parse("{{ rsp.data|json_encode|e('js') }}")));
+    </script>
+{% endblock %}

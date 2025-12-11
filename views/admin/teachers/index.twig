@@ -1,0 +1,139 @@
+{% extends "admin/layouts/main.twig" %}
+
+{% block aside %}
+	{% include 'admin/layouts/partials/aside.twig' with { 'aside': 'ecommerce.teachers' } %}
+{% endblock %}
+
+{% block breadcrumb %}
+    {% include 'admin/layouts/partials/breadcrumb.twig' with { 'breadcrumb': 'ecommerce.teachers' } %}
+{% endblock %}
+
+{% block css %}
+<style>
+    .bootstrap-select > .dropdown-toggle.btn-light, .bootstrap-select > .dropdown-toggle.btn-secondary {
+        background: #F3F6F9 !important;  
+        border-color: #F3F6F9 !important;
+        color: #3F4254 !important;      
+    }
+    .bootstrap-select.show > .dropdown-toggle.btn-light, .bootstrap-select.show > .dropdown-toggle.btn-secondary{
+        border-color: #F3F6F9 !important;
+    }
+    .minicolors-swatch{
+        top: 5px !important;
+        left: 5px !important;
+    }
+    table td{
+        vertical-align: middle !important;
+    }
+    .image-profile-item{
+        height: 45px;
+        width: 45px;
+        border-radius: 50%;
+        border: 1px solid #B5B5C3;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container" id="AppTeacherAdmin">
+    <div class="card card-custom">
+        <div class="card-header flex-wrap border-0 pt-6 pb-0">
+            <div class="card-title">
+                <h3 class="card-label">Listado de docentes
+                <span class="text-muted pt-2 font-size-sm d-block">Gestionar</span></h3>
+            </div>
+            <div class="card-toolbar">
+                <button type="button" class="btn btn-light-primary" @click="onFormModal(-1)">
+                    <i class="la la-plus"></i> Nuevo
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover table-checkable" id="kt_datatable" style="margin-top: 13px !important">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>FOTO</th>
+                            <th>NOMBRE</th>
+                            <th>APELLIDO</th>
+                            <th>FECHA</th>
+                            <th>ACCIONES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item, index in teachers">
+                            <td v-html="item.id"></td>
+                            <td><img class="image-profile-item" :src="item.image ? item.image : '/assets/image/notfound.png'"></td>
+                            <td v-html="item.name"></td>
+                            <td v-html="item.lastname"></td>
+                            <td v-html="item.updated_at"></td>
+                            <td>
+                                <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" @click="onFormModal(index)" data-toggle="tooltip" data-placement="top" title="Editar Sección">
+                                    <i class="la la-edit"></i>
+                                </a>
+                                <a href="javascript:;" class="btn btn-sm btn-clean btn-icon" @click="onDelete(index)" data-toggle="tooltip" data-placement="top"  title="Eliminar Sección">
+                                    <i class="la la-trash"></i>
+                                </a>
+                            </td>
+                        </tr>                    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalFormTeacher" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" v-text="modal.title">GESTIONAR SECCIÓN</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form" id="form_teacher" @submit="onFormSave">
+                        <div class="col-lg-12">
+                            <input type="hidden" :value="teacher.id" name="id">
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input type="text" class="form-control form-control-solid" :value="teacher.name" name="name" placeholder="" required/>
+                            </div>
+                            <div class="form-group">
+                                <label>Apellido</label>
+                                <input type="text" class="form-control form-control-solid" :value="teacher.lastname" name="lastname" placeholder=""/>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-xl-3 col-lg-3 col-form-label">Foto</label>
+                                <div class="col-lg-9 col-xl-9">
+                                    <div class="image-input image-input-outline" id="kt_image_teacher">
+                                        <div class="image-input-wrapper" :style="{'background-image': 'url('+ (teacher.image ? teacher.image : '/assets/image/notfound.png') +')'}" style="background-repeat: no-repeat; background-size: 100% 100%;"></div>
+                                        <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Cambiar favicon">
+                                            <i class="fa fa-pen icon-sm text-muted"></i>
+                                            <input type="file" name="image" accept=".png, .jpg, .jpeg" />
+                                            <input type="hidden" name="image_remove" />
+                                        </label>
+                                        <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                            <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary font-weight-bold" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary font-weight-bold" form="form_teacher">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        window.addEventListener('load', window.AppTeacherAdmin.index(JSON.parse("{{ rsp.data|json_encode|e('js') }}")));
+    </script>
+{% endblock %}

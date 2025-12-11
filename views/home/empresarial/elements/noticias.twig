@@ -1,0 +1,103 @@
+<section class="padding-top-65">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="title ">{{ noticias[0].section_name|raw }}</h2><span class="seperator"></span>
+                <a href="{{ noticias[0].section_caption|raw  }}" target="_blank" class="more-all">{{ noticias[0].section_caption ? 'Ver más':'' }}</a>
+                <div class="row clearfix">
+                    {% for noticia in noticias %}
+                    <article class=" col-sm-6 col-md-6 item-lastest-news">
+                        <a href="{{noticia.content_url}}" target="_blank" class="img-news-container">
+                            <img src="{{ noticia.imagens[0].patch }}"
+                                class="img-responsive" alt="Image">
+                        </a>
+                        <div class="news-text-container">
+                            <a href="{{noticia.content_url}}" target="_blank">
+                                <h3 class="title-news">{{noticia.content_name|raw }}</h3>
+                            </a>
+                            <p>{{noticia.content_description|raw }}</p>
+                            <div class="latest-news-data">
+                                <span class="tags">
+                                    <a href="#">{{ noticia.content_caption|raw }}</a>
+                                </span>
+                                {#<span class="dates">{{ noticia.content_fecha_update|date("M d, Y") }}</span>#}
+                            </div>
+                        </div>
+                    </article>
+                    {% endfor %}
+                    {#<article class=" col-sm-6 col-md-6 item-lastest-news">
+                        <a href="blogList.html" class="img-news-container">
+                            <img src="/assets/template/empresarial/original/images/Blog/b1.jpg"
+                                class="img-responsive" alt="Image">
+                        </a>
+                        <div class="news-text-container">
+                            <a href="blogList.html">
+                                <h3 class="title-news">The best experience from the experts</h3>
+                            </a>
+                            <p>Morbi vehicula a nibh in commodo. Aliquam quis dolor eget lectus pulvinar
+                                malesuada. </p>
+                            <div class="latest-news-data">
+                                <span class="tags"><a href="blogList.html">Financial</a>, <a
+                                        href="blogList.html"> Maketing</a></span>
+                                <span class="dates">March 22,2016</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class=" col-sm-6 col-md-6 item-lastest-news">
+                        <a href="blogList.html" class="img-news-container">
+                            <img src="/assets/template/empresarial/original/images/Blog/b2.jpg"
+                                class="img-responsive" alt="Image">
+                        </a>
+                        <div class="news-text-container">
+                            <a href="blogList.html">
+                                <h3 class="title-news">Plans for growing businesses</h3>
+                            </a>
+                            <p>Morbi vehicula a nibh in commodo. Aliquam quis dolor eget lectus pulvinar
+                                malesuada. </p>
+                            <div class="latest-news-data">
+                                <span class="tags"><a href="blogList.html">Financial</a>, <a
+                                        href="blogList.html"> Maketing</a></span>
+                                <span class="dates">March 22,2016</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class=" col-sm-6 col-md-6 item-lastest-news no-margin">
+                        <a href="blogList.html" class="img-news-container">
+                            <img src="/assets/template/empresarial/original/images/Blog/b3.jpg"
+                                class="img-responsive" alt="Image">
+                        </a>
+                        <div class="news-text-container">
+                            <a href="blogList.html">
+                                <h3 class="title-news">Help you planning for your retirement</h3>
+                            </a>
+                            <p>Morbi vehicula a nibh in commodo. Aliquam quis dolor eget lectus pulvinar
+                                malesuada. </p>
+                            <div class="latest-news-data">
+                                <span class="tags"><a href="blogList.html">Retirement</a></span>
+                                <span class="dates">March 18,2016</span>
+                            </div>
+                        </div>
+                    </article>
+                    <article class=" col-sm-6 col-md-6 item-lastest-news no-margin">
+                        <a href="blogList.html" class="img-news-container">
+                            <img src="/assets/template/empresarial/original/images/Blog/b4.jpg"
+                                class="img-responsive" alt="Image">
+                        </a>
+                        <div class="news-text-container">
+                            <a href="blogList.html">
+                                <h3 class="title-news">Solution financial for good startup</h3>
+                            </a>
+                            <p>Morbi vehicula a nibh in commodo. Aliquam quis dolor eget lectus pulvinar
+                                malesuada. </p>
+                            <div class="latest-news-data">
+                                <span class="tags"><a href="blogList.html">Financial</a></span>
+                                <span class="dates">March 12,2016</span>
+                            </div>
+                        </div>
+                    </article>#}
+                </div>
+            </div><!-- End col -->
+
+        </div> <!-- End Row -->
+    </div>
+</section><!-- End section -->

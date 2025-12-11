@@ -1,0 +1,28 @@
+{% extends "home/comunidadpro/layouts/main.twig" %}
+
+{% block css %}{% endblock %}
+
+{% set blog = Portafolio %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-8">
+            {% include "home/comunidadpro/partials/blogs.twig" %}         
+        </div>
+        <div class="col-lg-4">
+            <div class="row">
+            {% include "home/comunidadpro/partials/publications.twig" %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+ 
+{% block js %}
+<script>
+
+</script>
+{% endblock %}

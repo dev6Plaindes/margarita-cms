@@ -1,0 +1,195 @@
+{% extends 'admin/layouts/main.twig' %}
+
+{% block aside %}
+	{% include 'admin/layouts/partials/aside.twig' with { 'aside': 'landing.contents' } %}
+{% endblock %}
+
+{% block breadcrumb %}
+    {% include 'admin/layouts/partials/breadcrumb.twig' with { 'breadcrumb': 'landing.contents' } %}
+{% endblock %}
+
+{% block css %}
+	<style>
+	    .minicolors-swatch{
+			top: 8px !important;
+			left: 5px !important;
+		}
+		.image-input-wrapper{
+        	background-repeat: no-repeat !important; 
+        	background-size: 100% 100% !important;
+    	}
+	</style>
+{% endblock %}
+
+{% block content %}
+{% set data = rsp.data %}
+{% set notfound = '/assets/image/notfound.png' %}
+<div class="container" id="AppContentAdmin">
+	<div class="card card-custom">
+		<div class="card-header">
+			<div class="card-title">
+				<h3 class="card-label"><span v-text="panel.title"></span>
+				<small>Gestionar</small></h3>
+			</div>
+		</div>
+		<div class="card-body p-0">
+			<div class="row justify-content-center py-8 px-8 py-lg-10 px-lg-10">
+				<div class="col-xl-12 col-xxl-10">
+					<form class="form" id="form_data_section" @submit="onFormData">
+						<input type="hidden" name="id" :value="content.id"/>
+						<div class="row justify-content-center">
+							<div class="col-xl-9">
+								<div class="my-5 step">
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Acciones</label>
+										<div class="col-lg-9 col-xl-9">
+    										<div class="checkbox-inline mt-3">
+												<label class="checkbox">
+													<input type="checkbox" name="status" value="1" :checked="content.status == 1 ? true : false"/>
+													<span></span>
+													Activar
+												</label>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-lg-9 col-xl-9 offset-xl-3">
+											<h3 class="font-size-h6 mb-5">Datos Generales :</h3>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Nombre</label>
+										<div class="col-lg-9 col-xl-9">
+											<input class="form-control form-control-lg form-control-solid" type="text" name="name" :value="content.name" required/>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Subtitulo</label>
+										<div class="col-lg-9 col-xl-9">
+											<input class="form-control form-control-lg form-control-solid" type="text" name="caption" :value="content.caption" />
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Sección</label>
+										<div class="col-lg-9 col-xl-9">
+											<select class="form-control selectpicker mb-5" title="Seleccionar" name="sections[]" multiple="multiple" required>
+												<option v-for="(item, index) in sections"  :key="item.id" :value="item.id" v-text="item.name"></option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Descripción</label>
+										<div class="col-lg-9 col-xl-9">
+											<div class="input-group input-group-lg input-group-solid">
+												<textarea class="form-group-solid summernote" name="description" v-html="content.description"></textarea>
+											</div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-lg-9 col-xl-9 offset-xl-3">
+											<h3 class="font-size-h6 mb-2 mt-4">Colección de colores :</h3>
+										</div>
+									</div>
+									<div class="form-group">
+										<div id="kt_repeater_color" class="row">
+											<div class="col-xl-12">
+												<div data-repeater-list="colors">
+												{% if data.content.colors|length > 0 %}
+													{% for item in data.content.colors %}
+														{% include 'admin/contents/partials/colors.twig' with { 'item': item } %}
+													{% endfor %}
+												{% else %}
+														{% include 'admin/contents/partials/colors.twig' with { 'item': null } %}
+												{% endif %}
+												</div>
+											</div>
+											<div class="col-xl-12">
+												<div class="text-right mt-4">
+													<a href="javascript:;" data-repeater-create="" class="btn btn-sm font-weight-bolder btn-light-primary">
+													<i class="la la-plus"></i>Agregar</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="col-lg-9 col-xl-9 offset-xl-3">
+											<h3 class="font-size-h6 mb-5">Colección de imágenes :</h3>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3"></label>
+										<div class="col-xl-9 col-lg-9">
+											<div id="kt_repeater_image" class="row">
+												<div class="col-xl-12">
+													<div data-repeater-list="images" class="row">
+													{% if data.content.images|length > 0 %}
+														{% for item in data.content.images %}
+															{% include 'admin/contents/partials/images.twig' with { 'item': item } %}
+														{% endfor %}
+													{% else %}
+															{% include 'admin/contents/partials/images.twig' with { 'item': null } %}
+													{% endif %}
+													</div>
+												</div>
+												<div class="col-xl-12">
+													<div class="text-right mt-2">
+														<a href="javascript:;" data-repeater-create="" class="btn btn-sm font-weight-bolder btn-light-primary">
+														<i class="la la-plus"></i>Agregar</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									{# <div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Color</label>
+										<div class="col-lg-9 col-xl-9">
+											<input class="form-control form-control-solid form-control-lg jscolor" name="color" type="text" :value="content.color" />
+										</div>
+									</div> #}
+			         				{# <div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Imagen</label>
+										<div class="col-lg-9 col-xl-9">
+											<div class="image-input image-input-outline" id="kt_image_1">
+												<div class="image-input-wrapper" style="background-image: url({{ data.content.image ? data.content.image : notfound }}); background-repeat: no-repeat; background-size: 100% 100%;"></div>
+												<label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Cambiar image">
+													<i class="fa fa-pen icon-sm text-muted"></i>
+													<input type="file" name="image" accept=".png, .jpg, .jpeg" />
+													<input type="hidden" name="image_remove" />
+												</label>
+												<span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+													<i class="ki ki-bold-close icon-xs text-muted"></i>
+												</span>
+											</div>
+										</div>
+									</div> #}
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="card-footer">
+			<div class="row justify-content-center">
+				<div class="col-xl-12 col-xxl-10">
+					<div class="row justify-content-center">
+						<div class="col-lg-9">
+							<div class="row">
+								<div class="col-lg-12 text-right">
+									<button type="submit" form="form_data_section" class="btn btn-primary mr-2">Guardar</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+	window.addEventListener('load', window.AppContentAdmin.form(JSON.parse("{{ rsp.data|json_encode|e('js') }}")));
+</script>
+{% endblock %}

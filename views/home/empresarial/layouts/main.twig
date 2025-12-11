@@ -1,0 +1,187 @@
+{% set banners = [] %}
+{% set servicios = [] %}
+{% set nosotros = [] %}
+{% set frase = [] %}
+{% set noticias = [] %}
+{% set clientes = [] %}
+{% set formulario = [] %}
+{% set testimonio = [] %}
+{% set frase2 = [] %}
+{% set google_ubi = [] %}
+{% set contactanos = [] %}
+
+{% for item in contents %}
+  {% if item.alias == 'banner' %}
+    {% set banners = item.contents %}
+  {% endif %}
+  {% if item.alias == 'servicio' %}
+    {% set servicios = item.contents %}
+  {% endif %}
+  {% if item.alias == 'nosotros' %}
+    {% set nosotros = item.contents %}
+  {% endif %}
+  {% if item.alias == 'frase' %}
+    {% set frase = item.contents %}
+  {% endif %}
+  {% if item.alias == 'noticia' %}
+    {% set noticias = item.contents %}
+  {% endif %}
+  {% if item.alias == 'cliente' %}
+    {% set clientes = item.contents %}
+  {% endif %}
+  {% if item.alias == 'formulario' %}
+    {% set formulario = item.contents %}
+  {% endif %}
+  {% if item.alias == 'testimonio' %}
+    {% set testimonio = item.contents %}
+  {% endif %}
+  {% if item.alias == 'frase2' %}
+    {% set frase2 = item.contents %}
+  {% endif %}
+  {% if item.alias == 'google_ubi' %}
+    {% set google_ubi = item.contents %}
+  {% endif %}
+  {% if item.alias == 'contactanos' %}
+  {% set contactanos = item.contents %}
+{% endif %}
+{% endfor %}
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]>
+<!-->
+<html class="no-js" lang="en"><!--<![endif]-->
+
+<head>
+
+    <!-- Basic Page Needs
+  ================================================== -->
+    <meta charset="utf-8">
+    <title>{{ _company.meta_title }}</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Mobile Specific Metas
+  ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- Font
+  ================================================== -->
+
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <link rel="stylesheet" href="/assets/template/empresarial/original/css/font-awesome.min.css">
+    <!-- CSS
+  ================================================== -->
+    <link rel="stylesheet" href="/assets/template/empresarial/original/css/bootstrap.min.css" />
+    <!-- SELECTBOX
+  ================================================== -->
+    <link rel="stylesheet" type="text/css" href="/assets/template/empresarial/original/css/fancySelect.css"
+        media="screen" />
+
+    <!-- SLIDER REVOLUTION 4.x SCRIPTS
+  ================================================== -->
+    <link rel="stylesheet" type="text/css" href="/assets/template/empresarial/original/css/extralayers.css"
+        media="screen" />
+    <link rel="stylesheet" type="text/css" href="/assets/template/empresarial/original/rs-plugin/css/settings.css"
+        media="screen" />
+    <!-- OWL CAROUSEL
+  ================================================== -->
+    <link rel="stylesheet" href="/assets/template/empresarial/original/css/owl.carousel.css">
+    <link rel="stylesheet" href="/assets/template/empresarial/original/css/owl.theme.default.css">
+    <!-- SCROLL BAR MOBILE MENU
+  ================================================== -->
+    <link rel="stylesheet" href="/assets/template/empresarial/original/css/jquery.mCustomScrollbar.css" />
+    <!-- MAIN STYLE
+  ================================================== -->
+    <link rel="stylesheet" href="/assets/template/empresarial/original/style.css" />
+    <link rel="stylesheet" href="/assets/template/empresarial/css/main.min.css" />
+
+
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="{{ _company.favicon }}">
+
+    <style>
+      body {
+          {% for color_item in _company.colors %}
+          --color-template-{{ color_item.alias }}: {{ color_item.color }};
+          {% endfor %}
+      }
+  </style>
+</head>
+
+<body>
+<div id=jSplash>
+  <div class="sk-folding-cube">
+    <div class="sk-cube1 sk-cube"></div>
+    <div class="sk-cube2 sk-cube"></div>
+    <div class="sk-cube4 sk-cube"></div>
+    <div class="sk-cube3 sk-cube"></div>
+  </div>
+</div>
+<div id="overlay"></div>
+    {% include 'home/empresarial/layouts/partials/header_movile.twig' %}
+    <div id="page">
+      {% include 'home/empresarial/layouts/partials/header.twig' %}
+      {% include 'home/empresarial/layouts/partials/nav.twig' %}
+    {% block content %} {% endblock %}
+
+    {% include 'home/empresarial/layouts/partials/footer.twig' %}
+  </div><!-- End Page -->
+    <a id="to-the-top" style="display: block;"><i class="fa fa-angle-up"></i></a> <!-- Back To Top -->
+    <!-- SCRIPT
+    ================================================== -->
+    <script src="/assets/template/empresarial/original/js/vendors/jquery.min.js"></script>
+    <script src="/assets/template/empresarial/original/js/plugins/jpreLoader.js"></script>
+    <script src="/assets/template/empresarial/original/js/plugins/jquery.waypoints.min.js"></script>
+    <script src="/assets/template/empresarial/original/js/vendors/bootstrap.min.js"></script>
+    <script src="/assets/template/empresarial/original/js/plugins/easing.js"></script>
+    <script src="/assets/template/empresarial/original/js/plugins/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="/assets/template/empresarial/original/js/plugins/fancySelect.js"></script>
+    <script src="/assets/template/empresarial/original/js/plugins/custom.js"></script>
+
+    <!-- Mobile Menu
+    ================================================== -->
+    <script src="/assets/template/empresarial/original/js/plugins/jquery.mobile-menu.js"></script>
+    <script src="/assets/template/empresarial/original/js/plugins/sticky.min.js"></script>
+    <!-- Revo Lib
+    ================================================== -->
+    <script type="text/javascript"
+        src="/assets/template/empresarial/original/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+    <script type="text/javascript"
+        src="/assets/template/empresarial/original/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <!-- Custom Revoslider -->
+    <script src="/assets/template/empresarial/original/js/plugins/revoslider-custom.js"></script>
+    <!-- Counter Up
+    ================================================== -->
+    <script src="/assets/template/empresarial/original/js/plugins/jquery.animateNumber.min.js"></script>
+    <script src="/assets/template/empresarial/original/js/plugins/custom-counterup.js"></script>
+    <!-- Initializing the isotope
+    ================================================== -->
+    <script src="/assets/template/empresarial/original/js/plugins/isotope.pkgd.min.js"></script>
+    <script src="/assets/template/empresarial/original/js/plugins/custom-isotope.js"></script>
+    <!-- Initializing Owl Carousel
+    ================================================== -->
+    <script src="/assets/template/empresarial/original/js/plugins/owl.carousel.js"></script>
+    <script src="/assets/template/empresarial/original/js/plugins/custom-owl.js"></script>
+    <!-- Progress Bar Chart
+    ================================================== -->
+    <script src="/assets/template/empresarial/original/js/plugins/bootstrap-progressbar.min.js"></script>
+    <script src="/assets/template/empresarial/original/js/plugins/custom-progressbar.js"></script>
+
+    <script type="text/javascript">
+        $("#btn-event").click(function () {
+            var link = $(this).attr("data-href");
+
+            var autoplay = "?autoplay=1";
+
+            $("#video").attr("src", link + autoplay);
+            $("#video-container").css({ "z-index": "99", "transition": "all 3s" });
+            $(".background-video").css({ "opacity": "0", "transition": "all 3s" });
+
+        }
+        );
+    </script>
+{% block js %}{% endblock %}
+</body>
+
+</html>

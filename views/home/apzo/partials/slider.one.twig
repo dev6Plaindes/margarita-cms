@@ -1,0 +1,69 @@
+{% if contents %}
+     {% for content in contents %}
+
+        {% if content.alias == 'banner' %}
+
+                <div class="gdlr-core-pbf-wrapper " id="div_064f_1">
+                <div class="gdlr-core-pbf-background-wrap" id="div_064f_2"></div>
+                <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
+                    <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container">
+                        <div class="gdlr-core-pbf-element">
+                            <div class="gdlr-core-revolution-slider-item gdlr-core-item-pdlr gdlr-core-item-pdb " id="div_064f_3">
+                                <!-- START Saas Clean REVOLUTION SLIDER 6.1.5 -->
+                                <p class="rs-p-wp-fix"></p>
+                                <rs-module-wrap id="rev_slider_1_1_wrapper" data-source="gallery" style="background:transparent;padding:0;margin:0px auto;margin-top:0;margin-bottom:0;">
+                                    <rs-module id="rev_slider_1_1" style="display:none;" data-version="6.1.5">
+                                        <rs-slides>
+
+                                            {% for k, c_content in content.contents %}
+
+                                                    <rs-slide data-key="rs-{{ k + 1 }}" data-title="Slide" data-thumb="#" data-anim="ei:d;eo:d;s:600;r:0;t:fade;sl:d;">
+                                                        <img src="{{ c_content.imagens[0].patch }}" alt="slider" title="bg-clean-2.jpg" width="1920" height="1000" class="rev-slidebg" data-no-retina>
+                                                        <!--    -->
+                                                        <rs-layer id="slider-1-slide-1-layer-1" data-type="text" data-color="#9fbfff" data-rsp_ch="on" data-xy="x:c;y:t,t,m,m;yo:236px,236px,-137px,-149px;" data-text="s:18,18,18,16;l:22;ls:10px;fw:600;a:inherit;" data-frame_0="tp:600;" data-frame_1="tp:600;" data-frame_999="o:0;tp:600;st:w;sR:8700;" style="z-index:8;font-family:Jost*;"> {{ _company.name }}
+                                                        </rs-layer>
+                                                        <!-- -->
+                                                        <rs-layer id="slider-1-slide-1-layer-2" data-type="text" data-rsp_ch="on" data-xy="x:c;xo:0,0,-2px,0;y:m;yo:-96px,-96px,-91px,-112px;" data-text="s:88,88,54,39;l:88,88,54,55;fw:600;a:inherit;" data-frame_0="tp:600;" data-frame_1="tp:600;st:290;sR:290;" data-frame_999="o:0;tp:600;st:w;sR:8410;" style="z-index:9;font-family:Jost*;">  {{c_content.content_caption}}
+                                                        </rs-layer>
+                                                        <!-- -->
+                                                        <rs-layer id="slider-1-slide-1-layer-3" class="tp-shape tp-shapewrapper" data-type="shape" data-rsp_ch="on" data-xy="x:c;xo:-1px,-1px,0,0;y:m;yo:-21px,-21px,-35px,-60px;" data-text="fw:600;a:inherit;" data-dim="w:70px;h:3px;" data-frame_0="tp:600;" data-frame_1="tp:600;st:530;sR:530;" data-frame_999="o:0;tp:600;st:w;sR:8170;" style="z-index:10;background-color:#ffffff;">
+                                                        </rs-layer>
+                                                        <!-- -->
+                                                        <rs-layer id="slider-1-slide-1-layer-4" data-type="text" data-color="#d9d9d9" data-xy="x:c;y:m;yo:49px,49px,26px,24px;" data-text="w:normal;s:20,20,17,17;l:32,32,30,27;a:center;" data-dim="w:656px,656px,519px,352px;" data-rsp_bd="off" data-frame_0="tp:600;" data-frame_1="x:0,0,0,0px;y:0,0,0,0px;tp:600;st:790;sR:790;" data-frame_999="o:0;tp:600;st:w;sR:7910;" style="z-index:11;font-family:Jost*;"> {{c_content.content_description}}
+                                                        </rs-layer>
+                                                        <!-- -->
+                                                        <rs-layer id="slider-1-slide-1-layer-5" data-type="text" data-color="#d9d9d9" data-rsp_ch="on" data-xy="xo:441px;yo:500px;" data-text="l:22;a:inherit;" data-frame_0="tp:600;" data-frame_1="tp:600;st:1010;sR:1010;" data-frame_999="o:0;tp:600;st:w;sR:7690;" style="z-index:12;font-family:Jost*;">
+                                                        </rs-layer>
+                                                        <!-- -->
+
+                                                            {% if c_content.content_name !="" %}
+                                                                    <rs-layer id="slider-1-slide-1-layer-6" class="rev-btn" data-type="button" data-color="rgba(255,255,255,1)" 
+                                                                            data-xy="x:c;xo:1px,1px,0,0;yo:535px,535px,412px,414px;" data-text="s:17,17,16,15;l:17;fw:600,600,700,700;a:inherit;" 
+                                                                            data-padding="t:19,19,16,17;r:40,40,35,30;b:23,23,20,21;l:40,40,35,30;" data-border="bor:30px,30px,30px,30px;" 
+                                                                            data-frame_0="tp:600;" data-frame_1="tp:600;st:1250;sR:1250;" data-frame_999="o:0;tp:600;st:w;sR:7450;" 
+                                                                            data-frame_hover="c:#000;bgc:#4275dc;boc:#000;bor:30px,30px,30px,30px;bos:solid;oX:50;oY:50;sp:0;" 
+                                                                            style="z-index:13;background-color:#4275dc;font-family:Jost*;cursor:pointer;outline:none;box-shadow:none;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;">
+                                                                        <a  href="{{ c_content.content_name }}" target="_blank" style="color:#fff"> Visitar </a>
+                                                                        </rs-layer>
+                                                            {% endif %}      
+                                                        <!---->
+                                                    </rs-slide>
+
+                                            {% endfor %}
+
+                                        </rs-slides>
+                                    <rs-progress class="rs-bottom" style="visibility: hidden !important;"></rs-progress>
+                                </rs-module>
+
+                            </rs-module-wrap>
+                            <!-- END REVOLUTION SLIDER -->
+                        </div>
+                    </div>
+                </div>
+                </div>
+                </div>
+
+        {% endif %}                          
+
+     {% endfor %}
+ {% endif %}

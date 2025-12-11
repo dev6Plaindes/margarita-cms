@@ -1,0 +1,30 @@
+{% extends "home/generalweb/layouts/main.twig" %}
+
+{% block css %}{% endblock %}
+
+{% if menu_products %}
+  {% set Portafolios = menu_products[0].portafolios %}
+  {% set blog = Portafolios|last %}
+{% endif %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8">
+            {% include "home/generalweb/partials/blogs.twig" %}         
+        </div>
+        <div class="col-lg-4">
+            <div class="row">
+                {% include "home/generalweb/partials/publications.twig" %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+ 
+{% block js %}
+<script>
+
+</script>
+{% endblock %}

@@ -1,0 +1,99 @@
+{% if contents %}
+     {% for content in contents %}
+
+        {% if content.alias == 'vista_directorio' %}
+
+            <section class="container">
+                <div class="title-with row">
+                    
+                    {% set index = 0 %}
+                    {% set separa = 0 %}
+                    {% for k, c_content in content.contents %}
+
+                        {% if c_content.content_alias == 'tecnicos' %}
+                    
+                            {% if index == 0 %}
+ 
+                                 <h3 class="col-12">{{ c_content.content_name }}</h3>
+                                 {% set separa = 1 %}
+                            {% endif %}
+
+                            {% set index = index + 1  %}
+
+                        {% endif %} 
+                    {% endfor %}
+
+                </div>
+                {% if separa == 1 %}
+                <div class="separator d-flex justify-content-center">
+                    <div class=""></div>
+                    <div class=""></div>
+                    <div class=""></div>
+                </div>    
+                {% endif %}     
+            </section>
+
+            <section class="container mt-5">
+                 <div class="row">
+                    
+                    {% set index_a1 = 0 %}
+
+                    {% for k, c_content in content.contents %}
+                       {% if c_content.content_alias == 'tecnicos' %}
+                            {% if index_a1 > 0 %}  
+                                        <div class="col-sm-3 mt-4 user-card" style="cursor:pointer;">
+                                            <div class="card" data-toggle="modal" data-target="#modal-tecnicos-{{index_a1}}">
+                                                <img class="card-img-top" src="{{ c_content.imagens[0].patch }}" alt="Card image cap">
+                                                <div class="card-body">
+                                                <h5 class="card-title">{{ c_content.content_name }}</h5>
+                                                <p class="card-text">{{ c_content.content_caption }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                            {% endif %} 
+                             {% set index_a1 = index_a1 + 1  %}
+
+                        {% endif %}
+                        
+                        
+                    {% endfor %}
+
+                
+                </div>
+            </section>
+
+            {% set index_a2 = 0 %}
+
+            {% for k, c_content in content.contents %}
+                {% if c_content.content_alias == 'tecnicos' %}
+                      {% if index_a2 > 0 %}  
+                        <div class="modal fade bd-example-modal-lg" id="modal-tecnicos-{{index_a2}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <div class="block-img-modal row p-5">
+                                            <div class="col-4 dis m-0 p-0">
+                                                <img src="{{ c_content.imagens[0].patch }}" alt="">
+                                            </div>
+                                            <div class="col-sm-6 block-bg-three">
+                                                <h5 class="tittle-one mb-0">
+                                                {{ c_content.content_name }}
+                                                </h5>
+                                                {{ c_content.content_description|raw }} 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      {% endif %} 
+                       {% set index_a2 = index_a2 + 1  %}
+                 {% endif %}
+            {% endfor %}
+
+         {% endif %}                          
+
+     {% endfor %}
+ {% endif %}
+

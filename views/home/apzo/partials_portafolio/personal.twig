@@ -1,0 +1,184 @@
+{% if contents %}
+     {% for content in contents %}
+
+        {% if content.alias == 'cards_proyectos_portafolio' %}  
+  
+            <div class="apzo-page-wrapper" id="apzo-page-wrapper" style="background-color: #f7f7f7;">
+                <div class="gdlr-core-page-builder-body">                   
+                    <div class="gdlr-core-pbf-wrapper " style="padding: 100px 0px 60px 0px;">
+                        <div class="gdlr-core-pbf-background-wrap">
+                            <div class="gdlr-core-pbf-background gdlr-core-parallax gdlr-core-js" style="background-image: url(upload/bg-1-dot.png) ;background-size: cover ;background-position: center ;" data-parallax-speed="0.1"></div>
+                        </div>
+                        <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
+                            <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container">
+                                <div class="gdlr-core-pbf-column gdlr-core-column-60 gdlr-core-column-first" id="gdlr-core-column-88863">
+                                    <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " style="padding: 0px 0px 35px 0px;">
+                                        <div class="gdlr-core-pbf-background-wrap"></div>
+                                        <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
+                                            <div class="gdlr-core-pbf-element">
+                                                <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-center-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr" style="padding-bottom: 10px ;">
+                                                    <div class="gdlr-core-title-item-title-wrap ">
+                                                        <h3 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 40 ;font-weight: 600 ;letter-spacing: 0px ;text-transform: none ;color: #353535 ;"> {{ content.contents[0].section_name }}  <span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h3></div>
+                                                </div>
+                                            </div>
+                                            <div class="gdlr-core-pbf-element">
+                                                <div class="gdlr-core-title-item gdlr-core-item-pdb clearfix  gdlr-core-center-align gdlr-core-title-item-caption-top gdlr-core-item-pdlr" style="padding-bottom: 40px ;">
+                                                    <div class="gdlr-core-title-item-title-wrap ">
+                                                        <h1 class="gdlr-core-title-item-title gdlr-core-skin-title " style="font-size: 16px ;font-weight: 600 ;letter-spacing: 4px ;color: #4275dc ;"> {{ content.contents[0].section_caption }}<span class="gdlr-core-title-item-title-divider gdlr-core-skin-divider" ></span></h1></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="filter clearfix gdlr-core-filterer-wrap gdlr-core-js  gdlr-core-item-pdlr gdlr-core-style-text gdlr-core-center-align">
+                                    <ul>
+                                        <li><a href="/portafolio" class="active" >All</a></li>
+                                        
+                                         {% for k, categoria in categorias %}
+                                            <li><a href="portafolio?c={{categoria.id}}" >{{categoria.nombre_categoria}}</a></li>
+                                         {% endfor %}
+                                    </ul>
+                                </div>  
+                                   <div class="gdlr-core-portfolio-item-holder gdlr-core-js-2 filter-container clearfix" data-layout="masonry">
+                                        {% for k, c_content in menu_products[0].portafolios %}
+                                            <div class="gdlr-core-item-list  gdlr-core-item-pdlr class1 gdlr-core-column-20">
+                                                <div class="gdlr-core-portfolio-grid  gdlr-core-center-align gdlr-core-style-normal" style="margin-bottom: 25px ;">
+                                                    <div class="gdlr-core-portfolio-thumbnail gdlr-core-media-image  gdlr-core-style-margin-icon">
+                                                        <div class="gdlr-core-portfolio-thumbnail-image-wrap  gdlr-core-zoom-on-hover">
+                                                            <a class="gdlr-core-lightgallery gdlr-core-js " href="{{ c_content.image }}?fit=1280%2C1280&ssl=1" data-lightbox-group="gdlr-core-img-group-1"><img src="{{ c_content.image }}?fit=1280%2C1280&ssl=1" alt="" width="600" height="800" title="shutterstock_1226196742" /><span class="gdlr-core-image-overlay  gdlr-core-portfolio-overlay gdlr-core-image-overlay-center-icon gdlr-core-js gdlr-core-with-margin"><span class="gdlr-core-image-overlay-content" ><span class="gdlr-core-portfolio-icon-wrap" ><i class="gdlr-core-portfolio-icon arrow_expand" ></i></span></span>
+                                                                </span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="gdlr-core-portfolio-content-wrap gdlr-core-skin-divider">
+                                                        <h3 class="gdlr-core-portfolio-title gdlr-core-skin-title" style="font-size: 18px ;font-weight: 600 ;letter-spacing: 0px ;text-transform: none ;"><a href="/blog?p={{c_content.id}}" >{{c_content.name}}</a></h3>
+                                                        <span class="gdlr-core-portfolio-info gdlr-core-portfolio-info-tag gdlr-core-info-font gdlr-core-skin-caption" style="font-style: normal ;">
+                                                           <a href="{{c_content.url}}" target="_blank"> {{c_content.url}} </a> <span class="gdlr-core-sep"></span>
+                                                        <div class="gdlr-core-portfolio-content"></div>
+                                                          <div class="gdlr-core-personnel-list-content">
+                                                            <p> {{ c_content.overview|raw }} </p>
+                                                          </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        {% endfor %}
+
+                                        <!--div class="gdlr-core-item-list  gdlr-core-item-pdlr class2 gdlr-core-column-20">
+                                            <div class="gdlr-core-portfolio-grid  gdlr-core-center-align gdlr-core-style-normal" style="margin-bottom: 25px ;">
+                                                <div class="gdlr-core-portfolio-thumbnail gdlr-core-media-image  gdlr-core-style-margin-icon">
+                                                    <div class="gdlr-core-portfolio-thumbnail-image-wrap  gdlr-core-zoom-on-hover">
+                                                        <a class="gdlr-core-lightgallery gdlr-core-js " href="https://i1.wp.com/www.staffdigital.pe/proyecto/wp-content/uploads/2015/09/mitsubishi.jpg?fit=640%2C640&ssl=1" data-lightbox-group="gdlr-core-img-group-1"><img src="https://i1.wp.com/www.staffdigital.pe/proyecto/wp-content/uploads/2015/09/mitsubishi.jpg?fit=640%2C640&ssl=1" alt="" width="600" height="800" title="shutterstock_1149301178" /><span class="gdlr-core-image-overlay  gdlr-core-portfolio-overlay gdlr-core-image-overlay-center-icon gdlr-core-js gdlr-core-with-margin"><span class="gdlr-core-image-overlay-content" ><span class="gdlr-core-portfolio-icon-wrap" ><i class="gdlr-core-portfolio-icon arrow_expand" ></i></span></span>
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="gdlr-core-portfolio-content-wrap gdlr-core-skin-divider">
+                                                    <h3 class="gdlr-core-portfolio-title gdlr-core-skin-title" style="font-size: 18px ;font-weight: 600 ;letter-spacing: 0px ;text-transform: none ;"><a href="#" >Client</a></h3><span class="gdlr-core-portfolio-info gdlr-core-portfolio-info-tag gdlr-core-info-font gdlr-core-skin-caption" style="font-style: normal ;"><a href="#" rel="tag">Architecture</a> <span class="gdlr-core-sep">/</span> <a href="#" rel="tag">Business</a></span>
+                                                    <div class="gdlr-core-portfolio-content"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="gdlr-core-item-list  gdlr-core-item-pdlr class3 gdlr-core-column-20">
+                                            <div class="gdlr-core-portfolio-grid  gdlr-core-center-align gdlr-core-style-normal" style="margin-bottom: 25px ;">
+                                                <div class="gdlr-core-portfolio-thumbnail gdlr-core-media-image  gdlr-core-style-margin-icon">
+                                                    <div class="gdlr-core-portfolio-thumbnail-image-wrap  gdlr-core-zoom-on-hover">
+                                                        <a class="gdlr-core-lightgallery gdlr-core-js " href="https://i0.wp.com/www.staffdigital.pe/proyecto/wp-content/uploads/2015/09/armas-3.jpg?fit=1280%2C1200&ssl=1" data-lightbox-group="gdlr-core-img-group-1"><img src="https://i0.wp.com/www.staffdigital.pe/proyecto/wp-content/uploads/2015/09/armas-3.jpg?fit=1280%2C1200&ssl=1" alt="" width="600" height="800" title="shutterstock_484938493" /><span class="gdlr-core-image-overlay  gdlr-core-portfolio-overlay gdlr-core-image-overlay-center-icon gdlr-core-js gdlr-core-with-margin"><span class="gdlr-core-image-overlay-content" ><span class="gdlr-core-portfolio-icon-wrap" ><i class="gdlr-core-portfolio-icon arrow_expand" ></i></span></span>
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="gdlr-core-portfolio-content-wrap gdlr-core-skin-divider">
+                                                    <h3 class="gdlr-core-portfolio-title gdlr-core-skin-title" style="font-size: 18px ;font-weight: 600 ;letter-spacing: 0px ;text-transform: none ;"><a href="#" >Editor</a></h3><span class="gdlr-core-portfolio-info gdlr-core-portfolio-info-tag gdlr-core-info-font gdlr-core-skin-caption" style="font-style: normal ;"><a href="#" rel="tag">Clean</a> <span class="gdlr-core-sep">/</span> <a href="#" rel="tag">Identity</a></span>
+                                                    <div class="gdlr-core-portfolio-content"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="gdlr-core-item-list  gdlr-core-item-pdlr class1 gdlr-core-column-20">
+                                            <div class="gdlr-core-portfolio-grid  gdlr-core-center-align gdlr-core-style-normal" style="margin-bottom: 25px ;">
+                                                <div class="gdlr-core-portfolio-thumbnail gdlr-core-media-image  gdlr-core-style-margin-icon">
+                                                    <div class="gdlr-core-portfolio-thumbnail-image-wrap  gdlr-core-zoom-on-hover">
+                                                        <a class="gdlr-core-lightgallery gdlr-core-js " href="https://i2.wp.com/www.staffdigital.pe/proyecto/wp-content/uploads/2015/09/SC-3.jpg?fit=1280%2C1280&ssl=1" data-lightbox-group="gdlr-core-img-group-1"><img src="https://i2.wp.com/www.staffdigital.pe/proyecto/wp-content/uploads/2015/09/SC-3.jpg?fit=1280%2C1280&ssl=1" alt="" width="600" height="800" title="shutterstock_1121661596" /><span class="gdlr-core-image-overlay  gdlr-core-portfolio-overlay gdlr-core-image-overlay-center-icon gdlr-core-js gdlr-core-with-margin"><span class="gdlr-core-image-overlay-content" ><span class="gdlr-core-portfolio-icon-wrap" ><i class="gdlr-core-portfolio-icon arrow_expand" ></i></span></span>
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="gdlr-core-portfolio-content-wrap gdlr-core-skin-divider">
+                                                    <h3 class="gdlr-core-portfolio-title gdlr-core-skin-title" style="font-size: 18px ;font-weight: 600 ;letter-spacing: 0px ;text-transform: none ;"><a href="#" >Graphics</a></h3><span class="gdlr-core-portfolio-info gdlr-core-portfolio-info-tag gdlr-core-info-font gdlr-core-skin-caption" style="font-style: normal ;"><a href="#" rel="tag">Business</a> <span class="gdlr-core-sep">/</span> <a href="#" rel="tag">Creative</a></span>
+                                                    <div class="gdlr-core-portfolio-content"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="gdlr-core-item-list  gdlr-core-item-pdlr class2 gdlr-core-column-20">
+                                            <div class="gdlr-core-portfolio-grid  gdlr-core-center-align gdlr-core-style-normal" style="margin-bottom: 25px ;">
+                                                <div class="gdlr-core-portfolio-thumbnail gdlr-core-media-image  gdlr-core-style-margin-icon">
+                                                    <div class="gdlr-core-portfolio-thumbnail-image-wrap  gdlr-core-zoom-on-hover">
+                                                        <a class="gdlr-core-lightgallery gdlr-core-js " href="https://i2.wp.com/www.staffdigital.pe/proyecto/wp-content/uploads/2015/09/cambiate.jpg?fit=1280%2C1200&ssl=1" data-lightbox-group="gdlr-core-img-group-1"><img src="https://i2.wp.com/www.staffdigital.pe/proyecto/wp-content/uploads/2015/09/cambiate.jpg?fit=1280%2C1200&ssl=1" alt="" width="600" height="800" title="shutterstock_1099279190" /><span class="gdlr-core-image-overlay  gdlr-core-portfolio-overlay gdlr-core-image-overlay-center-icon gdlr-core-js gdlr-core-with-margin"><span class="gdlr-core-image-overlay-content" ><span class="gdlr-core-portfolio-icon-wrap" ><i class="gdlr-core-portfolio-icon arrow_expand" ></i></span></span>
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="gdlr-core-portfolio-content-wrap gdlr-core-skin-divider">
+                                                    <h3 class="gdlr-core-portfolio-title gdlr-core-skin-title" style="font-size: 18px ;font-weight: 600 ;letter-spacing: 0px ;text-transform: none ;"><a href="#" >Multimedia</a></h3><span class="gdlr-core-portfolio-info gdlr-core-portfolio-info-tag gdlr-core-info-font gdlr-core-skin-caption" style="font-style: normal ;"><a href="#" rel="tag">Architecture</a> <span class="gdlr-core-sep">/</span> <a href="#" rel="tag">Creative</a></span>
+                                                    <div class="gdlr-core-portfolio-content"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="gdlr-core-item-list  gdlr-core-item-pdlr class3 gdlr-core-column-20">
+                                            <div class="gdlr-core-portfolio-grid  gdlr-core-center-align gdlr-core-style-normal" style="margin-bottom: 25px ;">
+                                                <div class="gdlr-core-portfolio-thumbnail gdlr-core-media-image  gdlr-core-style-margin-icon">
+                                                    <div class="gdlr-core-portfolio-thumbnail-image-wrap  gdlr-core-zoom-on-hover">
+                                                        <a class="gdlr-core-lightgallery gdlr-core-js " href="https://i0.wp.com/www.staffdigital.pe/proyecto/wp-content/uploads/2015/09/herrajes-3.jpg?fit=1280%2C1200&ssl=1" data-lightbox-group="gdlr-core-img-group-1"><img src="https://i0.wp.com/www.staffdigital.pe/proyecto/wp-content/uploads/2015/09/herrajes-3.jpg?fit=1280%2C1200&ssl=1" alt="" width="600" height="800" title="shutterstock_1226189986" /><span class="gdlr-core-image-overlay  gdlr-core-portfolio-overlay gdlr-core-image-overlay-center-icon gdlr-core-js gdlr-core-with-margin"><span class="gdlr-core-image-overlay-content" ><span class="gdlr-core-portfolio-icon-wrap" ><i class="gdlr-core-portfolio-icon arrow_expand" ></i></span></span>
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="gdlr-core-portfolio-content-wrap gdlr-core-skin-divider">
+                                                    <h3 class="gdlr-core-portfolio-title gdlr-core-skin-title" style="font-size: 18px ;font-weight: 600 ;letter-spacing: 0px ;text-transform: none ;"><a href="#" >Communication</a></h3><span class="gdlr-core-portfolio-info gdlr-core-portfolio-info-tag gdlr-core-info-font gdlr-core-skin-caption" style="font-style: normal ;"><a href="#" rel="tag">Clean</a> <span class="gdlr-core-sep">/</span> <a href="#" rel="tag">Creative</a></span>
+                                                    <div class="gdlr-core-portfolio-content"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="gdlr-core-item-list  gdlr-core-item-pdlr class1 gdlr-core-column-20">
+                                            <div class="gdlr-core-portfolio-grid  gdlr-core-center-align gdlr-core-style-normal" style="margin-bottom: 25px ;">
+                                                <div class="gdlr-core-portfolio-thumbnail gdlr-core-media-image  gdlr-core-style-margin-icon">
+                                                    <div class="gdlr-core-portfolio-thumbnail-image-wrap  gdlr-core-zoom-on-hover">
+                                                        <a class="gdlr-core-lightgallery gdlr-core-js " href="upload/shutterstock_1149301178.jpg" data-lightbox-group="gdlr-core-img-group-1"><img src="https://i2.wp.com/www.staffdigital.pe/proyecto/wp-content/uploads/2017/03/COLECTINOVIOS_M1.jpg?fit=1200%2C857&ssl=1" alt="" width="600" height="800" title="shutterstock_1149301178" /><span class="gdlr-core-image-overlay  gdlr-core-portfolio-overlay gdlr-core-image-overlay-center-icon gdlr-core-js gdlr-core-with-margin"><span class="gdlr-core-image-overlay-content" ><span class="gdlr-core-portfolio-icon-wrap" ><i class="gdlr-core-portfolio-icon arrow_expand" ></i></span></span>
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="gdlr-core-portfolio-content-wrap gdlr-core-skin-divider">
+                                                    <h3 class="gdlr-core-portfolio-title gdlr-core-skin-title" style="font-size: 18px ;font-weight: 600 ;letter-spacing: 0px ;text-transform: none ;"><a href="#" >Fresh</a></h3><span class="gdlr-core-portfolio-info gdlr-core-portfolio-info-tag gdlr-core-info-font gdlr-core-skin-caption" style="font-style: normal ;"><a href="#" rel="tag">Business</a></span>
+                                                    <div class="gdlr-core-portfolio-content"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="gdlr-core-item-list  gdlr-core-item-pdlr class2 gdlr-core-column-20">
+                                            <div class="gdlr-core-portfolio-grid  gdlr-core-center-align gdlr-core-style-normal" style="margin-bottom: 25px ;">
+                                                <div class="gdlr-core-portfolio-thumbnail gdlr-core-media-image  gdlr-core-style-margin-icon">
+                                                    <div class="gdlr-core-portfolio-thumbnail-image-wrap  gdlr-core-zoom-on-hover">
+                                                        <a class="gdlr-core-lightgallery gdlr-core-js " href="upload/shutterstock_1124590307.jpg" data-lightbox-group="gdlr-core-img-group-1"><img src="https://i2.wp.com/www.staffdigital.pe/proyecto/wp-content/uploads/2015/09/luxury-1.jpg?fit=1280%2C1280&ssl=1" alt="" width="600" height="800" title="shutterstock_1124590307" /><span class="gdlr-core-image-overlay  gdlr-core-portfolio-overlay gdlr-core-image-overlay-center-icon gdlr-core-js gdlr-core-with-margin"><span class="gdlr-core-image-overlay-content" ><span class="gdlr-core-portfolio-icon-wrap" ><i class="gdlr-core-portfolio-icon arrow_expand" ></i></span></span>
+                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="gdlr-core-portfolio-content-wrap gdlr-core-skin-divider">
+                                                    <h3 class="gdlr-core-portfolio-title gdlr-core-skin-title" style="font-size: 18px ;font-weight: 600 ;letter-spacing: 0px ;text-transform: none ;"><a href="#" >Memorable</a></h3><span class="gdlr-core-portfolio-info gdlr-core-portfolio-info-tag gdlr-core-info-font gdlr-core-skin-caption" style="font-style: normal ;"><a href="#" rel="tag">Architecture</a> <span class="gdlr-core-sep">/</span> <a href="#" rel="tag">Business</a></span>
+                                                    <div class="gdlr-core-portfolio-content"></div>
+                                                </div>
+                                            </div>
+                                        </div-->
+
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        {% endif %}                          
+
+     {% endfor %}
+ {% endif %}

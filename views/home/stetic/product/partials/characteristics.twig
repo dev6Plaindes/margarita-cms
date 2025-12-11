@@ -1,0 +1,12 @@
+{% if characteristics|length > 0 %}
+<div class="course-details__meta">
+    {% for item in characteristics %}
+    <a href="javascript:;" class="course-details__meta-link">
+        <span class="course-details__meta-icon" style="background-color: {{ item.design_icon.color }}">
+            <i class="{{ item.design_icon.icon }}"></i><!-- /.far fa-clock -->
+        </span><!-- /.course-details__icon -->
+        {{ item.name }}: <span>{{ item.description }}</span>
+    </a><!-- /.course-details__meta-link -->
+    {% endfor %}
+</div><!-- /.course-details__meta -->
+{% endif %}

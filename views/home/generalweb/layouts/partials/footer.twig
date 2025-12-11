@@ -1,0 +1,32 @@
+<div class="container ">
+    <div class="row ">
+        <div class="col-lg-6">
+            <div class="row card-system justify-content-md-center text-center">
+                <div class="col-12 mb-3"><img src="{{ _company.logos[1].patch }}" height="65" alt=""><p>{{ _company.address|raw }}</p></div>
+                {% for item_prom in promotores %}
+                <div class="col img-footer">
+                    <h3>{{ item_prom.title }}</h3>
+                    <img src="{{ item_prom.banner.patch }}" height="65">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-lg-6 m-auto">
+            <div class="row card-system justify-content-md-end">
+                <div class="col-5">
+                    <h1>CONSULTAS</h1>
+                    <h3>Comunícate al:</h3>
+                    <p>{{ _company.phone_contact|raw }}</p>
+                    <h3>Escríbenos:</h3>
+                    <p>{{  _company.email_contact }}</p>
+                </div>
+                <div class="col-5">
+                    <h1>SERVICIO AL CLIENTE</h1>
+                    <h3><a href="#">Preguntas frecuentes</a></h3>
+                    <h3><a href="/terminos-y-condiciones">Términos y condiciones</a></h3>
+                    <h3><a href="/politicas-de-privacidad">Políticas de privacidad</a></h3>
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>

@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  php:
+    container_name: cms_margarita
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    ports:
+      - 8005:80
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - .:/var/www/html
+      - /var/www/html/vendor
+      - /var/www/html/node_modules
+      - ./config/docker/apache/000-default.conf:/etc/apache2/sites-available/000-default.conf
+    restart: unless-stopped
+    networks:
+      - prosupervision_network
+
+networks:
+  prosupervision_network:
+    external: true

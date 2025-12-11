@@ -1,0 +1,78 @@
+{% if slide %}
+<div class="banner-wrapper">
+    <section class="banner-one banner-carousel__one no-dots owl-theme owl-carousel">
+        {% for item in slide %}
+            {% if item.content_alias == 'banner' %}
+        <div class="banner-one__slide banner-one__slide-one">
+            <div class="container">
+                <div class="banner-one__bubble-1"></div><!-- /.banner-one__bubble- -->
+                <div class="banner-one__bubble-2"></div><!-- /.banner-one__bubble- -->
+                <div class="banner-one__bubble-3"></div><!-- /.banner-one__bubble- -->
+                <img src="{{ item.imagens[0].patch }}" alt="" class="banner-one__scratch">
+                <img src="{{ item.imagens[1].patch }}" class="banner-one__person" alt="">
+                <div class="row no-gutters">
+                    <div class="col-xl-12">
+                        <h3 class="banner-one__title banner-one__light-color">{{ item.content_name|raw }}</h3><!-- /.banner-one__title -->
+                        <p class="banner-one__tag-line">{{ item.content_caption }}</p><!-- /.banner-one__tag-line -->
+                        <a href="#cat_cursos" class="thm-btn banner-one__btn">Empecemos</a>
+                    </div><!-- /.col-xl-12 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.banner-one__slide -->
+            {% endif %}
+        {% endfor %}
+        {#
+        <div class="banner-one__slide banner-one__slide-one">
+            <div class="container">
+                <div class="banner-one__bubble-1"></div><!-- /.banner-one__bubble- -->
+                <div class="banner-one__bubble-2"></div><!-- /.banner-one__bubble- -->
+                <div class="banner-one__bubble-3"></div><!-- /.banner-one__bubble- -->
+                <img src="/assets/template/stetic/images/slider-1-scratch.png" alt="" class="banner-one__scratch">
+                <img src="/assets/template/stetic/images/chica-piel.png" class="banner-one__person" alt="">
+                <div class="row no-gutters">
+                    <div class="col-xl-12">
+                        <h3 class="banner-one__title banner-one__light-color">Especializate <br>
+                            En estética</h3><!-- /.banner-one__title -->
+                        <p class="banner-one__tag-line">¿Estas listo para aprender?</p><!-- /.banner-one__tag-line -->
+                        <a href="#cat_cursos" class="thm-btn banner-one__btn">Empecemos</a>
+                    </div><!-- /.col-xl-12 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.banner-one__slide -->
+        <div class="banner-one__slide banner-one__slide-two">
+            <div class="container">
+                <div class="banner-one__bubble-1"></div><!-- /.banner-one__bubble- -->
+                <div class="banner-one__bubble-2"></div><!-- /.banner-one__bubble- -->
+                <div class="banner-one__bubble-3"></div><!-- /.banner-one__bubble- -->
+                <img src="/assets/template/stetic/images/slider-1-scratch.png" alt="" class="banner-one__scratch">
+                <img src="/assets/template/stetic/images/chica-piel.png" class="banner-one__person" alt="">
+                <div class="row no-gutters">
+                    <div class="col-xl-12">
+                        <h3 class="banner-one__title banner-one__light-color">Especializate <br>
+                            En estética</h3><!-- /.banner-one__title -->
+                        <p class="banner-one__tag-line">¿Estas listo para aprender?</p><!-- /.banner-one__tag-line -->
+                        <a href="#" class="thm-btn banner-one__btn">Empecemos</a>
+                    </div><!-- /.col-xl-12 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.banner-one__slide -->#}
+    </section><!-- /.banner-one -->
+    {#<div class="banner-carousel-btn">
+        <a href="#" class="banner-carousel-btn__left-btn"><i class="kipso-icon-left-arrow"></i></a>
+        <a href="#" class="banner-carousel-btn__right-btn"><i class="kipso-icon-right-arrow"></i></a>
+    </div><!-- /.banner-carousel-btn -->#}
+    {#<div class="banner-one__cta">
+        <div class="banner-one__cta-icon">
+            <i class="kipso-icon-black-graduation-cap-tool-of-university-student-for-head"></i>
+            <!-- /.kipso-icon-knowledge -->
+        </div><!-- /.banner-one__cta-icon -->
+        <div class="banner-one__cta-title">
+            <h3 class="banner-one__cta-text"><a href="#">Read how we encourage our
+                    students to learn</a></h3><!-- /.banner-one__cta-text -->
+        </div><!-- /.banner-one__cta-title -->
+        <div class="banner-one__cta-link">
+            <a href="#"><i class="kipso-icon-right-arrow"></i><!-- /.kipso-icon-right-arrow --></a>
+        </div><!-- /.banner-one__cta-link -->
+    </div><!-- /.banner-one__cta -->#}
+</div><!-- /.banner-wrapper -->
+{% endif %}

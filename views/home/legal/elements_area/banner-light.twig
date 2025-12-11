@@ -1,0 +1,28 @@
+{% if contents %}
+     {% for content in contents %}
+
+        {% if content.alias == 'vista_areas' %}
+
+           <!--EXPERIENCIA-->
+           <section class="container-fluid p-0 banner-light">
+
+                {% for k, c_content in content.contents %}
+                    {% if c_content.content_alias == 'general' %}
+                        <div class="item d-flex justify-content-center">
+                                
+                            <img src="{{ c_content.imagens[0].patch }}" alt="The Last of us">
+
+                            <div class="banner-elements">
+                                <p>{{ c_content.content_name }}</p>
+                            </div>
+                        </div>
+                    {% endif %} 
+                {% endfor %}
+               
+            </section>
+            <!--END EXPERIENCIA-->
+
+        {% endif %}                          
+
+     {% endfor %}
+ {% endif %}

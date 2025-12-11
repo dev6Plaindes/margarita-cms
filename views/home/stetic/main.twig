@@ -1,0 +1,113 @@
+{% set slide = [] %}
+{% set bienvenido = [] %}
+{% set videocorp = [] %}
+{% set registro = [] %}
+{% set beneficio = [] %}
+{% set socios = [] %}
+{% set profecionales = [] %}
+{% set galeria = [] %}
+{% set estudia = [] %}
+{% set valores = [] %}
+{% set metodologia = [] %}
+{% set certificado = [] %}
+{% set cursos = [] %}
+
+{% for item in contents %}
+    {% if item.alias == 'slide' %}
+        {% set slide = item.contents %}
+    {% endif %}
+    {% if item.alias == 'bienvenido' %}
+        {% set bienvenido = item.contents %}
+    {% endif %}
+    {% if item.alias == 'videocorp' %}
+        {% set videocorp = item.contents %}
+    {% endif %}
+    {% if item.alias == 'registro' %}
+        {% set registro = item.contents %}
+    {% endif %}
+    {% if item.alias == 'beneficio' %}
+        {% set beneficio = item.contents %}
+    {% endif %}
+    {% if item.alias == 'socios' %}
+        {% set socios = item.contents %}
+    {% endif %}
+    {% if item.alias == 'profecionales' %}
+        {% set profecionales = item.contents %}
+    {% endif %}
+    {% if item.alias == 'galeria' %}
+        {% set galeria = item.contents %}
+    {% endif %}
+    {% if item.alias == 'estudia' %}
+        {% set estudia = item.contents %}
+    {% endif %}
+    {% if item.alias == 'valores' %}
+        {% set valores = item.contents %}
+    {% endif %}
+    {% if item.alias == 'metodologia' %}
+        {% set metodologia = item.contents %}
+    {% endif %}
+    {% if item.alias == 'certificado' %}
+        {% set certificado = item.contents %}
+    {% endif %}
+    {% if item.alias == 'cursos' %}
+        {% set cursos = item.contents %}
+    {% endif %}
+{% endfor %}
+
+<!doctype html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ _company.meta_title }}</title>
+
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ _company.favicon }}">
+    <link rel="manifest" href="/assets/template/stetic/images/favicons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{{ _company.favicon }}">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- plugin scripts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,500i,600,700,800%7CSatisfy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/template/stetic/css/style.css">
+    <link rel="stylesheet" href="/assets/template/stetic/css/plugins.css">
+    <link rel="stylesheet" href="/assets/template/stetic/css/responsive.css">
+    <link rel="stylesheet" href="/assets/template/stetic/plugins/fontawesome-free-5.15.4-web/css/all.min.css">
+    <link rel="stylesheet" href="/assets/template/stetic/plugins/kipso-icons/style.css">
+
+    <style>
+        body {
+            {% for color_item in _company.colors %}
+            --main-{{ color_item.alias }}: {{ color_item.color }};
+            {% endfor %}
+        }
+    </style>
+
+    {% block css %} {% endblock %}
+
+</head>
+
+<body translate="no">
+    <div class="preloader" style="background-image: url('{{ _company.logos[0].patch }}'); background-size: 20rem;"><span></span></div><!-- /.preloader -->
+    
+    <div class="page-wrapper">
+    {% include 'home/stetic/elements/header.twig' %}
+    {% block content %} {% endblock %}
+    {% include 'home/stetic/elements/footer.twig' %}
+    {% include 'home/stetic/elements/search.twig' %}
+    </div><!-- /.page-wrapper -->
+
+    <script src="/assets/utilitarian/js/sweetalert2.js"></script>
+    <!-- template scripts -->
+    
+    <script src="/assets/template/stetic/js/plugins.min.js"></script>
+    <script src="/assets/template/stetic/js/main.min.js"></script>
+    {% block js %}
+    {% endblock %}
+    
+</body>
+
+</html>

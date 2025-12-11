@@ -1,0 +1,7 @@
+vendor/
+app/Model/ServerMail.php
+.env
+composer.lock
+public/upload/*
+node_modules
+package-lock.json

@@ -1,0 +1,75 @@
+<nav class="navbar navbar-expand-lg m-auto">
+    <div class="container-fluid">
+        <a class="navbar-brand logo" href="/">
+        {% if _company.logos|length %}
+            <img src="{{ _company.logos[0].patch }}">
+        {% endif %}
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav-menu-control"
+            aria-controls="nav-menu-control" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav-menu-control">
+            <ul class="navbar-nav m-auto mb-2 w-75 mb-lg-0">
+                {% for index_m, menu_item in _menu %}
+
+                <li class="nav-item mx-3">
+                    {% if index_m == 0 %}
+                        <a style="border: none;" class="nav-link {{ menu.slug == menu_item.slug ? 'active' : '' }} pt-3" aria-current="page" href="{{ menu_item.url ? menu_item.url : "/" ~ menu_item.slug }}" {{ menu_item.url ? 'target="_blank"'}}>
+                        <i class="fa fa-home p-fa icon-resalt" style="position: absolute; margin-left: -40px; margin-top: -4px;"></i>
+                    {% else %}
+                        <a class="nav-link {{ menu.slug == menu_item.slug ? 'active' : '' }} {{ index_m > 0 ? 'pt-3'}}" aria-current="page" href="{{ menu_item.url ? menu_item.url : "/" ~ menu_item.slug }}" {{ menu_item.url ? 'target="_blank"'}}>
+                    
+                    {% endif %}
+                    {{ menu_item.name }}
+                    </a></li>
+                {% endfor %}
+            </ul>
+            {% if APP.SESSION.login16.user is defined %}
+                <div class="dropdown">
+                    <a class="btn btn-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ APP.SESSION.login16.user.email }}
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" href="javascript:void(0);" id="btnSignOut">Cerrar Sesión</a></li>
+                    </ul>
+                </div>
+            {% else %}
+                <a class="btn-custom btn-color-primary " href="#" role="button" data-bs-toggle="modal" data-bs-target="#modal-signin">Iniciar sesión</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+{% if APP.SESSION.login16.user is not defined %}
+<!-- Modal -->
+<div class="modal fade" id="modal-signin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form id="formSignin" class="text-center">
+                    <div class="cont-content p-4">
+                        <div class="row">
+                            <div class="col-lg-12 mb-3">
+                                <h4>INICIA SESIÓN</h4>
+                                <div class="line"></div>
+                            </div>
+                            <div class="col-lg-12 mb-4">
+                                <input type="email" class="form-control" name="email" placeholder="Correo electrónico" required>
+                            </div>
+                            <div class="col-lg-12 mb-4">
+                                <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-light btn-sys-two px-4 py-2">INGRESAR</button>                 
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+<div class="border-custom">
+    <div class="col border-color-aux_uno"></div>
+    <div class="col border-color-resaltar"></div>
+    <div class="col border-color-secundario"></div>
+</div>

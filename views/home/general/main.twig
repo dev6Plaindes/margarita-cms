@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>LEGALIA</title>
+    <link rel="icon" type="image/png" href="/assets/template/general/images/favicon.jpeg">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="/assets/font-icons/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/sweetalert2/css/sweetalert2.min.css">    
+
+    <link rel="stylesheet" href="/assets/template/general/css/style.css">
+    <link rel="stylesheet" href="/assets/template/general/css/responsive.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/assets/template/general/owlcarousel/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/template/general/owlcarousel/css/owl.theme.default.min.css">
+    <style>
+        .swal2-icon.swal2-question{
+            line-height: 5em;
+            font-size: 1em;
+        }
+    </style>
+    {% block css %} {% endblock %}
+   
+</head>
+
+<body translate="no" class="d-flex flex-column min-vh-100">
+    <header class="container-fluid bgcolor_one">
+        {% include "home/general/elements/header.twig" %}
+    </header>
+    <div class="wrapper">
+        {#{% include "home/general/elements/social.twig" %}#}
+        {% block content %} {% endblock %}
+    </div>
+    	
+    <footer>
+        {% include "home/general/elements/footer.twig" %}
+    </footer>
+
+    <!-- Modal -->
+	<div class="modal fade" id="modal_terminos_condiciones1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel"></h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body px-5 pb-5">
+					{{ contacto.data.terminos_condiciones|raw }}
+				</div>
+			</div>
+		</div>
+	</div>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    {# <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> #}
+
+    <script src="/assets/template/general/js/main.min.js?v=0.0.4"></script>
+    <script src="/assets/template/general/owlcarousel/js/owl.carousel.min.js"></script>
+
+<script>
+	$('.owl-carousel').owlCarousel({
+		loop:true,
+		margin:5,
+		autoHeight:true,
+		autoplay:true,
+		autoplayTimeout:3000,
+		autoplayHoverPause:true,
+		responsiveClass:true,
+		responsive:{
+			0:{
+				loop:true,
+				items:1
+			},
+			600:{
+				loop:true,
+				items:3
+			},
+			1000:{
+				loop:true,
+				items:5
+			}
+		}
+	})
+</script>
+    {% block js %} {% endblock %}
+
+</body>
+
+</html>

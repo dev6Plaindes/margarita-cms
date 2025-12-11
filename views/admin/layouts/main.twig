@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!--begin::Head-->
+  <head>
+    <base href="" />
+    <meta charset="utf-8" />
+    <title>Administrador</title>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <!--begin::Fonts-->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+    />
+    <!--end::Fonts-->
+    <!--begin::Page Custom Styles(used by this page)-->
+    <link
+      href="/assets/admin/theme/css/pages/wizard/wizard-4.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!--end::Page Custom Styles-->
+    <link
+      href="/assets/admin/theme/plugins/custom/datatables/datatables.bundle.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!--begin::Global Theme Styles(used by all pages)-->
+    <link
+      href="/assets/admin/theme/plugins/global/plugins.bundle.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/assets/admin/theme/plugins/custom/prismjs/prismjs.bundle.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/assets/admin/theme/css/style.bundle.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!--end::Global Theme Styles-->
+    <!--begin::Layout Themes(used by all pages)-->
+    <link
+      href="/assets/admin/theme/css/themes/layout/header/base/light.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/assets/admin/theme/css/themes/layout/header/menu/light.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/assets/admin/theme/css/themes/layout/brand/dark.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="/assets/admin/theme/css/themes/layout/aside/dark.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="/assets/jquery-minicolors/jquery.minicolors.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+    />
+
+    <!--end::Layout Themes-->
+    <link rel="shortcut icon" href="/assets/admin/images/favicon.ico" />
+    <style>
+      .aside-minimize:not(.aside-minimize-hover) .brand .brand-logo h4 {
+        display: none;
+      }
+    </style>
+    {% block css %}{% endblock %}
+  </head>
+  <!--end::Head-->
+  <!--begin::Body-->
+  <body
+    id="kt_body"
+    class="header-fixed header-mobile-fixed subheader-enabled subheader-fixed aside-enabled aside-fixed page-loading"
+  >
+    {% set _TEXT_TYPE = 'text' %} {% set _SUMMERNOTE_TYPE = 'summernote' %} {%
+    set _COLORS_TYPE = 'colors' %} {% set _IMAGES_TYPE = 'images' %} {% set
+    _NUMBER_TYPE = 'number' %} {% set _CHECKBOX_TYPE = 'checkbox' %} {% set
+    _TEXT_NAME_TYPE = 'text_name' %} {% set settings =
+    APP.COMPANY.settings|length ? APP.COMPANY.settings : APP.DEFAULT_SETTINGS %}
+    {% include 'admin/layouts/partials/header.mobile.twig' %}
+    <div class="d-flex flex-column flex-root">
+      <div class="d-flex flex-row flex-column-fluid page">
+        {% block aside %}{% endblock %}
+        <div class="d-flex flex-column flex-row-fluid wrapper" id="kt_wrapper">
+          {% include 'admin/layouts/partials/header.twig' %}
+          <div
+            class="content d-flex flex-column flex-column-fluid"
+            id="kt_content"
+          >
+            {% block breadcrumb %}{% endblock %}
+            <div class="d-flex flex-column-fluid">
+              {% block content %}{% endblock %}
+            </div>
+          </div>
+          {% include 'admin/layouts/partials/footer.twig' %}
+        </div>
+      </div>
+    </div>
+    {% include 'admin/layouts/partials/scrolltop.twig' %} {% block modal %} {%
+    endblock %}
+    <script>
+      var HOST_URL =
+        "https://preview.keenthemes.com/metronic/theme/html/tools/preview";
+    </script>
+    <!--begin::Global Config(global config for global JS scripts)-->
+    <script>
+      var KTAppSettings = {
+        breakpoints: { sm: 576, md: 768, lg: 992, xl: 1200, xxl: 1400 },
+        colors: {
+          theme: {
+            base: {
+              white: "#ffffff",
+              primary: "#3699FF",
+              secondary: "#E5EAEE",
+              success: "#1BC5BD",
+              info: "#8950FC",
+              warning: "#FFA800",
+              danger: "#F64E60",
+              light: "#E4E6EF",
+              dark: "#181C32",
+            },
+            light: {
+              white: "#ffffff",
+              primary: "#E1F0FF",
+              secondary: "#EBEDF3",
+              success: "#C9F7F5",
+              info: "#EEE5FF",
+              warning: "#FFF4DE",
+              danger: "#FFE2E5",
+              light: "#F3F6F9",
+              dark: "#D6D6E0",
+            },
+            inverse: {
+              white: "#ffffff",
+              primary: "#ffffff",
+              secondary: "#3F4254",
+              success: "#ffffff",
+              info: "#ffffff",
+              warning: "#ffffff",
+              danger: "#ffffff",
+              light: "#464E5F",
+              dark: "#ffffff",
+            },
+          },
+          gray: {
+            "gray-100": "#F3F6F9",
+            "gray-200": "#EBEDF3",
+            "gray-300": "#E4E6EF",
+            "gray-400": "#D1D3E0",
+            "gray-500": "#B5B5C3",
+            "gray-600": "#7E8299",
+            "gray-700": "#5E6278",
+            "gray-800": "#3F4254",
+            "gray-900": "#181C32",
+          },
+        },
+        "font-family": "Poppins",
+      };
+    </script>
+    <!--end::Global Config-->
+
+    <!--begin::Global Theme Bundle(used by all pages)-->
+    <script src="/assets/admin/theme/plugins/global/plugins.bundle.js"></script>
+    <script src="/assets/admin/theme/plugins/custom/prismjs/prismjs.bundle.js"></script>
+    <script src="/assets/admin/theme/js/scripts.bundle.js"></script>
+    <!--end::Global Theme Bundle-->
+    <!--begin::Page Scripts(used by this page)-->
+    <script src="/assets/admin/theme/js/pages/widgets.js"></script>
+    <!--end::Page Scripts-->
+    <script src="/assets/admin/theme/plugins/custom/datatables/datatables.bundle.js"></script>
+
+    <script src="/assets/jquery-minicolors/jquery.minicolors.min.js"></script>
+    <script src="/assets/jquery-minicolors/components-color-pickers.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="/assets/admin/js/admin.min.js"></script>
+    {% block js %} {% endblock %}
+  </body>
+  <!--end::Body-->
+</html>

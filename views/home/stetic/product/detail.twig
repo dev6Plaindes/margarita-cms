@@ -1,0 +1,161 @@
+{% extends "home/stetic/main.twig" %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+
+{#<section class="inner-banner">
+    <div class="container">
+        <ul class="list-unstyled thm-breadcrumb">
+            <li><a href="#">Inicio</a></li>
+            <li class="active"><a href="#">Curso</a></li>
+        </ul><!-- /.list-unstyled -->
+        <h2 class="inner-banner__title">Curso detalle</h2><!-- /.inner-banner__title -->
+    </div><!-- /.container -->
+</section><!-- /.inner-banner -->#}
+<section class="course-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="course-details__content">
+                    <p class="course-details__author">
+                        <img src="{{ product.teacher.image ? product.teacher.image : '/assets/template/stetic/images/team-1-1.jpg'}}" alt="{{ product.teacher.name }}">
+                        Por <a href="#">{{ product.teacher.name ? product.teacher.name ~ ' ' ~  product.teacher.lastname : 'definir docente'}}</a>
+                    </p><!-- /.course-details__author -->
+
+                    <div class="course-details__top">
+                        <div class="course-details__top-left">
+                            <h2 class="course-details__title">{{ product.name }}</h2>
+                            <!-- /.course-details__title -->
+                            <div class="course-one__stars">
+                                <span class="course-one__stars-wrap">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </span><!-- /.course-one__stars-wrap -->
+                                <span class="course-one__count">4.8</span><!-- /.course-one__count -->
+                                <span class="course-one__stars-count">250</span><!-- /.course-one__stars-count -->
+                            </div><!-- /.course-one__stars -->
+                        </div><!-- /.course-details__top-left -->
+                        <div class="course-details__top-right">
+                            <a href="#" class="course-one__category" style="background-color:{{ product.category.color }}">{{ product.category.name }}</a><!-- /.course-one__category -->
+                        </div><!-- /.course-details__top-right -->
+                    </div><!-- /.course-details__top -->
+                    <div class="course-one__image">
+                        {% if product.url %}
+                        <iframe width="100%" height="447" src="{{ product.url }}"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                        {% else %}
+                            <img src="{{ product.image ? product.image : '/assets/template/stetic/images/course-1-1.jpg' }}" alt="">
+                        {% endif %}
+                        <i class="far fa-heart"></i><!-- /.far fa-heart -->
+                    </div><!-- /.course-one__image -->
+
+                    <ul class="course-details__tab-navs list-unstyled nav nav-tabs" role="tablist">
+                        <li>
+                            <a class="active" role="tab" data-toggle="tab" href="#overview">Visión General</a>
+                        </li>
+                        <li>
+                            <a class="" role="tab" data-toggle="tab" href="#curriculum">Plan de estudios</a>
+                        </li>
+                        {#<li>
+                            <a class="" role="tab" data-toggle="tab" href="#review">Reviews</a>
+                        </li>#}
+                    </ul><!-- /.course-details__tab-navs list-unstyled -->
+                    <div class="tab-content course-details__tab-content ">
+                        <div class="tab-pane show active  animated fadeInUp" role="tabpanel" id="overview">
+                            {{ product.overview|raw }}
+                        </div><!-- /.course-details__tab-content -->
+                        <div class="tab-pane  animated fadeInUp" role="tabpanel" id="curriculum">
+                        {% include 'home/stetic/product/partials/syllabus.twig' %}
+                        </div><!-- /.course-details__tab-content -->
+                    </div><!-- /.tab-content -->
+                </div><!-- /.course-details__content -->
+            </div><!-- /.col-lg-8 -->
+            <div class="col-lg-4">
+                <div class="course-details__price">
+                    <p class="course-details__price-text">Precio del curso </p><!-- /.course-details__price-text -->
+                    <p class="course-details__price-amount"> PEN {{ product.price }}</p><!-- /.course-details__price-amount -->
+                    <a href="#" class="thm-btn course-details__price-btn" data-toggle="modal"
+                        data-target="#exampleModal">Comprar curso</a><!-- /.thm-btn -->
+                    <div class="mt-2" style="height:0px;"><a href="/producto/pago/{{ product.slug }}" class="text-secondary">Medios de Pago</a></div>
+                </div><!-- /.course-details__price -->
+                {% include 'home/stetic/product/partials/characteristics.twig' %}
+                {% include 'home/stetic/product/partials/courses.twig' %}
+            </div><!-- /.col-lg-4 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section><!-- /.course-details -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content contact-one py-0">
+            <div class="become-teacher__form-top px-5">
+                <h5 class="become-teacher__form-title text-center">Matricúlate ahora</h5><!-- /.contact-one__title -->
+            </div>
+            {# <form id="formEnrollmentUser" class="contact-one__form contact-form-validated p-5"> #}
+            <form id="formEnrollmentUser" class="p-5">
+                <div class="row low-gutters">
+                    <div class="col-lg-12">
+                        <input type="text" name="name" placeholder="Su nombre" required>
+                    </div><!-- /.col-lg-6 -->
+                    <div class="col-lg-12">
+                        <input type="text" placeholder="Correo electrónico" name="email" required>
+                    </div><!-- /.col-lg-6 -->
+                    <div class="col-lg-12">
+                        <input type="text" placeholder="Teléfono/Whatsapp" name="phone">
+                    </div><!-- /.col-lg-6 -->
+                    <div class="col-lg-12 pb-3 pt-2">
+                        <h5>Hablanos de ti.</h5>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="level" id="tipo_estudiante1"
+                                value="1" checked>
+                            <label class="form-check-label" for="tipo_estudiante1">
+                                Profecional en estética
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="level" id="tipo_estudiante2"
+                                value="2">
+                            <label class="form-check-label" for="tipo_estudiante2">
+                                Estudiante en estética
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="level" id="tipo_estudiante3"
+                                value="3">
+                            <label class="form-check-label" for="tipo_estudiante3">
+                                Experiencia laboral en estética
+                            </label>
+                        </div>
+                    </div><!-- /.col-lg-6 -->
+                    <div class="col-lg-12 pb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="accept" value="1" required>
+                            <div  style="line-height: 22px; padding-top: 5px;">
+                            Acepta nuestros <a href="/terminos-y-condiciones" target="_blank">Terminos y condiciones</a> y <a href="/politicas-de-privacidad" target="_blank">políticas de privacidad</a>
+                            </div>
+                        </div>
+                    </div><!-- /.col-lg-6 -->
+                    <div class="col-lg-12">
+                        <div class="text-center">
+                            <button type="submit" class=" thm-btn"
+                                style="background-color: var(--main-one);" data-dismiss="modal">Cerrar</button>
+                            <button type="submit" class=" thm-btn"
+                                style="background-color: var(--main-two);">Registrarse</button>
+                        </div><!-- /.text-center -->
+                    </div><!-- /.col-lg-12 -->
+                </div><!-- /.row -->
+            </form><!-- /.contact-one__form -->
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}{% endblock %}

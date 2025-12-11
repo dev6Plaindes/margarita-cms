@@ -1,0 +1,159 @@
+{% extends "admin/layouts/main.twig" %}
+
+{% block aside %}
+	{% include 'admin/layouts/partials/aside.twig' with { 'aside': 'messages' } %}
+{% endblock %}
+
+{% block breadcrumb %}
+    {% include 'admin/layouts/partials/breadcrumb.twig' with { 'breadcrumb': 'messages' } %}
+{% endblock %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+{% set data = rsp.data %}
+<div class="container">
+    <div class="card card-custom">
+        <div class="card-header card-header-tabs-line nav-tabs-line-3x">
+            <div class="card-toolbar">
+                <ul class="nav nav-tabs nav-bold nav-tabs-line nav-tabs-line-3x">
+                    <li class="nav-item mr-3">
+                        <a class="nav-link {{ APP.GET['tab'] is not defined or APP.GET['tab'] is null or APP.GET['tab'] == 'suscripciones' ? 'active' : '' }}" href="/admin/mensajes?tab=suscripciones">
+                            <span class="nav-text font-size-lg">SUSCRIPTIONES</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link {{ APP.GET['tab'] == 'contactos' ? 'active' : '' }}" href="/admin/mensajes?tab=contactos">
+                            <span class="nav-text font-size-lg">CONTACTOS</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link {{ APP.GET['tab'] == 'mensajes' ? 'active' : '' }}" href="/admin/mensajes?tab=mensajes">
+                            <span class="nav-text font-size-lg">MENSAJES</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="tab-content">
+                <div class="tab-pane {{APP.GET['tab'] is not defined or APP.GET['tab'] is null  or APP.GET['tab'] == 'suscripciones' ? 'show active' : '' }} px-7" id="kt_tab_colores" role="tabpanel">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-checkable" id="kt_subscription" style="margin-top: 13px !important">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>INFORMACIÓN</th>
+                                    <th>FECHA</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in data.subscriptions %}
+                                <tr>
+                                    <td>{{ item.id }}</td>
+                                    <td>
+                                        {% if item.phone %}
+                                        <p class="mb-0">{{ item.phone }}</p>    
+                                        {% endif %}
+                                        {% if item.email %}
+                                        <p class="mb-0">{{ item.email }}</p>    
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ item.created_at }}</td>
+                                </tr> 
+                                {% endfor %}                   
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane {{ APP.GET['tab'] == 'contactos' ? 'show active' : '' }} px-7" role="tabpanel">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-checkable" id="kt_contact" style="margin-top: 13px !important">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>INFORMACIÓN</th>
+                                    <th>FECHA</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in data.contacts %}
+                                <tr>
+                                    <td>{{ item.id }}</td>
+                                    <td>
+                                        {% if item.name %}
+                                        <p class="mb-0">{{ item.name }}</p>
+                                        {% endif %}
+                                        {% if item.email %}
+                                        <p class="mb-0">{{ item.email }}</p>
+                                        {% endif %}
+                                        {% if item.phone %}
+                                        <p class="mb-0">{{ item.phone }}</p>
+                                        {% endif %}
+                                        {% if item.description %}
+                                        <p class="mb-0">{{ item.description }}</p>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ item.created_at }}</td>
+                                </tr> 
+                                {% endfor %}                   
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane {{ APP.GET['tab'] == 'mensajes' ? 'show active' : '' }} px-7" role="tabpanel">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-checkable" id="kt_contact" style="margin-top: 13px !important">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>MENSAJE</th>
+                                    <th>FECHA</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in data.items %}
+                                <tr>
+                                    <td>{{ item.id }}</td>
+                                    <td>
+                                        {% if item.name %}
+                                        <p class="mb-0">{{ item.name }}</p>
+                                        {% endif %}
+                                        {% if item.email %}
+                                        <p class="mb-0">{{ item.email }}</p>
+                                        {% endif %}
+                                        {% if item.phone %}
+                                        <p class="mb-0">{{ item.phone }}</p>
+                                        {% endif %}
+                                        {% if item.description %}
+                                        <p class="mb-0">{{ item.description }}</p>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ item.created_at }}</td>
+                                </tr> 
+                                {% endfor %}                   
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+    <script> 
+        $('#kt_subscription').DataTable({
+            language: help.dataTable.language
+        }); 
+        $('#kt_contact').DataTable({
+            language: help.dataTable.language
+        }); 
+    </script>
+{% endblock %}

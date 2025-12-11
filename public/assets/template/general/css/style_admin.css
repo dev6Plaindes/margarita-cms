@@ -1,0 +1,81 @@
+.nav-main {
+  min-height: 100vh;
+}
+.nav-main ul li a {
+  color: white;
+}
+.nav-main ul li a i {
+  width: 3.5rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+.nav-main ul li:hover {
+  background-color: #f8f9fa;
+}
+.nav-main ul li:hover a {
+  color: #343a40;
+}
+
+.active {
+  background-color: #f8f9fa;
+}
+.active a {
+  color: #343a40 !important;
+}
+
+.previewImg img {
+  width: 100%;
+}
+.previewImg video {
+  width: 100%;
+}
+
+.action {
+  position: absolute;
+  right: 0;
+  margin-right: 2rem;
+}
+
+.credit-block {
+  border: 1px solid #0056b3;
+  padding: 1rem;
+  margin: 0.2rem;
+}
+.credit-block .credit-title {
+  color: #007bff;
+  font-weight: 600;
+}
+.credit-block .credit-stitle {
+  font-weight: 600;
+}
+.credit-block .credit-logo {
+  margin: auto;
+}
+.credit-block .credit-logo img {
+  width: 100%;
+}
+.credit-block .credit-contact img {
+  width: 1.5rem;
+}
+.credit-block .credit-link {
+  text-align: right;
+}
+.credit-block .credit-link a {
+  margin: 3px;
+  background-color: #0056b3;
+  color: white;
+  padding: 0.3rem 0.5rem;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.credit-block .credit-link a:hover {
+  background-color: white;
+  color: #0056b3;
+  border: 1px solid #0056b3;
+}
+
+@media (max-width: 768px) {
+  .nav-main {
+    display: none;
+  }
+}

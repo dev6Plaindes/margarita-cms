@@ -1,0 +1,87 @@
+<script type="text/x-template" id="component-input-template">
+  <div v-if="settings && settings.type == 'input' && settings.plugin != 'colors' && settings.plugin != 'images' && settings.plugin != 'files' && settings.plugin != 'number' && settings.plugin != 'checkbox' && settings.plugin != 'text_name'" class="form-group row">
+      <label class="col-xl-3 col-lg-3 col-form-label" v-text="label"></label>
+      <div class="col-lg-9 col-xl-9">
+          <input class="form-control form-control-lg form-control-solid" type="text" :name="name" :value="value"/>
+      </div>
+  </div>
+  <div v-else-if="settings && settings.plugin == 'number'" class="form-group row">
+      <label class="col-xl-3 col-lg-3 col-form-label" v-text="label"></label>
+      <div class="col-lg-9 col-xl-9">
+          <input class="form-control form-control-lg form-control-solid" type="number" :name="name" :value="value" step="0.01" min="0"/>
+      </div>
+  </div>
+  <div v-else-if="settings && settings.plugin == 'checkbox'" class="form-group row">
+      <label class="col-xl-3 col-lg-3 col-form-label" v-text="label"></label>
+      <div class="col-lg-9 col-xl-9">
+          <div class="checkbox-inline mt-3">
+              <label class="checkbox">
+                  <input type="checkbox" :name="name" value="1" :checked="value == 1"/>
+                  <span></span>
+                  Activar
+              </label>
+          </div>
+      </div>
+  </div>
+  <div v-else-if="settings && settings.plugin == 'text_name'" class="form-group row">
+      <label class="col-xl-3 col-lg-3 col-form-label" v-text="label"></label>
+      <div class="col-lg-9 col-xl-9">
+          <input class="form-control form-control-lg form-control-solid" type="text" :name="name" :value="value" placeholder="Ingrese el tipo"/>
+      </div>
+  </div>
+  <div v-else-if="settings && settings.plugin == 'files'" class="form-group row">
+      <label class="col-xl-3 col-lg-3 col-form-label" v-text="label"></label>
+      <div class="col-lg-9 col-xl-9">
+          <div class="custom-file">
+              <input v-if=" settings.type == 'input'" class="custom-file-input form-control  form-control-solid" id="customFile" type="file" :name="name" :value="value" :accept="settings.accept"/>
+              <input v-else class="custom-file-input form-control form-control-solid" id="customFile" type="file" :name="name" :value="value" :accept="settings.accept" multiple/>
+              <label class="custom-file-label" for="customFile">Seleccionar</label>
+          </div>
+      </div>
+  </div>
+  <div v-else-if="settings && settings.type == 'textarea' && settings.plugin != 'colors' && settings.plugin != 'images'" class="form-group row">
+      <label class="col-xl-3 col-lg-3 col-form-label" v-text="label"></label>
+      <div class="col-lg-9 col-xl-9">
+      <template v-if="settings.plugin == 'summernote'">
+          <div class="input-group input-group-lg input-group-solid">
+              <textarea class="form-group-solid summernote" :name="name" v-html="value"></textarea>
+          </div>
+      </template>
+      <template v-else>
+          <textarea class="form-control form-control-solid" :name="name" v-html="value" rows="4"></textarea>
+      </template>
+      </div>
+  </div>
+  <div v-else-if="settings && settings.plugin == 'colors'" class="form-group row">
+      <label class="col-xl-3 col-lg-3 col-form-label" v-text="label">Colección de colores :</label>
+      <div class="col-xl-9 col-lg-9">
+          <div id="kt_repeater_color" class="row">
+              <div data-repeater-list="colors" id="list_colors" class="col-xl-12">
+              </div>
+              <div v-if="settings.type == 'array'" class="col-xl-12">
+                  <div class="text-right mt-4">
+                      <a href="javascript:;" data-repeater-create="" class="btn btn-sm font-weight-bolder btn-light-primary">
+                      <i class="la la-plus"></i>Agregar</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div v-else-if="settings && settings.plugin == 'images'" class="form-group row">
+      <label class="col-xl-3 col-lg-3 col-form-label" v-text="label">Colección de imágenes :</label>
+      <div class="col-xl-9 col-lg-9">
+          <div id="kt_repeater_image" class="row">
+              <div class="col-xl-12">
+                  <div data-repeater-list="images" id="list_images" class="row">
+                  </div>
+              </div>
+              <div v-if="settings.type == 'array'" class="col-xl-12">
+                  <div class="text-right mt-2">
+                      <a href="javascript:;" data-repeater-create="" class="btn btn-sm font-weight-bolder btn-light-primary">
+                      <i class="la la-plus"></i>Agregar</a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</script>

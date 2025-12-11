@@ -1,0 +1,39 @@
+<div class="accordion" id="products_acordion">
+    {% set index_color = 1 %}
+    {% for index_content, item_content in section.contents %}
+        {% if index_color == 1 %}
+            {% set clase = 'aux_uno' %}
+        {% endif %}
+        {% if index_color == 2 %}
+            {% set clase = 'aux_dos' %}
+        {% endif %}
+        {% if index_color == 3 %}
+            {% set clase = 'aux_tres' %}
+        {% endif %}
+        {% if index_color == 4 %}
+            {% set clase = 'aux_cuatro' %}
+        {% endif %}
+        {% if index_color == 5 %}
+            {% set clase = 'resaltar' %}
+        {% endif %}
+        {% set index_color = index_color + 1 %}
+        {% if index_color > 3 %}
+            {% set index_color = 1 %}
+        {% endif %}
+
+        <div class="accordion-item bl-color-{{ clase }}" data-id="{{ item_content.uniqid }}">
+            <h2 class="accordion-header" id="heading_{{item_content.uniqid}}">
+                <a class="parent-collap">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_{{item_content.uniqid}}" aria-expanded="false" aria-controls="collapse_{{item_content.uniqid}}">
+                    <img src="{{ item_content.image }}" alt="{{ item_content.title }}"> <span onclick='ventanaSecundaria("{{ item_content.url }}")'> {{ item_content.title }}</span>
+                    </button>
+                </a>
+            </h2>
+            <div id="collapse_{{item_content.uniqid}}" class="accordion-collapse collapse items-collapse" aria-labelledby="heading_{{item_content.uniqid}}" data-bs-parent="#products_acordion" data-id="{{ item_content.uniqid }}">
+                <div class="accordion-body">
+                    {{ item_content.description }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

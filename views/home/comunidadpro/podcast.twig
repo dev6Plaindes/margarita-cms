@@ -1,0 +1,51 @@
+{% extends "home/comunidadpro/layouts/main.twig" %}
+
+{% block css %}{% endblock %}
+
+{% if menu_products %}
+  {% set Portafolios = menu_products[0].portafolios %}
+  {% set Portafolio = Portafolios|last %}
+{% endif %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-8 system-card-chapter-info">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="info-logo">
+                        <p>Al día</p> <img src="{{ Portafolio.teacher.image }}" height="60" />
+                        <i class="fa fa-microphone" aria-hidden="true"></i>
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <p class="info-title">{{ Portafolio.name }}</p>
+                    <p class="info-caption">Con {{ Portafolio.teacher.name }} {{ Portafolio.teacher.lastname }}</p>
+                </div>
+            </div>
+            <div class="card-line"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+          {% include "home/comunidadpro/partials/chapter.twig" %}         
+        </div>
+        <div class="col-lg-4">
+            {% for index, section in Portafolios %}
+              {% include "home/comunidadpro/partials/story.twig" %}             
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+ 
+{% block js %}
+<script>
+$(document).ready(function(){
+    playercard('0987654321');
+});
+</script>
+{% endblock %}

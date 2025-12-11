@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg m-auto" style="4rem">
+    <div class="container-fluid">
+        <a class="navbar-brand logo" href="/">
+        {% if _company.logos|length %}
+            <img src="{{ _company.logos[0].patch }}">
+        {% endif %}
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav-menu-control"
+            aria-controls="nav-menu-control" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="nav-menu-control">
+            <ul class="navbar-nav m-auto mb-2 w-75 mb-lg-0">
+                {% for index_m, menu_item in _menu %}
+
+                <li class="nav-item mx-3">
+                    {% if index_m == 0 %}
+                        <a style="border: none;" class="nav-link {{ menu.slug == menu_item.slug ? 'active' : '' }} pt-3" aria-current="page" href="{{ menu_item.url ? menu_item.url : "/" ~ menu_item.slug }}" {{ menu_item.url ? 'target="_blank"'}}">
+                        <i class="fa fa-home icon-resalt" style="position: absolute; margin-left: -30px; margin-top: -4px;"></i>
+                    {% else %}
+                        <a class="nav-link {{ menu.slug == menu_item.slug ? 'active' : '' }} {{ index_m > 0 ? 'pt-3'}}" aria-current="page" href="{{ menu_item.url ? menu_item.url : "/" ~ menu_item.slug }}" {{ menu_item.url ? 'target="_blank"'}}">
+                        {{ menu_item.name }}
+                    {% endif %}
+                    
+                    </a></li>
+                {% endfor %}
+            </ul>
+            {#<a class="btn-custom btn-color-primary " href="#" role="button">Iniciar sesión</a>#}
+        </div>
+    </div>
+</nav>
+<div class="border-custom">
+    <div class="col border-color-aux_uno"></div>
+    <div class="col border-color-aux_dos"></div>
+    <div class="col border-color-aux_tres"></div>
+    <div class="col border-color-aux_cuatro"></div>
+    <div class="col border-color-resaltar"></div>
+</div>

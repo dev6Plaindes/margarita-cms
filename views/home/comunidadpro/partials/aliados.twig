@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-lg-12 title-line-center">
+        <h2><span>{{ section.title }}</span></h2>
+    </div>
+    <div class="col-lg-12 system-card-aliados">
+         <div id="{{ section.uniqid }}" class="owl-carousel owl-theme">
+        {% for index_content, item_content in section.contents %}
+            <div class="card-item">
+                <a href="{{ item_content.url }}" target="_blank" rel="">
+                    <img src="{{ item_content.image }}" class="card-image">
+                </a>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>

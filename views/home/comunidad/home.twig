@@ -1,0 +1,66 @@
+{% extends "home/comunidad/layouts/main.twig" %}
+
+{% block css %}{% endblock %}
+
+{% block content %}
+<div class="system-container">
+	{% set articlesOnly = true %}
+	{% for key, section in contents %}
+		{% if section.alias == 'registros' %}
+			{% include "home/comunidad/partials/register.twig" with {'section': section} %}
+		{% elseif section.alias == 'beneficios' %}
+			{% include "home/comunidad/partials/benefit.twig" with {'section': section} %}
+		{% elseif section.alias == 'recursos' %}
+			{% include "home/comunidad/partials/resource.twig" with {'section': section} %}
+		{% elseif section.alias == 'banners' %}
+			{% if contents[key + 1].alias == 'articulos' %}
+				{% set articlesOnly = false %}
+			{% endif %}
+			{% include "home/comunidad/partials/banner.twig" with {'section': section, 'articles': contents[key + 1], 'articlesOnly':articlesOnly} %}
+		{% elseif section.alias == 'articulos' %}
+			{% if  articlesOnly == false %}
+				{% set articlesOnly = true %}
+			{% else %}
+				{% include "home/comunidad/partials/article.twig" with {'section': section, 'articlesOnly': articlesOnly } %}
+			{% endif %}
+		{% elseif section.alias == 'noticias' %}
+			{% include "home/comunidad/partials/notice.twig" with {'section': section} %}
+		{% elseif section.alias == 'eventos' %}
+			{% include "home/comunidad/partials/event.twig" with {'section': section} %}
+		{% elseif section.alias == 'podcast' %}
+			{% include "home/comunidad/partials/podcast.twig" with {'section': section} %}
+		{% elseif section.alias == 'episodios' %}
+			{% include "home/comunidad/partials/episodio.twig" with {'section': section} %}
+		{% endif %}
+	{% endfor %}
+</div>
+
+{% endblock %}
+
+{% block js %}
+	<script>
+		$(document).ready(function(){
+			{% for section in contents %}
+				{% if section.alias == 'registros' %}
+					sendemailregister('{{ section.uniqid }}');
+				{% elseif section.alias == 'recursos' %}
+					carouselone('{{ section.uniqid }}'); 
+				{% elseif section.alias == 'banners' %}
+					carouseltwo('{{ section.uniqid }}');
+				{% elseif section.alias == 'eventos' %}
+					{% if section.external %}
+						carouselthree('{{ section.uniqid }}', '{{ section.url_api }}');
+					{% endif %}
+				{% elseif section.alias == 'noticias' %}
+					{% if section.external %}
+						carouselfour('{{ section.uniqid }}', '{{ section.url_api }}', '{{ section.body_api|json_encode|e("js") }}');
+					{% endif %}					
+				{% elseif section.alias == 'episodios' %}
+					{% for key, content in section.contents %} 
+						playercard('{{ content.uniqid }}');
+					{% endfor %}
+				{% endif %}
+			{% endfor %}
+		});
+	</script>
+{% endblock %}

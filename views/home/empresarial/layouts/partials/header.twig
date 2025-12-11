@@ -1,0 +1,23 @@
+<div class="top-bar top-bar-dark">
+    <div class="container">
+      <div class="left-top-bar left-top-bar-long">
+            <p class="hidden-xs" ><span class="lnr lnr-map-marker large-lnr"></span> {{ _company.address|raw }}</p>
+             <p class="hidden-xs"><span class="lnr lnr-smartphone large-lnr"></span> {{ _company.phone_contact|raw }} </p>
+              <p class="hidden-xs"><span class="lnr lnr-envelope large-lnr"></span>{{ _company.email_contact}}</p>
+              
+      </div> <!-- End left top bar -->
+      <div class="right-top-bar">
+          <ul class="social">
+            {% if _company.facebook_link %}<li class="facebook"><a href="{{_company.facebook_link}}" target="_blank"><i class="fa fa-facebook"></i></a></li>{% endif %}
+            {% if _company.twitter_link %}<li class="twitter"><a href="{{_company.twitter_link}}" target="_blank"><i class="fa fa-twitter"></i></a></li>{% endif %}
+            {% if _company.linkedin_link %}<li class="linkedin"><a href="{{_company.linkedin_link}}" target="_blank"><i class="fa fa-linkedin"></i></a></li>{% endif %}
+            {% if _company.instagram_link %}<li class="instagram"><a href="{{_company.instagram_link}}" target="_blank"><i class="fa fa-instagram"></i></a></li>{% endif %}
+            {#<li class="facebook"><a href=""><i class="fa fa-facebook"></i></a></li>
+            <li class="twitter"><a href=""><i class="fa fa-twitter"></i></a></li>
+            <li class="google-plus"><a href=""><i class="fa fa-google-plus"></i></a></li>
+            <li class="youtube"><a href=""><i class="fa fa-youtube-play"></i></a></li>
+            <li class="linkedin"><a href=""><i class="fab fa-instagram"></i></a></li>#}
+          </ul>
+      </div><!-- End right top bar -->
+    </div> <!-- End container -->
+  </div> <!-- End top bar -->

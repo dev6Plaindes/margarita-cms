@@ -1,0 +1,199 @@
+{% extends 'admin/layouts/main.twig' %}
+
+{% block aside %}
+	{% include 'admin/layouts/partials/aside.twig' with { 'aside': 'company' } %}
+{% endblock %}
+
+{% block breadcrumb %}
+    {% include 'admin/layouts/partials/breadcrumb.twig' with { 'breadcrumb': 'company' } %}
+{% endblock %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+{% set data = rsp.data %}
+<div class="container" id="AppDataCompanyAdmin">
+	<div class="card card-custom">
+		<div class="card-header">
+			<div class="card-title">
+				<h3 class="card-label">Empresa
+				<small>Datos generales</small></h3>
+			</div>
+		</div>
+		<div class="card-body p-0">
+			<div class="row justify-content-center py-8 px-8 py-lg-10 px-lg-10">
+				<div class="col-xl-12 col-xxl-10">
+					<form class="form" id="form_data_company" @submit="onFormData">
+						<div class="row justify-content-center">
+							<div class="col-xl-9">
+								<div class="my-5 step">
+									<div class="row">
+										<div class="col-lg-9 col-xl-9 offset-xl-3">
+											<h3 class="font-size-h6 mb-5">Datos Generales :</h3>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Razón social</label>
+										<div class="col-lg-9 col-xl-9">
+											<input class="form-control form-control-lg form-control-solid" type="text" name="name" :value="company.name" required/>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Ruc</label>
+										<div class="col-lg-9 col-xl-9">
+											<input class="form-control form-control-lg form-control-solid" type="text" name="ruc" :value="company.ruc" />
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Dirección</label>
+										<div class="col-lg-9 col-xl-9">
+											<input class="form-control form-control-lg form-control-solid" type="text" name="address" :value="company.address" />
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Descripción</label>
+										<div class="col-lg-9 col-xl-9">
+											<textarea class="form-control form-control-lg form-control-solid" name="description" rows="4" v-text="company.description"></textarea>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Visión</label>
+										<div class="col-lg-9 col-xl-9">
+											<div class="input-group input-group-lg input-group-solid">
+												<textarea class="form-control form-control-lg form-control-solid" rows="4" name="vision" v-html="company.vision"></textarea>
+											</div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Misión</label>
+										<div class="col-lg-9 col-xl-9">
+											<div class="input-group input-group-lg input-group-solid">
+												<textarea class="form-control form-control-lg form-control-solid" rows="4" name="mision" v-html="company.mision"></textarea>
+											</div>
+										</div>
+									</div>
+									<div class="separator separator-dashed my-10"></div>
+									<div class="row">
+										<div class="col-lg-9 col-xl-9 offset-xl-3">
+											<h3 class="font-size-h6 mb-5">Datos de Contacto :</h3>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Teléfono</label>
+										<div class="col-lg-9 col-xl-9">
+											<div class="input-group input-group-lg input-group-solid">
+												<div class="input-group-prepend">
+													<span class="input-group-text">
+														<i class="la la-phone"></i>
+													</span>
+												</div>
+												<input type="text" class="form-control form-control-lg form-control-solid" name="phone_contact" :value="company.phone_contact" placeholder="Phone" />
+											</div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Correo Electrónico</label>
+										<div class="col-lg-9 col-xl-9">
+											<div class="input-group input-group-lg input-group-solid">
+												<div class="input-group-prepend">
+													<span class="input-group-text">
+														<i class="la la-at"></i>
+													</span>
+												</div>
+												<input type="email" class="form-control form-control-lg form-control-solid" name="email_contact" :value="company.email_contact" placeholder="Email" />
+											</div>
+										</div>
+									</div>
+									<div class="separator separator-dashed my-10"></div>
+									<div class="row">
+										<div class="col-lg-9 col-xl-6 offset-xl-3">
+											<h3 class="font-size-h6 mb-5">Comercio :</h3>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Términos y Condiciones</label>
+										<div class="col-lg-9 col-xl-9">
+											<div class="input-group input-group-lg input-group-solid">
+												<textarea class="form-group-solid summernote" name="terms_and_conditions" v-html="company.terms_and_conditions"></textarea>
+											</div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Políticas de Privacidad</label>
+										<div class="col-lg-9 col-xl-9">
+											<div class="input-group input-group-lg input-group-solid">
+												<textarea class="form-group-solid summernote" name="privacy_policies" v-html="company.privacy_policies"></textarea>
+											</div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Preguntas Frecuentes</label>
+										<div class="col-lg-9 col-xl-9">
+											<div class="input-group input-group-lg input-group-solid">
+												<textarea class="form-group-solid summernote" name="preguntas_frecuentes" v-html="company.preguntas_frecuentes"></textarea>
+											</div>
+										</div>
+									</div>
+									<div class="separator separator-dashed my-10"></div>
+									<div class="row">
+										<div class="col-lg-9 col-xl-9 offset-xl-3">
+											<h3 class="font-size-h6 mb-5">Configuración de correos :</h3>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Host</label>
+										<div class="col-lg-9 col-xl-9">
+											<input class="form-control form-control-lg form-control-solid" type="text" name="mailer_host" :value="company.mailer_host" />
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Username</label>
+										<div class="col-lg-9 col-xl-9">
+											<input class="form-control form-control-lg form-control-solid" type="text" name="mailer_username" :value="company.mailer_username" />
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Password</label>
+										<div class="col-lg-9 col-xl-9">
+											<input class="form-control form-control-lg form-control-solid" type="text" name="mailer_password" :value="company.mailer_password" />
+										</div>
+									</div>
+									<div class="form-group row">
+										<label class="col-xl-3 col-lg-3 col-form-label">Name</label>
+										<div class="col-lg-9 col-xl-9">
+											<input class="form-control form-control-lg form-control-solid" type="text" name="mailer_name" :value="company.mailer_name" />
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="card-footer">
+			<div class="row justify-content-center">
+				<div class="col-xl-12 col-xxl-10">
+					<div class="row justify-content-center">
+						<div class="col-lg-9">
+							<div class="row">
+								<div class="col-lg-12 text-right">
+									<button type="submit" form="form_data_company" class="btn btn-primary mr-2">Guardar</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+	window.addEventListener('load', window.AppCompanyAdmin.general(JSON.parse("{{ rsp.data|json_encode|e('js') }}")));
+</script>
+{% endblock %}

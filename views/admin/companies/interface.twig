@@ -1,0 +1,324 @@
+{% extends "admin/layouts/main.twig" %}
+
+{% block aside %}
+	{% include 'admin/layouts/partials/aside.twig' with { 'aside': 'company.interface' } %}
+{% endblock %}
+
+{% block breadcrumb %}
+    {% include 'admin/layouts/partials/breadcrumb.twig' with { 'breadcrumb': 'company.interface' } %}
+{% endblock %}
+
+{% block css %}
+<style>
+    .minicolors-swatch{
+        top: 8px !important;
+        left: 5px !important;
+    }
+    .image-input-wrapper{
+        background-repeat: no-repeat !important; 
+        background-size: 100% 100% !important;
+    }
+</style>
+{% endblock %}
+{% block content %}
+{% set data = rsp.data %}
+{% set notfound = '/assets/image/notfound.png' %}
+<div class="container" id="AppInterfaceCompanyAdmin">
+    <div class="card card-custom">
+        <div class="card-header card-header-tabs-line nav-tabs-line-3x">
+            <div class="card-toolbar">
+                <ul class="nav nav-tabs nav-bold nav-tabs-line nav-tabs-line-3x">
+                    <li class="nav-item mr-3">
+                        <a class="nav-link {{ APP.GET['tab'] is not defined or APP.GET['tab'] is null  or APP.GET['tab'] == 'general' ? 'active' : '' }}" href="/admin/empresa/interfaz?tab=general">
+                            <span class="nav-icon">
+                                <i class="fas fa-pen-nib" aria-hidden="true"></i>
+                            </span>
+                            <span class="nav-text font-size-lg">General</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link {{ APP.GET['tab'] == 'logos' ? 'active' : '' }}" href="/admin/empresa/interfaz?tab=logos">
+                            <span class="nav-icon">
+                                <i class="far fa-file-image" aria-hidden="true"></i>
+                            </span>
+                            <span class="nav-text font-size-lg">Logos</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link {{ APP.GET['tab'] == 'colores' ? 'active' : '' }}" href="/admin/empresa/interfaz?tab=colores">
+                            <span class="nav-icon">
+                                <i class="fas fa-fill-drip" aria-hidden="true"></i>
+                            </span>
+                            <span class="nav-text font-size-lg">Colores</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        <a class="nav-link {{ APP.GET['tab'] == 'redes' ? 'active' : '' }}" href="/admin/empresa/interfaz?tab=redes">
+                            <span class="nav-icon">
+                                <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                            </span>
+                            <span class="nav-text font-size-lg">Redes Sociales</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mr-3">
+                        {# <a class="nav-link" data-toggle="tab" href="#kt_tab_3"> #}
+                        <a class="nav-link {{ APP.GET['tab'] == 'plugins' ? 'active' : '' }}" href="/admin/empresa/interfaz?tab=plugins">
+                            <span class="nav-icon">
+                                <i class="fab fa-rocketchat" aria-hidden="true"></i>
+                            </span>
+                            <span class="nav-text font-size-lg">Plugins</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="tab-content">
+                <div class="tab-pane {{ APP.GET['tab'] is not defined or APP.GET['tab'] is null  or APP.GET['tab'] == 'general' ? 'show active' : '' }} px-7" id="kt_tab_general" role="tabpanel">
+                    <form class="form" @submit="onFormInterface">
+                        <div class="row justify-content-center">
+                            <div class="col-xl-9">
+                                <input name="panel" type="hidden" value="general" />
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Meta Título</label>
+                                    <div class="col-lg-9 col-xl-9">
+                                        <input class="form-control form-control-solid form-control-lg" name="meta_title" type="text" :value="company.meta_title" />
+                                    </div>
+                                </div>
+                                {# <div class="form-group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Color Primario</label>
+                                    <div class="col-lg-9 col-xl-9 mx-auto">
+                                        <input class="form-control form-control-solid form-control-lg jscolor" name="color" type="text" :value="company.color" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Color Secundario</label>
+                                    <div class="col-lg-9 col-xl-9">
+                                        <input class="form-control form-control-solid form-control-lg jscolor" name="secondary_color" type="text" :value="company.secondary_color" />
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Logo</label>
+                                    <div class="col-lg-9 col-xl-9">
+                                        <div class="image-input image-input-outline" id="kt_image_1">
+                                            <div class="image-input-wrapper" style="background-image: url({{ data.company.logo ? data.company.logo : notfound }}); background-repeat: no-repeat; background-size: 100% 100%;"></div>
+                                            <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Cambiar logo">
+                                                <i class="fa fa-pen icon-sm text-muted"></i>
+                                                <input type="file" name="logo" accept=".png, .jpg, .jpeg" />
+                                                <input type="hidden" name="logo_remove" />
+                                            </label>
+                                            <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                                <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div> #}
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Favicon</label>
+                                    <div class="col-lg-9 col-xl-9">
+                                        <div class="image-input image-input-outline" id="kt_image_2">
+                                            <div class="image-input-wrapper" style="background-image: url('{{ data.company.favicon ? data.company.favicon : notfound }}'); background-repeat: no-repeat; background-size: 100% 100%;"></div>
+                                            <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Cambiar favicon">
+                                                <i class="fa fa-pen icon-sm text-muted"></i>
+                                                <input type="file" name="favicon" accept=".png, .jpg, .jpeg" />
+                                                <input type="hidden" name="favicon_remove" />
+                                            </label>
+                                            <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                                <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+				                <div class="separator separator-dashed mt-10 mb-5"></div>
+                                <div class="form-group row">
+                                    <div class="col-lg-12 text-right">
+                                        <button type="submit" class="btn btn-primary font-weight-bold">Guardar</button>
+                                    </div>
+                                </div>
+                            </div>   
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane {{ APP.GET['tab'] == 'logos' ? 'show active' : '' }} px-7" id="kt_tab_logos" role="tabpanel">
+                    <form class="form" @submit="onFormInterface">
+                        <input name="panel" type="hidden" value="logos" />
+                        <div class="row justify-content-center" id="kt_repeater_logo">
+                            <div class="col-xl-8 col-lg-8">
+                                <div class="row">
+                                    <div data-repeater-list="logos" class="col-lg-12">
+                                        {% if data.logos|length > 0 %}
+                                            {% for item in data.logos %}
+                                                {% include 'admin/companies/partials/logos.twig' with { 'item': item } %}
+                                            {% endfor %}
+                                        {% else %}
+                                            {% include 'admin/companies/partials/logos.twig' with { 'item': null } %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <a href="javascript:;" data-repeater-create="" class="btn btn-sm font-weight-bolder btn-light-primary">
+                                        <i class="la la-plus"></i>Agregar</a>
+                                    </div>
+                                </div>
+                                <div class="separator separator-dashed mt-10 mb-5"></div>
+                                <div class="row">
+                                    <div class="col-lg-12 text-right">
+                                        <button type="submit" class="btn btn-primary font-weight-bold">Guardar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane {{ APP.GET['tab'] == 'colores' ? 'show active' : '' }} px-7" id="kt_tab_colores" role="tabpanel">
+                    <form class="form" @submit="onFormInterface">
+                        <input name="panel" type="hidden" value="colors" />
+                        <div class="row justify-content-center" id="kt_repeater_color">
+                            <div class="col-xl-12 col-xxl-9">
+                                <div class="row">
+                                    <div data-repeater-list="colors" class="col-lg-12">
+                                        {% if data.colors|length > 0 %}
+                                            {% for item in data.colors %}
+                                                {% include 'admin/companies/partials/colors.twig' with { 'item': item } %}
+                                            {% endfor %}
+                                        {% else %}
+                                            {% include 'admin/companies/partials/colors.twig' with { 'item': null } %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <a href="javascript:;" data-repeater-create="" class="btn btn-sm font-weight-bolder btn-light-primary">
+                                        <i class="la la-plus"></i>Agregar</a>
+                                    </div>
+                                </div>
+                                <div class="separator separator-dashed mt-10 mb-5"></div>
+                                <div class="row">
+                                    <div class="col-lg-12 text-right">
+                                        <button type="submit" class="btn btn-primary font-weight-bold">Guardar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="tab-pane {{ APP.GET['tab'] == 'redes' ? 'show active' : '' }} px-7" id="kt_tab_redes" role="tabpanel">
+                    <form class="form" @submit="onFormInterface">
+                        <div class="row justify-content-center">
+                            <div class="col-xl-9">
+                                <input name="panel" type="hidden" value="redes" />
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Facebook</label>
+                                    <div class="col-lg-9 col-xl-9">
+                                        <div class="input-group input-group-lg input-group-solid">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fab fa-facebook"></i>
+                                                </span>
+                                            </div>
+                                            <input type="text" class="form-control form-control-lg form-control-solid" name="facebook_link" :value="company.facebook_link" placeholder="" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Twitter</label>
+                                    <div class="col-lg-9 col-xl-9">
+                                        <div class="input-group input-group-lg input-group-solid">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fab fa-twitter"></i>
+                                                </span>
+                                            </div>
+                                            <input type="text" class="form-control form-control-lg form-control-solid" name="twitter_link" :value="company.twitter_link" placeholder="" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Linkedin</label>
+                                    <div class="col-lg-9 col-xl-9">
+                                        <div class="input-group input-group-lg input-group-solid">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fab fa-linkedin"></i>
+                                                </span>
+                                            </div>
+                                            <input type="text" class="form-control form-control-lg form-control-solid" name="linkedin_link" :value="company.linkedin_link" placeholder="" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Instagram</label>
+                                    <div class="col-lg-9 col-xl-9">
+                                        <div class="input-group input-group-lg input-group-solid">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fab fa-instagram"></i>
+                                                </span>
+                                            </div>
+                                            <input type="text" class="form-control form-control-lg form-control-solid" name="instagram_link" :value="company.instagram_link" placeholder="" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Whatsapp</label>
+                                    <div class="col-lg-9 col-xl-9">
+                                        <div class="input-group input-group-lg input-group-solid">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    <i class="fab fa-whatsapp"></i>
+                                                </span>
+                                            </div>
+                                            <input type="text" class="form-control form-control-lg form-control-solid" name="whatsapp_link" :value="company.whatsapp_link" placeholder="" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="separator separator-dashed mt-10 mb-5"></div>
+                                <div class="form-group row">
+                                    <div class="col-lg-12 text-right">
+                                        <button type="submit" class="btn btn-primary font-weight-bold">Guardar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            <div class="tab-pane {{ APP.GET['tab'] == 'plugins' ? 'show active' : '' }} px-7" id="kt_tab_plugins" role="tabpanel">
+                {# <div class="tab-pane px-7" id="kt_tab_3" role="tabpanel"> #}
+                    <form class="form" @submit="onFormInterface">
+                        <div class="row justify-content-center">
+                            <div class="col-xl-9">
+                                <input name="panel" type="hidden" value="plugins" />
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Facebook Chat</label>
+                                    <div class="col-lg-9 col-xl-9">
+                                        <textarea class="form-control form-control-solid form-control-lg" name="facebook_script" rows="3" :value="company.facebook_script"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Tawk.to Chat</label>
+                                    <div class="col-lg-9 col-xl-9">
+                                        <textarea class="form-control form-control-solid form-control-lg" name="tawkto_script" rows="3" :value="company.tawkto_script"></textarea>
+                                    </div>
+                                </div>
+                                <div class="separator separator-dashed mt-10 mb-5"></div>
+                                <div class="form-group row">
+                                    <div class="col-lg-12 text-right">
+                                        <button type="submit" class="btn btn-primary font-weight-bold">Guardar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+	window.addEventListener('load', window.AppCompanyAdmin.interface(JSON.parse("{{ rsp.data|json_encode|e('js') }}")));
+</script>
+{% endblock %}

@@ -1,0 +1,49 @@
+
+    .content-proy .item{
+        height: 20rem;
+        background-color: white;
+        overflow: hidden;
+        cursor: pointer;
+        &:hover{
+            .content-texto{
+                p{
+                    margin-top: -0.5rem;
+                    transition: all 0.3s ease-in-out;
+                }
+                .content-img{
+                    height: 5rem;
+                    transition: all 0.3s ease-in-out;
+                }
+            } 
+        }
+        .content-header{
+            background-color: #cccccc;
+            text-align: center;
+            padding: 0.5rem 0rem;
+            h3 {
+                color: black;
+                font-weight: 500 !important;
+                font-size: 1.2rem;
+            }
+        }
+        .content-texto{
+            text-align: center;
+            .content-img{
+                height: 14rem;
+                overflow: hidden;
+                img{
+                    width: 100%;
+                }
+            }
+            .content-title{
+                padding: 1rem;
+                font-weight: 600;
+            }
+            p{
+                margin-top: 8rem;
+                padding: 1rem;
+                text-align: justify;
+            }
+        }
+    }
+    

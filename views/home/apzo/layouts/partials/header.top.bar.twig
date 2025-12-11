@@ -1,0 +1,32 @@
+<div class="apzo-top-bar-container apzo-top-bar-full ">
+    <div class="apzo-top-bar-container-inner clearfix">
+        <div class="apzo-top-bar-left apzo-item-pdlr">
+            <i class="fa fa-envelope-open" id="i_064f_0"></i><a href="#"><span class="__cf_email__" > {{_company.email_contact}}</span></a>
+            <i class="fa fa-phone" id="i_064f_1"></i> {{_company.phone_contact}}</div>
+        <div class="apzo-top-bar-right apzo-item-pdlr">
+            <div class="apzo-top-bar-right-text"> {{_date}}</div>
+            <div class="apzo-top-bar-right-social">
+            
+               {% if _company.facebook_link %}
+                 <a href={{_company.facebook_link}} target="_blank" class="apzo-top-bar-social-icon" title="facebook"><i class="fa fa-facebook" ></i></a>
+               {% endif %} 
+
+               {% if _company.linkedin_link %}
+                  <a href={{_company.linkedin_link}} target="_blank" class="apzo-top-bar-social-icon" title="linkedin"><i class="fa fa-linkedin" ></i></a>
+               {% endif %} 
+               
+               {% if _company.whatsapp_link %}
+                  <a href={{_company.whatsapp_link}} target="_blank" class="apzo-top-bar-social-icon" title="whatssap"><i class="fa fa-whatsapp" ></i></a>
+               {% endif %}   
+               
+               {% if _company.twitter_link %}
+                 <a href={{_company.twitter_link}} target="_blank" class="apzo-top-bar-social-icon" title="twitter"><i class="fa fa-twitter" ></i></a>
+               {% endif %} 
+
+               {% if _company.instagram_link %}
+                 <a href={{_company.instagram_link}} target="_blank" class="apzo-top-bar-social-icon" title="instagram"><i class="fa fa-instagram" ></i></a>
+               {% endif %} 
+            </div>
+        </div>
+    </div>
+</div>

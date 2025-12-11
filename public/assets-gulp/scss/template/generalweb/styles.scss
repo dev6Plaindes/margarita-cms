@@ -1,0 +1,176 @@
+@import './node_modules/bootstrap/scss/bootstrap.scss';
+@import 'componentes/menu';
+@import 'componentes/system';
+@import 'componentes/carouselproy';
+@import 'componentes/nosotros';
+@import 'componentes/contac';
+html{
+    font-size: 11px;
+    background-color: #f7f7f7;
+    body{
+        background-color: #f7f7f7;
+    }
+}
+
+.btn-custom{
+    color: black;
+    border-radius: 20px;
+    padding: 0.4rem 0.8rem;
+    border: 1px;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.btn-color-primary{
+    background-color: var(--main-resaltar) !important;
+    color: white;
+}
+
+// Colapse...
+
+.plataformas-colapse{
+    .accordion-item{
+        border: none;
+        border-radius: 0;
+        margin-bottom: 10px;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+        padding: 1rem 1rem 1rem 0rem;
+        h2 button {
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+        .accordion-button:not(.collapsed) {
+            color: #000000;
+            background-color: white;
+            box-shadow: none;
+        }
+    }
+    
+    img{
+        height: 2.1rem;
+        margin-right: 10px;
+    }
+}
+
+.bl-color-resaltar{
+    border-left: 15px solid var(--main-resaltar) !important;
+}
+.bl-color-aux_uno{
+    border-left: 15px solid var(--main-aux_uno) !important;
+}
+.bl-color-aux_dos{
+    border-left: 15px solid var(--main-aux_dos) !important;
+}
+.bl-color-aux_tres{
+    border-left: 15px solid var(--main-aux_tres) !important;
+}
+.bl-color-aux_cuatro{
+    border-left: 15px solid var(--main-aux_cuatro) !important;
+}
+
+.carrusel-uno{
+
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    padding: 3rem 1rem;
+    .carousel-item{
+        height: 100%;
+    }
+    .carousel-caption{
+        h2{
+            font-size: 2.3rem;
+            font-weight: 600;
+            text-align: left;
+            margin-bottom: 3rem;
+        }
+        p{
+            color: #252525;
+            text-align: justify;
+        }
+        left: 5% !important;
+        padding: 3.25rem;
+    }
+}
+
+.icon-resalt {
+    border-radius: 10px;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    margin-right: 1rem;
+}
+
+.icon-resalt2 {
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    background-color: var(--main-resaltar);
+    border-radius: 10px;
+    color: white;
+    i{
+        font-size: 1.5rem;
+    }
+}
+
+.active .icon-resalt{
+    border: 1px solid var(--main-resaltar);
+}
+
+footer {
+    background-color: var(--main-secundario);
+    color: white;
+    .card-system{
+        h1 {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        h3{
+            margin-left: 5px;
+            font-size: 1rem;
+            font-weight: 200;
+        }
+        p{
+            margin-left: 10px;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+        }
+    }
+    .img-footer img {
+        height: 3rem;
+        width: auto;
+    }
+}
+
+.separate{
+    width: 4rem;
+    height: 5px;
+    background-color: var(--main-resaltar);
+}
+
+.blf-color-secundario{
+    border-left: 5px solid var(--main-resaltar);
+}
+
+.border-custom {
+    height: 5px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    
+    .border-color-aux_uno{
+        background-color: var(--main-aux_uno);
+    }
+    .border-color-aux_dos{
+        background-color: var(--main-aux_dos);
+    }
+    .border-color-aux_tres{
+        background-color: var(--main-aux_tres);
+    }
+    .border-color-aux_cuatro{
+        background-color: var(--main-aux_cuatro);
+    }
+    .border-color-resaltar{
+        background-color: var(--main-resaltar);
+    }
+}
+

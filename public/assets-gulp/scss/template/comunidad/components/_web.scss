@@ -1,0 +1,43 @@
+
+
+/* owl nav */
+.owl-prev span, .owl-next span {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    background: #fff;
+    border-radius: 50%;
+     opacity: 1;
+    margin-top: auto;
+    margin-bottom: auto;
+    box-shadow: -2px 1px 10px #bdbdbd;
+    cursor: pointer;
+}
+
+.owl-prev span:hover, 
+.owl-next span:hover {
+	color: #8199A3;
+}
+
+.owl-prev, .owl-next {
+	position: absolute;
+	top: 0;
+	height: 100%;
+}
+
+.owl-prev {
+	left: 7px;
+    background-color: transparent !important;
+}
+
+.owl-next {
+	right: 7px;
+    background-color: transparent !important;
+}
+
+/* removing blue outline from spans */
+span:focus, span:active {
+   outline: none;
+}

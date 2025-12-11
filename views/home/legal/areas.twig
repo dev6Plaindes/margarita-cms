@@ -1,0 +1,17 @@
+{% extends "home/legal/main.twig" %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+{% include 'home/legal/elements_area/banner-light.twig'%}
+{% include 'home/legal/elements_area/cards_areas.twig'%}
+
+{% endblock %}
+{% block js %}
+<script>
+    $(".menu-item-1 a").eq(1).addClass("active");
+</script>
+
+{% endblock %}

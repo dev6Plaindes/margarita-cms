@@ -1,0 +1,28 @@
+{% for item in topics %}
+<h3 class="course-details__tab-title">{{ item.name }}</h3>
+<!-- /.course-details__title -->
+<br>
+<p class="course-details__tab-text">{{ item.description }}</p>
+<!-- /.course-details__tab-text -->
+<br>
+<ul class="course-details__curriculum-list list-unstyled">
+    {% for item2 in item.subtopics %}
+        <li>
+            <div class="course-details__curriculum-list-left">
+                <div class="course-details__meta-icon" style="background-color:{{ item2.design_icon.color }}; border-color:{{ item2.design_icon.color }}">
+                    <i class="{{ item2.design_icon.icon }}"></i><!-- /.fas fa-play -->
+                </div><!-- /.course-details__icon -->
+                <a href="#">{{ item2.name }}</a> 
+                    {% if item2.url %}
+                        <span>Vista previa</span>
+                    {% endif %}
+            </div><!-- /.course-details__curriculum-list-left -->
+            {% if item2.description %}
+            <div class="course-details__curriculum-list-right">{{ item2.description }}</div>
+            {% endif %}
+            <!-- /.course-details__curriculum-list-right -->
+        </li>
+    {% endfor %}
+</ul><!-- /.course-details__curriculum-list -->
+<br><br>
+{% endfor %}

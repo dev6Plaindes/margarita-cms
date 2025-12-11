@@ -1,0 +1,76 @@
+{% extends "home/generalweb/layouts/main.twig" %}
+
+{% block css %}{% endblock %}
+
+
+
+{% block content %}
+<div class="container-fluid py-2 my-2" style="min-height: 44vh; background-color: white;">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 plataformas-colapse">
+        {% for index, section in sections %}
+        {% if section.alias == 'accordion' %}
+        {% include "home/generalweb/partials/accordion.twig" %}
+        {% endif %}
+        {% endfor %}
+
+        {#{% include "home/generalweb/partials/register.twig" %}#}
+      </div>
+      <div class="col-lg-8">
+        <div class="row">
+          {% include "home/generalweb/partials/carousel.twig" %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% if proyectos %}
+<div class="container-fluid" style="background-color: #f7f7f7;">
+  <div class="container py-2">
+    <div class="row">
+      {% include "home/generalweb/partials/carousel_proy.twig" %}
+    </div>
+  </div>
+</div>
+{% endif%}
+
+{% endblock %}
+
+{% block js %}
+<script>
+  $(document).ready(function () {
+    {% for index, section in sections %}
+    {% if section.alias == 'products' %}
+    {% for index_content, item_content in section.contents %}
+    {% if item_content.url_api %}
+    carouselthree('{{item_content.uniqid}}', '{{ item_content.url_api }}');
+    {% endif %}
+    {% endfor %}
+    {% elseif section.alias == 'accordion' %}
+    buttomCollapse();
+    myAccordionClick();
+    {% endif %}
+    {% endfor %}
+  });
+</script>
+
+<script>
+  $('.owl-carousel').owlCarousel({
+    loop: true,
+    margin: 10,
+    nav: true,
+    responsive: {
+      0: {
+        items: 1
+      },
+      600: {
+        items: 3
+      },
+      1000: {
+        items: 4
+      }
+    }
+  })
+</script>
+{% endblock %}

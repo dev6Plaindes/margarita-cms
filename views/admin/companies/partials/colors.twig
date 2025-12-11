@@ -1,0 +1,13 @@
+<div data-repeater-item="" class="form-group row align-items-center">
+    <input type="hidden" name="id" value="{{ item.id }}"/>
+    <div class="col-lg-8">
+        <label>Color:</label>
+        <input class="form-control form-control-solid form-control-lg jscolor" name="color" type="text" value="{{ item.color }}" autocomplete="off"/>
+        <div class="d-md-none mb-2"></div>
+    </div>
+    <div class="col-lg-4 text-right">
+        <a href="javascript:;" data-repeater-delete="" class="btn btn-sm font-weight-bolder btn-light-danger mt-8">
+            <i class="la la-trash-o"></i>Eliminar
+        </a>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+            <footer>
+                <div class="apzo-footer-wrapper ">
+                    <div class="apzo-footer-container apzo-container clearfix">
+                        <div class="apzo-footer-column apzo-item-pdlr apzo-column-15">
+                            <div id="text-1" class="widget widget_text apzo-widget">
+                                <div class="textwidget">
+                                    <p><img src="{{_company.logos[1].patch}}" alt="" height="17" style="width: 12rem;" /></p>
+                                    <p> {{_company.description}} </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="apzo-footer-column apzo-item-pdlr apzo-column-15">
+                            <div id="text-2" class="widget widget_text apzo-widget">
+                                <h3 class="apzo-widget-title">Contact</h3><span class="clear"></span>
+                                <div class="textwidget">
+                                    <p>  {{_company.address}} <span class="gdlr-core-space-shortcode" id="span_064f_8"></span>
+                                        <br />
+                                        <i class="fa fa-phone" id="i_064f_22"></i> <a href="#"> {{_company.phone_contact}} </a>
+                                        <br />
+                                        <span class="gdlr-core-space-shortcode" id="span_064f_9"></span>
+                                        <br />
+                                        <i class="fa fa-envelope-o" id="i_064f_23"></i> <a href="#"><span class="__cf_email__" data-cfemail="#"> {{_company.email_contact}} </span></a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="apzo-footer-column apzo-item-pdlr apzo-column-15">
+                            <div id="gdlr-core-custom-menu-widget-3" class="widget widget_gdlr-core-custom-menu-widget apzo-widget">
+                                <h3 class="apzo-widget-title">Quick Links</h3><span class="clear"></span>
+                                <div class="menu-quick-links-container">
+                                    <ul id="menu-quick-links" class="gdlr-core-custom-menu-widget gdlr-core-menu-style-half">
+
+                                      {% for menu_item in _menu %}
+                   
+                                         <li class="menu-item apzo-normal-menu"><a href="/{{ menu_item.slug }}">{{ menu_item.name }}</a></li>
+                                        
+                                      {% endfor %}
+
+                                    </ul>
+                                  
+                                </div>
+                            </div>
+                        </div>
+                        <!--div class="apzo-footer-column apzo-item-pdlr apzo-column-15">
+                            <div id="text-4" class="widget widget_text apzo-widget">
+                                <h3 class="apzo-widget-title">Subscribe to newsletter</h3><span class="clear"></span>
+                                <div class="textwidget">
+                                    <p>Get the latest business resources on the market delivered to your inbox.</p>
+                                    <span class="gdlr-core-space-shortcode" id="span_064f_10"></span>
+                                </div>
+                            </div>
+                            <div id="gdlr-core-newsletter-widget-2" class="widget widget_gdlr-core-newsletter-widget apzo-widget">
+                                <div class="gdlr-core-with-fa-send-o-button tnp tnp-subscription">
+                                    <form method="post" action="#" onsubmit="return newsletter_check(this)">
+
+                                        <input type="hidden" name="nlang" value="">
+                                        <div class="tnp-field tnp-field-email">
+                                            <input class="tnp-email" type="email" name="ne" placeholder="Enter Your Email Address" required>
+                                        </div>
+                                        <div class="tnp-field tnp-field-button" id="div_064f_137">
+                                            <input class="tnp-submit" type="submit" value="Subscribe">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div-->
+                    </div>
+                </div>
+                <div class="apzo-copyright-wrapper">
+                    <div class="apzo-copyright-container apzo-container clearfix">
+                        <div class="apzo-copyright-left apzo-item-pdlr">{{_company.name}}  © {{_ano_actual}} - Todos los derechos reservados</div>
+                        <div class="apzo-copyright-right apzo-item-pdlr">
+                            <div class="gdlr-core-social-network-item gdlr-core-item-pdb  gdlr-core-none-align" id="div_064f_138">
+                             <a href="{{_company.facebook_link}}" target="_blank" class="gdlr-core-social-network-icon" title="facebook" id="a_064f_11"><i class="fa fa-facebook" ></i></a>
+                             <a href="{{_company.linkedin_link}}" target="_blank" class="gdlr-core-social-network-icon" title="linkedin" id="a_064f_12"><i class="fa fa-linkedin" ></i></a>
+                             <a href="{{_company.whatsapp_link}}" target="_blank" class="gdlr-core-social-network-icon" title="pinterest" id="a_064f_13"><i class="fa fa-whatsapp" ></i></a>
+                             <a href="{{_company.twitter_link}}" target="_blank" class="gdlr-core-social-network-icon" title="twitter" id="a_064f_14"><i class="fa fa-twitter" ></i></a>
+                             <a href="{{_company.instagram_link}}" target="_blank" class="gdlr-core-social-network-icon" title="instagram" id="a_064f_15"><i class="fa fa-instagram" ></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>

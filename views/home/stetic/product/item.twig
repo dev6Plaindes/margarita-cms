@@ -1,0 +1,35 @@
+<div class="item">
+    <div class="course-one__single color-1">
+        <div class="course-one__image">
+            <img src="{{ product.image ? product.image : '/assets/template/stetic/images/course-1-1.jpg' }}" alt="{{ product.category.name }}" style="height:230px;">
+            <i class="far fa-heart"></i><!-- /.far fa-heart -->
+        </div><!-- /.course-one__image -->
+        <div class="course-one__content">
+            <a href="#" class="course-one__category" style="background-color:{{ product.category.color }}">{{ product.category.name }}</a><!-- /.course-one__category -->
+            <div class="course-one__admin">
+                <img src="{{ product.teacher.image ? product.teacher.image : '/assets/template/stetic/images/team-1-1.jpg'}}" alt="{{ product.teacher.name }}">
+                por <a >{{ product.teacher.name ? product.teacher.name ~ ' ' ~  product.teacher.lastname : 'definir docente'}}</a>
+            </div><!-- /.course-one__admin -->
+            <h2 class="course-one__title"><a href="/producto/{{ product.slug }}">{{ product.name }}</a></h2>
+            <!-- /.course-one__title -->
+            <div class="course-one__stars">
+                <span class="course-one__stars-wrap">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                </span><!-- /.course-one__stars-wrap -->
+                <span class="course-one__count">4.8</span><!-- /.course-one__count -->
+                <span class="course-one__stars-count">250</span><!-- /.course-one__stars-count -->
+            </div><!-- /.course-one__stars -->
+            <div class="course-one__meta">
+                {% for index2, item2 in product.characteristics|slice(0,2)  %}
+                    <a href="/producto/{{ product.slug }}"><i class="{{ item2.design_icon.icon }}"></i>{{ item2.description }}</a>
+                {% endfor %}
+                <a href="/producto/{{ product.slug }}">PEN {{ product.price }}</a>
+            </div><!-- /.course-one__meta -->
+            <a href="/producto/{{ product.slug }}" class="course-one__link">Ver vista previa</a><!-- /.course-one__link -->
+        </div><!-- /.course-one__content -->
+    </div><!-- /.course-one__single -->
+</div><!-- /.item -->

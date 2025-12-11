@@ -1,0 +1,126 @@
+{% extends "admin/layouts/main.twig" %}
+
+{% block aside %}
+	{% include 'admin/layouts/partials/aside.twig' with { 'aside': 'landing.menus' } %}
+{% endblock %}
+
+{% block breadcrumb %}
+    {% include 'admin/layouts/partials/breadcrumb.twig' with { 'breadcrumb': 'landing.menus' } %}
+{% endblock %}
+
+{% block css %}
+	<link href="/assets/admin/theme/plugins/custom/jstree/jstree.bundle.css" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block content %}
+<div class="container" id="AppMenuAdmin">
+    <div class="card card-custom">
+        <div class="card-header">
+            <div class="card-title">
+                <h3 class="card-label">Gestión de Menú</h3>
+            </div>
+            <div class="card-toolbar">
+                <a href="javascript:;" @click="onFormMenu(false)" class="btn btn-sm btn-light-primary font-weight-bolder">
+                <i class="la la-plus"></i>Nuevo Menú</a>
+            </div>
+        </div>
+        <div class="card-body">
+            <div id="kt_tree_menu" class="tree-demo">
+                <script type="text/x-template" id="item-template">
+                    <li data-jstree='{ "opened" : true }'>
+                        <a href="javascript:;" v-text="item.name" :dataid="item.id"></a>
+                        <ul>
+                            <tree-item
+                                class="item"
+                                v-for="(child, index) in item.children"
+                                :key="index"
+                                :item="child"
+                            ></tree-item>
+                        </ul>
+                    </li>
+                </script>
+                <ul v-for="item in menus" :key="item.id">
+                    <tree-item :item="item"></tree-item>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modalFormMenu" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdrop" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel" v-text="modal.title">GESTIONAR MENÚ</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <i aria-hidden="true" class="ki ki-close"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="form" id="form_save_menu" @submit="onFormData">
+                        <div class="col-lg-12">
+                            <input type="hidden" :value="menu.id" name="id">
+                            <div class="form-group">
+                                <label>Nombre</label>
+                                <input type="text" class="form-control form-control-solid" :value="menu.name" name="name" placeholder="" required/>
+                            </div>
+                            <div class="form-group">
+                                <label>Posición</label>
+                                <input type="number" class="form-control form-control-solid" :value="menu.order" name="order" placeholder="" required/>
+                            </div>
+                            <div class="form-group">
+                                <label>Url Personalizada</label>
+                                <input type="text" class="form-control form-control-solid" :value="menu.url" name="url" placeholder="https://www.google.com"/>
+                            </div>
+                             <div class="form-group">
+                                <label>Anidar Menú en</label>
+                                <select class="form-control form-control-solid" name="parent_id" :value="menu.parent_id" required>
+                                    <option value="0">../raíz</option>
+                                    <option v-for="item in all" :key="item.id" v-text="item.name" :value="item.id"></option>
+                                </select>
+                            </div>
+                            {% if APP.SESSION.USER.profile_id == APP.PROFILE.MASTER %}
+                            <div class="form-group">
+                                <label>Vincular con panel</label>
+                                <select class="form-control form-control-solid" name="template_view_id" :value="menu.template_view_id">
+                                    <option v-for="item in templates_views" :key="item.id" v-text="item.nombre" :value="item.id"></option>
+                                </select>
+                            </div>
+                            {% endif %}
+                            <div class="form-group">
+                                <label class="col-12 col-form-label">Banner Menú</label>
+                                <div class="col-lg-9 col-xl-9">
+                                    <div class="image-input image-input-outline" id="kt_image">
+                                        <div class="image-input-wrapper" :style="{'background-image': 'url('+ isImage +')'}" style="background-repeat: no-repeat; background-size: 100% 100%;"></div>
+                                        <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Cambiar imagen">
+                                            <i class="fa fa-pen icon-sm text-muted"></i>
+                                            <input type="file" name="image" accept=".png, .jpg, .jpeg" />
+                                            <input type="hidden" name="image_remove" />
+                                        </label>
+                                        <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
+                                            <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer d-block">
+                    <template v-if="menu.id">
+                        <button type="button" class="btn btn-danger font-weight-bold float-left" @click="onDelete(menu.id)">Eliminar</button>
+                    </template>
+                    <button type="submit" class="btn btn-primary font-weight-bold float-right" form="form_save_menu">Guardar</button>
+                    <button type="button" class="btn btn-secondary font-weight-bold float-right" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+	<script src="/assets/admin/theme/plugins/custom/jstree/jstree.bundle.js"></script>
+    <script>
+        window.addEventListener('load', window.AppMenuAdmin.manage(JSON.parse("{{ rsp.data|json_encode|e('js') }}")));
+    </script>
+{% endblock %}

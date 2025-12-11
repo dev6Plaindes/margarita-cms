@@ -1,0 +1,21 @@
+<div class="col-lg-12 mb-5">    
+    <div id="carrusel_cero" class="carousel carousel-dark slide carrusel-d" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            {% for index, section in nosotros[0].images %} 
+                    {% if index == 0 %}
+                    <button type="button" data-bs-target="#carrusel_cero" data-bs-slide-to="{{ index }}" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    {% else %}
+                    <button type="button" data-bs-target="#carrusel_cero" data-bs-slide-to="{{ index }}" aria-label="Slide 2"></button>
+                    {% endif%}  
+            {% endfor %}
+        </div>
+        <div class="carousel-inner carrusel-uno">            
+            {% for index, item_content in nosotros[0].images %}
+                    <div class="carousel-item {{ index == 0 ? 'active' }}" data-bs-interval="2000">
+                        <img style="width: 100%;" src="{{ item_content.patch }}" class="d-block" alt="...">
+                    </div>    
+            {% endfor %}
+        </div>
+    </div>
+
+</div>

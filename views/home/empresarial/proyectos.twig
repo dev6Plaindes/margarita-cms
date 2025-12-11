@@ -1,0 +1,58 @@
+{% extends "home/empresarial/layouts/main.twig" %}
+
+{% block css %}{% endblock %}
+
+{% block content %}
+{% set products = menu_products[0].products %}
+{% include 'home/empresarial/elements/page_info.twig' with {'titulo': 'Nuestros proyectos'} %}
+ <!-- List services section -->
+  <section>
+    <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="section-isotope-project-3-column">
+                 
+                  <div class="projectFilter project-terms project-terms-list-page">
+                        <a href="#" data-filter="*" class="current">Todos</a>
+                        {% set cat_array = [] %}
+                        {% for proyecto in products %}
+                          {% if proyecto.category.name in cat_array %}
+                          {% else %}
+                            <a href="#" data-filter=".{{ proyecto.category.name}}">{{ proyecto.category.name}}</a>
+                            {% set cat_array = cat_array|merge([proyecto.category.name]) %}
+                          {% endif %}
+                        {% endfor %}
+                        {#<a href="#" data-filter=".Financial">Financial</a>
+                        <a href="#" data-filter=".Investments">Investments</a>
+                        <a href="#" data-filter=".Taxes">Taxes</a>
+                        <a href="#" data-filter=".Insurance">Insurance</a>
+                        <a href="#" data-filter=".Retirement">Retirement</a>#}
+                  </div> <!-- End Project Fillter -->
+                <div class="row">
+                  <div class="clearfix projectContainer projectContainer3column">
+                      
+                    {% for proyecto in products %}
+                      <div class="element-item  {{ proyecto.category.name }}">
+                        <a class="img-contain-isotope" href="{{ proyecto.url ? proyecto.url:'#'}}" {{ proyecto.url ? 'target="_blank"':''}}>
+                          <img src="{{proyecto.image}}" class="img-responsive" alt="Image">
+                        </a>
+                          <a href="{{ proyecto.url ? proyecto.url:'#'}}" {{ proyecto.url ? 'target="_blank"':''}}><h5 class="title-project">{{ proyecto.name|raw }}</h5></a>
+                            <a href="{{ proyecto.url ? proyecto.url:'#'}}" {{ proyecto.url ? 'target="_blank"':''}} class="cateProject">{{ proyecto.overview|raw }}</a>
+                      </div>
+                      {% endfor %}
+                  </div>  <!-- End project Container -->
+                </div>
+              </div> <!-- End  -->
+            </div><!-- End Col -->
+          </div><!-- End Row -->
+
+    </div> <!-- End Container -->
+</section><!-- End Section -->
+    <!-- Component owl Project -->
+    
+    {% if frase %}
+    {% include 'home/empresarial/elements/frase.twig' %}
+    {% endif %}
+{% endblock %}
+
+{% block js %}{% endblock %}

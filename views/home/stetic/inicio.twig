@@ -1,0 +1,959 @@
+{% extends "home/stetic/main.twig" %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+
+
+    
+    {% include 'home/stetic/elements/slide_one.twig' %}
+{% if bienvenido %}
+    {% set capacitados = [] %} 
+    {% set caracterisitca = [] %} 
+    {% set banner = [] %} 
+    
+    {% for item in bienvenido %}
+        {% if item.content_alias == 'banner' %}
+            {% set banner = banner|merge([item]) %} 
+        {% endif %}
+
+        {% if item.content_alias == 'caracterisitca' %}
+            {% set caracterisitca = caracterisitca|merge([item]) %} 
+        {% endif %}
+
+        {% if item.content_alias == 'capacitados' %}
+            {% set capacitados = capacitados|merge([item]) %} 
+        {% endif %}
+            
+    {% endfor %}
+    <section class="about-two">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="about-two__content">
+                        <div class="block-title text-left">
+                            <h2 class="block-title__title">{{ banner[0].content_name|nl2br }}</h2><!-- /.block-title__title -->
+                        </div><!-- /.block-title -->
+                        <p class="about-two__text">{{ banner[0].content_caption|nl2br }}</p><!-- /.about-two__text -->
+                        <div class="about-two__single-wrap">
+                            <div class="about-two__single">
+                                <div class="about-two__single-icon">
+                                    <i class="icon-ml">
+                                        <i class="{{ caracterisitca[0].content_caption|raw }}"></i><!-- /.kipso-icon-professor -->
+                                    </i>
+                                </div><!-- /.about-two__single-icon -->
+                                <div class="about-two__single-content">
+                                    <p class="about-two__single-text">{{ caracterisitca[0].content_name|nl2br }}</p><!-- /.about-two__single-text -->
+                                </div><!-- /.about-two__single-content -->
+                            </div><!-- /.about-two__single -->
+                            <div class="about-two__single">
+                                <div class="about-two__single-icon">
+                                    <i class="{{ caracterisitca[1].content_caption|raw }}"></i><!-- /.kipso-icon-professor -->
+                                </div><!-- /.about-two__single-icon -->
+                                <div class="about-two__single-content">
+                                    <p class="about-two__single-text">{{ caracterisitca[1].content_name|nl2br }}</p><!-- /.about-two__single-text -->
+                                </div><!-- /.about-two__single-content -->
+                            </div><!-- /.about-two__single -->
+                        </div><!-- /.about-two__single-wrap -->
+                        <a href="#cat_cursos" class="thm-btn">Empecemos</a><!-- /.thm-btn -->
+                    </div><!-- /.about-two__content -->
+                </div><!-- /.col-lg-6 -->
+                <div class="col-xl-6 d-flex justify-content-xl-end justify-content-sm-center">
+                    <div class="about-two__image">
+                        <span class="about-two__image-dots"></span><!-- /.about-two__image-dots -->
+                        <img src="{{ banner[0].imagens[0].patch|raw }}" alt="">
+                        <div class="about-two__count">
+                            <div class="about-two__count-text">{{ capacitados[0].content_name|nl2br }}
+                                <span class="counter">{{ capacitados[0].content_caption|nl2br }}</span>
+                            </div><!-- /.about-two__count-text -->
+                        </div><!-- /.about-two__count -->
+                    </div><!-- /.about-two__image -->
+                </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section><!-- /.about-two -->
+{% endif %}
+{% if estudia %}
+<!--MISION y Visión-->
+    <section class=" thm-gray-bg course-category-three">
+        <img src="assets/images/circle-stripe.png" class="course-category-three__circle" alt="">
+        <div class="container">
+            <div class="block-title">
+                <h2 class="block-title__title">{{ estudia[0].section_description|nl2br }}</h2><!-- /.block-title__title -->
+            </div><!-- /.block-title -->
+            <div class="row">
+    {% for item in estudia %}
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="course-category-three__single img-with">
+                        <img src="{{ item.imagens[0].patch }}" alt="">
+                        <div class="course-category-three__content">
+                            <h3 class="course-category-three__title"><a>{{ item.content_name|nl2br }} </a></h3>
+                            <!-- /.course-category-three__title -->
+                            <p class="course-category-three__text">Más de 15 Cursos</p>
+                            <!-- /.course-category-three__text -->
+                        </div><!-- /.course-category-three__content -->
+                    </div><!-- /.course-category-three__single -->
+                </div><!-- /.col-lg-3 col-md-6 col-sm-12 -->
+    {% endfor %}
+                {#<div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="course-category-three__single">
+                        <img src="assets/template/stetic/images/course-category-1-1.png" alt="">
+                        <div class="course-category-three__content">
+                            <h3 class="course-category-three__title"><a href="#">Conoce </a></h3>
+                            <!-- /.course-category-three__title -->
+                            <p class="course-category-three__text">Más de 15 Cursos</p>
+                            <!-- /.course-category-three__text -->
+                        </div><!-- /.course-category-three__content -->
+                    </div><!-- /.course-category-three__single -->
+                </div><!-- /.col-lg-3 col-md-6 col-sm-12 -->
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="course-category-three__single">
+                        <img src="assets/template/stetic/images/course-category-1-2.png" alt="">
+                        <div class="course-category-three__content">
+                            <h3 class="course-category-three__title"><a href="#">Crea </a></h3>
+                            <!-- /.course-category-three__title -->
+                            <p class="course-category-three__text">Más de 15 Cursos</p>
+                            <!-- /.course-category-three__text -->
+                        </div><!-- /.course-category-three__content -->
+                    </div><!-- /.course-category-three__single -->
+                </div><!-- /.col-lg-3 col-md-6 col-sm-12 -->
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="course-category-three__single">
+                        <img src="assets/template/stetic/images/course-category-1-3.png" alt="">
+                        <div class="course-category-three__content">
+                            <h3 class="course-category-three__title"><a href="#">Aplica</a></h3>
+                            <!-- /.course-category-three__title -->
+                            <p class="course-category-three__text">Más de 15 Cursos</p>
+                            <!-- /.course-category-three__text -->
+                        </div><!-- /.course-category-three__content -->
+                    </div><!-- /.course-category-three__single -->
+                </div><!-- /.col-lg-3 col-md-6 col-sm-12 -->
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="course-category-three__single">
+                        <img src="assets/template/stetic/images/course-category-1-4.png" alt="">
+                        <div class="course-category-three__content">
+                            <h3 class="course-category-three__title"><a href="#">Soluciona</a></h3>
+                            <!-- /.course-category-three__title -->
+                            <p class="course-category-three__text">Más de 15 Cursos</p>
+                            <!-- /.course-category-three__text -->
+                        </div><!-- /.course-category-three__content -->
+                    </div><!-- /.course-category-three__single -->
+                </div><!-- /.col-lg-3 col-md-6 col-sm-12 -->#}
+            </div><!-- /.row -->
+            <div class="text-center">
+                <a href="#cat_cursos" class="thm-btn course-category-three__more-link">Todos los cursos</a><!-- /.thm-btn -->
+            </div><!-- /.text-center -->
+        </div><!-- /.container -->
+    </section><!-- /.course-category-three -->
+{% endif %}
+    <!--MISION y Visión-->
+    <div class="cta-two">
+        <div class="container-fluid">
+            <div class="row no-gutters">
+                <div class="col-lg-6 thm-base-bg">
+                    <div class="cta-two__single">
+                        <div class="cta-two__icon">
+                            <span><i class="kipso-icon-professor"></i><!-- /.kipso-icon-professor --></span>
+                        </div><!-- /.cta-two__icon -->
+                        <div class="cta-two__content">
+                            <h2 class="cta-two__title">Misión</h2><!-- /.cta-two__title -->
+                            <p class="cta-two__text">{{ _company.mision|raw|nl2br }}</p><!-- /.cta-two__text -->
+                            
+                        </div><!-- /.cta-two__content -->
+                    </div><!-- /.cta-two__single -->
+                </div><!-- /.col-lg-6 -->
+                <div class="col-lg-6 thm-base-bg-2">
+                    <div class="cta-two__single">
+                        <div class="cta-two__icon">
+                            <span><i class="kipso-icon-knowledge"></i><!-- /.kipso-icon-knowledge --></span>
+                        </div><!-- /.cta-two__icon -->
+                        <div class="cta-two__content">
+                            <h2 class="cta-two__title">Visión</h2><!-- /.cta-two__title -->
+                            <p class="cta-two__text">{{ _company.vision|raw|nl2br }}</p><!-- /.cta-two__text -->
+                            
+                        </div><!-- /.cta-two__content -->
+                    </div><!-- /.cta-two__single -->
+                </div><!-- /.col-lg-6 -->
+            </div><!-- /.row no-gutters -->
+        </div><!-- /.container-fluid -->
+    </div><!-- /.cta-two -->    
+<!--Valores -->    
+{% if valores %}
+    <section class="meeting-one">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="meeting-one__content">
+                        <div class="block-title text-left">
+                            <h2 class="block-title__title">{{ valores[0].section_name|nl2br }}</h2><!-- /.block-title__title -->
+                        </div><!-- /.block-title -->
+                        <div class="meeting-one__box-wrap">
+                            {% for item in valores %}
+                            <div class="meeting-one__box">
+                                <div class="meeting-one__bubble">{{ item.content_caption|nl2br }}</div>
+                                <!-- /.meeting-one__bubble -->
+                                <img src="{{ item.imagens[0].patch }}" alt="Awesome Image" />
+                                <h3 class="meeting-one__title">{{ item.content_name|nl2br }}</h3><!-- /.meeting-one__title -->
+                            </div><!-- /.meeting-one__box -->
+                            {% endfor %}
+                            {#
+                            <div class="meeting-one__box">
+                                <div class="meeting-one__bubble">Involucrarse en nuestra metodología
+                                    brindada dando lo mejor de si.</div>
+                                <!-- /.meeting-one__bubble -->
+                                <img src="assets/template/stetic/images/chat-1-1.jpg" alt="Awesome Image" />
+                                <h3 class="meeting-one__title">Compromiso</h3><!-- /.meeting-one__title -->
+                            </div><!-- /.meeting-one__box -->
+                            <div class="meeting-one__box">
+                                <div class="meeting-one__bubble">Reconocer en todo ser humano un gran
+                                    potencial sin limitaciones</div>
+                                <!-- /.meeting-one__bubble -->
+                                <img src="assets/template/stetic/images/chat-1-1.jpg" alt="Awesome Image" />
+                                <h3 class="meeting-one__title">Respeto</h3><!-- /.meeting-one__title -->
+                            </div><!-- /.meeting-one__box -->
+                            <div class="meeting-one__box">
+                                <div class="meeting-one__bubble">Mantenerse firme en las bases
+                                    profesionales de una estética no invasiva, respetando
+                                    las competencias académicas.</div>
+                                <!-- /.meeting-one__bubble -->
+                                <img src="assets/template/stetic/images/chat-1-1.jpg" alt="Awesome Image" />
+                                <h3 class="meeting-one__title">Integridad</h3><!-- /.meeting-one__title -->
+                            </div><!-- /.meeting-one__box -->
+                            <div class="meeting-one__box">
+                                <div class="meeting-one__bubble">Ofrecerle al mercado estético
+                                    profesionales integrales capaces de dar ciencia y
+                                    belleza.</div><!-- /.meeting-one__bubble -->
+                                <img src="assets/template/stetic/images/chat-1-2.jpg" alt="Awesome Image" />
+                                <h3 class="meeting-one__title">Responsabilidad social</h3><!-- /.meeting-one__title -->
+                            </div><!-- /.meeting-one__box -->
+                            #}
+                        </div><!-- /.meeting-one__box-wrap -->
+                    </div><!-- /.meeting-one__content -->
+                </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section><!-- /.meeting-one -->
+{% endif %}
+<!--METODOLOGIA-->
+{% if metodologia %}
+{% set imagen_banner = '' %}
+    <section class="team-tab">
+        <div class="container">
+
+            <div class="tab-content">
+                <div class="tab-pane show active  animated fadeInUp" role="tabpanel" id="overview">
+                    <div class="row">
+                        <div class="col-lg-6 d-flex">
+                            <div class="my-auto">
+                                <div class="team-tab__content">
+                                    <div class="team-tab__top">
+                                        <div class="team-tab__left">
+                                            <h2 class="team-tab__title">{{ metodologia[0].section_name|nl2br }} </h2><!-- /.team-tab__title -->
+                                            <p class="team-tab__designation">{{ metodologia[0].section_caption|nl2br }}</p>
+                                            <!-- /.team-tab__designation -->
+                                        </div><!-- /.team-tab__left -->
+                                        <div class="team-tab__right">
+                                            <div class="team-tab__social">
+                                                {% if _company.facebook_link %}<a href="{{ _company.facebook_link }}" target="_blank"><i class="fab fa-facebook-square"></i></a>{% endif %}
+                                                {% if _company.twitter_link %}<a href="{{ _company.twitter_link }}" target="_blank"><i class="fab fa-twitter"></i></a>{% endif %}
+                                                {% if _company.linkedin_link %}<a href="{{ _company.linkedin_link }}" target="_blank"><i class="fab fa-linkedin"></i></a>{% endif %}
+                                                {% if _company.instagram_link %}<a href="{{ _company.instagram_link }}" target="_blank"><i class="fab fa-instagram"></i></a>{% endif %}
+                                                
+                                            </div><!-- /.team-tab__social -->
+                                        </div><!-- /.team-tab__right -->
+                                    </div><!-- /.team-tab__top -->
+                                    <p class="team-tab__text">{{ metodologia[0].section_description|nl2br }}
+                                    </p><!-- /.team-tab__text -->
+                                    <div class="progress-one__wrap">
+                                        {% for item in metodologia %}
+                                            {% if item.content_alias == 'imagen' %}
+                                            {% set imagen_banner = item.imagens[0].patch %}
+                                            {% endif %}
+                                            {% if item.content_alias == 'avance' %}
+                                        <div class="progress-one__single">
+                                            <div class="progress-one__top">
+                                                <h3 class="progress-one__title">{{ item.content_name|nl2br }}</h3><!-- /.progress-one__title -->
+                                                <h3 class="progress-one__percent"><span class="counter">{{ item.content_caption }}</span>
+                                                    <!-- /.counter -->%
+                                                </h3><!-- /.progress-one__percent -->
+                                            </div><!-- /.progress-one__top -->
+                                            <div class="progress-one__bar">
+                                                <span style="width: {{ item.content_caption }}%;" class="wow slideInLeft"></span>
+                                            </div><!-- /.progress-one__bar -->
+                                        </div><!-- /.progress-one__single -->
+                                            {% endif %}
+                                        {% endfor %}
+                                        {#<div class="progress-one__single">
+                                            <div class="progress-one__top">
+                                                <h3 class="progress-one__title">CREAR PROTOCOLOS</h3><!-- /.progress-one__title -->
+                                                <h3 class="progress-one__percent"><span class="counter">100</span>
+                                                    <!-- /.counter -->%
+                                                </h3><!-- /.progress-one__percent -->
+                                            </div><!-- /.progress-one__top -->
+                                            <div class="progress-one__bar">
+                                                <span style="width: 100%;" class="wow slideInLeft"></span>
+                                            </div><!-- /.progress-one__bar -->
+                                        </div><!-- /.progress-one__single -->
+                                        <div class="progress-one__single">
+                                            <div class="progress-one__top">
+                                                <h3 class="progress-one__title">APLICANDO ACTIVOS
+                                                    QUIMICOS DIRECCIONADOS</h3><!-- /.progress-one__title -->
+                                                <h3 class="progress-one__percent"><span class="counter">100</span>
+                                                    <!-- /.counter -->%
+                                                </h3><!-- /.progress-one__percent -->
+                                            </div><!-- /.progress-one__top -->
+                                            <div class="progress-one__bar">
+                                                <span style="width: 100%;" class="wow slideInLeft"></span>
+                                            </div><!-- /.progress-one__bar -->
+                                        </div><!-- /.progress-one__single -->
+                                        <div class="progress-one__single">
+                                            <div class="progress-one__top">
+                                                <h3 class="progress-one__title">SOLUCIONANDO ALTERACIONES
+                                                    ESTETICAS</h3><!-- /.progress-one__title -->
+                                                <h3 class="progress-one__percent"><span class="counter">100</span>
+                                                    <!-- /.counter -->%
+                                                </h3><!-- /.progress-one__percent -->
+                                            </div><!-- /.progress-one__top -->
+                                            <div class="progress-one__bar">
+                                                <span style="width: 100%;" class="wow slideInLeft"></span>
+                                            </div><!-- /.progress-one__bar -->
+                                        </div><!-- /.progress-one__single -->#}
+                                    </div><!-- /.progress-one__wrap -->
+                                </div><!-- /.team-tab__content -->
+                            </div><!-- /.my-auto -->
+                        </div><!-- /.col-lg-6 -->
+                        <div class="col-lg-6">
+                            {% if imagen_banner %}
+                            <img src="{{imagen_banner}}" style="height: 42rem;" alt="">
+                            {% else %}
+                            <img src="assets/template/stetic/images/teacher-h3-1-1.jpg" alt="">
+                            {% endif%}
+                        </div><!-- /.col-lg-6 -->
+                    </div><!-- /.row -->
+                </div><!-- /.course-details__tab-content -->
+            </div><!-- /.tab-content -->
+        </div><!-- /.container -->
+    </section><!-- /.team-tab -->
+{% endif %}
+{% if certificado %}
+<!--Certificado y propuesta remota-->
+    <section class="blog-one  blog-one__home-two">
+        <div class="container">
+            <div class="block-title text-center">
+                <h2 class="block-title__title">{{ certificado[0].section_name|nl2br }}</h2><!-- /.block-title__title -->
+            </div><!-- /.block-title -->
+            <div class="row justify-content-md-center">
+                {% for item in certificado %}
+                <div class="col-lg-4">
+                    <div class="blog-one__single">
+                        <div class="blog-one__image">
+                            <img src="{{ item.imagens[0].patch }}" alt="">
+                            <a class="blog-one__plus gallery-one__popup img-popup" href="{{ item.imagens[0].patch }}"><i class="kipso-icon-plus-symbol"></i>
+                                <!-- /.kipso-icon-plus-symbol --></a>
+                        </div><!-- /.blog-one__image -->
+                        <div class="blog-one__content text-center">
+                            <h2 class="blog-one__title"><a href="news-details.html">{{ item.content_name|nl2br|raw }}</a>
+                            </h2><!-- /.blog-one__title -->
+                            <p class="blog-one__text">{{ item.content_caption|nl2br|raw }}</p><!-- /.blog-one__text -->
+                        </div><!-- /.blog-one__content -->
+                    </div><!-- /.blog-one__single -->
+                </div><!-- /.col-lg-4 -->
+                {% endfor %}
+                {#<div class="col-lg-4">
+                    <div class="blog-one__single">
+                        <div class="blog-one__image">
+                            <img src="assets/template/stetic/images/blog-1-1.jpg" alt="">
+                            <a class="blog-one__plus" href="news-details.html"><i class="kipso-icon-plus-symbol"></i>
+                                <!-- /.kipso-icon-plus-symbol --></a>
+                        </div><!-- /.blog-one__image -->
+                        <div class="blog-one__content text-center">
+                            <h2 class="blog-one__title"><a href="news-details.html">Certificado</a>
+                            </h2><!-- /.blog-one__title -->
+                            <p class="blog-one__text">Finalizadas las especialidades con nota aprobatoria de 15 20 la profesional obtendrá una constancia de estudios más competencias académicas y horas cronológicas certificadas por ML STETIC estudiando la belleza s a c</p><!-- /.blog-one__text -->
+                        </div><!-- /.blog-one__content -->
+                    </div><!-- /.blog-one__single -->
+                </div><!-- /.col-lg-4 -->
+                <div class="col-lg-4">
+                    <div class="blog-one__single">
+                        <div class="blog-one__image">
+                            <img src="assets/template/stetic/images/blog-1-1.jpg" alt="">
+                            <a class="blog-one__plus" href="news-details.html"><i class="kipso-icon-plus-symbol"></i>
+                                <!-- /.kipso-icon-plus-symbol --></a>
+                        </div><!-- /.blog-one__image -->
+                        <div class="blog-one__content text-center">
+                            <h2 class="blog-one__title"><a href="news-details.html">Propuesta remota</a>
+                            </h2><!-- /.blog-one__title -->
+                            <p class="blog-one__text">Para las profesionales de provincia tenemos la modalidad cabina HAUSE podrán hacer sus prácticas desde casa adquiriendo un set de productos para que puedan llevar la ciencia a la practica</p><!-- /.blog-one__text -->
+                        </div><!-- /.blog-one__content -->
+                    </div><!-- /.blog-one__single -->
+                </div><!-- /.col-lg-4 -->#}
+            </div><!-- /.row -->
+
+        </div><!-- /.container -->
+    </section><!-- /.blog-one blog-page -->
+{% endif %}
+<!--cursos y categorias-->
+
+    <section class="thm-gray-bg course-category-one" id="cat_cursos">
+        <div class="container-fluid text-center">
+            <div class="block-title text-center">
+                <h2 class="block-title__title">Descubre<br></h2><!-- /.block-title__title -->
+            </div><!-- /.block-title -->
+            <div class="course-category-one__carousel owl-carousel owl-theme">
+                {% set int = 1 %}
+                {% for menu_item in _menu %}
+                {% if menu_item.template_view.index == 2 %}
+                <div class="item">
+                    <div class="course-category-one__single color-{{ int }}">
+                        <div class="course-category-one__icon img-large">
+                            <img src="{{menu_item.image}}" alt="">
+                            {#<i class="kipso-icon-desktop"></i><!-- /.kipso-icon-camera -->#}
+                        </div><!-- /.course-category-one__icon -->
+                        <h3 class="course-category-one__title"><a href="{{ menu_item.slug }}">{{ menu_item.name }}</a></h3>
+                        <!-- /.course-category-one__title -->
+                    </div><!-- /.course-category-one__single -->
+                </div><!-- /.item -->
+                {% set int = int+1 %}
+                {%if int > 6 %} {% set int = 1 %}{% endif %}
+                {% endif %}
+                {% endfor %}
+                {#<div class="item">
+                    <div class="course-category-one__single color-1">
+                        <div class="course-category-one__icon">
+                            <i class="kipso-icon-desktop"></i><!-- /.kipso-icon-camera -->
+                        </div><!-- /.course-category-one__icon -->
+                        <h3 class="course-category-one__title"><a href="#">IT & Software</a></h3>
+                        <!-- /.course-category-one__title -->
+                    </div><!-- /.course-category-one__single -->
+                </div><!-- /.item -->
+                <div class="item">
+                    <div class="course-category-one__single color-2">
+                        <div class="course-category-one__icon">
+                            <i class="kipso-icon-web-programming"></i><!-- /.kipso-icon-camera -->
+                        </div><!-- /.course-category-one__icon -->
+                        <h3 class="course-category-one__title"><a href="#">Development</a></h3>
+                        <!-- /.course-category-one__title -->
+                    </div><!-- /.course-category-one__single -->
+                </div><!-- /.item -->
+                <div class="item">
+                    <div class="course-category-one__single color-3">
+                        <div class="course-category-one__icon">
+                            <i class="kipso-icon-music-player"></i><!-- /.kipso-icon-camera -->
+                        </div><!-- /.course-category-one__icon -->
+                        <h3 class="course-category-one__title"><a href="#">Music</a></h3>
+                        <!-- /.course-category-one__title -->
+                    </div><!-- /.course-category-one__single -->
+                </div><!-- /.item -->
+                <div class="item">
+                    <div class="course-category-one__single color-4">
+                        <div class="course-category-one__icon">
+                            <i class="kipso-icon-camera"></i><!-- /.kipso-icon-camera -->
+                        </div><!-- /.course-category-one__icon -->
+                        <h3 class="course-category-one__title"><a href="#">Photography</a></h3>
+                        <!-- /.course-category-one__title -->
+                    </div><!-- /.course-category-one__single -->
+                </div><!-- /.item -->
+                <div class="item">
+                    <div class="course-category-one__single color-5">
+                        <div class="course-category-one__icon">
+                            <i class="kipso-icon-targeting"></i><!-- /.kipso-icon-camera -->
+                        </div><!-- /.course-category-one__icon -->
+                        <h3 class="course-category-one__title"><a href="#">Marketing</a></h3>
+                        <!-- /.course-category-one__title -->
+                    </div><!-- /.course-category-one__single -->
+                </div><!-- /.item -->
+                <div class="item">
+                    <div class="course-category-one__single color-6">
+                        <div class="course-category-one__icon">
+                            <i class="kipso-icon-health"></i><!-- /.kipso-icon-camera -->
+                        </div><!-- /.course-category-one__icon -->
+                        <h3 class="course-category-one__title"><a href="#">Health & Fitness</a></h3>
+                        <!-- /.course-category-one__title -->
+                    </div><!-- /.course-category-one__single -->
+                </div><!-- /.item -->
+                <div class="item">
+                    <div class="course-category-one__single color-1">
+                        <div class="course-category-one__icon">
+                            <i class="kipso-icon-desktop"></i><!-- /.kipso-icon-camera -->
+                        </div><!-- /.course-category-one__icon -->
+                        <h3 class="course-category-one__title"><a href="#">IT & Software</a></h3>
+                        <!-- /.course-category-one__title -->
+                    </div><!-- /.course-category-one__single -->
+                </div><!-- /.item -->
+                <div class="item">
+                    <div class="course-category-one__single color-2">
+                        <div class="course-category-one__icon">
+                            <i class="kipso-icon-web-programming"></i><!-- /.kipso-icon-camera -->
+                        </div><!-- /.course-category-one__icon -->
+                        <h3 class="course-category-one__title"><a href="#">Development</a></h3>
+                        <!-- /.course-category-one__title -->
+                    </div><!-- /.course-category-one__single -->
+                </div><!-- /.item -->
+                <div class="item">
+                    <div class="course-category-one__single color-3">
+                        <div class="course-category-one__icon">
+                            <i class="kipso-icon-music-player"></i><!-- /.kipso-icon-camera -->
+                        </div><!-- /.course-category-one__icon -->
+                        <h3 class="course-category-one__title"><a href="#">Music</a></h3>
+                        <!-- /.course-category-one__title -->
+                    </div><!-- /.course-category-one__single -->
+                </div><!-- /.item -->
+                <div class="item">
+                    <div class="course-category-one__single color-4">
+                        <div class="course-category-one__icon">
+                            <i class="kipso-icon-camera"></i><!-- /.kipso-icon-camera -->
+                        </div><!-- /.course-category-one__icon -->
+                        <h3 class="course-category-one__title"><a href="#">Photography</a></h3>
+                        <!-- /.course-category-one__title -->
+                    </div><!-- /.course-category-one__single -->
+                </div><!-- /.item -->#}
+            </div><!-- /.course-category-one__carousel owl-carousel owl-theme -->
+
+           
+        </div><!-- /.container-fluid -->
+    </section><!-- /.thm-gray-bg course-category-one -->
+    {#<section class=" course-category-one container-fluid">
+        <div class="container-fluid text-center">
+            <div class="block-title text-center">
+                <h2 class="block-title__title">Explorar categorías <br>
+                    de cursos en línea</h2><!-- /.block-title__title -->
+            </div><!-- /.block-title -->
+            <div class="category">
+                <div class="row justify-content-md-center">
+                    <div class="col col-lg-4 item" style="background-color: var(--main-for);">
+                      <a href="#cat_cursos"><h3>Especialidades</h3></a>
+                    </div>
+                    <div class="col-lg-4 item" style="background-color: var(--main-two);">
+                      <a href="#cat_cursos"><h3>Cursos Complementarios</h3></a>
+                    </div>
+                    <div class="col col-lg-4 item" style="background-color: var(--main-one);">
+                      <a href="#cat_cursos"><h3>Diplomas</h3></a>
+                    </div>
+                    <div class="col col-lg-4 item" style="background-color: var(--main-five);">
+                        <a href="#cat_cursos"><h3>Talleres Libres</h3></a>
+                      </div>
+                </div>
+            </div>
+
+            <a href="#" class="thm-btn">Todos los cursos</a><!-- /.thm-btn -->
+        </div><!-- /.container-fluid -->
+    </section><!-- /.thm-gray-bg course-category-one -->#}
+
+    <section class="course-one__top-title home-one" id="productos">
+        <div class="container">
+            <div class="block-title mb-0">
+                <h2 class="block-title__title">Explore nuestros <br>
+                    cursos más populares</h2><!-- /.block-title__title -->
+            </div><!-- /.block-title -->
+        </div><!-- /.container -->
+        <div class="course-one__top-title__curve"></div><!-- /.course-one__top-title__curve -->
+    </section><!-- /.course-one__top-title -->
+
+    <section class="course-one course-one__teacher-details home-one">
+        <div class="container">
+            <div class="course-one__carousel owl-carousel owl-theme">
+                {% for product in products %}
+                    {% include 'home/stetic/product/item.twig' %}
+                {% endfor %}
+            </div><!-- /.course-one__carousel -->
+        </div><!-- /.container -->
+    </section><!-- /.course-one course-page -->
+{% if videocorp %}
+
+    <section class="video-two" style="background-image: url('{{ videocorp[0].imagens[0].patch }}') !important">
+        <div class="container">
+            <img src="/assets/template/stetic/images/scratch-1-1.png" class="video-two__scratch" alt="">
+            <div class="row">
+                <div class="col-lg-7">
+                    <div class="video-two__content">
+                        <h2 class="video-two__title">{{ videocorp[0].content_name|nl2br }}</h2><!-- /.video-two__title -->
+                        <a href="#cat_cursos" class="thm-btn">Empecemos</a><!-- /.thm-btn -->
+                    </div><!-- /.video-two__content -->
+                </div><!-- /.col-lg-7 -->
+                <div class="col-lg-5 d-flex justify-content-lg-end justify-content-sm-start">
+                    <div class="my-auto">
+                        <a href="#" class="video-two__popup" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-play"></i><!-- /.fa fa-play --></a>
+                        <!-- /.video-two__popup -->
+                    </div><!-- /.my-auto -->
+                </div><!-- /.col-lg-5 d-flex justify-content-end -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section><!-- /.video-two -->
+    
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+              <iframe width="100%" height="450" src="{{ videocorp[0].content_caption|raw }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+{% endif %}
+
+{% if registro %}
+    <section class="countdown-one">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="countdown-one__content">
+                        <h2 class="countdown-one__title">Registrate ahora </h2><!-- /.countdown-one__title -->
+                        <p class="countdown-one__tag-line">{{ registro[0].content_name }}</p>
+                        <!-- /.countdown-one__tag-line -->
+                        <div class="mt-3">
+                            <iframe width="100%" height="450" src="{{ registro[0].content_caption }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <p class="">
+                            {{ registro[0].content_description|nl2br }}
+                        </p><!-- /.countdown-one__text -->
+                        {#<ul class="countdown-one__list list-unstyled">
+                            <!-- content loading via js -->
+                        </ul><!-- /.coundown-one__list -->#}
+                    </div><!-- /.countdown-one__content -->
+                </div><!-- /.col-lg-6 -->
+                <div class="col-lg-6">
+                    <div class="become-teacher__form">
+                        <div class="become-teacher__form-top pl-0">
+                            <div class="icon-ml2">
+                                <i class="fas fa-graduation-cap"></i>
+                                <p>Matrícula gratis</p>
+                            </div>
+                            <div class="icon-ml2">
+                                <i class="fas fa-book-open"></i>
+                                <p>Manual trabajo</p>
+                            </div>
+                            <div class="icon-ml2">
+                                <i class="fas fa-pump-soap"></i>
+                                <p>Productos práctica</p>
+                            </div>
+                            <!-- /.become-teacher__form-title -->
+                        </div><!-- /.become-teacher__top -->
+                        <form id="frmMessage"
+                            class="become-teacher__form-content">
+                            <input type="text" placeholder="Su nombre" name="name">
+                            <input type="text" placeholder="Correo electrónico" name="email">
+                            <input type="text" placeholder="Número telefónico" name="phone">
+                            <input type="text" placeholder="Mensaje" name="message">
+                            <button type="submit" class="thm-btn become-teacher__form-btn">Solicítalo</button>
+                        </form><!-- /.become-teacher__form-content -->
+                        <div class="result text-center"></div><!-- /.result -->
+                    </div><!-- /.become-teacher__form -->
+                </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section><!-- /.countdown-one -->
+{% endif %}
+
+{% if beneficio %}
+    {% set caracterisitca = [] %} 
+    {% set banner = [] %} 
+
+    {% for item in beneficio %}
+        {% if item.content_alias == 'banner' %}
+            {% set banner = banner|merge([item]) %} 
+        {% endif %}
+
+        {% if item.content_alias == 'caracterisitca' %}
+            {% set caracterisitca = caracterisitca|merge([item]) %} 
+        {% endif %}
+            
+    {% endfor %}
+    <section class="cta-three thm-gray-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 clearfix">
+                    <img src="{{ banner[0].imagens[0].patch|raw }}" class="cta-three__image" alt="">
+                </div><!-- /.col-lg-6 -->
+                <div class="col-lg-6">
+                    <div class="cta-three__content">
+                        <div class="block-title text-left">
+                            <h2 class="block-title__title">{{ beneficio[0].content_name|nl2br }}</h2><!-- /.block-title__title -->
+                        </div><!-- /.block-title -->
+                        <p class="cta-three__text">
+                            {{ beneficio[0].content_caption|nl2br }}
+                        </p>
+                        <!-- /.cta-three__text -->
+                        <div class="cta-three__single-wrap">
+                        {% for car in caracterisitca %}
+                            <div class="cta-three__single">
+                                <i class="{{ car.content_caption|nl2br }}"></i><!-- /.kipso-icon-strategy -->
+                                <p class="cta-three__single-text">{{ car.content_name|nl2br }}</p><!-- /.cta-three__single-text -->
+                            </div><!-- /.cta-three__single -->
+                        {% endfor %}
+                        
+                            {#<div class="cta-three__single">
+                                <i class="kipso-icon-strategy"></i><!-- /.kipso-icon-strategy -->
+                                <p class="cta-three__single-text">Cursos profesionales</p><!-- /.cta-three__single-text -->
+                            </div><!-- /.cta-three__single -->
+                            <div class="cta-three__single">
+                                <i class="kipso-icon-training"></i><!-- /.kipso-icon-training -->
+                                <p class="cta-three__single-text">Aprendizaje en vivo</p><!-- /.cta-three__single-text -->
+                            </div><!-- /.cta-three__single -->
+                            <div class="cta-three__single">
+                                <i class="kipso-icon-human-resources"></i><!-- /.kipso-icon-human-resources -->
+                                <p class="cta-three__single-text">Profesores expertos</p><!-- /.cta-three__single-text -->
+                            </div><!-- /.cta-three__single -->#}
+                        </div><!-- /.cta-three__single-wrap -->
+                        <a href="#cat_cursos" class="thm-btn">Empecemos</a><!-- /.thm-btn -->
+                    </div><!-- /.cta-three__content -->
+                </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section><!-- /.cta-three -->
+{% endif %}
+
+{% if socios %}
+    <section class="thm-gray-bg course-category-one">
+        <div class="container">
+            <div class="block-title">
+                <h2 class="block-title__title">{{ socios[0].section_name }}</h2><!-- /.block-title__title -->
+            </div><!-- /.block-title -->
+            <div class="brand-one__carousel owl-carousel owl-theme">
+                {% for so in socios %}
+                <div class="item">
+                    <a href="{{ so.content_name|raw }}" target="_blank">
+                        <img src="{{ so.imagens[0].patch|raw }}" alt="">
+                    </a>
+                </div><!-- /.item -->
+                {% endfor %}
+                {#<div class="item">
+                    <img src="/assets/template/stetic/images/brand-1-1.png" alt="">
+                </div><!-- /.item -->
+                <div class="item">
+                    <img src="/assets/template/stetic/images/brand-1-1.png" alt="">
+                </div><!-- /.item -->
+                <div class="item">
+                    <img src="/assets/template/stetic/images/brand-1-1.png" alt="">
+                </div><!-- /.item -->
+                <div class="item">
+                    <img src="/assets/template/stetic/images/brand-1-1.png" alt="">
+                </div><!-- /.item -->
+                <div class="item">
+                    <img src="/assets/template/stetic/images/brand-1-1.png" alt="">
+                </div><!-- /.item -->
+                <div class="item">
+                    <img src="/assets/template/stetic/images/brand-1-1.png" alt="">
+                </div><!-- /.item -->
+                <div class="item">
+                    <img src="/assets/template/stetic/images/brand-1-1.png" alt="">
+                </div><!-- /.item -->
+                <div class="item">
+                    <img src="/assets/template/stetic/images/brand-1-1.png" alt="">
+                </div><!-- /.item -->
+                <div class="item">
+                    <img src="/assets/template/stetic/images/brand-1-1.png" alt="">
+                </div><!-- /.item -->
+                <div class="item">
+                    <img src="/assets/template/stetic/images/brand-1-1.png" alt="">
+                </div><!-- /.item -->#}
+            </div><!-- /.brand-one__carousel owl-carousel owl-theme -->
+        </div><!-- /.container -->
+    </section><!-- /.brand-one -->
+{% endif %}
+    {#<section class="thm-gray-bg blog-two">
+        <div class="container">
+            <div class="block-title text-center">
+                <h2 class="block-title__title">Our latest news <br>
+                    & articles</h2><!-- /.block-title__title -->
+            </div><!-- /.block-title -->
+            <div class="blog-two__carousel owl-carousel owl-theme">
+                <div class="item">
+                    <div class="blog-two__single" style="background-image: url(/assets/template/stetic/images/blog-2-1.jpg);">
+                        <div class="blog-two__inner">
+                            <a href="news-details.html" class="blog-two__date">
+                                <span>25</span>
+                                Jul
+                            </a><!-- /.blog-two__date -->
+                            <div class="blog-two__meta">
+                                <a href="#">por Admin</a>
+                                <a href="#">3 Comments</a>
+                            </div><!-- /.blog-two__meta -->
+                            <h3 class="blog-two__title">
+                                <a href="news-details.html">Summer high school journalism camp</a>
+                            </h3><!-- /.blog-two__title -->
+                        </div><!-- /.blog-two__inner -->
+                    </div><!-- /.blog-two__single -->
+                </div><!-- /.item -->
+                <div class="item">
+                    <div class="blog-two__single" style="background-image: url(/assets/template/stetic/images/blog-2-2.jpg);">
+                        <div class="blog-two__inner">
+                            <a href="news-details.html" class="blog-two__date">
+                                <span>25</span>
+                                Jul
+                            </a><!-- /.blog-two__date -->
+                            <div class="blog-two__meta">
+                                <a href="#">por Admin</a>
+                                <a href="#">3 Comments</a>
+                            </div><!-- /.blog-two__meta -->
+                            <h3 class="blog-two__title">
+                                <a href="news-details.html">Get a tips to develop a quality education</a>
+                            </h3><!-- /.blog-two__title -->
+                        </div><!-- /.blog-two__inner -->
+                    </div><!-- /.blog-two__single -->
+                </div><!-- /.item -->
+                <div class="item">
+                    <div class="blog-two__single" style="background-image: url(/assets/template/stetic/images/blog-2-3.jpg);">
+                        <div class="blog-two__inner">
+                            <a href="news-details.html" class="blog-two__date">
+                                <span>25</span>
+                                Jul
+                            </a><!-- /.blog-two__date -->
+                            <div class="blog-two__meta">
+                                <a href="#">por Admin</a>
+                                <a href="#">3 Comments</a>
+                            </div><!-- /.blog-two__meta -->
+                            <h3 class="blog-two__title">
+                                <a href="news-details.html">Learn variety of programs and courses</a>
+                            </h3><!-- /.blog-two__title -->
+                        </div><!-- /.blog-two__inner -->
+                    </div><!-- /.blog-two__single -->
+                </div><!-- /.item -->
+                <div class="item">
+                    <div class="blog-two__single" style="background-image: url(/assets/template/stetic/images/blog-2-1.jpg);">
+                        <div class="blog-two__inner">
+                            <a href="news-details.html" class="blog-two__date">
+                                <span>25</span>
+                                Jul
+                            </a><!-- /.blog-two__date -->
+                            <div class="blog-two__meta">
+                                <a href="#">por Admin</a>
+                                <a href="#">3 Comments</a>
+                            </div><!-- /.blog-two__meta -->
+                            <h3 class="blog-two__title">
+                                <a href="news-details.html">Summer high school journalism camp</a>
+                            </h3><!-- /.blog-two__title -->
+                        </div><!-- /.blog-two__inner -->
+                    </div><!-- /.blog-two__single -->
+                </div><!-- /.item -->
+                <div class="item">
+                    <div class="blog-two__single" style="background-image: url(/assets/template/stetic/images/blog-2-2.jpg);">
+                        <div class="blog-two__inner">
+                            <a href="news-details.html" class="blog-two__date">
+                                <span>25</span>
+                                Jul
+                            </a><!-- /.blog-two__date -->
+                            <div class="blog-two__meta">
+                                <a href="#">por Admin</a>
+                                <a href="#">3 Comments</a>
+                            </div><!-- /.blog-two__meta -->
+                            <h3 class="blog-two__title">
+                                <a href="news-details.html">Get a tips to develop a quality education</a>
+                            </h3><!-- /.blog-two__title -->
+                        </div><!-- /.blog-two__inner -->
+                    </div><!-- /.blog-two__single -->
+                </div><!-- /.item -->
+                <div class="item">
+                    <div class="blog-two__single" style="background-image: url(/assets/template/stetic/images/blog-2-3.jpg);">
+                        <div class="blog-two__inner">
+                            <a href="news-details.html" class="blog-two__date">
+                                <span>25</span>
+                                Jul
+                            </a><!-- /.blog-two__date -->
+                            <div class="blog-two__meta">
+                                <a href="#">por Admin</a>
+                                <a href="#">3 Comments</a>
+                            </div><!-- /.blog-two__meta -->
+                            <h3 class="blog-two__title">
+                                <a href="news-details.html">Learn variety of programs and courses</a>
+                            </h3><!-- /.blog-two__title -->
+                        </div><!-- /.blog-two__inner -->
+                    </div><!-- /.blog-two__single -->
+                </div><!-- /.item -->
+                <div class="item">
+                    <div class="blog-two__single" style="background-image: url(/assets/template/stetic/images/blog-2-1.jpg);">
+                        <div class="blog-two__inner">
+                            <a href="news-details.html" class="blog-two__date">
+                                <span>25</span>
+                                Jul
+                            </a><!-- /.blog-two__date -->
+                            <div class="blog-two__meta">
+                                <a href="#">por Admin</a>
+                                <a href="#">3 Comments</a>
+                            </div><!-- /.blog-two__meta -->
+                            <h3 class="blog-two__title">
+                                <a href="news-details.html">Summer high school journalism camp</a>
+                            </h3><!-- /.blog-two__title -->
+                        </div><!-- /.blog-two__inner -->
+                    </div><!-- /.blog-two__single -->
+                </div><!-- /.item -->
+                <div class="item">
+                    <div class="blog-two__single" style="background-image: url(/assets/template/stetic/images/blog-2-2.jpg);">
+                        <div class="blog-two__inner">
+                            <a href="news-details.html" class="blog-two__date">
+                                <span>25</span>
+                                Jul
+                            </a><!-- /.blog-two__date -->
+                            <div class="blog-two__meta">
+                                <a href="#">por Admin</a>
+                                <a href="#">3 Comments</a>
+                            </div><!-- /.blog-two__meta -->
+                            <h3 class="blog-two__title">
+                                <a href="news-details.html">Get a tips to develop a quality education</a>
+                            </h3><!-- /.blog-two__title -->
+                        </div><!-- /.blog-two__inner -->
+                    </div><!-- /.blog-two__single -->
+                </div><!-- /.item -->
+                <div class="item">
+                    <div class="blog-two__single" style="background-image: url(/assets/template/stetic/images/blog-2-3.jpg);">
+                        <div class="blog-two__inner">
+                            <a href="news-details.html" class="blog-two__date">
+                                <span>25</span>
+                                Jul
+                            </a><!-- /.blog-two__date -->
+                            <div class="blog-two__meta">
+                                <a href="#">por Admin</a>
+                                <a href="#">3 Comments</a>
+                            </div><!-- /.blog-two__meta -->
+                            <h3 class="blog-two__title">
+                                <a href="news-details.html">Learn variety of programs and courses</a>
+                            </h3><!-- /.blog-two__title -->
+                        </div><!-- /.blog-two__inner -->
+                    </div><!-- /.blog-two__single -->
+                </div><!-- /.item -->
+            </div><!-- /.blog-two__carousel owl-carousel owl-theme -->
+        </div><!-- /.container -->
+    </section><!-- /.blog-one blog-page -->#}
+
+{% if profecionales %}
+    <section class="cta-four" style="background-image: url('{{ profecionales[0].imagens[0].patch|raw }}');background-repeat: no-repeat;
+    background-size: cover; background-position: top">
+        <img src="/assets/template/stetic/images/circle-stripe-1.png" class="cta-four__stripe" alt="">
+        <img src="/assets/template/stetic/images/line-stripe-1.png" class="cta-four__line" alt="">
+        <div class="container text-center">
+            <div class="block-title">
+                <h2 class="block-title__title">{{ profecionales[0].content_name|raw }}</h2><!-- /.block-title__title -->
+            </div><!-- /.block-title -->
+            <p class="cta-four__text">{{ profecionales[0].content_caption|nl2br }}</p><!-- /.cta-four__text -->
+        </div><!-- /.container text-center -->
+    </section><!-- /.cta-four -->
+{% endif %}
+    <section class="mailchimp-one">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="mailchimp-one__content">
+                        <div class="mailchimp-one__icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div><!-- /.mailchimp-one__icon -->
+                        <h2 class="mailchimp-one__title">Obtenga las últimas
+                            actualizaciones de los cursos registrándose</h2><!-- /.mailchimp-one__title -->
+                    </div><!-- /.mailchimp-one__content -->
+                </div><!-- /.col-lg-6 -->
+                <div class="col-lg-6 d-flex">
+                    <div class="my-auto">
+                        <form class="mailchimp-one__form " id="frmSubscription">
+                            <input type="text" name="telephone" placeholder="Número de teléfono / WhatsApp" required>
+                            <button type="submit" class="thm-btn">Subscribirse</button>
+                        </form><!-- /.mailchimp-one__form -->
+                        <div class="mc-form__response"></div><!-- /.mc-form__response -->
+                    </div><!-- /.my-auto -->
+                </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section><!-- /.mailchimp-one -->
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

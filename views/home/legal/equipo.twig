@@ -1,0 +1,63 @@
+{% extends "home/legal/main.twig" %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+{% set fundadores = 0 %}
+{% set socios = 0 %}
+{% set abogados = 0 %}
+{% set tecnicos = 0 %}
+
+{% if contents %}
+     {% for content in contents %}
+        {% if content.alias == 'vista_directorio' %}
+            {% for k, c_content in content.contents %}
+                {% if c_content.content_alias == 'fundadores' %}
+                    {% if c_content.content_name  %}
+                    {% set fundadores = 1 %}
+                    {% endif %}
+                {% endif %}
+                {% if c_content.content_alias == 'socios' %}
+                    {% if c_content.content_name  %}
+                    {% set socios = 1 %}
+                    {% endif %}
+                {% endif %}
+                {% if c_content.content_alias == 'abogados' %}
+                    {% if c_content.content_name  %}
+                    {% set abogados = 1 %}
+                    {% endif %}
+                {% endif %}
+                {% if c_content.content_alias == 'tecnicos' %}
+                    {% if c_content.content_name  %}
+                    {% set tecnicos = 1 %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+{% include 'home/legal/elements_directorio/banner-light.twig'%}
+{% if fundadores == 1 %}
+    {% include 'home/legal/elements_directorio/cards_fundadores.twig'%} 
+{% endif %}
+{% if socios == 1 %}
+    {% include 'home/legal/elements_directorio/cards_socios.twig'%}
+{% endif %}
+{% if abogados == 1 %}
+    {% include 'home/legal/elements_directorio/cards_abogados.twig'%}
+{% endif %}
+{% if tecnicos == 1 %}
+    {% include 'home/legal/elements_directorio/cards_tecnicos.twig'%} 
+{% endif %}
+
+
+{% endblock %}
+{% block js %}
+<script>
+    $(".menu-item-1 a").eq(2).addClass("active");
+</script>
+
+{% endblock %}

@@ -1,0 +1,134 @@
+{%  set breadcrumbs = {
+        'company': {
+            'name': 'Datos Empresa', 
+            'routes': [
+                {'name': 'Configuración', 'path': ''}, 
+                {'name': 'Empresa', 'path': '/admin/empresa'}
+            ]
+        },
+        'company.interface': {
+            'name': 'Interfaz', 
+            'routes': [
+                {'name': 'Configuración', 'path': ''}, 
+                {'name': 'Interfaz', 'path': '/admin/empresa/interfaz'}
+            ]
+        },
+        'company.payment': {
+            'name': 'Pagos', 
+            'routes': [
+                {'name': 'Configuración', 'path': ''}, 
+                {'name': 'Pagos', 'path': '/admin/empresa/pagos'}
+            ]
+        },
+        'landing.contents': {
+            'name': 'Contenidos', 
+            'routes': [
+                {'name': 'Landing', 'path': ''}, 
+                {'name': 'Contenidos', 'path': '/admin/landing/contenidos'}
+            ]
+        },
+        'landing.sections': {
+            'name': 'Secciones', 
+            'routes': [
+                {'name': 'Landing', 'path': ''}, 
+                {'name': 'Secciones', 'path': '/admin/landing/secciones'}
+            ]
+        },
+        'landing.menus': {
+            'name': 'Menús', 
+            'routes': [
+                {'name': 'Landing', 'path': ''}, 
+                {'name': 'Menús', 'path': '/admin/landing/menus'}
+            ]
+        },
+        'landing.gallery': {
+            'name': 'Galería', 
+            'routes': [
+                {'name': 'Landing', 'path': ''}, 
+                {'name': 'Galería', 'path': '/admin/landing/galeria'}
+            ]
+        },
+        'ecommerce.categories': {
+            'name': 'Categorías', 
+            'routes': [
+                {'name': 'Ecommerce', 'path': ''}, 
+                {'name': 'Categorías', 'path': '/admin/ecommerce/categorias'}
+            ]
+        },
+        'ecommerce.products': {
+            'name': 'Productos', 
+            'routes': [
+                {'name': 'Ecommerce', 'path': ''}, 
+                {'name': 'Productos', 'path': '/admin/ecommerce/productos'}
+            ]
+        },
+        'ecommerce.teachers': {
+            'name': 'Productos', 
+            'routes': [
+                {'name': 'Ecommerce', 'path': ''}, 
+                {'name': 'Docentes', 'path': '/admin/ecommerce/docentes'}
+            ]
+        },
+         'multimedia.portafolio': {
+            'name': 'Portfolio', 
+            'routes': [
+                {'name': 'Bibliotecas', 'path': ''}, 
+                {'name': 'Portafolio', 'path': '/admin/portafolios/portafolios'}
+            ]
+        },
+        'multimedia.podcast': {
+            'name': 'Podcast', 
+            'routes': [
+                {'name': 'Bibliotecas', 'path': ''}, 
+                {'name': 'Podcast', 'path': '/admin/portafolios/podcast'}
+            ]
+        },
+        'dashboard': {
+            'name': 'Dashboard',
+            'routes': [
+                {'name': 'Dashboard', 'path': '/admin'}, 
+            ]
+        },
+        'user.profile': {
+            'name': 'Perfil',
+            'routes': [
+                {'name': 'Usuario', 'path': '/admin/usuario/perfil'}, 
+            ]
+        },
+        'messages': {
+            'name': 'Mensajes',
+            'routes': [
+                {'name': 'Contactos', 'path': '/admin/mensajes'}, 
+            ]
+        },
+        'system': {
+            'name': 'Configuración',
+            'routes': [
+                {'name': 'Sistema', 'path': '/admin/sistema/configuracion'}, 
+            ]
+        },
+        
+    }
+%}
+
+{% set breadcrumb = breadcrumbs[breadcrumb] %}
+
+<div class="subheader py-2 py-lg-4 subheader-solid" id="kt_subheader">
+    <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+        <div class="d-flex align-items-center flex-wrap mr-2">
+            <div class="d-flex align-items-baseline flex-wrap mr-5">
+                <h5 class="text-dark font-weight-bold my-1 mr-5">{{ breadcrumb.name }}</h5>
+                <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                    {% for item in breadcrumb.routes %}
+                    <li class="breadcrumb-item text-muted">
+                        <a href="{{ item.path }}" class="text-muted">{{ item.name }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="d-flex align-items-center">
+            {# <a href="#" class="btn btn-clean btn-sm font-weight-bold font-size-base mr-1">Acciones</a> #}
+        </div>
+    </div>
+</div>

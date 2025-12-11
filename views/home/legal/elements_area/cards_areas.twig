@@ -1,0 +1,72 @@
+{% if contents %}
+     {% for content in contents %}
+
+        {% if content.alias == 'vista_areas' %}
+  
+            <section class="container">
+                    <div class="title-with row">
+
+                            {% set index = 0 %}
+
+                            {% for k, c_content in content.contents %}
+
+                                {% if c_content.content_alias == 'general' %}
+                            
+                                    {% if index == 0 %}
+
+                                         <p class="col-12"> {{ c_content.content_caption }}  </p>   
+                                   
+                                    {% endif %}
+
+                                    {% set index = index + 1  %}
+
+                                {% endif %} 
+                            {% endfor %}
+
+                         
+                    </div>
+                    <div class="separator d-flex justify-content-center">
+                        <div class=""></div>
+                        <div class=""></div>
+                        <div class=""></div>
+                    </div>   
+            </section>
+
+
+            <section class="container mt-5">
+                <div class="row justify-content-md-center">
+
+                     {% set index = 0 %}
+
+                            {% for k, c_content in content.contents %}
+
+                                {% if c_content.content_alias == 'areas_cards' %}
+                            
+                                    {% if index > 0 %}
+
+                                        <div class="block-img-one col-sm-5">
+                                            <div class="col-4 float-left m-0 p-0">
+                                                <img src="{{ c_content.imagens[0].patch }}" alt="">
+                                            </div>
+                                            <div class="col-8 float-left p-3">
+                                                <h3>{{ c_content.content_name }}</h3>
+                                                <p> {{ c_content.content_description|raw  }} </p>
+                                                {#<a class="btn-legallia" href="#">Ver más</a>#}
+                                            </div>
+                                        </div>
+                                   
+                                    {% endif %}
+
+                                    {% set index = index + 1  %}
+
+                                {% endif %} 
+                            {% endfor %}
+                    <div class="block-img-one col-sm-5" style="border: none;"></div>
+                </div>
+            </section>
+
+         {% endif %}                          
+
+     {% endfor %}
+ {% endif %}
+

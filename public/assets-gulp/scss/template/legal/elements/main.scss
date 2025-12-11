@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Readex+Pro:wght@200;300;400;500;600&display=swap');
+html{
+    font-size: 14px;
+    font-family: 'Readex Pro', sans-serif !important;
+}
+// helper file
+body{
+    font-family: 'Readex Pro', sans-serif !important;
+    font-weight: 300;
+}
+
+header {
+    position: relative;
+    z-index: 2;
+}
+
+.cliente-img img{
+    height: 5rem;
+}

@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="system-bloque-publications">
+        <div class="col-lg-12">
+            <h4 class="mb-4">Publicaciones</h4>
+        </div>
+        {% for index_content, item_content in Portafolios %}
+            <div class="col-lg-12 system-card-publications">
+                <img src="{{ item_content.image }}" class="card-image">
+                <div class="card-body">
+                    <div class="card-ver">
+                        <div class="trapecio-invertido">
+                            <a href="/portafolio/{{ item_content.slug }}"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                    <p class="card-caption">{{ item_content.date }}</p>
+                    <p class="card-title">{{ item_content.name }}</p>
+                    <button class="btn btn-light mb-3" style="background-color:var(--main-resaltar);color: #fff;">{{ item_content.category.name }}</button>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

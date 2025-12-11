@@ -1,0 +1,70 @@
+{% if contents %}
+     {% for content in contents %}
+
+        {% if content.alias == 'vista_nosotros' %}
+
+            <!--FILOSOFÍA-->
+            <section class="exp-top container-fluid pb-0">
+                <div class="block-one row justify-content-md-center pb-0">
+                   
+                            {% set index = 0 %}
+
+                            {% for k, c_content in content.contents %}
+    
+                                {% if c_content.content_alias == 'filosofia' %}
+                           
+                                    {% if index == 0 %}
+                                        <div class="col-sm-6 banner-img">
+                                
+                                            <img src="{{ c_content.imagens[0].patch }}" alt="The Last of us">
+                                
+                                        </div>
+                                    {% endif %}
+
+                                    {% set index = index + 1  %}
+
+                                {% endif %} 
+                            {% endfor %}
+
+                          
+
+                                <div class="col-sm-6 block-bg-two">
+                                    
+                                        {% set index2 = 0 %}
+
+                                        {% for k, c_content in content.contents %}
+            
+                                                {% if c_content.content_alias == 'filosofia' %}
+
+                                                    {% if index2 == 0 %}
+                                                        <h5 class="tittle-one row">
+                                                             {{ c_content.content_name }}
+                                                            <div class="col-6"></div>
+                                                            <div class="col-6"></div>
+                                                        </h5>
+                                                        <p class="tittle-two">  {{ c_content.content_caption }} </p>
+
+                                                        {% else %}
+
+                                                            <div class="block-elements d-flex flex-row">
+                                                                <img src="{{ c_content.imagens[0].patch }}" alt="">
+                                                                <p> {{ c_content.content_caption  }}</p>
+                                                            </div>
+
+                                                    {% endif %}
+
+                                                    {% set index2 = index2 + 1  %}
+
+                                                {% endif %}
+                                       
+                                        {% endfor %}
+
+                              </div>
+                             
+                </div>
+            </section>
+                                    
+         {% endif %}                          
+
+     {% endfor %}
+ {% endif %}

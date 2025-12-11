@@ -1,0 +1,218 @@
+{% extends "home/generalweb/layouts/main.twig" %}
+
+{% block content %}
+<div class="container-fluid py-4 my-2 pnl-general-contact" style="background-color: white;">
+  <div class="container">
+    <div class="row">
+    <div class="col-md-6 pnl-contact">
+      <div class="card-large text-center shadow p-3 bg-white rounded m-2 card-contact">
+        <div class="header-card">
+          <h2>Contáctanos</h2>
+        </div>
+        <div class="body-card">
+          <h3>{{ contactanos[0].title }} <span>{{ contactanos[0].subtitle }}</span></h3>
+          <p>{{ contactanos[0].description }}</p>
+        </div>
+        <div class="footer-card">
+          <button class="btn btn--primary btn-classroom btn-open-contact"> Click aquí</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 pnl-postula">
+      <div class="card-large text-center shadow p-3 bg-white rounded m-2 card-contact">
+        <div class="header-card">
+          <h2>Trabaja con nosotros</h2>
+        </div>
+        <div class="body-card">
+          <h3>{{ trabaja[0].title }} <span>{{ trabaja[0].subtitle }}</span></h3>
+          <p>{{ trabaja[0].description }}</p>
+        </div>
+        <div class="footer-card">
+          <button class="btn btn--primary btn-classroom btn-open-postula">Postula aquí</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="row form-contact float-left w-100 add-none">
+        <div class="close-panel"><i class="fa fa-times btn-close-panel" aria-hidden="true"></i></div>
+        <div class="col-md-6 float-left">
+          <h5>Contáctanos</h5>
+          <div class="form-group">
+            <span>{{ _company.phone_contact|raw }}</span><br>
+          </div>
+          <div class="separate"></div>
+          <div class="col-lg-12 mb-4 mt-3">
+            Estamos aquí <b>para ayudarte:</b>
+          </div>
+          <div class="col-lg-12 mb-4 mt-5">
+            <p>Dejanos tus datos, en breves un encargado se contactará contigo o si deseas puedes
+              escribirnos directamente a WhatsApp.
+              {% if _company.whatsapp_link %}</p>
+            <a class="icon-resalt2" href="{{ _company.whatsapp_link }}" target="_blank">{{ _company.phone_contact|raw }}
+              <i class="fa fa-whatsapp p-fa" aria-hidden="true" data-placement="top" title="Whatsapp"></i></a>
+            {% endif %}
+          </div>
+          {% if _company.address %}
+          <div class="form-group">
+            <strong>Ubícanos</strong>
+            <span>{{ _company.address|raw }}</span>
+          </div>
+          {% endif %}
+          {#<div class="form-group">
+            <a class="btn-show-maps" style="color:{{ business.color ? business.color : '#db2f33' }}; cursor:pointer;">
+              Ver mapa</a>
+          </div>#}
+        </div>
+        <div class="col-md-6 float-left p1-contact">
+          <form id="frmMessage">
+            <div class="form-group alert-help">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control input-form-contact" name="name" id="lastname"
+                placeholder="Nombres y Apellidos" required>
+              <div class="invalid-feedback name-invalid">El campo nombres y apellidos es obligatorio</div>
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control input-form-contact" name="email" id="email"
+                placeholder="Correo Electrónico" required>
+              <div class="invalid-feedback email-invalid">El campo correo Electrónico es obligatorio</div>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control input-form-contact" id="message" name="message" placeholder="Mensaje"
+                required></textarea>
+              <div class="invalid-feedback message-invalid">El campo mensaje es obligatorio</div>
+            </div>
+            <div class="form-group text-center">
+              <button type="submit" class="btn btn--primary btn-classroom btn-open-contact"> Enviar</button>
+              <div class="float-none pt-2 spinner-help" style="display:none;">
+                <div class="spinner-border text-danger" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <p>Procesando</p>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6 float-left p2-contact add-none">
+          <iframe class="iframe" src="https://maps.google.com/?ll=-12.0901768,-76.9223378&z=14&t=m&output=embed"
+            width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="row form-postula float-left w-100 add-none">
+        <div class="close-panel"><i class="fa fa-times btn-close-panel" aria-hidden="true"></i></div>
+        <div class="col-md-6 float-left">
+          <div class="form-group">
+            <h5>{{ trabaja[1].title |raw }}</h5>
+          </div>
+          <div class="form-group">
+            {{ trabaja[1].description|raw }}
+            {#<span>¿Tienes una red de contactos importante?</span><br>
+            <span>Trabaja con nosotros como Representante Comercial para <b>Ventas Corporativas</b></span>
+            #}
+          </div>
+          {#<div class="form-group">
+            <span>¿Tienes experiencia acreditada en los sectores de finanzas y regulación?</span><br>
+            <span>Trabaja con nosotros como <b>docente y/o expositor</b></span>
+          </div>#}
+        </div>
+        <div class="col-md-6 float-left">
+          <form id="frmSubscription">
+            <div class="form-group alert-team">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control input-form-contact" id="lastname" name="name"
+                placeholder="Nombres y Apellidos" required>
+              <div class="invalid-feedback fname-invalid">El campo nombres y apellidos es obligatorio</div>
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control input-form-contact" id="email" name="email"
+                placeholder="Correo Electrónico" required>
+              <div class="invalid-feedback femail-invalid">El campo correo Electrónico es obligatorio</div>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control input-form-contact" id="message" name="message" placeholder="Mensaje"
+                required></textarea>
+              <div class="invalid-feedback fmessage-invalid">El campo mensaje es obligatorio</div>
+            </div>
+            {#<div class="form-group">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="section" id="inlineRadio1" value="Capacitación"
+                  required>
+                <label class="form-check-label input-form-contact" for="inlineRadio1">Capacitación</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="section" id="inlineRadio2" value="Consultoría">
+                <label class="form-check-label input-form-contact" for="inlineRadio2">Consultoría</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="section" id="inlineRadio3" value="Publicaciones">
+                <label class="form-check-label input-form-contact" for="inlineRadio3">Publicaciones</label>
+              </div>
+
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="section" id="inlineRadio4"
+                  value="Representante comercial">
+                <label class="form-check-label input-form-contact" for="inlineRadio4">Representante comercial</label>
+              </div>
+              <div class="invalid-feedback ftype-invalid">Selecciona un item</div>
+            </div>#}
+            <div class="form-group">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" name="file" id="file">
+                <label class="custom-file-label input-form-contact" for="file">Adjuntar archivo</label>
+                <label for="file" class="lb-adjunto">Adjuntar</label>
+              </div>
+            </div>
+            <div class="form-group text-center">
+              <button type="submit" class="btn btn--primary btn-classroom"> Enviar</button>
+              <div class="float-none pt-2 spinner-team" style="display:none;">
+                <div class="spinner-border text-danger" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <p>Procesando</p>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="container-fluid">
+  <div class="container">
+    <div class="col-lg-12">
+      {% for index, section in sections %}
+      {% if section.alias == 'aliados' %}
+      {% include "home/generalweb/partials/aliados.twig" %}
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block js %}
+
+<script>
+  $('.owl-carousel').owlCarousel({
+    loop: true,
+    margin: 10,
+    nav: true,
+    responsive: {
+      0: {
+        items: 1
+      },
+      600: {
+        items: 3
+      },
+      1000: {
+        items: 4
+      }
+    }
+  })
+</script>
+{% endblock %}

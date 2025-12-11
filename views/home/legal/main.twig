@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ _company.meta_title }}</title>
+
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ _company.favicon }}">
+    <link rel="manifest" href="/assets/template/stetic/images/favicons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{{ _company.favicon }}">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- plugin scripts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,500i,600,700,800%7CSatisfy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/assets/template/legal/css/style.css">
+    <link rel="stylesheet" href="/assets/template/legal/css/plugins.css">
+    <link rel="stylesheet" href="/assets/template/legal/css/responsive.css">
+    <link rel="stylesheet" href="/assets/template/stetic/plugins/fontawesome-free-5.15.4-web/css/all.min.css">
+
+    <style>
+        body {
+            {% for color_item in _company.colors %}
+            --main-{{ color_item.alias }}: {{ color_item.color }};
+            {% endfor %}
+        
+            --main-one: #272c3f;
+            --main-two: #25a498;
+            --main-three: #14cab4;
+            --main-for: #14cab4;
+            --main-six: #222222
+        }
+
+    </style>
+
+    {% block css %} {% endblock %}
+
+</head>
+
+<body translate="no">    
+  
+    {% include 'home/legal/elements/header.twig' %} 
+
+    {% block content %} {% endblock %}
+
+    {% include 'home/legal/elements/footer.twig' %}
+
+    <script src="/assets/utilitarian/js/sweetalert2.js"></script>
+    <!-- template scripts -->
+    
+    <script src="/assets/template/legal/js/plugins.min.js"></script>
+    <script src="/assets/template/legal/js/main.js"></script>
+    {% block js %}{% endblock %}
+    
+</body>
+
+</html>

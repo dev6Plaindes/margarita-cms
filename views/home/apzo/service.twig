@@ -1,0 +1,25 @@
+{% extends "home/apzo/layouts/main.twig" %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block headerMobile %}
+    {% include 'home/apzo/layouts/partials/header.mobile.twig' %}
+{% endblock %}
+
+{% block header %}
+    {% include 'home/apzo/layouts/partials/header.twig' with { active: 'service' } %}
+{% endblock %}
+
+{% block content %}
+          
+         {% include 'home/apzo/partials_service/slider.one.twig' %}  
+         {% include 'home/apzo/partials_service/panel.pestanas.twig' %} 
+         {% include 'home/apzo/partials_service/personal.twig' %}             
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

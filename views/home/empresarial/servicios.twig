@@ -1,0 +1,153 @@
+{% extends "home/empresarial/layouts/main.twig" %}
+
+{% block css %}{% endblock %}
+
+{% block content %}
+{% if servicios %}  
+  {% include 'home/empresarial/elements/page_info.twig' with { 'titulo': servicios[0].section_name } %}
+
+  <!-- List services section -->
+  
+  <section class="padding-top-50 padding-bottom-20">
+    <div class="container">
+      <div class="row">
+        <div class="services-wrap">
+            <div class="services-list-contain">
+              {% for servicio in servicios %}  
+              <div class="item-services">
+                <div class="thumbnail">
+                     <a href="{{ servicio.content_url }}" target="_blank" class="services-3-column-img-container">
+                       <img src="{{ servicio.imagens[0].patch }}" alt="">
+                       <h4>{{ servicio.content_name|raw }}</h4>
+                     </a>
+
+                     <div class="caption">
+                      
+                       <p>{{ servicio.content_description|raw }}</p>
+                       <a class="learn-more" href="{{ servicio.content_url }}" target="_blank"> {{ servicio.content_url ? '<i class="fa fa-caret-right" aria-hidden="true"></i> Leer más':''}}
+                         
+                       </a>
+                     </div>
+                 </div>
+             </div> <!-- end column 1 -->
+              {% endfor %}
+              {#<div class="item-services">
+                   <div class="thumbnail">
+                        <a href="services-detail.html" class="services-3-column-img-container">
+                          <img src="/assets/template/empresarial/original/images/Services/1.jpg" alt="">
+                          <h4>Financial Planning</h4>
+                        </a>
+
+                        <div class="caption">
+                         
+                          <p>
+                           Phasellus lorem enim, luctus ut velit eget, convallis egestas eros. Sed ornare ligula eget tortor tempor, quis porta tellus dictum.
+                          </p>
+                          <a class="learn-more" href="services-detail.html"><i class="fa fa-caret-right" aria-hidden="true"></i>  Learn More
+                            
+                          </a>
+                        </div>
+                    </div>
+                </div> <!-- end column 1 -->
+                <div class="item-services">
+                   <div class="thumbnail">
+                        <a href="services-detail.html" class="services-3-column-img-container">
+                          <img src="/assets/template/empresarial/original/images/Services/2.jpg" alt="">
+                          <h4>Investments Management</h4>
+                        </a>
+
+                        <div class="caption">
+                         
+                          <p>
+                           Phasellus lorem enim, luctus ut velit eget, convallis egestas eros. Sed ornare ligula eget tortor tempor, quis porta tellus dictum.
+                          </p>
+                          <a class="learn-more" href="services-detail.html"><i class="fa fa-caret-right" aria-hidden="true"></i>  Learn More
+                            
+                          </a>
+                        </div>
+                    </div>
+                </div> <!-- end column 1 -->
+                <div class="item-services">
+                   <div class="thumbnail">
+                        <a href="services-detail.html" class="services-3-column-img-container">
+                          <img src="/assets/template/empresarial/original/images/Services/3.jpg" alt="">
+                          <h4>Taxes Planning</h4>
+                        </a>
+
+                        <div class="caption">
+                         
+                          <p>
+                           Phasellus lorem enim, luctus ut velit eget, convallis egestas eros. Sed ornare ligula eget tortor tempor, quis porta tellus dictum.
+                          </p>
+                          <a class="learn-more" href="services-detail.html"><i class="fa fa-caret-right" aria-hidden="true"></i>  Learn More
+                            
+                          </a>
+                        </div>
+                    </div>
+                </div> <!-- end column 1 -->
+                <div class="item-services">
+                   <div class="thumbnail">
+                        <a href="services-detail.html" class="services-3-column-img-container">
+                          <img src="/assets/template/empresarial/original/images/Services/4.jpg" alt="">
+                          <h4>Business Loan</h4>
+                        </a>
+
+                        <div class="caption">
+                         
+                          <p>
+                           Phasellus lorem enim, luctus ut velit eget, convallis egestas eros. Sed ornare ligula eget tortor tempor, quis porta tellus dictum.
+                          </p>
+                          <a class="learn-more" href="services-detail.html"><i class="fa fa-caret-right" aria-hidden="true"></i>  Learn More
+                            
+                          </a>
+                        </div>
+                    </div>
+                </div> <!-- end column 1 -->
+                <div class="item-services">
+                   <div class="thumbnail">
+                        <a href="services-detail.html" class="services-3-column-img-container">
+                          <img src="/assets/template/empresarial/original/images/Services/5.jpg" alt="">
+                          <h4>Insurance Consulting</h4>
+                        </a>
+
+                        <div class="caption">
+                         
+                          <p>
+                           Phasellus lorem enim, luctus ut velit eget, convallis egestas eros. Sed ornare ligula eget tortor tempor, quis porta tellus dictum.
+                          </p>
+                          <a class="learn-more" href="services-detail.html"><i class="fa fa-caret-right" aria-hidden="true"></i>  Learn More
+                            
+                          </a>
+                        </div>
+                    </div>
+                </div> <!-- end column 1 -->
+                <div class="item-services">
+                   <div class="thumbnail">
+                        <a href="services-detail.html" class="services-3-column-img-container">
+                          <img src="/assets/template/empresarial/original/images/Services/6.jpg" alt="">
+                          <h4>Retirement Planning </h4>
+                        </a>
+
+                        <div class="caption">
+                         
+                          <p>
+                           Phasellus lorem enim, luctus ut velit eget, convallis egestas eros. Sed ornare ligula eget tortor tempor, quis porta tellus dictum.
+                          </p>
+                          <a class="learn-more" href="services-detail.html"><i class="fa fa-caret-right" aria-hidden="true"></i>  Learn More
+                            
+                          </a>
+                        </div>
+                    </div>
+                </div> <!-- end column 1 -->#}
+            </div>
+        </div><!--  End col -->
+      </div><!-- End Row -->
+    </div><!-- End container -->
+  </section><!--  End Section -->
+{% endif %}
+{% if frase %}
+    {% include 'home/empresarial/elements/frase.twig' %}
+    {% endif %}
+{% endblock %}
+
+{% block js %}{% endblock %}

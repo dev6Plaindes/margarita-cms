@@ -1,0 +1,84 @@
+{% extends "home/stetic/main.twig" %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block content %}
+
+<section class="inner-banner">
+    <div class="container">
+        <ul class="list-unstyled thm-breadcrumb">
+            <li><a href="#">Inicio</a></li>
+            <li class="active"><a href="#">Galería</a></li>
+        </ul><!-- /.list-unstyled -->
+        <h2 class="inner-banner__title">Galería</h2><!-- /.inner-banner__title -->
+    </div><!-- /.container -->
+</section><!-- /.inner-banner -->
+<section class="gallery-one">
+    <div class="container">
+        <div class="row">
+            {% for k, galery_item in _galery.data %}
+            <div class="col-lg-4 col-md-6">
+                <div class="gallery-one__single">
+                    <img src="{{ galery_item.image|raw }}" alt="{{ galery_item.image|raw }}">
+                    <a href="{{ galery_item.image|raw }}" class="gallery-one__popup img-popup"><i class="kipso-icon-plus-symbol"></i><!-- /.kipso-icon-plus-symbol --></a>
+                </div><!-- /.gallery-one__single -->
+            </div><!-- /.col-lg-4 -->
+            {% endfor %}
+            {#
+            <div class="col-lg-4 col-md-6">
+                <div class="gallery-one__single">
+                    <img src="/assets/template/stetic/images/estudiante-3.jpg" alt="">
+                    <a href="/assets/template/stetic/images/estudiante-3.jpg" class="gallery-one__popup img-popup"><i class="kipso-icon-plus-symbol"></i><!-- /.kipso-icon-plus-symbol --></a>
+                </div><!-- /.gallery-one__single -->
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="gallery-one__single">
+                    <img src="/assets/template/stetic/images/estudiante-4.jpg" alt="">
+                    <a href="/assets/template/stetic/images/estudiante-4.jpg" class="gallery-one__popup img-popup"><i class="kipso-icon-plus-symbol"></i><!-- /.kipso-icon-plus-symbol --></a>
+                </div><!-- /.gallery-one__single -->
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="gallery-one__single">
+                    <img src="/assets/template/stetic/images/estudiante-5.jpg" alt="">
+                    <a href="/assets/template/stetic/images/estudiante-5.jpg" class="gallery-one__popup img-popup"><i class="kipso-icon-plus-symbol"></i><!-- /.kipso-icon-plus-symbol --></a>
+                </div><!-- /.gallery-one__single -->
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="gallery-one__single">
+                    <img src="/assets/template/stetic/images/estudiante-6.jpg" alt="">
+                    <a href="/assets/template/stetic/images/estudiante-6.jpg" class="gallery-one__popup img-popup"><i class="kipso-icon-plus-symbol"></i><!-- /.kipso-icon-plus-symbol --></a>
+                </div><!-- /.gallery-one__single -->
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="gallery-one__single">
+                    <img src="/assets/template/stetic/images/estudiante-7.jpg" alt="">
+                    <a href="/assets/template/stetic/images/estudiante-7.jpg" class="gallery-one__popup img-popup"><i class="kipso-icon-plus-symbol"></i><!-- /.kipso-icon-plus-symbol --></a>
+                </div><!-- /.gallery-one__single -->
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="gallery-one__single">
+                    <img src="/assets/template/stetic/images/estudiante-2.jpg" alt="">
+                    <a href="/assets/template/stetic/images/estudiante-2.jpg" class="gallery-one__popup img-popup"><i class="kipso-icon-plus-symbol"></i><!-- /.kipso-icon-plus-symbol --></a>
+                </div><!-- /.gallery-one__single -->
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="gallery-one__single">
+                    <img src="/assets/template/stetic/images/estudiante-3.jpg" alt="">
+                    <a href="/assets/template/stetic/images/estudiante-3.jpg" class="gallery-one__popup img-popup"><i class="kipso-icon-plus-symbol"></i><!-- /.kipso-icon-plus-symbol --></a>
+                </div><!-- /.gallery-one__single -->
+            </div><!-- /.col-lg-4 -->
+            <div class="col-lg-4 col-md-6">
+                <div class="gallery-one__single">
+                    <img src="/assets/template/stetic/images/estudiante-4.jpg" alt="">
+                    <a href="/assets/template/stetic/images/estudiante-4.jpg" class="gallery-one__popup img-popup"><i class="kipso-icon-plus-symbol"></i><!-- /.kipso-icon-plus-symbol --></a>
+                </div><!-- /.gallery-one__single -->
+            </div><!-- /.col-lg-4 -->
+            #}
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section><!-- /.gallery-one -->
+{% endblock %}
+
+{% block js %}{% endblock %}

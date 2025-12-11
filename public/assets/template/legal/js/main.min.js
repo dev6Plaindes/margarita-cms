@@ -1,0 +1,56 @@
+var _this2 = void 0, swal2 = Object.freeze({
+    show: function(e) {
+        Swal.close();
+        var n = e.onOk, t = e.onCancel, o = e.onCallback;
+        return delete e.onOk, delete e.onCancel, delete e.onCallback, e.allowEscapeKey = !1, 
+        e.allowOutsideClick = !1, new Promise(function(o, a) {
+            Swal.fire(e).then(function(e) {
+                e.isConfirmed ? n && n() : t && t();
+            }), o();
+        }).then(function() {
+            o && o();
+        });
+    },
+    loading: function() {
+        return !1 === (!(0 < arguments.length && void 0 !== arguments[0]) || arguments[0]) ? Swal.close() : Swal.fire({
+            text: "Cargando ...",
+            allowEscapeKey: !1,
+            allowOutsideClick: !1,
+            didOpen: function() {
+                Swal.showLoading();
+            }
+        });
+    }
+});
+
+
+var frmMessage = document.querySelector("#frmMessage2");
+
+frmMessage && frmMessage.addEventListener("submit", function(e) {
+    e.preventDefault();
+    var n = new FormData(e.currentTarget);
+    swal2.show({
+        text: "Gracias por escribirnos. Un representante de CasaLegalia se contactará con usted en la brevedad posible",
+        footer: '',
+        confirmButtonText: "Continuar",
+        cancelButtonText: "Cancelar",
+        icon: "warning",
+        showCancelButton: !0,
+        onOk: function() {
+            swal2.loading(), console.log(n), fetch("/contact/message_casaleglia", {
+                method: "POST",
+                body: n
+            }).then(function(e) {
+                return e.json();
+            }).then(function(e) {
+                e.success && frmMessage.reset(), swal2.show({
+                    text: e.message,
+                    icon: e.success ? "success" : "error",
+                    showCancelButton: !1
+                });
+            }).catch(function(e) {
+                console.error(e), swal2.loading(!1), alert("Hubo un error en el sistema.");
+            });
+        }
+    });
+});

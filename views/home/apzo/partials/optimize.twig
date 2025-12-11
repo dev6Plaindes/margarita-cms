@@ -1,0 +1,181 @@
+{% if contents %}
+     {% for content in contents %}
+
+        {% if content.alias == 'cards' %}
+
+            <div class="gdlr-core-pbf-wrapper " id="div_064f_18"> 
+                <div class="gdlr-core-pbf-background-wrap">
+                    <div class="gdlr-core-pbf-background gdlr-core-parallax gdlr-core-js" id="div_064f_19" data-parallax-speed="0.1"></div>
+                </div>
+                <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
+                    <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container">
+
+                        {% for k, c_content in content.contents %}
+
+                               <div class="gdlr-core-pbf-column gdlr-core-column-20" id="gdlr-core-column-17604">
+                                    <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " id="div_064f_24">
+                                        <div class="gdlr-core-pbf-background-wrap"></div>
+                                        <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
+                                            <div class="gdlr-core-pbf-element">
+                                                <div class="gdlr-core-column-service-item gdlr-core-item-pdb  gdlr-core-center-align gdlr-core-no-caption gdlr-core-item-pdlr" id="div_064f_25">
+                                                    <div class="gdlr-core-column-service-media gdlr-core-media-image" id="div_064f_26"><img src="{{ c_content.imagens[0].patch }}" alt="" width="57" height="57" title="icon-clean-service-2" /></div>
+                                                    <div class="gdlr-core-column-service-content-wrapper">
+                                                        <div class="gdlr-core-column-service-title-wrap">
+                                                            <h3 class="gdlr-core-column-service-title gdlr-core-skin-title" id="h3_064f_1">{{ c_content.content_name }}</h3></div>
+                                                        <div class="gdlr-core-column-service-content" id="div_064f_27">
+                                                            <p>{{ c_content.content_description }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="gdlr-core-pbf-element">
+                                                <div class="gdlr-core-button-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-center-align"><a class="gdlr-core-button  gdlr-core-button-gradient gdlr-core-button-no-border" href="#" id="a_064f_1"><span class="gdlr-core-content" >Learn More</span></a></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                               </div>
+
+                       {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+
+        {% endif %}  
+
+    {% endfor %}
+{% endif %}
+
+
+ <!-- div class="gdlr-core-pbf-column gdlr-core-column-20 gdlr-core-column-first" id="gdlr-core-column-9699">
+        <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " id="div_064f_20">
+            <div class="gdlr-core-pbf-background-wrap"></div>
+            <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
+                <div class="gdlr-core-pbf-element">
+                    <div class="gdlr-core-column-service-item gdlr-core-item-pdb  gdlr-core-center-align gdlr-core-no-caption gdlr-core-item-pdlr" id="div_064f_21">
+                        <div class="gdlr-core-column-service-media gdlr-core-media-image" id="div_064f_22"><img src="/assets/template/apzo/upload/icon-clean-service-1.png" alt="" width="57" height="57" title="icon-clean-service-1" /></div>
+                        <div class="gdlr-core-column-service-content-wrapper">
+                            <div class="gdlr-core-column-service-title-wrap">
+                                <h3 class="gdlr-core-column-service-title gdlr-core-skin-title" id="h3_064f_0">Diseño web a medida</h3></div>
+                            <div class="gdlr-core-column-service-content" id="div_064f_23">
+                                <p>Gain a holistic view of recruiting performance from source to hire with real-time dashboards &amp; reports. Measure the success of your recruiting efforts.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gdlr-core-pbf-element">
+                    <div class="gdlr-core-button-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-center-align"><a class="gdlr-core-button  gdlr-core-button-gradient gdlr-core-button-no-border" href="#" id="a_064f_0"><span class="gdlr-core-content" >Learn More</span></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="gdlr-core-pbf-column gdlr-core-column-20" id="gdlr-core-column-17604">
+        <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " id="div_064f_24">
+            <div class="gdlr-core-pbf-background-wrap"></div>
+            <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
+                <div class="gdlr-core-pbf-element">
+                    <div class="gdlr-core-column-service-item gdlr-core-item-pdb  gdlr-core-center-align gdlr-core-no-caption gdlr-core-item-pdlr" id="div_064f_25">
+                        <div class="gdlr-core-column-service-media gdlr-core-media-image" id="div_064f_26"><img src="/assets/template/apzo/upload/icon-clean-service-2.png" alt="" width="57" height="57" title="icon-clean-service-2" /></div>
+                        <div class="gdlr-core-column-service-content-wrapper">
+                            <div class="gdlr-core-column-service-title-wrap">
+                                <h3 class="gdlr-core-column-service-title gdlr-core-skin-title" id="h3_064f_1">Estrategia de Marketing Digital</h3></div>
+                            <div class="gdlr-core-column-service-content" id="div_064f_27">
+                                <p>Gain a holistic view of recruiting performance from source to hire with real-time dashboards &amp; reports. Measure the success of your recruiting efforts.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gdlr-core-pbf-element">
+                    <div class="gdlr-core-button-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-center-align"><a class="gdlr-core-button  gdlr-core-button-gradient gdlr-core-button-no-border" href="#" id="a_064f_1"><span class="gdlr-core-content" >Learn More</span></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="gdlr-core-pbf-column gdlr-core-column-20" id="gdlr-core-column-23730">
+        <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " id="div_064f_28">
+            <div class="gdlr-core-pbf-background-wrap"></div>
+            <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
+                <div class="gdlr-core-pbf-element">
+                    <div class="gdlr-core-column-service-item gdlr-core-item-pdb  gdlr-core-center-align gdlr-core-no-caption gdlr-core-item-pdlr" id="div_064f_29">
+                        <div class="gdlr-core-column-service-media gdlr-core-media-image" id="div_064f_30"><img src="/assets/template/apzo/upload/icon-clean-service-3.png" alt="" width="57" height="57" title="icon-clean-service-3" /></div>
+                        <div class="gdlr-core-column-service-content-wrapper">
+                            <div class="gdlr-core-column-service-title-wrap">
+                                <h3 class="gdlr-core-column-service-title gdlr-core-skin-title" id="h3_064f_2">Diseño de APPs y sistemas a medida</h3></div>
+                            <div class="gdlr-core-column-service-content" id="div_064f_31">
+                                <p>Gain a holistic view of recruiting performance from source to hire with real-time dashboards &amp; reports. Measure the success of your recruiting efforts.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gdlr-core-pbf-element">
+                    <div class="gdlr-core-button-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-center-align"><a class="gdlr-core-button  gdlr-core-button-gradient gdlr-core-button-no-border" href="#" id="a_064f_2"><span class="gdlr-core-content" >Learn More</span></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="gdlr-core-pbf-column gdlr-core-column-20 gdlr-core-column-first" id="gdlr-core-column-5253">
+        <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " id="div_064f_32">
+            <div class="gdlr-core-pbf-background-wrap"></div>
+            <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
+                <div class="gdlr-core-pbf-element">
+                    <div class="gdlr-core-column-service-item gdlr-core-item-pdb  gdlr-core-center-align gdlr-core-no-caption gdlr-core-item-pdlr" id="div_064f_33">
+                        <div class="gdlr-core-column-service-media gdlr-core-media-image" id="div_064f_34"><img src="/assets/template/apzo/upload/icon-clean-service-4.png" alt="" width="57" height="57" title="icon-clean-service-4" /></div>
+                        <div class="gdlr-core-column-service-content-wrapper">
+                            <div class="gdlr-core-column-service-title-wrap">
+                                <h3 class="gdlr-core-column-service-title gdlr-core-skin-title" id="h3_064f_3">Estrategia y contenido digital</h3></div>
+                            <div class="gdlr-core-column-service-content" id="div_064f_35">
+                                <p>Gain a holistic view of recruiting performance from source to hire with real-time dashboards &amp; reports. Measure the success of your recruiting efforts.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gdlr-core-pbf-element">
+                    <div class="gdlr-core-button-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-center-align"><a class="gdlr-core-button  gdlr-core-button-gradient gdlr-core-button-no-border" href="#" id="a_064f_3"><span class="gdlr-core-content" >Learn More</span></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="gdlr-core-pbf-column gdlr-core-column-20" id="gdlr-core-column-78209">
+        <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " id="div_064f_36">
+            <div class="gdlr-core-pbf-background-wrap"></div>
+            <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
+                <div class="gdlr-core-pbf-element">
+                    <div class="gdlr-core-column-service-item gdlr-core-item-pdb  gdlr-core-center-align gdlr-core-no-caption gdlr-core-item-pdlr" id="div_064f_37">
+                        <div class="gdlr-core-column-service-media gdlr-core-media-image" id="div_064f_38"><img src="/assets/template/apzo/upload/icon-clean-service-5.png" alt="" width="57" height="57" title="icon-clean-service-5" /></div>
+                        <div class="gdlr-core-column-service-content-wrapper">
+                            <div class="gdlr-core-column-service-title-wrap">
+                                <h3 class="gdlr-core-column-service-title gdlr-core-skin-title" id="h3_064f_4">Producción audiovisual</h3></div>
+                            <div class="gdlr-core-column-service-content" id="div_064f_39">
+                                <p>Gain a holistic view of recruiting performance from source to hire with real-time dashboards &amp; reports. Measure the success of your recruiting efforts.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gdlr-core-pbf-element">
+                    <div class="gdlr-core-button-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-center-align"><a class="gdlr-core-button  gdlr-core-button-gradient gdlr-core-button-no-border" href="#" id="a_064f_4"><span class="gdlr-core-content" >Learn More</span></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="gdlr-core-pbf-column gdlr-core-column-20" id="gdlr-core-column-57090">
+        <div class="gdlr-core-pbf-column-content-margin gdlr-core-js " id="div_064f_40">
+            <div class="gdlr-core-pbf-background-wrap"></div>
+            <div class="gdlr-core-pbf-column-content clearfix gdlr-core-js ">
+                <div class="gdlr-core-pbf-element">
+                    <div class="gdlr-core-column-service-item gdlr-core-item-pdb  gdlr-core-center-align gdlr-core-no-caption gdlr-core-item-pdlr" id="div_064f_41">
+                        <div class="gdlr-core-column-service-media gdlr-core-media-image" id="div_064f_42"><img src="/assets/template/apzo/upload/icon-clean-service-6.png" alt="" width="47" height="57" title="icon-clean-service-6" /></div>
+                        <div class="gdlr-core-column-service-content-wrapper">
+                            <div class="gdlr-core-column-service-title-wrap">
+                                <h3 class="gdlr-core-column-service-title gdlr-core-skin-title" id="h3_064f_5">Branding e identidad corporativa</h3></div>
+                            <div class="gdlr-core-column-service-content" id="div_064f_43">
+                                <p>Gain a holistic view of recruiting performance from source to hire with real-time dashboards &amp; reports. Measure the success of your recruiting efforts.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="gdlr-core-pbf-element">
+                    <div class="gdlr-core-button-item gdlr-core-item-pdlr gdlr-core-item-pdb gdlr-core-center-align"><a class="gdlr-core-button  gdlr-core-button-gradient gdlr-core-button-no-border" href="#" id="a_064f_5"><span class="gdlr-core-content" >Learn More</span></a></div>
+                </div>
+            </div>
+        </div>
+ </div -->

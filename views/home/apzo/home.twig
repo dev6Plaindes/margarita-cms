@@ -1,0 +1,37 @@
+{% extends "home/apzo/layouts/main.twig" %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block headerMobile %}
+    {% include 'home/apzo/layouts/partials/header.mobile.twig' %}
+{% endblock %}
+
+{% block header %}
+    {% include 'home/apzo/layouts/partials/header.twig' with { active: 'home' } %}
+{% endblock %}
+
+{% block content %}
+
+<div class="apzo-page-wrapper" id="apzo-page-wrapper">
+    <div class="gdlr-core-page-builder-body">
+        <div class="gdlr-core-pbf-wrapper  gdlr-core-hide-in-tablet-mobile" id="div_064f_0">
+            <div class="gdlr-core-pbf-background-wrap"></div>
+            <div class="gdlr-core-pbf-wrapper-content gdlr-core-js ">
+                <div class="gdlr-core-pbf-wrapper-container clearfix gdlr-core-container"></div>
+            </div>
+        </div>
+        {% include 'home/apzo/partials/slider.one.twig' %}   
+        {% include 'home/apzo/partials/optimize.twig' %}
+        {% include 'home/apzo/partials/studies.twig' %}
+        {% include 'home/apzo/partials/trusted.twig' %}
+        {% include 'home/apzo/partials/customers.twig' %}
+    </div>
+</div>
+
+{% endblock %}
+ 
+{% block js %}
+   
+{% endblock %}

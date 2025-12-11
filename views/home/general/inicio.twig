@@ -1,0 +1,79 @@
+{% extends "home/general/main.twig" %}
+
+{% block css %}
+<link rel="stylesheet" href="/assets/template/general/css/style_home.css">
+<link rel="stylesheet" href="/assets/template/general/css/style_page_home.css">
+<style>
+	.slide-content{
+		background-image: url('/assets/template/general/images/banner1.jpg');
+	}
+</style>
+{% endblock %}
+
+{% block content %}
+	<section class="slide-content">
+		<div class="slide-reflex">
+			<div class="container-fluid">
+				<div class="row justify-content-md-center">
+					<div class="col-lg-8">
+						<div class="slide-item">
+							<h1>AUTOGENERA TUS <br> <span class="resalt">DOCUMENTOS LEGALES</span></h1>
+							<p class="margin-sub">Elabora tus contratos, acuerdos,<br> poderes y más, sin salir de casa</p>
+							{% if user_session %}
+								<a class="btn btn-three px-5" href="/historial">CREAR DOCUMENTO</a>
+							{% else %}
+								<button class="btn btn-three px-5" data-toggle="modal" data-target="#modal-selected">CREAR DOCUMENTO</button>
+							{% endif %}
+						</div>
+					</div>
+					<div class="col-lg-8">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="panel-item form-group row justify-content-md-center text-center">
+									<div class="col-12"><h5>Confían en <span class="resalt">LEGALIA</span> para gestionar su documentos legales:</h5></div>
+									<div class="col-12">
+
+
+											<div class="row pnl-logos mx-width mx-auto">
+												<div class="owl-carousel">
+													
+													<div class="col"><img src="/assets/template/general//images/platinum.png"></div>
+													<div class="col"><img src="/assets/template/general//images/soft.png"></div>
+													<div class="col"><img src="/assets/template/general//images/plaindes.png"></div>
+													<div class="col"><img src="/assets/template/general//images/cmi.png"></div>
+													<div class="col"><img src="/assets/template/general//images/hcc.png"></div>
+													
+													
+												</div>
+											</div>
+
+										</div>
+{#
+									<div class="col"><img src="/assets/template/general//images/platinum.png"></div>
+									<div class="col"><img src="/assets/template/general//images/soft.png"></div>
+									<div class="col"><img src="/assets/template/general//images/plaindes.png"></div>
+									<div class="col"><img src="/assets/template/general//images/cmi.png"></div>
+									<div class="col"><img src="/assets/template/general//images/hcc.png"></div>
+#}
+								</div>
+							</div>
+							{#{% for servicio in servicio.data %}
+							<div class="col-lg-6">
+								<div class="panel-item form-group">
+									<img src="{{ servicio.icono }}">
+									<h5>{{ servicio.titulo | raw }}</h5>
+									<p>{{ servicio.stitulo | raw }}</p>
+								</div>
+							</div>
+							{% endfor %}#}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}
+
+{% block js %}
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "home/comunidadpro/layouts/main.twig" %}
+
+{% block css %}{% endblock %}
+
+
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 plataformas-colapse">
+            {% for index, section in sections %}
+              {% if section.alias == 'accordion' %}
+                {% include "home/comunidadpro/partials/accordion.twig" %}
+              {% endif %}              
+            {% endfor %}
+        </div>
+        <div class="col-lg-8">
+            <div class="row">
+            {% include "home/comunidadpro/partials/carousel.twig" %}
+            </div>
+        </div>
+        <div class="col-lg-4 plataformas-colapse">
+          {% include "home/comunidadpro/partials/register.twig" %}
+        </div>
+        <div class="col-lg-8">
+          <div class="row">
+          {% for index, section in sections %}
+            {% if section.alias == 'products' %}
+              {% include "home/comunidadpro/partials/products.twig" %}
+            {% endif %}              
+          {% endfor %}
+          </div>
+      </div>
+    </div>
+</div>
+
+{% endblock %}
+ 
+{% block js %}
+<script>
+$(document).ready(function(){
+{% for index, section in sections %}
+  {% if section.alias == 'products' %}
+    {% for index_content, item_content in section.contents %}
+      {% if item_content.url_api %}
+        carouselthree('{{item_content.uniqid}}', '{{ item_content.url_api }}');
+      {% endif %}
+    {% endfor %}
+  {% elseif section.alias == 'accordion' %}
+  buttomCollapse();
+  myAccordionClick();
+  {% endif %}              
+{% endfor %}
+});
+</script>
+{% endblock %}

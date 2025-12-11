@@ -1,0 +1,19 @@
+{% if articlesOnly == true %}
+<section class="row mb-2">
+{% endif %}
+    <div class="col-lg-3 mb-3">
+        <div class="system-card-6">
+            <h5 class="title">Artículos</h5>
+            <ul class="list-group">
+                {% for key, content in section.contents %}
+                <li class="list-group-item">
+                    <h6 class="item-title">{{ content.content_name }}</h6>
+                    <p class="item-description">{{ content.content_description }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% if articlesOnly == true %}
+</section>
+{% endif %}
