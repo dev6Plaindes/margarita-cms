@@ -177,7 +177,7 @@ const AppSectionAdmin = function () {
                             for (let i = 0; i < this.content.colors.length; i++) {
                                 const elem = this.content.colors[i];
                                 html += __render.color(elem, this.settings);
-                            }    
+                            }
                         } else {
                             html += __render.color(Object.create({id:0, color:''}), this.settings);
                         }

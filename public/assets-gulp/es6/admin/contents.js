@@ -187,11 +187,11 @@ const AppContentAdmin = function () {
                             $(this).slideDown();
                             help.colorPickers.init();
                         },
-                        hide: function(deleteElement) {                 
+                        hide: function(deleteElement) {
                             if(confirm('¿Estás seguro de que deseas eliminar este elemento?')) {
                                 $(this).slideUp(deleteElement);
-                            }                                
-                        }      
+                            }
+                        }
                     });
                     
                     $('#kt_repeater_image').repeater({

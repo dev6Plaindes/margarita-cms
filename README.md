@@ -20,3 +20,12 @@ php -S localhost:8010 -t public/
 - La tabla companies columna url_codigo relacionada a la compañia tiene que ser igual a la dirección url incluyendo el puerto donde corre el proyecto ('localhost:PORT') o el nombre del contenedor docker incluyendo el puerto.
 - La variable de entorno APP_DOMAIN es la ruta que se usa para construir la ruta para los archivos, el dominio en el que servira la aplicacion ('cms.margarita.com') o localhost(no el nombre del contenedor docker)
 
+## Uso Variable de entorno
+
+Company.php
+```
+public function getCompanyByUrl()
+$_ENV['APP_DOMAIN']
+```
+## Inputs de formularios
+Consulta en [Inputs index2.twig](./views/admin/sections/README.md)

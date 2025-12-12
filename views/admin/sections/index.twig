@@ -455,6 +455,15 @@ endblock %} {% block breadcrumb %} {% include
                         :label="settings.url.label ? settings.url.label : 'Url'"
                       ></component-input>
                     </template>
+                    <template v-if="settings && settings.url_biblioteca">
+                      <component-input
+                        :content="content"
+                        :settings="settings.url_biblioteca"
+                        :name="'url_biblioteca'"
+                        :value="content.url_biblioteca"
+                        :label="settings.url_biblioteca.label ? settings.url_biblioteca.label : 'Url'"
+                      ></component-input>
+                    </template>
                     <template v-if="settings && settings.description">
                       <component-input
                         :content="content"
