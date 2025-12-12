@@ -106,7 +106,7 @@ class User extends Model {
                 throw new \Exception('Datos incorrectos');
             }
 
-            $company = Company::where('url_codigo', FG::getDomain())->first();
+            $company = Company::where('meta_title', "Kapitals")->first();
 
             if (!$company){
                 throw new \Exception('La empresa no existe');
@@ -205,7 +205,7 @@ class User extends Model {
             $encrypt = Crypt::encrypt($send);
             $url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://$_SERVER[HTTP_HOST]/recover-password/$jwt";
 
-            $company = Company::with(['colors', 'logos'])->where('url_codigo', FG::getDomain())->first();
+            $company = Company::with(['colors', 'logos'])->where('meta_title', "Kapitals")->first();
             if (!$company){
                 throw new \Exception('La empresa no existe');
             }
@@ -326,7 +326,7 @@ class User extends Model {
             $user->lastname = $lastname;
             $user->save();
 
-            $company = Company::where('url_codigo', FG::getDomain())->first();
+            $company = Company::where('meta_title', "Kapitals")->first();
 
             if (!$company){
                 throw new \Exception('La empresa no existe');

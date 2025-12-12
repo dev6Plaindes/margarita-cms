@@ -56,13 +56,17 @@ class CompanyDown {
 	}
 
     public function indexSettings($request) {
-		$rsp = FG::responseDefault();
+        $rsp = FG::responseDefault(); // si este sí es static, lo puedes dejar
         try {
+            $fg = new \App\Utilitarian\FG(); // instanciamos la clase
+
             $company_id = $_SESSION['COMPANY_ID'];
-            $company = FG::getCurrentCompany();
+            $company = $fg->getCurrentCompany(); // ahora llamamos al método de instancia
+
             if (!isset($company['settings']['aside'])) {
-                $company['settings']['aside'] = FG::getSettingsCompanyDefault()['aside'];
+                $company['settings']['aside'] = $fg->getSettingsCompanyDefault()['aside'];
             }
+
             $settings = $company['settings'];
             $rsp['success'] = true;
             $rsp['data'] = compact('company_id', 'settings');
@@ -71,7 +75,8 @@ class CompanyDown {
             $rsp['message'] = $e->getMessage();
         }
         return $rsp;
-	}
+    }
+
 
     public function saveSettings($request) {
 		$rsp = FG::responseDefault();

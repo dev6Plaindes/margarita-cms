@@ -59,8 +59,7 @@ class Authenticate
     public static function CompanyData()
     {
         $companyObj = new Company();
-        $url_codigo = str_replace("www.","",$_SERVER['HTTP_HOST']);
-		$companie = $companyObj->getCompanyByUrl($url_codigo);
+		$companie = $companyObj->getCompanyByUrl();
         $GLOBALS['COMPANY'] = $companie;
         FG::setCompany($companie);
         return $companie;

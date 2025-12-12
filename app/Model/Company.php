@@ -339,7 +339,7 @@ class Company extends Model {
 		return $this->belongsTo(Template::class, 'template_id', 'id'); 
 	}
 
-    public function getCompanyByUrl($url) {
+    public function getCompanyByUrl() {
         $domain = $_ENV['APP_DOMAIN'];
         $contents_sql = Capsule::table('companies')
 				->join('templates', 'templates.id', '=', 'companies.template_id')
@@ -369,7 +369,7 @@ class Company extends Model {
 				->where('templates.deleted_at')
 				->where('companies_logos.deleted_at')
 				->where('companies_colors.deleted_at')
-				->where('companies.url_codigo','=',$url)
+				->where('companies.meta_title','=',"Kapitals")
 				->get();
         
         $contents_sql = $contents_sql->toArray();
@@ -388,7 +388,7 @@ class Company extends Model {
                             "template_codigo" => $value->template_codigo,
                             "name" => $value->name,
                             "host" => (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http") . "://" . $domain,
-                            "url_codigo" => $value->url_codigo,
+                            "url_codigo" => $domain,
                             "description" => $value->description,
                             "privacy_policies" => $value->privacy_policies,
                             "terms_and_conditions" => $value->terms_and_conditions,
