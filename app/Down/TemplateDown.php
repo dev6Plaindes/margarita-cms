@@ -180,6 +180,7 @@ class TemplateDown
                     'contents_files.url as file_url',
                     'contents_files.format as file_format',
                     'contents.url as content_url',
+                    'contents.url_biblioteca as content_url_biblioteca',
                     'sections.url_api',
                     'sections.body_api'
                 )
@@ -225,6 +226,7 @@ class TemplateDown
                     "section_url_api" => $value->url_api,
                     "section_body_api" => $value->body_api ? json_decode($value->body_api) : [],
                     "content_url" => $value->content_url,
+                    "content_url_biblioteca" => $value->content_url_biblioteca,
                     'uniqid' => uniqid()
                 );
                 if ($value->image_id) {

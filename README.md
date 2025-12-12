@@ -27,5 +27,14 @@ Company.php
 public function getCompanyByUrl()
 $_ENV['APP_DOMAIN']
 ```
-## Inputs de formularios
-Consulta en [Inputs index2.twig](./views/admin/sections/README.md)
+
+## Construccion de URL para imagenes
+Consulta en [README model](./app/Model/README.md)
+
+## Frontend - Inputs de Formulario
+Consulta en [Inputs index.twig](./views/admin/sections/README.md)
+
+## Backend
+- **Guardar campos de los inputs:** Consulta [Aqui](./app/Down/Save%20values%20Inputs.md)
+
+- **Retorna valores guardados:** Consulta [Aqui](./app/Down/Return%20values.md)

@@ -1,13 +1,16 @@
 
 
-## Inputs index2.twig
-Genera formulario apartir del json registrado en la Base de datos
+# Inputs index.twig
+Genera formulario apartir del json registrado en la Base de datos \
+[File: index.twig](./index.twig)
 
 **Table BD:** contents_types \
 **ID:** 106\
 **name:** Productos
 
 ## Campos soportados
+Cada campo representa una columna en la tabla contents
+
 | Campo (`settings.X`) | name HTML          | Descripción                        |
 | -------------------- | ------------------ | ---------------------------------- |
 | `name`               | `"name"`           | Título del contenido.              |
@@ -22,5 +25,9 @@ Genera formulario apartir del json registrado en la Base de datos
 | `images`             | *(no name)*        | Colección de imágenes.             |
 | `files`              | `"files[]"`        | Colección de archivos (múltiples). |
 
+**Refactorizacion**: Nuevo campo url_biblioteca
+
 ## Formularios
-- Productos > Editar Contenido
+- Productos > Editar Contenido \
+ID: 427, 428
+

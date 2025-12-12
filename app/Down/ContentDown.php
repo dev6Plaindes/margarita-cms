@@ -107,6 +107,7 @@ class ContentDown
             $content->boolean     = isset($boolean) ? ($boolean ? 1 : 0) : 0;
             $content->type_name   = isset($type_name) ? $type_name : null;
             $content->url         = $url;
+            $content->url_biblioteca         = $url_biblioteca;
             $content->status      = isset($status) ? $status : 0;
             $content->company_id  = $company_id;
             $content->section_id  = $section_id;
