@@ -2,7 +2,7 @@
 
 | PHP Version | Servicio       | Puerto |
 |------------|-------------------|--------|
-| 8.3.28     | cms_margarita | 8010   |
+| 8.3.28     | cms_margarita | 8086   |
 
 <!-- npx gulp -->
 
