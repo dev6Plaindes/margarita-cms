@@ -50,7 +50,8 @@ $company = \App\Middleware\Authenticate::CompanyData();
 if ($company && $company['template_codigo'] && is_dir(__DIR__ . "/../provider/" . $company['template_codigo'])) {
     require_once __DIR__ . "/../provider/" . $company['template_codigo'] . "/index.php";
 }else{
-    header("Location: /admin/login");
+    $current_path = strtok($_SERVER['REQUEST_URI'], '?');
+    $login_path = '/admin/login';
 }
 
 $matcher = $routerContainer->getMatcher();
